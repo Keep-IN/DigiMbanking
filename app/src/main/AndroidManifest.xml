@@ -13,6 +13,21 @@
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
         <activity
+            android:name=".Features.Transfer.TransferSesama.RekTujuan"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Transfer.Riwayat.Riwayat"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.Login.Login"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.ExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.ExampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".Features.Onboard.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -21,6 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
