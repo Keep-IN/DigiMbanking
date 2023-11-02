@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Features.Profile.Profil.FProfil">
+
+    <TextView
+        android:id="@+id/tvProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="168dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Profil"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvIdentitas"
+        android:layout_width="0dp"
+        android:layout_height="199dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfile">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_card_gold">
+
+            <TextView
+                android:id="@+id/tvGold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Gold"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="31dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Suparman"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNamaNorek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/poppins"
+                android:text="No. Rekening"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/tvNama"
+                app:layout_constraintTop_toBottomOf="@+id/tvNama" />
+
+            <TextView
+                android:id="@+id/tvNamaNik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="NIK"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/tvNamaNorek"
+                app:layout_constraintTop_toBottomOf="@+id/tvNamaNorek" />
+
+            <TextView
+                android:id="@+id/tvNamaEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/tvNamaNik"
+                app:layout_constraintTop_toBottomOf="@+id/tvNamaNik" />
+
+            <TextView
+                android:id="@+id/tvNorek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="20144511320"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvNamaNorek"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/tvNamaNorek" />
+
+            <TextView
+                android:id="@+id/tvNik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="47dp"
+                android:fontFamily="@font/poppins"
+                android:text="192728106578190923"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNorek" />
+
+            <TextView
+                android:id="@+id/tvProfEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="suparmancool@gmail.com"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvNik"
+                app:layout_constraintTop_toBottomOf="@+id/tvNik" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="47dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvNorek"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvNorek"
+                app:srcCompat="@drawable/ic_copy" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvProfAkun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Akun"
+        android:textColor="@color/primary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/cvIdentitas"
+        app:layout_constraintTop_toBottomOf="@+id/cvIdentitas" />
+
+    <ImageView
+        android:id="@+id/ivUbahPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_ubahpassword"
+        app:layout_constraintStart_toStartOf="@+id/tvProfAkun"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfAkun" />
+
+    <ImageView
+        android:id="@+id/ivUbahMpin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_ubahmpin"
+        app:layout_constraintStart_toStartOf="@+id/ivUbahPw"
+        app:layout_constraintTop_toBottomOf="@+id/ivUbahPw" />
+
+    <ImageView
+        android:id="@+id/ivKeluar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_keluar"
+        app:layout_constraintStart_toStartOf="@+id/ivUbahMpin"
+        app:layout_constraintTop_toBottomOf="@+id/ivUbahMpin" />
+
+    <TextView
+        android:id="@+id/tvUbahPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Ubah Kata Sandi"
+        android:textColor="#202327"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUbahPw"
+        app:layout_constraintStart_toEndOf="@+id/ivUbahPw"
+        app:layout_constraintTop_toTopOf="@+id/ivUbahPw" />
+
+    <TextView
+        android:id="@+id/tvUbahMpin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Ubah MPIN"
+        android:textColor="#202327"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUbahMpin"
+        app:layout_constraintStart_toEndOf="@+id/ivUbahMpin"
+        app:layout_constraintTop_toTopOf="@+id/ivUbahMpin" />
+
+    <TextView
+        android:id="@+id/tvKeluar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Keluar Akun"
+        android:textColor="#202327"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivKeluar"
+        app:layout_constraintStart_toEndOf="@+id/ivKeluar"
+        app:layout_constraintTop_toTopOf="@+id/ivKeluar" />
+
+    <ImageView
+        android:id="@+id/ivArrowR1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="33dp"
+        android:src="@drawable/ic_arrowr"
+        app:layout_constraintBottom_toBottomOf="@+id/tvUbahPw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvUbahPw" />
+
+    <ImageView
+        android:id="@+id/ivArrowR2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="33dp"
+        android:src="@drawable/ic_arrowr"
+        app:layout_constraintBottom_toBottomOf="@+id/tvUbahMpin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvUbahMpin" />
+
+    <ImageView
+        android:id="@+id/ivArrowR3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="33dp"
+        android:src="@drawable/ic_arrowr"
+        app:layout_constraintBottom_toBottomOf="@+id/tvKeluar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvKeluar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
