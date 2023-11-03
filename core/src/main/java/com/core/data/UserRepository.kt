@@ -1,5 +1,13 @@
 package com.core.data
 
+import javax.inject.Singleton
+
+// Define API Function Here
+
+@Singleton
 class UserRepository {
-//    Define API Method Here
+    fun test(): Boolean{
+        val test = false
+        return test
+    }
 }
