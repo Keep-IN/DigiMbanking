@@ -1,8 +1,12 @@
 package com.digimbanking.Features.Auth.Login
 
 import androidx.lifecycle.ViewModel
+import com.core.data.UserRepository
+import javax.inject.Inject
 
-class LoginViewModel: ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val userRepository: UserRepository
+): ViewModel() {
     var isEmailValid = false
     var isPasswordValid = false
     fun validateEmail(email: String): Boolean{

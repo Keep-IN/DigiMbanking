@@ -12,7 +12,13 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url = uri("https://jitpack.io") }
     }
+    versionCatalogs {
+        shared {
+            from files('gradle/shared.versions.toml')
+        }
+    }
 }
 
 rootProject.name = "DigiMbanking"
 include ':app'
+include ':core'
