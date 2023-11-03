@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_main">#6C63FF</color>
+    <color name="primary">#6C63FF</color>
+    <color name="disable">#D2D1CD</color>
+    <color name="abu">#727FA3</color>
+    <color name="backgroundapps">#F0F3FB</color>
 </resources>
