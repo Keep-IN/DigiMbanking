@@ -4,4 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#6C63FF</color>
     <color name="disable">#D2D1CD</color>
+    <color name="silver">#BBBBBB</color>
+    <color name="gold">#FBDB2F</color>
+    <color name="platinum">#696865</color>
+    <color name="purple">#6C63FF</color>
+    <color name="grey200">#F3F7FD</color>
 </resources>

@@ -31,6 +31,20 @@
             android:name=".Features.Auth.AdaRekening.ExampleActivity"
             android:exported="false" />
         <activity
+            android:name=".Features.Auth.CreateRekening.Registrasi.KataSandi"
+            android:exported="false"
+            android:label="@string/title_activity_kata_sandi"
+            android:theme="@style/Theme.DigiMbanking" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Registrasi.Otp"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Registrasi.KonfirmasiEmail"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Card.PilihKartu"
+            android:exported="false" />
+        <activity
             android:name=".Features.Onboard.MainActivity"
             android:exported="true">
             <intent-filter>
