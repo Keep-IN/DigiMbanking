@@ -2,7 +2,6 @@ package com.digimbanking.Features.Auth.Login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.digimbanking.databinding.ActivityLoginBinding
 
