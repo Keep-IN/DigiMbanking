@@ -19,6 +19,9 @@
             android:name=".Features.Profile.Profil.Profil"
             android:exported="false" />
         <activity
+            android:name=".Features.Transfer.TransferSesama.ListBank"
+            android:exported="false" />
+        <activity
             android:name=".Features.Transfer.TransferSesama.RekTujuan"
             android:exported="false" />
         <activity

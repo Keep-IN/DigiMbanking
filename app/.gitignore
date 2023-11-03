@@ -1,1 +1,7 @@
 /build
+# Ignore Gradle files
+.gradle/
+
+# Ignore generated Android Studio files
+.idea/
+*.iml
