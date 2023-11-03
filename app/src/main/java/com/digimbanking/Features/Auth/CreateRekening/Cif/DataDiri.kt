@@ -1,12 +1,12 @@
-package com.digimbanking.Features.Auth.AdaRekening
+package com.digimbanking.Features.Auth.CreateRekening.Cif
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.digimbanking.R
 
-class ExampleActivity : AppCompatActivity() {
+class DataDiri : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_example)
+        setContentView(R.layout.activity_data_diri)
     }
 }
