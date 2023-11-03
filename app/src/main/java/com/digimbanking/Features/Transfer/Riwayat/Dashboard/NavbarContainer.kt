@@ -18,9 +18,9 @@ class NavbarContainer : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.nav_beranda -> replaceFragment(BerandaFragment())
-                R.id.nav_akun -> replaceFragment(AkunFragment())
-                R.id.nav_riwayat -> replaceFragment(RiwayatFragment())
-                R.id.nav_profil -> replaceFragment(ProfilFragment())
+//                R.id.nav_akun -> replaceFragment(AkunFragment())
+//                R.id.nav_riwayat -> replaceFragment(RiwayatFragment())
+//                R.id.nav_profil -> replaceFragment(ProfilFragment())
             }
             true
         }
@@ -34,7 +34,7 @@ class NavbarContainer : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        BottomSheetKeluar().show(supportFragmentManager, "Keluar")
-    }
+//    override fun onBackPressed() {
+//        BottomSheetKeluar().show(supportFragmentManager, "Keluar")
+//    }
 }

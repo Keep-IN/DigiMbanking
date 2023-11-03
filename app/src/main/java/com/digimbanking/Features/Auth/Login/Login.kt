@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.digimbanking.databinding.ActivityLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private  lateinit var loginViewModel: LoginViewModel
