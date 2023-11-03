@@ -28,6 +28,21 @@
             android:name=".Features.Auth.AdaRekening.KonfEmailSdh.KonfirmasiEmailSudah"
             android:exported="false" />
         <activity
+            android:name=".Features.Transfer.Riwayat.Dashboard.NavbarContainer"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Transfer.Riwayat.Dashboard.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Profile.UbahPw.UbahPw"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Profile.Profil.Profil"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Transfer.TransferSesama.ListBank"
+            android:exported="false" />
+        <activity
             android:name=".Features.Transfer.TransferSesama.RekTujuan"
             android:exported="false" />
         <activity
