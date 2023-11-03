@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#F1F4F9"
-    tools:context=".Features.Transfer.SesamaBank.RekTujuan">
+    tools:context=".Features.Transfer.TransferSesama.RekTujuan">
 
     <ScrollView
         android:layout_width="match_parent"

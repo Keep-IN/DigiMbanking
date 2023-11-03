@@ -37,25 +37,19 @@
             android:name=".Features.Profile.UbahPw.UbahPw"
             android:exported="false" />
         <activity
-            android:name=".Features.Profile.Profil.Profil"
+            android:name=".Features.Profile.Profil.FProfil"
             android:exported="false" />
         <activity
-            android:name=".Features.Transfer.TransferSesama.ListBank"
+            android:name=".Features.Transfer.SesamaBank.ListBank"
             android:exported="false" />
         <activity
-            android:name=".Features.Transfer.TransferSesama.RekTujuan"
+            android:name=".Features.Transfer.SesamaBank.RekTujuan"
             android:exported="false" />
-        <activity
-            android:name=".Features.Transfer.Riwayat.Riwayat"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Features.Transfer.Riwayat.Riwayat"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".Features.Auth.Login.Login"
-            android:exported="false" />
-        <activity
-            android:name=".Features.Auth.CreateRekening.ExampleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Features.Auth.AdaRekening.ExampleActivity"
             android:exported="false" />
         <activity
             android:name=".Features.Onboard.MainActivity"

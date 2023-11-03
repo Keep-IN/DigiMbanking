@@ -1,11 +1,10 @@
-package com.digimbanking.Features.Transfer.TransferSesama
+package com.digimbanking.Features.Transfer.SesamaBank
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
-import com.digimbanking.R
 import com.digimbanking.databinding.ActivityRekTujuanBinding
 
 class RekTujuan : AppCompatActivity() {

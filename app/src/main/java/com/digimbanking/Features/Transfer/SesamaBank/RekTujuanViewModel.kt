@@ -1,4 +1,4 @@
-package com.digimbanking.Features.Transfer.TransferSesama
+package com.digimbanking.Features.Transfer.SesamaBank
 
 import androidx.lifecycle.ViewModel
 

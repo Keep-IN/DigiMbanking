@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
-import com.digimbanking.R
 import com.digimbanking.databinding.ActivityLoginBinding
 
 class Login : AppCompatActivity() {
@@ -17,26 +16,26 @@ class Login : AppCompatActivity() {
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         binding.apply {
-            tilEmail.editText?.doOnTextChanged { text, start, before, count ->
-                if (loginViewModel.validateEmail(text.toString())){
-                    binding.tilEmail.isErrorEnabled = false
-                    binding.btnLogin.isEnabled = true
-                } else {
-                    binding.tilEmail.isErrorEnabled = true
-                    binding.btnLogin.isEnabled = false
-                    binding.tilEmail.error = "Email harus sesuai format penulisan"
-                }
-            }
-            tilPassword.editText?.doOnTextChanged { text, start, before, count ->
-                if (loginViewModel.validatePassword(text.toString())){
-                    binding.tilPassword.isErrorEnabled = false
-                    binding.btnLogin.isEnabled = true
-                } else {
-                    binding.tilPassword.isErrorEnabled = true
-                    binding.btnLogin.isEnabled = false
-                    binding.tilPassword.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
-                }
-            }
+//            tilEmail.editText?.doOnTextChanged { text, start, before, count ->
+//                if (loginViewModel.validateEmail(text.toString())){
+//                    binding.tilEmail.isErrorEnabled = false
+//                    binding.btnLogin.isEnabled = true
+//                } else {
+//                    binding.tilEmail.isErrorEnabled = true
+//                    binding.btnLogin.isEnabled = false
+//                    binding.tilEmail.error = "Email harus sesuai format penulisan"
+//                }
+//            }
+//            tilPassword.editText?.doOnTextChanged { text, start, before, count ->
+//                if (loginViewModel.validatePassword(text.toString())){
+//                    binding.tilPassword.isErrorEnabled = false
+//                    binding.btnLogin.isEnabled = true
+//                } else {
+//                    binding.tilPassword.isErrorEnabled = true
+//                    binding.btnLogin.isEnabled = false
+//                    binding.tilPassword.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
+//                }
+//            }
         }
     }
 }
