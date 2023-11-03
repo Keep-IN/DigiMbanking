@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Features.Auth.Login.Login">
+    tools:context=".Features.Auth.CreateRekening.Registrasi.Otp">
 
     <ImageView
         android:id="@+id/ivLogo"

@@ -13,6 +13,12 @@
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
         <activity
+            android:name=".Features.Transfer.Riwayat.Dashboard.NavbarContainer"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Transfer.Riwayat.Dashboard.DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".Features.Profile.UbahPw.UbahPw"
             android:exported="false" />
         <activity
