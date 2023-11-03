@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Features.Profile.UbahPw.UbahPw">
+
+    <ImageView
+        android:id="@+id/ivBackUbahPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tvJudulUbahPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Ubah Kata Sandi"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBackUbahPw"
+        app:layout_constraintStart_toEndOf="@+id/ivBackUbahPw"
+        app:layout_constraintTop_toTopOf="@+id/ivBackUbahPw" />
+
+    <TextView
+        android:id="@+id/tvPwLama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Masukkan Kata Sandi Lama :"
+        android:textColor="#323A43"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/ivBackUbahPw"
+        app:layout_constraintTop_toBottomOf="@+id/ivBackUbahPw" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPwLama"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="28dp"
+        app:boxBackgroundColor="#F3F7FD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPwLama"
+        app:layout_constraintTop_toBottomOf="@+id/tvPwLama"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/primary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:hint="Masukkan Kata Sandi Lama"
+            android:inputType="text|textPassword"
+            android:textColor="#4A5568"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvPwBaru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Masukkan Kata Sandi Baru :"
+        android:textColor="#323A43"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tilPwLama"
+        app:layout_constraintTop_toBottomOf="@+id/tilPwLama" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPwBaru"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="28dp"
+        app:boxBackgroundColor="#F3F7FD"
+        app:boxStrokeColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPwBaru"
+        app:layout_constraintTop_toBottomOf="@+id/tvPwBaru"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/primary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:hint="Masukkan Kata Sandi Baru"
+            android:inputType="text|textPassword"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvKonfirmPwBaru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Konfirmasi Kata Sandi Baru :"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tilPwBaru"
+        app:layout_constraintTop_toBottomOf="@+id/tilPwBaru" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilKonfirmPwBaru"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="28dp"
+        app:boxBackgroundColor="#F3F7FD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvKonfirmPwBaru"
+        app:layout_constraintTop_toBottomOf="@+id/tvKonfirmPwBaru"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/primary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:hint="Konfirmasi Kata Sandi Baru"
+            android:inputType="text|textPassword"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSimpanPwBaru"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="45dp"
+        android:backgroundTint="@color/bg_button_selector"
+        android:enabled="false"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Simpan"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
