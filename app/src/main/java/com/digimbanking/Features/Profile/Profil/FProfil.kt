@@ -1,10 +1,12 @@
 package com.digimbanking.Features.Profile.Profil
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.digimbanking.Features.Profile.UbahPw.UbahPw
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.FragmentFProfilBinding
@@ -31,6 +33,9 @@ class FProfil : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+        }
+        binding.tvUbahPw.setOnClickListener{
+            startActivity(Intent(activity, UbahPw::class.java))
         }
     }
 
