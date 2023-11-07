@@ -130,6 +130,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_field_selector"
+                            android:enabled="false"
                             android:hint="Masukkan Nomor Rekening"
                             android:textColorHint="#4A5568"
                             android:textSize="14sp" />
