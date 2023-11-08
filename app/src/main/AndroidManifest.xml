@@ -13,6 +13,18 @@
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
         <activity
+            android:name=".Features.Auth.OnBoard.Splash"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.Question.QuestionPage"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.OnBoard.OnBoard2"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.OnBoard.Onboard"
+            android:exported="false" />
+        <activity
             android:name=".Features.Auth.AdaRekening.KonfRekSdh.BottomSheetKonfRek"
             android:exported="false" />
         <activity
@@ -44,10 +56,9 @@
             android:exported="false" />
         <activity
             android:name=".Features.Transfer.SesamaBank.RekTujuan"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Features.Transfer.Riwayat.Riwayat"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Features.Transfer.Riwayat.Riwayat" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".Features.Auth.Login.Login"
             android:exported="false" />
