@@ -83,7 +83,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvDescMasuk" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/tilLoginEmail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -110,10 +110,11 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="Kata Sandi :"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+                app:layout_constraintStart_toStartOf="@+id/tilLoginEmail"
+                app:layout_constraintTop_toBottomOf="@+id/tilLoginEmail" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLoginPw"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
