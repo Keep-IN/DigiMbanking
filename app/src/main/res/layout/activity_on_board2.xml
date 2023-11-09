@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Features.Auth.OnBoard.OnBoard2">
 
-    <ImageView
-        android:id="@+id/imageView4"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivIlusOb2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -31,10 +31,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/ivIlusOb2" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/tvDescOb2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -48,8 +48,8 @@
         app:layout_constraintStart_toStartOf="@+id/tvJudulOB2"
         app:layout_constraintTop_toBottomOf="@+id/tvJudulOB2" />
 
-    <ImageView
-        android:id="@+id/imageView5"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivBackOb2"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
@@ -58,8 +58,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
-    <ImageView
-        android:id="@+id/imageView6"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivNextOb2"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="24dp"

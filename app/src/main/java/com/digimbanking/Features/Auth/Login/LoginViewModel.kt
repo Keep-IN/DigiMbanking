@@ -5,10 +5,7 @@ import com.core.data.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-@HiltViewModel
-class LoginViewModel @Inject constructor(
-    private val userRepository: UserRepository
-): ViewModel() {
+class LoginViewModel : ViewModel() {
     var isEmailValid = false
     var isPasswordValid = false
     fun validateEmail(email: String): Boolean{

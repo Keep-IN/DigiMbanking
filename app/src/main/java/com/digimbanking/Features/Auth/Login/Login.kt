@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.digimbanking.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private  lateinit var loginViewModel: LoginViewModel
@@ -39,5 +38,18 @@ class Login : AppCompatActivity() {
                 }
             }
         }
+        validateInput()
+//        binding.btnLoginMasuk.setOnClickListener{
+//            startActivity(Intent(activity, dashboard))
+//        }
+    }
+    private fun validateInput(){
+        val email = binding.tilLoginEmail.editText?.text.toString()
+        val password = binding.tilLoginPw.editText?.text.toString()
+
+        val isEmailValid = loginViewModel.validateEmail(email)
+        val isPasswordValid = loginViewModel.validatePassword(password)
+
+        binding.btnLoginMasuk.isEnabled = isEmailValid && isPasswordValid
     }
 }

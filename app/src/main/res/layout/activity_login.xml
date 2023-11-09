@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivLogoLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                     android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLoginMasuk"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -145,6 +145,7 @@
                 android:enabled="false"
                 android:text="Masuk"
                 android:textColor="#FFFFFF"
+                app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
