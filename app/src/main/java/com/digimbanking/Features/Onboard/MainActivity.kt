@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.digimbanking.Features.Auth.CreateRekening.Card.PilihKartu
+import com.digimbanking.Features.Auth.CreateRekening.Cif.BottomSheetPekerjaan
 import com.digimbanking.Features.Auth.CreateRekening.Cif.BuatAkun
 import com.digimbanking.Features.Auth.CreateRekening.Cif.Nik
 import com.digimbanking.Features.Auth.CreateRekening.Mpin.BuatMpin
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.etWord.setOnClickListener {
-            startActivity(Intent(this, Nik::class.java))
+            startActivity(Intent(this, BuatAkun::class.java))
         }
     }
 }

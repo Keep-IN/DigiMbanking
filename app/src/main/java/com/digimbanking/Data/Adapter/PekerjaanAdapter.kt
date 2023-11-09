@@ -1,44 +1,60 @@
 package com.digimbanking.Data.Adapter
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.getExternalCacheDirs
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.core.domain.model.PekerjaanItemModel
+import com.digimbanking.Features.Auth.CreateRekening.Cif.BuatAkun
 import com.digimbanking.databinding.ListPekerjaanBinding
 
-class PekerjaanAdapter: RecyclerView.Adapter<PekerjaanAdapter.ViewHolder>() {
-    private val itemListener : ((PekerjaanItemModel) -> Unit)? = null
-    private val data : MutableList<PekerjaanItemModel> = mutableListOf()
-    inner class ViewHolder(private val binding: ListPekerjaanBinding): RecyclerView.ViewHolder(binding.root) {
-        fun setData(item: PekerjaanItemModel, listener: ((PekerjaanItemModel) -> Unit)?){
-            binding.root.setOnClickListener{
-                listener?.invoke(item)
+class PekerjaanAdapter(private val context: Context, private val itemListener : List<PekerjaanItemModel>): RecyclerView.Adapter<PekerjaanAdapter.ViewHolder>() {
+    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("job", Context.MODE_PRIVATE)
+
+    class ViewHolder( val binding: ListPekerjaanBinding): RecyclerView.ViewHolder(binding.root) {
+
+        fun setData(item: PekerjaanItemModel, sharedPreferences: SharedPreferences){
+            binding.txtJob.setOnClickListener {
+                val editor:SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString("pekerjaan", item.nama)
+                editor.apply()
             }
-            binding.txtJob.text = item.nama
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            ListPekerjaanBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        )
+        val view = ListPekerjaanBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = data.size
-
-    fun submitList(list: List<PekerjaanItemModel>) {
-        val initSize = itemCount
-        data.clear()
-        notifyItemRangeRemoved(0, initSize)
-        data.addAll(list)
-        notifyItemRangeInserted(0, data.size)
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.setData(data[position], itemListener)
+        val item = itemListener[position]
+        holder.setData(item, sharedPreferences)
+        holder.binding.txtJob.text = item.nama
+
+        holder.binding.txtJob.setOnClickListener {
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+            editor.putString("pekerjaan", item.nama)
+            editor.apply()
+
+            val intent = Intent(it.context, BuatAkun::class.java)
+            intent.putExtra("pekerjaan", item.nama)
+            it.context.startActivity(intent)
+
+
+        }
     }
 
-    fun setOnclickItem(holder: ViewHolder, position: Int){
-        holder.setData(data[position], itemListener)
+    override fun getItemCount(): Int {
+        return itemListener.size
     }
+
+
+
 }
