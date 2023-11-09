@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Features.Auth.CreateRekening.Card.NomorRekening">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imgWallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="145dp"
+        android:src="@drawable/wallet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDigi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginEnd="114dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Digi Bank"
+        android:textColor="@color/primary"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgWallet" />
+
+    <TextView
+        android:id="@+id/txtselamat"
+        android:layout_width="272dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="59dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/selamat_nomor_rekening_berhasil_dibuat"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDigi" />
+
+    <TextView
+        android:id="@+id/txtNomorRek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="53dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/nomor_rekening_sudah_dapat_digunakan"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtselamat" />
+
+    <TextView
+        android:id="@+id/txtNorek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Nomor Rekening :"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomorRek" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etNomorRekening"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="47dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNorek">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_field_nore"
+            android:fontFamily="@font/poppins"
+            android:hint="1234567891213456"
+            android:inputType="number"
+            android:textColorHint="#323A43"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/imgCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="196dp"
+            android:src="@drawable/fi_copy"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/etNomorRekening" />
+
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegist"
+        android:layout_width="342dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="44dp"
+        android:enabled="false"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Lanjut"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNomorRekening"
+        app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

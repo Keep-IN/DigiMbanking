@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/grey200"
     android:layout_height="match_parent"
     tools:context=".Features.Auth.CreateRekening.Card.PilihKartu">
 
@@ -114,7 +115,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/bulet" />
+                                android:src="@drawable/bgcard" />
 
                             <TextView
                                 android:id="@+id/txtDebit"
@@ -232,7 +233,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/bulet" />
+                                android:src="@drawable/bgcard" />
 
                             <TextView
                                 android:id="@+id/txtDebitGold"
@@ -351,7 +352,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/bulet" />
+                                android:src="@drawable/bgcard" />
 
                             <TextView
                                 android:id="@+id/txtDebitPlat"

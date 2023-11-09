@@ -12,6 +12,9 @@ dependencies {
     //Input Pin
     implementation 'com.github.bitfactoryio:PinCodeLayout:1.0.3'
 
+    //pinview
+    implementation 'io.github.chaosleung:pinview:1.4.4'
+
     //Bottom Sheet
     implementation 'com.github.andrefrsousa:SuperBottomSheet:2.0.0'
 
@@ -24,4 +27,9 @@ dependencies {
     //dagger hilt
     implementation "com.google.dagger:hilt-android:2.48"
     kapt "com.google.dagger:hilt-compiler:2.48"
+
+    //lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.x.x"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.x.x"
+
 }

@@ -120,7 +120,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/txtInformasi" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/etNIK"
+                        android:id="@+id/etEmail"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -132,6 +132,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:hint="Email"
+                            android:textColorHint="#323A43"
                             android:fontFamily="@font/poppins"
                             android:textSize="14sp"
                             android:background="@drawable/bg_text_field"
@@ -153,7 +154,6 @@
                 android:enabled="false"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Lanjut"
-                app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.478"
