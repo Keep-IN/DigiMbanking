@@ -62,4 +62,5 @@
     <string name="informasi">Masukkan alamat email untuk proses pembuatan akun.</string>
     <string name="kata_sandi">Masukkan informasi mengenai Kata Sandi akun mobile mbanking.</string>
     <string name="informasi_nik">Masukkan informasi NIK untuk proses pembuatan akun.</string>
+    <string name="beranda_fragment">Beranda Fragment</string>
 </resources>

@@ -85,17 +85,19 @@
                 app:layout_constraintStart_toEndOf="@+id/tvNorek"
                 app:layout_constraintTop_toTopOf="@+id/tvNorek" />
 
+
             <TextView
                 android:id="@+id/tv_visual_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Gold"
                 android:textColor="@color/white_primary"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_norek"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_norek"
-                tools:layout_editor_absoluteX="311dp" />
-
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/tvSaldoSum"
@@ -114,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:src="@drawable/ic_eye_sharp"
+                android:src="@drawable/ic_eye_open"
                 app:layout_constraintBottom_toBottomOf="@+id/tvSaldoSum"
                 app:layout_constraintStart_toEndOf="@+id/tvSaldoSum"
                 app:layout_constraintTop_toTopOf="@+id/tvSaldoSum" />
@@ -129,6 +131,19 @@
                 android:textColor="@color/white_primary"
                 app:layout_constraintStart_toStartOf="@+id/tvNorek"
                 app:layout_constraintTop_toBottomOf="@+id/tvNorek" />
+
+            <ImageView
+                android:id="@+id/ivEyeClosed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_eye_close"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSaldoSum"
+                app:layout_constraintEnd_toEndOf="@+id/iv_eye_sharp"
+                app:layout_constraintStart_toEndOf="@+id/tvSaldoSum"
+                app:layout_constraintTop_toTopOf="@+id/tvSaldoSum"
+                app:layout_constraintVertical_bias="0.333" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -176,23 +191,28 @@
                 android:id="@+id/tv_transfer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/poppins"
                 android:text="Transfer"
                 android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/iv_transfer"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/iv_transfer"
-                tools:layout_editor_absoluteY="50dp" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_transfer"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_ewallet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/poppins"
                 android:text="E-Wallet"
                 android:textSize="9sp"
                 app:layout_constraintEnd_toEndOf="@+id/iv_ewallet"
                 app:layout_constraintStart_toStartOf="@+id/iv_ewallet"
-                tools:layout_editor_absoluteY="50dp" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_ewallet" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -243,6 +263,7 @@
                     android:layout_height="match_parent">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvListRiwayatTerakhir"
                         android:layout_width="341dp"
                         android:layout_height="310dp"
                         app:layout_constraintBottom_toBottomOf="parent"

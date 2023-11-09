@@ -21,7 +21,7 @@
                 app:srcCompat="@drawable/ic_masuk" />
 
             <TextView
-                android:id="@+id/tv_transaksi_masuk_test"
+                android:id="@+id/tv_transaksi_masuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
@@ -31,13 +31,17 @@
                 tools:layout_editor_absoluteX="90dp" />
 
             <TextView
-                android:id="@+id/tv_nominal_riwayat_transaksi"
+                android:id="@+id/tv_nominal_riwayat_transaksi_masuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+ Rp4.500.000"
                 android:textColor="@color/green_700"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_transaksi_masuk_test"
-                app:layout_constraintTop_toTopOf="@+id/tv_transaksi_masuk_test"
-                tools:layout_editor_absoluteX="262dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintBottom_toBottomOf="@+id/tv_transaksi_masuk"
+                app:layout_constraintTop_toTopOf="@+id/tv_transaksi_masuk"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="260dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

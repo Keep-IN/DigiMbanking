@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Features.Transfer.Riwayat.Filter.BottomSheetFilterFragment">
+
+    <TextView
+        android:id="@+id/tvRentangWaktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Rentang Waktu"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintBottom_toBottomOf="@+id/tvRentangWaktu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvRentangWaktu" />
+
+        <RadioGroup
+            android:id="@+id/rg_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </RadioGroup>
+
+    <RadioButton
+        android:id="@+id/rb_7hari_terakhir"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end|center_vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/tv7HariTerakhir"
+        app:layout_constraintEnd_toEndOf="@+id/btnClose"
+        app:layout_constraintStart_toStartOf="@+id/btnClose"
+        app:layout_constraintTop_toTopOf="@+id/tv7HariTerakhir" />
+
+    <RadioButton
+        android:id="@+id/rb_10hari_terakhir"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end|center_vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/tv15HariTerakhir"
+        app:layout_constraintEnd_toEndOf="@+id/rb_7hari_terakhir"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rb_7hari_terakhir"
+        app:layout_constraintTop_toTopOf="@+id/tv15HariTerakhir" />
+
+    <RadioButton
+        android:id="@+id/rb_tanggal"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end|center_vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTanggal"
+        app:layout_constraintEnd_toEndOf="@+id/rb_10hari_terakhir"
+        app:layout_constraintStart_toStartOf="@+id/rb_10hari_terakhir"
+        app:layout_constraintTop_toTopOf="@+id/tvTanggal" />
+
+    <TextView
+        android:id="@+id/tv7HariTerakhir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:fontFamily="@font/poppins"
+        android:text="7 Hari Terakhir"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tvRentangWaktu"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tvRentangWaktu"
+        app:layout_constraintTop_toBottomOf="@+id/tvRentangWaktu" />
+
+    <TextView
+        android:id="@+id/tv15HariTerakhir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins"
+        android:text="15 Hari Terakhir"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tv7HariTerakhir"
+        app:layout_constraintStart_toStartOf="@+id/tv7HariTerakhir"
+        app:layout_constraintTop_toBottomOf="@+id/tv7HariTerakhir" />
+
+    <TextView
+        android:id="@+id/tvTanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
+        android:text="Tanggal"
+        app:layout_constraintEnd_toEndOf="@+id/tv15HariTerakhir"
+        app:layout_constraintHorizontal_bias="0.302"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv15HariTerakhir" />
+
+    <TextView
+        android:id="@+id/tvTanggalMulai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="Tanggal Mulai"
+        android:textColor="@color/grey_neutral"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/tvTanggal"
+        app:layout_constraintTop_toBottomOf="@+id/tvTanggal" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvTanggalMulai"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvTanggalMulai"
+        app:strokeColor="@color/purple_500"
+        app:strokeWidth="1dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvTanggalMulai"
+        tools:layout_editor_absoluteY="308dp" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivIconCalendarTglMulai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_calendar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.953"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvICalendarTanggalMulai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="7dp"
+                android:fontFamily="@font/poppins"
+                android:text="dd/mm/yy"
+                android:textColor="@color/grey_regular"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivIconCalendarTglMulai"
+                app:layout_constraintEnd_toStartOf="@+id/ivIconCalendarTglMulai"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivIconCalendarTglMulai" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvTanggalAkhir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tanggal Akhir"
+        android:textColor="@color/grey_neutral"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTanggalMulai"
+        app:layout_constraintEnd_toEndOf="@+id/rb_tanggal"
+        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintStart_toEndOf="@+id/tvTanggalMulai"
+        app:layout_constraintTop_toTopOf="@+id/tvTanggalMulai"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvTanggalAkhir"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cvTanggalMulai"
+        app:layout_constraintEnd_toEndOf="@+id/tvTanggalAkhir"
+        app:layout_constraintStart_toEndOf="@+id/cvTanggalMulai"
+        app:layout_constraintTop_toTopOf="@+id/cvTanggalMulai"
+        app:strokeColor="@color/purple_500" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCalendarTanggalAkhir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:fontFamily="@font/poppins"
+                android:text="dd/mm/yy"
+                android:textColor="@color/grey_regular"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivIconCalendarTglAkhir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_calendar"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCalendarTanggalAkhir"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@+id/tvCalendarTanggalAkhir"
+                app:layout_constraintTop_toTopOf="@+id/tvCalendarTanggalAkhir" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/btnTerapkan"
+        android:layout_width="294dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="329dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="29dp"
+        android:backgroundTint="@color/bg_button_selector"
+        android:text="Terapkan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvTanggalMulai" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

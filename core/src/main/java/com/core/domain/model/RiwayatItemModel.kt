@@ -1,4 +1,4 @@
-package com.digimbanking.Data.Model
+package com.core.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
