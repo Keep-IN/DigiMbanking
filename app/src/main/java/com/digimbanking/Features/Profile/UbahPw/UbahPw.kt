@@ -51,6 +51,10 @@ class UbahPw : AppCompatActivity() {
                 }
             }
             validateInput()
+            btnSimpanPwBaru.setOnClickListener{
+                AlertDialogUbahPwSuccess().show(supportFragmentManager,"test")
+
+            }
         }
     }
     private fun validateInput(){

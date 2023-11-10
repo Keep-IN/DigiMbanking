@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Auth.Question
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.digimbanking.R
@@ -12,5 +13,15 @@ class QuestionPage : AppCompatActivity() {
         binding = ActivityQuestionPageBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.apply {
+//            btnDaftarAkun.setOnClickListener {
+//                startActivity(Intent(activity, EditProfile::class.java))
+//            }
+            tvSudahPunyaAkun.setOnClickListener {
+                val bottomSheetSudahPunyaAkun = BottomSheetSudahPunyaAkun()
+                bottomSheetSudahPunyaAkun.show(supportFragmentManager, bottomSheetSudahPunyaAkun.tag)
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ import com.digimbanking.databinding.ActivityOnboardBinding
 class Onboard : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityOnboardBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
