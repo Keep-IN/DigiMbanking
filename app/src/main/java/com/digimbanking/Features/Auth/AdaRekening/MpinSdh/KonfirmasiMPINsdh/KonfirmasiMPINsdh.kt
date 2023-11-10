@@ -31,8 +31,8 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(KonfirmasiMPINViewModelsdh::class.java)
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
 
-        val pinView = findViewById<PinView>(R.id.pinPiw)
-        val pinErrorText = findViewById<TextView>(R.id.pinError)
+        val pinView = binding.pinPiw
+        val pinErrorText = binding.pinError
 
         viewModel.konfirmasiPin.observe(this, Observer {
             if (it.length == pinView.itemCount) {

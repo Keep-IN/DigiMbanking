@@ -23,8 +23,7 @@ class BuatMPINsdh : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(PinViewModel::class.java)
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
 
-
-        val pinView = findViewById<PinView>(R.id.sendOtp)
+        val pinView = binding.sendOtp
         pinView.addTextChangedListener {
             it?.let {
                 viewModel.setPin(it.toString())
