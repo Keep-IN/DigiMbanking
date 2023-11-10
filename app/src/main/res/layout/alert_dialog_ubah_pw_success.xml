@@ -6,10 +6,11 @@
     android:layout_height="wrap_content"
     tools:context=".Features.Profile.UbahPw.AlertDialogUbahPwSuccess">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvJudulSuksesUbah"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvSuksesUbahPw"
         android:layout_width="342dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,62 +26,39 @@
                 android:layout_marginStart="135dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="135dp"
-                android:layout_marginBottom="18dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Sukses"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivCentang"
-        android:layout_width="67dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="133dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvJudulSuksesUbah"
-        app:srcCompat="@drawable/ic_sukses" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivCentang"
+                android:layout_width="67dp"
+                android:layout_height="67dp"
+                android:layout_marginTop="58dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvSuksesUbahPw"
+                app:layout_constraintStart_toStartOf="@+id/tvSuksesUbahPw"
+                app:layout_constraintTop_toBottomOf="@+id/tvSuksesUbahPw"
+                app:srcCompat="@drawable/ic_sukses" />
 
-    <TextView
-        android:id="@+id/tvDescSuksesUbahPw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="86dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="86dp"
-        android:text="Kata Sandi Berhasil Diubah!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCentang" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvBtnOkUbahPw"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescSuksesUbahPw">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tvDescSuksesUbahPw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Kata Sandi Berhasil Diubah!"
+                app:layout_constraintEnd_toEndOf="@+id/ivCentang"
+                app:layout_constraintStart_toStartOf="@+id/ivCentang"
+                app:layout_constraintTop_toBottomOf="@+id/ivCentang" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnOkSusesUbahPw"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="69dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="30dp"
                 android:backgroundTint="@color/primary"
@@ -90,8 +68,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/tvDescSuksesUbahPw" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

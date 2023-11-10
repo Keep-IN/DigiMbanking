@@ -1,6 +1,7 @@
 package com.digimbanking.Features.Auth.Login.AlertDialog
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
+import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.R
 import com.digimbanking.databinding.AlertDialogSuccessLoginBinding
 
@@ -33,5 +35,9 @@ class AlertDialogSuccessLogin : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnOkSuksesLogin.setOnClickListener{
+            startActivity(Intent(activity, MainActivity::class.java))
+            requireActivity().finishAffinity()
+        }
     }
 }

@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
     tools:context=".Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvJudulSuksesLogin"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvSuksesLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,69 +26,50 @@
                 android:layout_marginStart="135dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="135dp"
-                android:layout_marginBottom="18dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Sukses"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/ivCentangLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="133dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvJudulSuksesLogin"
-        app:srcCompat="@drawable/ic_sukses" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivCentangLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="58dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvJudulSuksesLogin"
+                app:layout_constraintStart_toStartOf="@+id/tvJudulSuksesLogin"
+                app:layout_constraintTop_toBottomOf="@+id/tvJudulSuksesLogin"
+                app:srcCompat="@drawable/ic_sukses" />
 
-    <TextView
-        android:id="@+id/tvDescLoginSukses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="117dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="117dp"
-        android:fontFamily="@font/poppins"
-        android:text="Login Berhasil!"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCentangLogin" />
+            <TextView
+                android:id="@+id/tvDescLoginSukses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins"
+                android:text="Login Berhasil!"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/ivCentangLogin"
+                app:layout_constraintStart_toStartOf="@+id/ivCentangLogin"
+                app:layout_constraintTop_toBottomOf="@+id/ivCentangLogin" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvTombolSuksesLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescLoginSukses">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnOkSuksesLogin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="69dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="30dp"
                 android:backgroundTint="@color/primary"
                 android:text="OK"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/tvDescLoginSukses" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

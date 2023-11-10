@@ -6,10 +6,12 @@
     android:layout_height="wrap_content"
     tools:context=".Features.Auth.Login.AlertDialog.AlertDialogFailLogin">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvJudulLoginGagal"
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/cvLoginGagal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,63 +27,44 @@
                 android:layout_marginStart="116dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="116dp"
-                android:layout_marginBottom="18dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Peringatan"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/ivGagalLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="127dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvJudulLoginGagal"
-        app:srcCompat="@drawable/ic_gagal" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivGagalLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="58dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvJudulLoginGagal"
+                app:layout_constraintStart_toStartOf="@+id/tvJudulLoginGagal"
+                app:layout_constraintTop_toBottomOf="@+id/tvJudulLoginGagal"
+                app:srcCompat="@drawable/ic_gagal" />
 
-    <TextView
-        android:id="@+id/tvDescLoginGagal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="Maaf! Email dan Kata Sandi yang dimasukkan salah. Pastikan Email dan Kata Sandi benar."
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivGagalLogin" />
+            <TextView
+                android:id="@+id/tvDescLoginGagal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="Maaf! Email dan Kata Sandi yang dimasukkan salah. Pastikan Email dan Kata Sandi benar."
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivGagalLogin" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvTombolOkGagalLogin"
-        android:layout_width="334dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescLoginGagal">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnOkGagalLogin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="69dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="30dp"
                 android:backgroundTint="@color/primary"
@@ -91,7 +74,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/tvDescLoginGagal" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

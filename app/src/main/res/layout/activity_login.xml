@@ -145,6 +145,7 @@
                 android:enabled="false"
                 android:text="Masuk"
                 android:textColor="#FFFFFF"
+                app:backgroundTint="@color/primary"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
