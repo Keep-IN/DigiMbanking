@@ -28,7 +28,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/tvTimerOTP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="137dp"
@@ -51,9 +51,9 @@
                 android:text="Verifikasi Kode OTP Email"
                 android:textColor="@color/black"
                 android:textSize="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView19"
-                app:layout_constraintStart_toStartOf="@+id/textView19"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintEnd_toEndOf="@+id/tvTimerOTP"
+                app:layout_constraintStart_toStartOf="@+id/tvTimerOTP"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimerOTP" />
 
             <com.chaos.view.PinView
                 android:id="@+id/sendOtp"
@@ -112,5 +112,5 @@
         app:layout_constraintBottom_toTopOf="@+id/materialCardView3"
         app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
         app:layout_constraintStart_toStartOf="@+id/materialCardView3"
-        app:srcCompat="@drawable/ic_logootp" />
+        android:src="@drawable/ic_logootp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

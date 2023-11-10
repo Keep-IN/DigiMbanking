@@ -13,6 +13,24 @@
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
         <activity
+            android:name=".Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertSandiDEC"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertSandiACC"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.KonfRekSdh.AlertDialog.AlertUnregsdh"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertUnvalidOTPsdh"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertExpiredOTPsdh"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertBerhasilOTP"
+            android:exported="false" />
+        <activity
             android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.KonfirmasiMPINsdh"
             android:exported="false" />
         <activity

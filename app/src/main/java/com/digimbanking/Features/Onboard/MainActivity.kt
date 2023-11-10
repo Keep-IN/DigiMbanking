@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.digimbanking.Features.Auth.AdaRekening.KonfEmailSdh.KonfirmasiEmailSudah
+import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.OtpEmailSudah
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityMainBinding
 
@@ -14,6 +16,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.tvTest.setOnClickListener {
+            startActivity(Intent(this, KonfirmasiEmailSudah::class.java ))
+        }
 
     }
 }

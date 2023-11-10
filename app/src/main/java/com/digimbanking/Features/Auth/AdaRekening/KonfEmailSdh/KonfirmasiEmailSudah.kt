@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.lifecycle.ViewModelProvider
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.OtpEmailSudah
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityKonfirmasiEmailSudahBinding
@@ -41,7 +42,7 @@ class KonfirmasiEmailSudah : AppCompatActivity() {
         })
 
         binding.btnCheckrek.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, OtpEmailSudah::class.java))
         }
     }
 }
