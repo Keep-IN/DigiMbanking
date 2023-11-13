@@ -1,32 +1,30 @@
 package com.digimbanking.Features.Transfer.Riwayat.Filter
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
+//import com.digimbanking.Features.Transfer.Riwayat.DatePicker.DatePicker
 import com.digimbanking.R
+import com.digimbanking.databinding.FragmentBottomSheetFilterBinding
+import com.google.android.material.datepicker.MaterialDatePicker
+import androidx.core.util.Pair
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BottomSheetFilterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class BottomSheetFilterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+class BottomSheetFilterFragment : SuperBottomSheetFragment() {
+    private lateinit var binding: FragmentBottomSheetFilterBinding
+    private var dataDateRangePicker: String? = null
+    companion object {
+        fun newInstance(date: String): BottomSheetFilterFragment{
+            val fragment = BottomSheetFilterFragment()
+            fragment.arguments = Bundle().apply {
+                putString("date", date)
+            }
+            return fragment
         }
     }
 
@@ -34,27 +32,115 @@ class BottomSheetFilterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bottom_sheet_filter, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
+        binding = FragmentBottomSheetFilterBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BottomSheetFilterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BottomSheetFilterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentBottomSheetFilterBinding.bind(view)
+
+        val dateRangePicker =
+            MaterialDatePicker.Builder.dateRangePicker()
+                .setTitleText("Select dates")
+                .build()
+
+        binding.btnClose.setOnClickListener {
+            dialog?.cancel()
+        }
+
+        binding.tilDateStart.editText?.setOnClickListener {
+            childFragmentManager.let { fragmentManager ->
+                dateRangePicker.show(fragmentManager, dateRangePicker.toString())
             }
+            dateRangePicker.addOnPositiveButtonClickListener {
+                val formattedStartDate = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+                    .format(Date(it.first))
+                val formattedEndDate = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+                    .format(Date(it.second))
+                binding.tilDateStart.editText?.setText(formattedStartDate)
+                binding.tilDateEnd.editText?.setText(formattedEndDate)
+            }
+        }
+
+        binding.tilDateEnd.editText?.setOnClickListener{
+            childFragmentManager.let { fragmentManager ->
+                dateRangePicker.show(fragmentManager, dateRangePicker.toString())
+            }
+            dateRangePicker.addOnPositiveButtonClickListener {
+                val formattedStartDate = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+                    .format(Date(it.first))
+                val formattedEndDate = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+                    .format(Date(it.second))
+                binding.tilDateStart.editText?.setText(formattedStartDate)
+                binding.tilDateEnd.editText?.setText(formattedEndDate)
+            }
+
+        }
+
+//        binding.tilDateEnd.editText?.setOnClickListener {
+//            fragmentManager?.let { it1 -> DatePicker().show(it1, "test") }
+//        }
+
+        binding.rgFilter.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId){
+                R.id.rb_7hari_terakhir -> handleFilter7HariSelection()
+                R.id.rb_15hari_terakhir -> handleFilter15HariSelection()
+                R.id.rb_tanggal -> handleFilterTanggalSelection()
+            }
+        }
+
+        binding.apply {
+            tilDateStart.isEnabled = false
+            tilDateEnd.isEnabled = false
+
+        }
     }
+    private fun handleFilter7HariSelection(){
+        Toast.makeText(requireContext(), "Filter 7 hari", Toast.LENGTH_SHORT).show()
+        if(binding.rb7hariTerakhir.isSelected){
+            binding.rb7hariTerakhir.isSelected = false
+        }else{
+            binding.apply {
+                rb7hariTerakhir.isSelected = true
+                rb15hariTerakhir.isSelected = false
+                rbTanggal.isSelected = false
+                tilDateStart.isEnabled = false
+                tilDateEnd.isEnabled = false
+            }
+        }
+    }
+
+    private fun handleFilter15HariSelection(){
+        Toast.makeText(requireContext(), "Filter 15 hari", Toast.LENGTH_SHORT).show()
+        if(binding.rb15hariTerakhir.isSelected){
+            binding.rb15hariTerakhir.isSelected = false
+        }else{
+            binding.apply {
+                rb7hariTerakhir.isSelected = false
+                rb15hariTerakhir.isSelected = true
+                rbTanggal.isSelected = false
+                tilDateStart.isEnabled = false
+                tilDateEnd.isEnabled = false
+            }
+        }
+    }
+
+    private fun handleFilterTanggalSelection(){
+        Toast.makeText(requireContext(), "Filter pilih tanggal", Toast.LENGTH_SHORT).show()
+        if(binding.rbTanggal.isSelected){
+            binding.rbTanggal.isSelected = false
+        } else {
+            binding.apply {
+                rb7hariTerakhir.isSelected = false
+                rb15hariTerakhir.isSelected = false
+                rbTanggal.isSelected = true
+                tilDateStart.isEnabled = true
+                tilDateEnd.isEnabled = true
+            }
+        }
+    }
+    override fun isSheetAlwaysExpanded() = true
+    override fun getExpandedHeight() = -2
 }

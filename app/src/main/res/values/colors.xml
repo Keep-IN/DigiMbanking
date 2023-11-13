@@ -29,4 +29,5 @@
     <color name="darkblue03">#A06ECE</color>
     <color name="darkblue02">#D0B7E6</color>
     <color name="darkblue01">#E2D4F0</color>
+    <color name="colorRadioButtonClicked">#6C63FF</color>
 </resources>

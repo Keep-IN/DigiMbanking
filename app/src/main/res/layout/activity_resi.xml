@@ -4,491 +4,447 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_resi_page"
     tools:context=".Features.Transfer.Riwayat.Resi.ResiActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvBaseResi"
-        android:layout_width="0dp"
-        android:layout_height="327dp"
-        android:layout_marginTop="-10dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/purple_500">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <FrameLayout
-        android:id="@+id/cvWatermarkResi"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="680dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/watermark"
-        android:elevation="20dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:id="@+id/FrameLWatermark"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
+                android:background="@drawable/watermark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_success" />
-
-            <TextView
-                android:id="@+id/tvCatatanResi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
-                android:fontFamily="@font/poppins"
-                android:text="Catatan"
-                android:textColor="@color/black_basic"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/materialCardView3"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
-
-            <TextView
-                android:id="@+id/tvTransaksiBerhasil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="132dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Transaksi Berhasil"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvDateResi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="11 November 2022 | 11:20"
-                android:textColor="@color/grey_neutral"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTransaksiBerhasil" />
-
-            <TextView
-                android:id="@+id/tvPengirim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:fontFamily="@font/poppins"
-                android:text="Pengirim"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toTopOf="@+id/cvPengirimResi"
-                app:layout_constraintStart_toStartOf="@+id/cvPengirimResi" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvPengirimResi"
-                android:layout_width="302dp"
-                android:layout_height="61dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                app:cardCornerRadius="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="226dp">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/blue_neutral">
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tvNamaPengirimResi"
+                    <ImageView
+                        android:id="@+id/imageView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="9dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Hikmatuz Zahra"
+                        android:layout_marginTop="48dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cvInisialPengirim"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="10dp"
-                        android:backgroundTint="@color/purple_500"
-                        app:cardCornerRadius="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/tvNamaPengirimResi"
-                        app:layout_constraintHorizontal_bias="0.35"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0" >
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:id="@+id/tvInisialPengirim"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_bold"
-                                android:gravity="center"
-                                android:text="H"
-                                android:textColor="@color/white"
-                                android:textSize="20sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
+                        app:srcCompat="@drawable/ic_success" />
 
                     <TextView
-                        android:id="@+id/tvNorekPengirim"
+                        android:id="@+id/tvTransaksiBerhasil"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="9dp"
-                        android:text="Bank Digi - 6517786707"
-                        android:textColor="@color/grey_regular"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tvNamaPengirimResi"
-                        app:layout_constraintTop_toBottomOf="@+id/tvNamaPengirimResi" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="13dp"
-                android:layout_marginEnd="9dp"
-                app:layout_constraintEnd_toEndOf="@+id/cvPengirimResi"
-                app:layout_constraintStart_toStartOf="@+id/cvPengirimResi"
-                app:layout_constraintTop_toBottomOf="@+id/cvPengirimResi"
-                app:srcCompat="@drawable/separator_line" />
-
-            <TextView
-                android:id="@+id/tvDetailTransaksi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Detail Transaksi"
-                android:textColor="@color/black_200"
-                app:layout_constraintStart_toStartOf="@+id/cvPengirimResi"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-            <TextView
-                android:id="@+id/tvNomorReferensi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/poppins"
-                android:text="Nomor Referensi"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvDetailTransaksi"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvDetailTransaksi"
-                app:layout_constraintTop_toBottomOf="@+id/tvDetailTransaksi" />
-
-            <TextView
-                android:id="@+id/tvIsianNomorReferensi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="35dp"
-                android:fontFamily="@font/poppins"
-                android:text="2545634"
-                android:textColor="@color/black_200"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvNomorReferensi"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDetailTransaksi" />
-
-            <TextView
-                android:id="@+id/tvTipeTransaksi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Tipe Transaksi"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvNomorReferensi"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvNomorReferensi"
-                app:layout_constraintTop_toBottomOf="@+id/tvNomorReferensi" />
-
-            <TextView
-                android:id="@+id/tvAntarBank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:fontFamily="@font/poppins"
-                android:text="Antar Bank"
-                android:textColor="@color/black_200"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvTipeTransaksi"
-                app:layout_constraintEnd_toEndOf="@+id/tvIsianNomorReferensi"
-                app:layout_constraintStart_toStartOf="@+id/tvIsianNomorReferensi"
-                app:layout_constraintTop_toBottomOf="@+id/tvIsianNomorReferensi" />
-
-            <TextView
-                android:id="@+id/tvBiayaAdmin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:fontFamily="@font/poppins"
-                android:text="Biaya Admin"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvTipeTransaksi"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvTipeTransaksi"
-                app:layout_constraintTop_toBottomOf="@+id/tvTipeTransaksi" />
-
-            <TextView
-                android:id="@+id/tvIsianBiayaAdmin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:fontFamily="@font/poppins"
-                android:text="Rp0"
-                android:textColor="@color/black_200"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvAntarBank"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/tvAntarBank"
-                app:layout_constraintTop_toBottomOf="@+id/tvAntarBank" />
-
-            <TextView
-                android:id="@+id/tvTotalTransaksi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Total Transaksi"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvBiayaAdmin"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvBiayaAdmin"
-                app:layout_constraintTop_toBottomOf="@+id/tvBiayaAdmin" />
-
-            <TextView
-                android:id="@+id/tvIsianTotalTransaksi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Rp20.500.000"
-                android:textColor="@color/black_200"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tvIsianBiayaAdmin"
-                app:layout_constraintHorizontal_bias="0.846"
-                app:layout_constraintStart_toStartOf="@+id/tvAntarBank"
-                app:layout_constraintTop_toBottomOf="@+id/tvIsianBiayaAdmin" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView7"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/imageView7"
-                app:layout_constraintTop_toBottomOf="@+id/tvTotalTransaksi"
-                app:srcCompat="@drawable/separator_line" />
-
-            <TextView
-                android:id="@+id/tvPenerima"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:fontFamily="@font/poppins"
-                android:text="Penerima"
-                android:textColor="@color/black_basic"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView6"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvTotalTransaksi"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView3"
-                android:layout_width="302dp"
-                android:layout_height="61dp"
-                android:layout_marginTop="2dp"
-                android:backgroundTint="@color/blue_neutral"
-                app:layout_constraintEnd_toEndOf="@+id/cvPengirimResi"
-                app:layout_constraintStart_toStartOf="@+id/cvPengirimResi"
-                app:layout_constraintTop_toBottomOf="@+id/tvPenerima">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
+                        android:text="Transaksi Berhasil"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                        app:layout_constraintHorizontal_bias="0.489"
+                        app:layout_constraintStart_toStartOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                     <TextView
-                        android:id="@+id/tvNamaPenerima"
+                        android:id="@+id/tvDateTimeTransaksi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Salahuddin"
-                        android:textColor="@color/black_basic"
-                        app:layout_constraintTop_toTopOf="@+id/cardView6"
-                        tools:layout_editor_absoluteX="62dp" />
+                        android:text="11 November 2022 | 11:20"
+                        android:textColor="@color/grey_neutral"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/tvTransaksiBerhasil"
+                        app:layout_constraintHorizontal_bias="0.666"
+                        app:layout_constraintStart_toStartOf="@+id/tvTransaksiBerhasil"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTransaksiBerhasil" />
 
                     <TextView
-                        android:id="@+id/tvBankPenerima"
+                        android:id="@+id/tvPengirim"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="11dp"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginTop="26dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Bank Syariah Indonesia - 5950674768"
-                        android:textColor="@color/grey_regular"
+                        android:text="Pengirim"
                         android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/tvNamaPenerima"
-                        app:layout_constraintTop_toBottomOf="@+id/tvNamaPenerima" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDateTimeTransaksi" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView6"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:backgroundTint="@color/purple_500"
+                        android:id="@+id/cvPengirimResi"
+                        android:layout_width="302dp"
+                        android:layout_height="61dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@color/blue_neutral"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvPengirim"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPengirim">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/blue_neutral">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cvInisialPengirim"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="11dp"
+                                android:layout_marginBottom="11dp"
+                                android:backgroundTint="@color/purple"
+                                app:cardCornerRadius="16dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvInisialPengirim"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:text="H"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:id="@+id/tvBankPengirim"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Bank Digi - 6517786707"
+                                android:textColor="@color/platinum"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/cvInisialPengirim"
+                                app:layout_constraintStart_toStartOf="@+id/tvNamaPengirim"
+                                app:layout_constraintTop_toBottomOf="@+id/tvNamaPengirim" />
+
+                            <TextView
+                                android:id="@+id/tvNamaPengirim"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Hikmatuz Zahra"
+                                android:textColor="@color/black_basic"
+                                android:textSize="14sp"
+                                app:layout_constraintStart_toEndOf="@+id/cvInisialPengirim"
+                                app:layout_constraintTop_toTopOf="@+id/cvInisialPengirim" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        app:layout_constraintEnd_toEndOf="@+id/cvPengirimResi"
+                        app:layout_constraintStart_toStartOf="@+id/cvPengirimResi"
+                        app:layout_constraintTop_toBottomOf="@+id/cvPengirimResi"
+                        app:srcCompat="@drawable/separator_line" />
+
+                    <TextView
+                        android:id="@+id/tvDetailTransaksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Detail Transaksi"
+                        android:textColor="@color/black_basic"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/imageView5"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+                    <TextView
+                        android:id="@+id/tvNomotReferensi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Nomor Referensi"
+                        android:textColor="@color/platinum"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="@+id/tvDetailTransaksi"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvDetailTransaksi"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDetailTransaksi" />
+
+                    <TextView
+                        android:id="@+id/tvTipeTransaksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Tipe Transaksi"
+                        android:textColor="@color/platinum"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tvNomotReferensi"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNomotReferensi" />
+
+                    <TextView
+                        android:id="@+id/tvBiayaAdmin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Biaya Admin"
+                        android:textColor="@color/platinum"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tvTipeTransaksi"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTipeTransaksi" />
+
+                    <TextView
+                        android:id="@+id/tvTotalTransaksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Total Transaksi"
+                        android:textColor="@color/platinum"
+                        app:layout_constraintStart_toStartOf="@+id/tvBiayaAdmin"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBiayaAdmin" />
+
+                    <TextView
+                        android:id="@+id/tvIsianNomorReferensi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="35dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="2545634"
+                        android:textColor="@color/black_basic"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvNomotReferensi"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvNomotReferensi" />
+
+                    <TextView
+                        android:id="@+id/tvIsianTipeTransaksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Antar Bank"
+                        android:textColor="@color/black_basic"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvTipeTransaksi"
+                        app:layout_constraintEnd_toEndOf="@+id/tvIsianNomorReferensi"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvIsianNomorReferensi"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIsianNomorReferensi" />
+
+                    <TextView
+                        android:id="@+id/tvIsianBiayaAdmin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Rp0"
+                        android:textColor="@color/black_basic"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvBiayaAdmin"
+                        app:layout_constraintEnd_toEndOf="@+id/tvIsianTipeTransaksi"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvIsianTipeTransaksi"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIsianTipeTransaksi" />
+
+                    <TextView
+                        android:id="@+id/tvIsianTotalTransaksi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Rp20.500.000"
+                        android:textColor="@color/black_basic"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvTotalTransaksi"
+                        app:layout_constraintEnd_toEndOf="@+id/tvIsianTipeTransaksi"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvIsianTipeTransaksi"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIsianBiayaAdmin" />
+
+                    <ImageView
+                        android:id="@+id/ivSeparatorLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/imageView5"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTotalTransaksi"
+                        app:srcCompat="@drawable/separator_line" />
+
+                    <TextView
+                        android:id="@+id/tvPenerima"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Penerima"
+                        app:layout_constraintBottom_toTopOf="@+id/cvPenerimaResi"
+                        app:layout_constraintStart_toStartOf="@+id/ivSeparatorLine"
+                        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLine" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvPenerimaResi"
+                        android:layout_width="302dp"
+                        android:layout_height="61dp"
+                        android:layout_marginTop="24dp"
+                        android:backgroundTint="@color/blue_neutral"
                         app:cardCornerRadius="16dp"
+                        app:layout_constraintEnd_toEndOf="@+id/cvPengirimResi"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/cvPengirimResi"
+                        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLine">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cvInisialPenerimaResi"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="11dp"
+                                android:layout_marginBottom="11dp"
+                                android:backgroundTint="@color/purple"
+                                app:cardCornerRadius="16dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvInisialPenerimaResi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:text="S"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:id="@+id/tvNamaPenerimaResi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Salahuddin"
+                                android:textColor="@color/black_basic"
+                                android:textSize="14sp"
+                                app:layout_constraintStart_toEndOf="@+id/cvInisialPenerimaResi"
+                                app:layout_constraintTop_toTopOf="@+id/cvInisialPenerimaResi" />
+
+                            <TextView
+                                android:id="@+id/tvBankPenerimaResi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text="Bank Syariah Indonesia - 5950674768"
+                                android:textColor="@color/platinum"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/cvInisialPenerimaResi"
+                                app:layout_constraintStart_toStartOf="@+id/tvNamaPenerimaResi" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tvCatatanResi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="11dp"
+                        android:text="Catatan"
+                        app:layout_constraintStart_toStartOf="@+id/cvPenerimaResi"
+                        app:layout_constraintTop_toBottomOf="@+id/cvPenerimaResi" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvCatatan"
+                        android:layout_width="302dp"
+                        android:layout_height="61dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="34dp"
+                        android:backgroundTint="@color/blue_neutral"
+                        app:cardCornerRadius="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/tvNamaPenerima"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintEnd_toEndOf="@+id/cvPenerimaResi"
+                        app:layout_constraintStart_toStartOf="@+id/cvPenerimaResi"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCatatanResi">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/tvInisialPenerima"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/tvIsianCatatan"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_bold"
-                                android:gravity="center"
-                                android:text="S"
-                                android:textColor="@color/white"
-                                android:textSize="20sp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:text="Tidak ada"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.066"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
-
                         </androidx.constraintlayout.widget.ConstraintLayout>
-
                     </androidx.cardview.widget.CardView>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="302dp"
-                android:layout_height="62dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="36dp"
-                android:backgroundTint="@color/blue_neutral"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
-                app:layout_constraintStart_toStartOf="@+id/materialCardView3"
-                app:layout_constraintTop_toBottomOf="@+id/tvCatatanResi">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </FrameLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvSelesai"
-        android:layout_width="284dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="54dp"
-        android:backgroundTint="@color/purple_main"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="@+id/cvWatermarkResi"
-        app:layout_constraintTop_toBottomOf="@+id/cvWatermarkResi" >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvSelesai"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnSelesai"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="34dp"
+                android:backgroundTint="@color/bg_button_selector"
                 android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:text="Selesai"
-                android:textColor="@color/blue_neutral"
+                android:textColor="#F3F3F3"
+                app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/FrameLWatermark"
+                app:layout_constraintStart_toStartOf="@+id/FrameLWatermark"
+                app:layout_constraintTop_toBottomOf="@+id/FrameLWatermark" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvShareResi"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="25dp"
+                app:cardCornerRadius="20dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/purple_500"
+                app:layout_constraintBottom_toBottomOf="@+id/btnSelesai"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/btnSelesai"
+                app:layout_constraintTop_toTopOf="@+id/btnSelesai">
+
+                <ImageView
+                    android:id="@+id/ivShareResi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_share" />
+            </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:strokeColor="@color/purple"
-        app:strokeWidth="1dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cvSelesai"
-        app:layout_constraintTop_toTopOf="@+id/cvSelesai"
-        tools:layout_editor_absoluteX="333dp" >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_share" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,25 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Features.Transfer.Riwayat.Filter.BottomSheetFilterFragment">
 
     <TextView
         android:id="@+id/tvRentangWaktu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Rentang Waktu"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btnClose"
@@ -33,44 +29,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvRentangWaktu" />
 
-        <RadioGroup
-            android:id="@+id/rg_filter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </RadioGroup>
-
-    <RadioButton
-        android:id="@+id/rb_7hari_terakhir"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="end|center_vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/tv7HariTerakhir"
+    <RadioGroup
+        android:id="@+id/rg_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/tvTanggalMulai"
         app:layout_constraintEnd_toEndOf="@+id/btnClose"
-        app:layout_constraintStart_toStartOf="@+id/btnClose"
-        app:layout_constraintTop_toTopOf="@+id/tv7HariTerakhir" />
+        app:layout_constraintTop_toBottomOf="@+id/btnClose">
 
-    <RadioButton
-        android:id="@+id/rb_10hari_terakhir"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="end|center_vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/tv15HariTerakhir"
-        app:layout_constraintEnd_toEndOf="@+id/rb_7hari_terakhir"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rb_7hari_terakhir"
-        app:layout_constraintTop_toTopOf="@+id/tv15HariTerakhir" />
+        <RadioButton
+            android:id="@+id/rb_7hari_terakhir"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorRadioButtonClicked" />
 
-    <RadioButton
-        android:id="@+id/rb_tanggal"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="end|center_vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTanggal"
-        app:layout_constraintEnd_toEndOf="@+id/rb_10hari_terakhir"
-        app:layout_constraintStart_toStartOf="@+id/rb_10hari_terakhir"
-        app:layout_constraintTop_toTopOf="@+id/tvTanggal" />
+        <RadioButton
+            android:id="@+id/rb_15hari_terakhir"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorRadioButtonClicked" />
+
+        <RadioButton
+            android:id="@+id/rb_tanggal"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorRadioButtonClicked" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/tv7HariTerakhir"
@@ -80,8 +72,6 @@
         android:fontFamily="@font/poppins"
         android:text="7 Hari Terakhir"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/tvRentangWaktu"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/tvRentangWaktu"
         app:layout_constraintTop_toBottomOf="@+id/tvRentangWaktu" />
 
@@ -93,7 +83,6 @@
         android:fontFamily="@font/poppins"
         android:text="15 Hari Terakhir"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/tv7HariTerakhir"
         app:layout_constraintStart_toStartOf="@+id/tv7HariTerakhir"
         app:layout_constraintTop_toBottomOf="@+id/tv7HariTerakhir" />
 
@@ -101,148 +90,132 @@
         android:id="@+id/tvTanggal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
         android:layout_marginTop="40dp"
         android:text="Tanggal"
-        app:layout_constraintEnd_toEndOf="@+id/tv15HariTerakhir"
-        app:layout_constraintHorizontal_bias="0.302"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv15HariTerakhir"
         app:layout_constraintTop_toBottomOf="@+id/tv15HariTerakhir" />
 
     <TextView
         android:id="@+id/tvTanggalMulai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="@font/poppins"
         android:text="Tanggal Mulai"
-        android:textColor="@color/grey_neutral"
+        android:textColor="#4A5568"
         android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/tvTanggal"
-        app:layout_constraintTop_toBottomOf="@+id/tvTanggal" />
+        app:layout_constraintBottom_toTopOf="@+id/tilDateStart"
+        app:layout_constraintStart_toStartOf="@+id/tvTanggal" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cvTanggalMulai"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvTanggalMulai"
-        app:strokeColor="@color/purple_500"
-        app:strokeWidth="1dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvTanggalMulai"
-        tools:layout_editor_absoluteY="308dp" >
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/cvTanggalMulai"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="30dp"-->
+    <!--        app:strokeColor="@color/purple_500"-->
+    <!--        app:strokeWidth="1dp"-->
+    <!--        tools:layout_editor_absoluteX="231dp"-->
+    <!--        tools:layout_editor_absoluteY="322dp">-->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-            <ImageView
-                android:id="@+id/ivIconCalendarTglMulai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_calendar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.953"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvTanggalAkhir"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Tanggal Akhir"-->
+    <!--        android:textColor="@color/grey_neutral"-->
+    <!--        android:textSize="10sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/tvTanggalMulai"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/tvTanggalMulai"-->
+    <!--        tools:layout_editor_absoluteX="274dp" />-->
 
-            <TextView
-                android:id="@+id/tvICalendarTanggalMulai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginBottom="7dp"
-                android:fontFamily="@font/poppins"
-                android:text="dd/mm/yy"
-                android:textColor="@color/grey_regular"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ivIconCalendarTglMulai"
-                app:layout_constraintEnd_toStartOf="@+id/ivIconCalendarTglMulai"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ivIconCalendarTglMulai" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/cvTanggalAkhir"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="30dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/cvTanggalMulai"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/tvTanggalMulai"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/tvTanggalMulai"-->
+    <!--        app:strokeColor="@color/purple_500">-->
 
-    <TextView
-        android:id="@+id/tvTanggalAkhir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tanggal Akhir"
-        android:textColor="@color/grey_neutral"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTanggalMulai"
-        app:layout_constraintEnd_toEndOf="@+id/rb_tanggal"
-        app:layout_constraintHorizontal_bias="0.853"
-        app:layout_constraintStart_toEndOf="@+id/tvTanggalMulai"
-        app:layout_constraintTop_toTopOf="@+id/tvTanggalMulai"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cvTanggalAkhir"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cvTanggalMulai"
-        app:layout_constraintEnd_toEndOf="@+id/tvTanggalAkhir"
-        app:layout_constraintStart_toEndOf="@+id/cvTanggalMulai"
-        app:layout_constraintTop_toTopOf="@+id/cvTanggalMulai"
-        app:strokeColor="@color/purple_500" >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvCalendarTanggalAkhir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:fontFamily="@font/poppins"
-                android:text="dd/mm/yy"
-                android:textColor="@color/grey_regular"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/ivIconCalendarTglAkhir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_calendar"
-                app:layout_constraintBottom_toBottomOf="@+id/tvCalendarTanggalAkhir"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.9"
-                app:layout_constraintStart_toEndOf="@+id/tvCalendarTanggalAkhir"
-                app:layout_constraintTop_toTopOf="@+id/tvCalendarTanggalAkhir" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
         android:id="@+id/btnTerapkan"
         android:layout_width="294dp"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="329dp"
+        android:layout_marginTop="43dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/bg_button_selector"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
         android:text="Terapkan"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvTanggalMulai" />
+        app:layout_constraintTop_toBottomOf="@+id/tilDateStart" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilDateStart"
+        android:layout_width="150dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="39dp"
+        android:focusable="auto"
+        app:hintEnabled="false"
+        app:layout_constraintStart_toStartOf="@+id/tvTanggalMulai"
+        app:layout_constraintTop_toBottomOf="@+id/tvTanggal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_filter_selector"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:focusable="false"
+            android:hint="dd/mm/yyyy"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="10sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilDateEnd"
+        android:layout_width="150dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="38dp"
+        android:focusable="false"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="@+id/rg_filter"
+        app:layout_constraintTop_toBottomOf="@+id/tvTanggal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_filter_selector"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:focusable="false"
+            android:hint="dd/mm/yyyy"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="10sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/poppins"
+        android:text="Tanggal Akhir"
+        android:textColor="#4A5568"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/tilDateEnd"
+        app:layout_constraintEnd_toEndOf="@+id/tilDateEnd" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

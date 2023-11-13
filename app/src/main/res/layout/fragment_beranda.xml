@@ -7,273 +7,316 @@
     android:background="@color/white_primary"
     tools:context=".Features.Transfer.Riwayat.Dashboard.BerandaFragment">
 
-    <ImageView
-        android:id="@+id/iv_inisial_akun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="57dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/inisial_akun" />
-
-    <TextView
-        android:id="@+id/tv_profil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="3dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Suparman"
-        android:textColor="#202327"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/iv_inisial_akun"
-        app:layout_constraintTop_toTopOf="@+id/iv_inisial_akun" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_dashboard"
-        android:layout_width="361dp"
-        android:layout_height="178dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="27dp"
-        app:cardCornerRadius="16dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_inisial_akun">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/card_dashboard">
-
-            <TextView
-                android:id="@+id/tv_norek"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/poppins"
-                android:text="No. Rekening"
-                android:textColor="#F3F7FD"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lineHeight="16.2sp" />
-
-            <TextView
-                android:id="@+id/tvNorek"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="6253 - 4629 - 4765 - 9503"
-                android:textColor="#F3F7FD"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_norek"
-                app:layout_constraintTop_toBottomOf="@+id/tv_norek"
-                app:lineHeight="16.2sp" />
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/iv_ic_paste"
-                android:layout_width="wrap_content"
-                android:layout_height="17dp"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/ic_paste"
-                app:layout_constraintBottom_toBottomOf="@+id/tvNorek"
-                app:layout_constraintStart_toEndOf="@+id/tvNorek"
-                app:layout_constraintTop_toTopOf="@+id/tvNorek" />
-
-
-            <TextView
-                android:id="@+id/tv_visual_card"
+                android:id="@+id/iv_inisial_akun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Gold"
-                android:textColor="@color/white_primary"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_norek"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_norek"
-                app:layout_constraintVertical_bias="1.0" />
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/inisial_akun" />
 
             <TextView
-                android:id="@+id/tvSaldoSum"
+                android:id="@+id/tv_profil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Rp500.000.000"
-                android:textColor="@color/white_primary"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Suparman"
+                android:textColor="#202327"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tvSaldo"
-                app:layout_constraintTop_toBottomOf="@+id/tvSaldo" />
-
-            <ImageView
-                android:id="@+id/iv_eye_sharp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/ic_eye_open"
-                app:layout_constraintBottom_toBottomOf="@+id/tvSaldoSum"
-                app:layout_constraintStart_toEndOf="@+id/tvSaldoSum"
-                app:layout_constraintTop_toTopOf="@+id/tvSaldoSum" />
-
-            <TextView
-                android:id="@+id/tvSaldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins"
-                android:text="Saldo Rekening"
-                android:textColor="@color/white_primary"
-                app:layout_constraintStart_toStartOf="@+id/tvNorek"
-                app:layout_constraintTop_toBottomOf="@+id/tvNorek" />
-
-            <ImageView
-                android:id="@+id/ivEyeClosed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/ic_eye_close"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/tvSaldoSum"
-                app:layout_constraintEnd_toEndOf="@+id/iv_eye_sharp"
-                app:layout_constraintStart_toEndOf="@+id/tvSaldoSum"
-                app:layout_constraintTop_toTopOf="@+id/tvSaldoSum"
-                app:layout_constraintVertical_bias="0.333" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_transfer_ewallet"
-        android:layout_width="334dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="28dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_dashboard">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/iv_transfer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="22dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="27dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.296"
-                app:srcCompat="@drawable/logo_transfer" />
-
-            <ImageView
-                android:id="@+id/iv_ewallet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/logo_ewallet"
-                app:layout_constraintStart_toEndOf="@+id/iv_transfer"
-                app:layout_constraintTop_toTopOf="@+id/iv_transfer" />
-
-            <TextView
-                android:id="@+id/tv_transfer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/poppins"
-                android:text="Transfer"
-                android:textSize="9sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/iv_transfer"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/iv_transfer"
-                app:layout_constraintTop_toBottomOf="@+id/iv_transfer"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/tv_ewallet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/poppins"
-                android:text="E-Wallet"
-                android:textSize="9sp"
-                app:layout_constraintEnd_toEndOf="@+id/iv_ewallet"
-                app:layout_constraintStart_toStartOf="@+id/iv_ewallet"
-                app:layout_constraintTop_toBottomOf="@+id/iv_ewallet" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_nav_main"
-        android:layout_width="0dp"
-        android:layout_height="404dp"
-        android:layout_marginTop="16dp"
-        app:cardBackgroundColor="#F3F7FD"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_transfer_ewallet">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tv_riwayat_terakhir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="17dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Riwayat Terakhir"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lineHeight="18.9sp" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/iv_inisial_akun"
+                app:layout_constraintTop_toTopOf="@+id/iv_inisial_akun" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_riwayat_transfer"
-                android:layout_width="343dp"
-                android:layout_height="312dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="23dp"
-                app:cardCornerRadius="20dp"
+                android:id="@+id/cv_dashboard"
+                android:layout_width="361dp"
+                android:layout_height="178dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="27dp"
+                app:cardCornerRadius="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_riwayat_terakhir">
+                app:layout_constraintTop_toBottomOf="@+id/iv_inisial_akun">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/card_dashboard">
+
+                    <TextView
+                        android:id="@+id/tv_norek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="No. Rekening"
+                        android:textColor="#F3F7FD"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:lineHeight="16.2sp" />
+
+                    <TextView
+                        android:id="@+id/tvNorek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="6253 - 4629 - 4765 - 9503"
+                        android:textColor="#F3F7FD"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_norek"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_norek"
+                        app:lineHeight="16.2sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_ic_paste"
+                        android:layout_width="wrap_content"
+                        android:layout_height="17dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_paste"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvNorek"
+                        app:layout_constraintStart_toEndOf="@+id/tvNorek"
+                        app:layout_constraintTop_toTopOf="@+id/tvNorek" />
+
+
+                    <TextView
+                        android:id="@+id/tv_visual_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Gold"
+                        android:textColor="@color/white_primary"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_norek"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_norek"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/tvSaldoSum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Rp500.000.000"
+                        android:textColor="@color/white_primary"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/tvSaldo"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSaldo" />
+
+                    <ImageView
+                        android:id="@+id/iv_eye_sharp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_eye_open"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvSaldoSum"
+                        app:layout_constraintStart_toEndOf="@+id/tvSaldoSum"
+                        app:layout_constraintTop_toTopOf="@+id/tvSaldoSum" />
+
+                    <TextView
+                        android:id="@+id/tvSaldo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Saldo Rekening"
+                        android:textColor="@color/white_primary"
+                        app:layout_constraintStart_toStartOf="@+id/tvNorek"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNorek" />
+
+                    <ImageView
+                        android:id="@+id/ivEyeClosed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_eye_close"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvSaldoSum"
+                        app:layout_constraintStart_toEndOf="@+id/tvSaldoSum"
+                        app:layout_constraintTop_toTopOf="@+id/tvSaldoSum"
+                        app:layout_constraintVertical_bias="0.333" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_transfer_ewallet"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="13dp"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/cv_dashboard"
+                app:layout_constraintStart_toStartOf="@+id/cv_dashboard"
+                app:layout_constraintTop_toBottomOf="@+id/cv_dashboard">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvListRiwayatTerakhir"
-                        android:layout_width="341dp"
-                        android:layout_height="310dp"
+                    <ImageView
+                        android:id="@+id/iv_transfer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="27dp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.296"
+                        app:srcCompat="@drawable/logo_transfer" />
+
+                    <ImageView
+                        android:id="@+id/iv_ewallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/logo_ewallet"
+                        app:layout_constraintStart_toEndOf="@+id/iv_transfer"
+                        app:layout_constraintTop_toTopOf="@+id/iv_transfer" />
+
+                    <TextView
+                        android:id="@+id/tv_transfer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Transfer"
+                        android:textSize="9sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_transfer"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/iv_transfer"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_transfer"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_ewallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="E-Wallet"
+                        android:textSize="9sp"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_ewallet"
+                        app:layout_constraintStart_toStartOf="@+id/iv_ewallet"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_ewallet" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_nav_main"
+                android:layout_width="0dp"
+                android:layout_height="404dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#F3F7FD"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_transfer_ewallet">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_riwayat_terakhir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="17dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Riwayat Terakhir"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:lineHeight="18.9sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_riwayat_transfer"
+                        android:layout_width="0dp"
+                        android:layout_height="312dp"
+                        android:layout_marginStart="23dp"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginEnd="23dp"
+                        app:cardCornerRadius="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                        app:layout_constraintTop_toBottomOf="@+id/tv_riwayat_terakhir">
 
-    </androidx.cardview.widget.CardView>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvListRiwayatTerakhir"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/ivEmptyListRiwayat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/empty_list_riwayat"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="@+id/rvListRiwayatTerakhir"
+                                app:layout_constraintEnd_toEndOf="@+id/rvListRiwayatTerakhir"
+                                app:layout_constraintStart_toStartOf="@+id/rvListRiwayatTerakhir"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/tvBelumAdaTransaksi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Belum Ada Transaksi"
+                                android:textColor="@color/disable"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="@+id/rvListRiwayatTerakhir"
+                                app:layout_constraintEnd_toEndOf="@+id/ivEmptyListRiwayat"
+                                app:layout_constraintStart_toStartOf="@+id/ivEmptyListRiwayat"
+                                app:layout_constraintTop_toBottomOf="@+id/ivEmptyListRiwayat"
+                                tools:visibility="gone" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
