@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Features.Auth.OnBoard.Splash">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivLogoSplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,4 +29,19 @@
         app:layout_constraintEnd_toEndOf="@+id/ivLogoSplash"
         app:layout_constraintStart_toStartOf="@+id/ivLogoSplash"
         app:layout_constraintTop_toBottomOf="@+id/ivLogoSplash" />
+
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="204dp"
+        android:fontFamily="@font/poppins"
+        android:text="TextView"
+        android:textColor="@color/abu"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvSplash"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/tvSplash"
+        app:layout_constraintTop_toBottomOf="@+id/tvSplash" />
 </androidx.constraintlayout.widget.ConstraintLayout>
