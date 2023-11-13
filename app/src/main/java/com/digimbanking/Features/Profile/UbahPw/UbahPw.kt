@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
+import com.core.domain.model.LoginModel
+import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogFailLogin
+import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin
 import com.digimbanking.Features.Auth.Login.LoginViewModel
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityUbahPwBinding
@@ -13,10 +16,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class UbahPw : AppCompatActivity() {
     private lateinit var binding: ActivityUbahPwBinding
     private lateinit var ubahPwViewModel: UbahPwViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityUbahPwBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        var data: LoginModel? = null
         ubahPwViewModel =  ViewModelProvider(this).get(UbahPwViewModel::class.java)
 
         binding.apply {
@@ -27,32 +32,51 @@ class UbahPw : AppCompatActivity() {
                 } else {
                     binding.tilPwLama.isErrorEnabled = true
                     binding.btnSimpanPwBaru.isEnabled = false
-                    binding.tilPwLama.error = "Kata Sandi harus terdiri dari minimal 8 karakter  "
+                    binding.tilPwLama.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                 }
             }
             tilPwBaru.editText?.doOnTextChanged { text, start, before, count ->
                 if(ubahPwViewModel.validatePasswordBaru(text.toString())){
-                    binding.tilPwBaru.isErrorEnabled = false
-                    binding.btnSimpanPwBaru.isEnabled = true
+                    if(ubahPwViewModel.validatePasswordBeda(binding.tilPwLama.editText?.text.toString(), binding.tilPwBaru.editText?.text.toString())){
+                        binding.tilPwBaru.isErrorEnabled = false
+                        binding.btnSimpanPwBaru.isEnabled = true
+                    } else {
+                        binding.tilPwBaru.isErrorEnabled = true
+                        binding.btnSimpanPwBaru.isEnabled = false
+                        binding.tilPwBaru.error = "Kata Sandi harus berbeda dengan Kata Sandi Lama"
+                    }
                 } else {
                     binding.tilPwBaru.isErrorEnabled = true
                     binding.btnSimpanPwBaru.isEnabled = false
-                    binding.tilPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter  "
+                    binding.tilPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                 }
             }
             tilKonfirmPwBaru.editText?.doOnTextChanged { text, start, before, count ->
                 if(ubahPwViewModel.validatePasswordKonfirm(text.toString())){
-                    binding.tilKonfirmPwBaru.isErrorEnabled = false
-                    binding.btnSimpanPwBaru.isEnabled = true
+                    if(ubahPwViewModel.validatePasswordSama(binding.tilPwBaru.editText?.text.toString(), binding.tilKonfirmPwBaru.editText?.text.toString())){
+                        binding.tilKonfirmPwBaru.isErrorEnabled = false
+                        binding.btnSimpanPwBaru.isEnabled = true
+                    } else {
+                        binding.tilKonfirmPwBaru.isErrorEnabled = true
+                        binding.btnSimpanPwBaru.isEnabled = false
+                        binding.tilKonfirmPwBaru.error = "Kata Sandi tidak sama"
+                    }
                 } else {
                     binding.tilKonfirmPwBaru.isErrorEnabled = true
                     binding.btnSimpanPwBaru.isEnabled = false
-                    binding.tilKonfirmPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter  "
+                    binding.tilKonfirmPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                 }
             }
             validateInput()
             btnSimpanPwBaru.setOnClickListener{
-                AlertDialogUbahPwSuccess().show(supportFragmentManager,"test")
+                data = ubahPwViewModel.validatePasswordLogin(binding.tilPwLama.editText?.text.toString())
+                if(data != null){
+                    AlertDialogUbahPwSuccess().show(supportFragmentManager, "test")
+                } else {
+                    binding.tilPwLama.isErrorEnabled = true
+                    binding.btnSimpanPwBaru.isEnabled = false
+                    binding.tilPwLama.error = "Kata Sandi salah"
+                }
             }
         }
     }

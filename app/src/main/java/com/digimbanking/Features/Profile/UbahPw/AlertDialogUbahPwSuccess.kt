@@ -37,7 +37,7 @@ class AlertDialogUbahPwSuccess : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnOkSusesUbahPw.setOnClickListener {
             startActivity(Intent(activity, FProfil::class.java))
-            requireActivity().finishAffinity()
+//            requireActivity().finishAffinity()
         }
     }
 }
