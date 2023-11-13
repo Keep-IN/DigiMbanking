@@ -132,6 +132,7 @@
                             android:background="@drawable/bg_field_selector"
                             android:enabled="false"
                             android:hint="Masukkan Nomor Rekening"
+                            android:inputType="number"
                             android:textColorHint="#4A5568"
                             android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>

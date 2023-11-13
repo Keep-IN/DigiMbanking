@@ -1,6 +1,8 @@
 package com.digimbanking.Features.Transfer.SesamaBank
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -21,7 +23,8 @@ class RekTujuan : AppCompatActivity() {
         binding = ActivityRekTujuanBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val dataBank = intent.getParcelableExtra<BankItemModel>("bank")
+        var dataBank = intent.getParcelableExtra<BankItemModel>("bank")
+        Log.d("Content:", "$dataBank")
         if (dataBank != null){
             binding.tilPilihBank.editText?.setText(dataBank.nama)
             validateRekField()

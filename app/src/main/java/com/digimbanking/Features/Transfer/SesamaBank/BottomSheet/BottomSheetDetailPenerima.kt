@@ -2,11 +2,15 @@ package com.digimbanking.Features.Transfer.SesamaBank.BottomSheet
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
+import com.digimbanking.Features.Transfer.SesamaBank.InputNominal
+import com.digimbanking.Features.Transfer.SesamaBank.ResiTransfer
 import com.digimbanking.databinding.BottomSheetRekTujuanBinding
 
 class BottomSheetDetailPenerima: SuperBottomSheetFragment() {
@@ -50,7 +54,14 @@ class BottomSheetDetailPenerima: SuperBottomSheetFragment() {
             tvRekeningPenerima.text = "${dataBank} - ${dataRekening}"
         }
         binding.btnLanjutRek.setOnClickListener {
-
+            startActivity(Intent(activity, InputNominal::class.java).apply {
+                putExtra("nama", dataRekNama)
+                putExtra("bank", dataBank)
+                putExtra("rekening", dataRekening)
+            })
+            Handler(Looper.getMainLooper()).postDelayed({
+                dialog?.cancel()
+            }, 800)
         }
         binding.tvUbahPenerima.setOnClickListener {
             dialog?.cancel()

@@ -40,6 +40,8 @@ class ListBank : AppCompatActivity() {
         { item ->
             startActivity(Intent(this, RekTujuan::class.java).apply {
                 putExtra("bank", item)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                finish()
             })
         }
 }
