@@ -4,18 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundapps"
     tools:context=".Features.Auth.AdaRekening.OtpSdh.OtpEmailSudah">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView3"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="426dp"
         android:layout_marginStart="22dp"
         android:layout_marginTop="210dp"
         android:layout_marginEnd="22dp"
         android:layout_marginBottom="164dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#A7A1FF"
+        app:strokeWidth="2dp" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTimerOTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="137dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="137dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="03:00"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Verifikasi Kode OTP Email"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvTimerOTP"
+                app:layout_constraintStart_toStartOf="@+id/tvTimerOTP"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimerOTP" />
+
+            <com.chaos.view.PinView
+                android:id="@+id/sendOtp"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:cursorVisible="true"
+                android:inputType="number"
+                app:hideLineWhenFilled="false"
+                app:itemCount="4"
+                app:itemRadius="10dp"
+                app:itemSpacing="16dp"
+                app:itemHeight="58dp"
+                app:itemWidth="40dp"
+                android:itemBackground="@color/backgroundapps"
+                app:layout_constraintEnd_toEndOf="@+id/textView20"
+                app:layout_constraintStart_toStartOf="@+id/textView20"
+                app:layout_constraintTop_toBottomOf="@+id/textView20"
+                app:lineColor="@color/primary" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-15dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Belum Menerima OTP ?"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="@+id/sendOtp"
+                app:layout_constraintTop_toBottomOf="@+id/sendOtp" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="-20dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Kirim Ulang"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="@+id/sendOtp"
+                app:layout_constraintTop_toBottomOf="@+id/sendOtp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-45dp"
+        app:layout_constraintBottom_toTopOf="@+id/materialCardView3"
+        app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
+        app:layout_constraintStart_toStartOf="@+id/materialCardView3"
+        android:src="@drawable/ic_logootp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

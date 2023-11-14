@@ -48,7 +48,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="23dp"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnBuatakun"
+        app:layout_constraintBottom_toTopOf="@+id/btnCheckrek"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -110,28 +110,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="23dp"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView5">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCheckrek"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/ic_bgtextinput"
                     android:hint="Email" />
             </com.google.android.material.textfield.TextInputLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBuatakun"
+        android:id="@+id/btnCheckrek"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="45dp"
         android:backgroundTint="@color/bg_button_selector"
-        android:enabled="false"
         android:fontFamily="@font/poppins_semibold"
         android:text="Lanjut"
         app:layout_constraintBottom_toBottomOf="parent"
