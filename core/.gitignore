@@ -1,1 +1,8 @@
+tmbah di git ignore
 /build
+Ignore Gradle files
+.gradle/
+
+Ignore generated Android Studio files
+.idea/
+*.iml
