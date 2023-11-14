@@ -9,8 +9,13 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityMpinSesamaBinding
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MpinSesama : AppCompatActivity() {
+@HiltViewModel
+class MpinSesama @Inject constructor(
+
+): AppCompatActivity() {
     private lateinit var binding: ActivityMpinSesamaBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

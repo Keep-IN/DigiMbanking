@@ -26,7 +26,10 @@ class NetworkModule {
                 }
             }
 
-        private val client = OkHttpClient.Builder().addInterceptor(logging).build()
+        private val client = OkHttpClient
+            .Builder()
+            .addInterceptor(logging)
+            .build()
     }
 
     @Singleton
