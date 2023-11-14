@@ -34,6 +34,42 @@
             android:name=".Features.Auth.OnBoard.Onboard"
             android:exported="false" />
         <activity
+            android:name=".Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertSandiDEC"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertSandiACC"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.KonfRekSdh.AlertDialog.AlertUnregsdh"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertUnvalidOTPsdh"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertExpiredOTPsdh"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertBerhasilOTP"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.KonfirmasiMPINsdh"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.BuatMPINsdh"
+             ndroid:exported="false" />
+        <activity
+            android:name=".Features.Transfer.SesamaBank.ResiTransfer"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Transfer.SesamaBank.MpinSesama"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Transfer.SesamaBank.InputNominal"
+            android:exported="false" />
+        <activity
             android:name=".Features.Auth.AdaRekening.KonfRekSdh.BottomSheetKonfRek"
             android:exported="false" />
         <activity

@@ -1,9 +1,9 @@
 package com.digimbanking.Features.Auth.Login
 
 import androidx.lifecycle.ViewModel
-import com.core.data.UserRepository
 import com.core.domain.model.DataLogin
 import com.core.domain.model.LoginModel
+import com.core.data.repositories.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
