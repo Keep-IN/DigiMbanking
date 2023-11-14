@@ -14,7 +14,7 @@ dependencies {
 
     //pinview
     implementation 'io.github.chaosleung:pinview:1.4.4'
-    
+
     //Bottom Sheet
     implementation 'com.github.andrefrsousa:SuperBottomSheet:2.0.0'
 

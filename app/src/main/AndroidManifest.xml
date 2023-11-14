@@ -38,6 +38,15 @@
             android:exported="false" />
         <activity
             android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.BuatMPINsdh"
+             ndroid:exported="false" />
+        <activity
+            android:name=".Features.Transfer.SesamaBank.ResiTransfer"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Transfer.SesamaBank.MpinSesama"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Transfer.SesamaBank.InputNominal"
             android:exported="false" />
         <activity
             android:name=".Features.Auth.AdaRekening.KonfRekSdh.BottomSheetKonfRek"
