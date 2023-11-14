@@ -28,5 +28,8 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.48"
     kapt "com.google.dagger:hilt-compiler:2.48"
 
+    //lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.x.x"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.x.x"
 
 }

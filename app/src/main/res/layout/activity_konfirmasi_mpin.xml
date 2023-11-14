@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/neutral200"
+    android:layout_height="match_parent"
+    tools:context=".Features.Auth.CreateRekening.Mpin.KonfirmasiMpin">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="81dp"
+        android:backgroundTint="#6C63FF"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/btnback" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="141dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Konfirmasi MPIN"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/materialCardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialCardView2" />
+
+    <ImageView
+        android:id="@+id/imgHp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="137dp"
+        android:src="@drawable/img_mpin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/txtSatu"
+        android:layout_width="205dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="31dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/konf_mpin"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgHp" />
+
+    <com.chaos.view.PinView
+        android:id="@+id/konfMpin"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="28dp"
+        android:cursorVisible="true"
+        android:fontFamily="@font/poppins_bold"
+        android:hint="**"
+        android:inputType="numberPassword"
+        android:itemBackground="@color/white"
+        android:textColor="#6C63FF"
+        android:textSize="20sp"
+        app:hideLineWhenFilled="false"
+        app:itemCount="6"
+        app:itemHeight="58dp"
+        app:itemRadius="10dp"
+        app:itemSpacing="15dp"
+        app:itemWidth="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSatu" />
+
+    <TextView
+        android:id="@+id/txtError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="#E71414"
+        android:visibility="gone"
+        android:fontFamily="@font/poppins"
+        android:text="MPIN tidak sama"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/konfMpin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

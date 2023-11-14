@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Features.Auth.CreateRekening.Card.NomorRekening"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Cif.BuatAkun"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Mpin.KonfirmasiMpin"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Mpin.BuatMpin"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Cif.Nik"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Card.PilihKartu"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Registrasi.KonfirmasiEmail"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Registrasi.KataSandi"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Registrasi.Otp"
+            android:exported="false" />
         <activity
             android:name=".Features.Auth.Login.AlertDialog.AlertDialogFailLogin"
             android:exported="false" />
