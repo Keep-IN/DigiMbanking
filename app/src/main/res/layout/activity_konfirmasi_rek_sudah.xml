@@ -31,7 +31,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="23dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/btnKonfrek"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" >
@@ -79,11 +79,12 @@
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Nomor Rekening :"
                 android:textSize="14dp"
-                tools:layout_editor_absoluteX="30dp"
-                tools:layout_editor_absoluteY="130dp" />
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
@@ -91,26 +92,28 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="23dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:hint="Nomor Rekening"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
                 app:layout_constraintTop_toBottomOf="@+id/textView14">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNorek"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:background="@drawable/ic_bgtextinput"
-                    android:hint="Nomor Rekening" />
+                     />
             </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button2"
+        android:id="@+id/btnKonfrek"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:backgroundTint="@color/bg_button_selector"
-        android:enabled="false"
         android:fontFamily="@font/poppins_semibold"
         android:text="Lanjut"
         app:layout_constraintBottom_toBottomOf="parent"

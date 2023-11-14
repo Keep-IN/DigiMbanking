@@ -1,4 +1,4 @@
-package com.core.data
+package com.core.data.repositories
 
 import javax.inject.Singleton
 

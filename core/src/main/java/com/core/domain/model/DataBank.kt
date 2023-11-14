@@ -1,4 +1,4 @@
-package com.digimbanking.Data.Model
+package com.core.domain.model
 
 object DataBank {
     val listBank = mutableListOf(
