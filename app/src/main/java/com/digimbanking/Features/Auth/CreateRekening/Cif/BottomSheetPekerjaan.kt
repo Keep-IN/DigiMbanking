@@ -13,52 +13,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import com.core.domain.model.ListPekerjaan
 import com.core.domain.model.ListPekerjaan.pekerjaanList
+import com.core.domain.model.ListPenghasilan
 import com.core.domain.model.PekerjaanItemModel
+import com.core.domain.model.PenghasilanItemModel
 import com.digimbanking.Data.Adapter.PekerjaanAdapter
+import com.digimbanking.Data.Adapter.PenghasilanAdapter
 import com.digimbanking.R
 import com.digimbanking.databinding.BottomSheetPekerjaanBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-
-//class BottomSheetPekerjaan : SuperBottomSheetFragment() {
-//    lateinit var binding :BottomSheetPekerjaanBinding
-//    private lateinit var sharedPreferences: SharedPreferences
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        super.onCreateView(inflater, container, savedInstanceState)
-//        binding = BottomSheetPekerjaanBinding.inflate(layoutInflater, container, false)
-//        return binding.root
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        binding.btnBack.setOnClickListener {
-//            val intent = Intent(requireContext(), BuatAkun::class.java)
-//            startActivity(intent)
-//        }
-//
-//        showjob(requireContext(), pekerjaanList)
-//        sharedPreferences = requireContext().getSharedPreferences("pekerjaan", Context.MODE_PRIVATE)
-//    }
-//
-//    private fun showjob(context: Context, dataPekerjaan: List<PekerjaanItemModel>) {
-//        val pekerjaanAdapter = PekerjaanAdapter(context, dataPekerjaan)
-//        binding.rvListPekerjaan.adapter = pekerjaanAdapter
-//        val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-//        binding.rvListPekerjaan.layoutManager = layoutManager
-//    }
-//
-//    override fun isSheetAlwaysExpanded() = true
-//
-//    override fun getExpandedHeight() = -2
-//}
-
-class BottomSheetPekerjaan : SuperBottomSheetFragment() {
-    var pekerjaanListener: PekerjaanListener? = null
+class BottomSheetPekerjaan : BottomSheetDialogFragment() {
     lateinit var binding: BottomSheetPekerjaanBinding
+    private lateinit var pekerjaanAdapter: PekerjaanAdapter
+    private val pekerjaanList =ListPekerjaan.pekerjaanList
+
+    interface PekerjaanListener {
+        fun onPekerjaanSelected(selectedPekerjaan: PekerjaanItemModel)
+    }
+    var pekerjaanListener: PekerjaanListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,28 +44,19 @@ class BottomSheetPekerjaan : SuperBottomSheetFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnBack.setOnClickListener {
-            val intent = Intent(requireContext(), BuatAkun::class.java)
-            startActivity(intent)
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        pekerjaanAdapter = PekerjaanAdapter { selectedPekerjaan ->
+            pekerjaanListener?.onPekerjaanSelected(selectedPekerjaan)
+            dismiss()
         }
 
-        showjob(requireContext(), pekerjaanList)
-    }
-
-    private fun showjob(context: Context, dataPekerjaan: List<PekerjaanItemModel>) {
-        val pekerjaanAdapter = PekerjaanAdapter(context, dataPekerjaan)
+        binding.rvListPekerjaan.layoutManager = LinearLayoutManager(context)
         binding.rvListPekerjaan.adapter = pekerjaanAdapter
-        val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.rvListPekerjaan.layoutManager = layoutManager
+        pekerjaanAdapter.setPenghasilanList(pekerjaanList)
     }
-
-    interface PekerjaanListener {
-        fun onPekerjaanSelected(selectedPekerjaan: PekerjaanItemModel)
-    }
-
-    override fun isSheetAlwaysExpanded() = true
-
-    override fun getExpandedHeight() = -2
 }
 
 

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/neutral200"
     android:layout_height="match_parent"
     tools:context=".Features.Auth.CreateRekening.Mpin.KonfirmasiMpin">
     <com.google.android.material.card.MaterialCardView
@@ -70,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgHp" />
 
     <com.chaos.view.PinView
-        android:id="@+id/sendOtp"
+        android:id="@+id/konfMpin"
         style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,5 +96,19 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSatu" />
+
+    <TextView
+        android:id="@+id/txtError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="#E71414"
+        android:visibility="gone"
+        android:fontFamily="@font/poppins"
+        android:text="MPIN tidak sama"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/konfMpin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

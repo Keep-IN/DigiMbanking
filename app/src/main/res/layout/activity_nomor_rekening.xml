@@ -79,46 +79,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomorRek" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etNomorRekening"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="47dp"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNorek">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etNomorRekening"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_field_nore"
-            android:fontFamily="@font/poppins"
-            android:hint="1234567891213456"
-            android:inputType="number"
-            android:textColorHint="#323A43"
-            android:textSize="14sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/imgCopy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="27dp"
-            android:layout_marginBottom="196dp"
-            android:src="@drawable/fi_copy"
-            app:layout_constraintBottom_toTopOf="@+id/btnRegist"
+            android:layout_marginStart="47dp"
+            android:layout_marginEnd="47dp"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/etNomorRekening" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNorek">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/copy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_field_nore"
+                android:drawableEnd="@drawable/fi_copy"
+                android:focusable="false"
+                android:fontFamily="@font/poppins"
+                android:hint="192728106578190923"
+                android:inputType="number"
+                android:textColorHint="#323A43"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegist"
+            android:backgroundTint="@color/bg_button_selector"
         android:layout_width="342dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"

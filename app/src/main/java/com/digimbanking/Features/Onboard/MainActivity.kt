@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.etWord.setOnClickListener {
-            startActivity(Intent(this, BuatAkun::class.java))
+            startActivity(Intent(this, PilihKartu::class.java))
         }
     }
 }

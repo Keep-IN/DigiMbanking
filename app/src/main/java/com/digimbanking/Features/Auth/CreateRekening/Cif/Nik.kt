@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.core.domain.model.NikModel
+import com.digimbanking.Features.Auth.CreateRekening.Card.NomorRekening
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityNik2Binding
 

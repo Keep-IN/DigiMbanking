@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgHp" />
 
     <com.chaos.view.PinView
-        android:id="@+id/sendOtp"
+        android:id="@+id/sendMpin"
         style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

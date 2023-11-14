@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class NikModel(
     val nik: String,
     val nama: String,
-    val alamat: String
+    val alamat: String,
+    val nomorRekening: String
 ) : Parcelable

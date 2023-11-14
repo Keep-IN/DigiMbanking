@@ -135,7 +135,8 @@
                             android:fontFamily="@font/poppins"
                             android:textSize="14sp"
                             android:textColorHint="#323A43"
-                            android:background="@drawable/bg_text_field"
+                            android:focusable="false"
+                            android:background="@drawable/bg_auto_field"
                             android:layout_height="wrap_content"
                             android:inputType="number" />
 
@@ -165,9 +166,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bg_text_field"
+                            android:background="@drawable/bg_auto_field"
                             android:fontFamily="@font/poppins"
                             android:hint="Nama Lengkap"
+                            android:focusable="false"
                             android:textColorHint="#323A43"
                             android:inputType="textPersonName"
                             android:textSize="14sp" />
@@ -197,10 +199,11 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bg_text_field"
+                            android:background="@drawable/bg_auto_field"
                             android:fontFamily="@font/poppins"
                             android:hint="Alamat"
                             android:textColorHint="#323A43"
+                            android:focusable="false"
                             android:inputType="textPostalAddress"
                             android:textSize="14sp" />
 
@@ -234,7 +237,7 @@
                             android:background="@drawable/bg_field_selector"
                             android:drawableEnd="@drawable/ic_down_arrow"
                             android:fontFamily="@font/poppins"
-                            android:hint="Pekerjaan"
+                            android:hint="Pengawai Negeri Sipil (PNS)"
                             android:textColorHint="#323A43"
                             android:focusable="false"
                             android:inputType="textPostalAddress"
@@ -270,6 +273,7 @@
                             android:fontFamily="@font/poppins"
                             android:hint="0 sd 5 juta"
                             android:textColorHint="#323A43"
+                            android:focusable="false"
                             android:inputType="textPostalAddress"
                             android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -278,7 +282,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnRegist"
+                android:id="@+id/btnLanjut"
                 android:layout_width="342dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="23dp"
@@ -288,6 +292,7 @@
                 android:enabled="false"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Lanjut"
+                android:backgroundTint="@color/bg_button_selector"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.478"

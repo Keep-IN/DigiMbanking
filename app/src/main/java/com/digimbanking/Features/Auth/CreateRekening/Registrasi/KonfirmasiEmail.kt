@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Auth.CreateRekening.Registrasi
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
@@ -27,6 +28,10 @@ class KonfirmasiEmail : AppCompatActivity() {
                 }
                 validateInput()
             }
+        }
+
+        binding.btnRegist.setOnClickListener {
+            startActivity(Intent(this, Otp::class.java))
         }
     }
 

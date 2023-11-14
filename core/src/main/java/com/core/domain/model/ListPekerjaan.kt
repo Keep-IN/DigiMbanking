@@ -1,7 +1,7 @@
 package com.core.domain.model
 
 object ListPekerjaan {
-    val pekerjaanList = mutableListOf(
+    val pekerjaanList = listOf(
         PekerjaanItemModel(1, "Pengawai Negeri Sipil (PNS)"),
         PekerjaanItemModel(2, "Anggota POLRI"),
         PekerjaanItemModel(3, "Anggota Militer (TNI AD/AU/AL)"),

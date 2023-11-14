@@ -1,9 +1,12 @@
 package com.digimbanking.Features.Auth.CreateRekening.Registrasi
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
+import com.digimbanking.Features.Auth.CreateRekening.Mpin.BuatMpin
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityKataSandiBinding
 
@@ -31,10 +34,17 @@ class KataSandi : AppCompatActivity() {
                 validateInput()
             }
         }
+
+        binding.btnRegist.setOnClickListener {
+            if (validateInput() != null) {
+                startActivity(Intent(this, BuatMpin::class.java))
+            } else {
+                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun validateInput(){
-//        binding.btnRegist.isEnabled = viewmodel.validatePassword(binding.etPassword.editText?.text.toString())
         val password = binding.etPassword.editText?.text.toString()
         val confirmPassword = binding.etKonfPw.editText?.text.toString()
 
