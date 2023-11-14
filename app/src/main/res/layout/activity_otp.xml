@@ -3,146 +3,130 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/grey200"
     android:layout_height="match_parent"
     tools:context=".Features.Auth.CreateRekening.Registrasi.Otp">
 
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logo" />
-
-    <TextView
-        android:id="@+id/tvJudul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-18dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Digi Bank"
-        android:textColor="#6C63FF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/ivLogo"
-        app:layout_constraintStart_toStartOf="@+id/ivLogo"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="497dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="93dp"
-        app:cardCornerRadius="12sp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView3"
+        android:layout_width="346dp"
+        android:layout_height="426dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="164dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvJudul">
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/primary"
+        app:layout_constraintVertical_bias="0.492">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvMasuk"
+                android:id="@+id/etWaktu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Masuk"
-                android:textSize="16sp"
+                android:layout_marginStart="136dp"
+                android:layout_marginTop="57dp"
+                android:layout_marginEnd="136dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="01 : 30"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvSilahkan"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="36dp"
-                android:fontFamily="@font/poppins"
-                android:text="Silakan masukkan email dan kata sandi untuk masuk ke aplikasi"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvMasuk"
-                app:layout_constraintTop_toBottomOf="@+id/tvMasuk" />
 
             <TextView
-                android:id="@+id/tvEmail"
+                android:id="@+id/txtVerif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="27dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Email :"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/tvSilahkan"
-                app:layout_constraintTop_toBottomOf="@+id/tvSilahkan" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilEmail"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="20dp"
-                app:boxBackgroundColor="#F1F4F9"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="Verifikasi Kode OTP Email"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvEmail"
-                app:layout_constraintTop_toBottomOf="@+id/tvEmail">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:hint="Email" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tvPassword"
+            <com.chaos.view.PinView
+                android:id="@+id/sendOtp"
+                style="@style/PinWidget.PinView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Kata Sandi :"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/tilEmail"
-                app:layout_constraintTop_toBottomOf="@+id/tilEmail" />
+                android:layout_gravity="center"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="64dp"
+                android:cursorVisible="true"
+                android:fontFamily="@font/poppins_bold"
+                android:inputType="number"
+                android:itemBackground="@color/neutral300"
+                android:text=" "
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                app:hideLineWhenFilled="false"
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPassword"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="20dp"
-                app:boxBackgroundColor="#F1F4F9"
+                app:itemCount="4"
+                app:itemHeight="58dp"
+                app:itemRadius="10dp"
+                app:itemSpacing="15dp"
+                app:itemWidth="44dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvPassword"
-                app:layout_constraintTop_toBottomOf="@+id/tvPassword"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="#6C63FF">
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtVerif" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:hint="Kata Sandi"
-                    android:inputType="text|textPassword" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogin"
-                android:layout_width="310dp"
+            <TextView
+                android:id="@+id/txtBelumNerimaOtp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:backgroundTint="@color/bg_button_selector"
+                android:layout_marginStart="49dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="49dp"
+                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Masuk"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tilPassword"
-                app:layout_constraintStart_toStartOf="@+id/tilPassword"
-                app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
+                android:text="Belum Menerima OTP ?"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sendOtp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="49dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/grey300"
+                android:text="Kirim Ulang"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/txtBelumNerimaOtp"
+                app:layout_constraintTop_toBottomOf="@+id/sendOtp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="-45dp"
+        android:src="@drawable/logo_email"
+        app:layout_constraintBottom_toTopOf="@+id/materialCardView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

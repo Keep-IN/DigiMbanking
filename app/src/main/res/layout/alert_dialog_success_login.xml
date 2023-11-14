@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    tools:context=".Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvSuksesLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvJudulSuksesLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="135dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="135dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Sukses"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivCentangLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="58dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvJudulSuksesLogin"
+                app:layout_constraintStart_toStartOf="@+id/tvJudulSuksesLogin"
+                app:layout_constraintTop_toBottomOf="@+id/tvJudulSuksesLogin"
+                app:srcCompat="@drawable/ic_sukses" />
+
+            <TextView
+                android:id="@+id/tvDescLoginSukses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins"
+                android:text="Login Berhasil!"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/ivCentangLogin"
+                app:layout_constraintStart_toStartOf="@+id/ivCentangLogin"
+                app:layout_constraintTop_toBottomOf="@+id/ivCentangLogin" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOkSuksesLogin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="69dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/primary"
+                android:text="OK"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescLoginSukses" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

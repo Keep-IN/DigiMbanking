@@ -12,6 +12,9 @@ dependencies {
     //Input Pin
     implementation 'com.github.bitfactoryio:PinCodeLayout:1.0.3'
 
+    //pinview
+    implementation 'io.github.chaosleung:pinview:1.4.4'
+
     //Bottom Sheet
     implementation 'com.github.andrefrsousa:SuperBottomSheet:2.0.0'
 
@@ -33,4 +36,8 @@ dependencies {
 
     // Date Range Picker Material 3
     implementation 'com.google.android.material:material:1.4.0'
+
+    //lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.x.x"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.x.x"
 }

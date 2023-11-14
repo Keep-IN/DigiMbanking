@@ -161,99 +161,150 @@
         app:layout_constraintStart_toStartOf="@+id/cvIdentitas"
         app:layout_constraintTop_toBottomOf="@+id/cvIdentitas" />
 
-    <ImageView
-        android:id="@+id/ivUbahPw"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvUbahPw"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_ubahpassword"
-        app:layout_constraintStart_toStartOf="@+id/tvProfAkun"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfAkun" />
+        android:layout_marginEnd="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfAkun">
 
-    <ImageView
-        android:id="@+id/ivUbahMpin"
-        android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivUbahPw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_ubahpassword"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvUbahPw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Ubah Kata Sandi"
+                android:textColor="#202327"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivUbahPw"
+                app:layout_constraintStart_toEndOf="@+id/ivUbahPw"
+                app:layout_constraintTop_toTopOf="@+id/ivUbahPw" />
+
+            <ImageView
+                android:id="@+id/ivArrowR1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="9dp"
+                android:src="@drawable/ic_arrowr"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvUbahMpin"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_ubahmpin"
-        app:layout_constraintStart_toStartOf="@+id/ivUbahPw"
-        app:layout_constraintTop_toBottomOf="@+id/ivUbahPw" />
+        android:layout_marginEnd="24dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvUbahPw">
 
-    <ImageView
-        android:id="@+id/ivKeluar"
-        android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivUbahMpin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_ubahmpin" />
+
+            <TextView
+                android:id="@+id/tvUbahMpin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Ubah MPIN"
+                android:textColor="#202327"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivUbahMpin"
+                app:layout_constraintTop_toTopOf="@+id/ivUbahMpin" />
+
+            <ImageView
+                android:id="@+id/ivArrowR2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="9dp"
+                android:src="@drawable/ic_arrowr"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvLogout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_keluar"
-        app:layout_constraintStart_toStartOf="@+id/ivUbahMpin"
-        app:layout_constraintTop_toBottomOf="@+id/ivUbahMpin" />
-
-    <TextView
-        android:id="@+id/tvUbahPw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Ubah Kata Sandi"
-        android:textColor="#202327"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivUbahPw"
-        app:layout_constraintStart_toEndOf="@+id/ivUbahPw"
-        app:layout_constraintTop_toTopOf="@+id/ivUbahPw" />
-
-    <TextView
-        android:id="@+id/tvUbahMpin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Ubah MPIN"
-        android:textColor="#202327"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivUbahMpin"
-        app:layout_constraintStart_toEndOf="@+id/ivUbahMpin"
-        app:layout_constraintTop_toTopOf="@+id/ivUbahMpin" />
-
-    <TextView
-        android:id="@+id/tvKeluar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Keluar Akun"
-        android:textColor="#202327"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivKeluar"
-        app:layout_constraintStart_toEndOf="@+id/ivKeluar"
-        app:layout_constraintTop_toTopOf="@+id/ivKeluar" />
-
-    <ImageView
-        android:id="@+id/ivArrowR1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="33dp"
-        android:src="@drawable/ic_arrowr"
-        app:layout_constraintBottom_toBottomOf="@+id/tvUbahPw"
+        android:layout_marginEnd="24dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvUbahPw" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvUbahMpin">
 
-    <ImageView
-        android:id="@+id/ivArrowR2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="33dp"
-        android:src="@drawable/ic_arrowr"
-        app:layout_constraintBottom_toBottomOf="@+id/tvUbahMpin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvUbahMpin" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivArrowR3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="33dp"
-        android:src="@drawable/ic_arrowr"
-        app:layout_constraintBottom_toBottomOf="@+id/tvKeluar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvKeluar" />
+            <ImageView
+                android:id="@+id/ivKeluar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_keluar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvKeluar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Keluar Akun"
+                android:textColor="#202327"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivKeluar"
+                app:layout_constraintStart_toEndOf="@+id/ivKeluar"
+                app:layout_constraintTop_toTopOf="@+id/ivKeluar" />
+
+            <ImageView
+                android:id="@+id/ivArrowR3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="9dp"
+                android:src="@drawable/ic_arrowr"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

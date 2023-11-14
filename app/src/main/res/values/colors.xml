@@ -30,4 +30,7 @@
     <color name="darkblue02">#D0B7E6</color>
     <color name="darkblue01">#E2D4F0</color>
     <color name="colorRadioButtonClicked">#6C63FF</color>
+    <color name="neutral300">#D5E6FF</color>
+    <color name="neutral200">#E1EDFF</color>
+    <color name="grey300">#D2D1CD</color>
 </resources>
