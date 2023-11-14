@@ -20,9 +20,9 @@ class ResiActivity : AppCompatActivity() {
                 tvNamaPenerimaResi.text = dataTransaksi.namaPenerima
                 tvNamaPengirim.text = dataTransaksi.namaPengirim
                 tvIsianNomorReferensi.text = dataTransaksi.nomorReferensi.toString()
-                tvTipeTransaksi.text = dataTransaksi.tipeTransaksi
-                tvBiayaAdmin.text = "Rp ${dataTransaksi.biayaAdmin.formatDotSeparator()}"
-                tvTotalTransaksi.text = "Rp ${dataTransaksi.jumlahTransaksi.formatDotSeparator()}"
+                tvIsianTipeTransaksi.text = dataTransaksi.tipeTransaksi
+                tvIsianBiayaAdmin.text = "Rp ${dataTransaksi.biayaAdmin.formatDotSeparator()}"
+                tvIsianTotalTransaksi.text = "Rp ${dataTransaksi.jumlahTransaksi.formatDotSeparator()}"
             }
         }
     }
