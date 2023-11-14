@@ -62,6 +62,7 @@
     <string name="informasi">Masukkan alamat email untuk proses pembuatan akun.</string>
     <string name="kata_sandi">Masukkan informasi mengenai Kata Sandi akun mobile mbanking.</string>
     <string name="informasi_nik">Masukkan informasi NIK untuk proses pembuatan akun.</string>
+    <string name="beranda_fragment">Beranda Fragment</string>
     <string name="verifikasi_kode_otp_email">Verifikasi Kode OTP Email</string>
     <string name="mpin">Untuk keamanan dalam bertransaksi silahkan masukkan 6 digit MPIN</string>
     <string name="masukan_data_diri">Masukkan informasi data diri untuk melengkapi proses pembuatan akun.</string>

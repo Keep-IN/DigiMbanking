@@ -3,6 +3,8 @@ package com.digimbanking.Features.Onboard
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.digimbanking.Features.Transfer.Riwayat.Dashboard.DashboardActivity
+import com.digimbanking.Features.Transfer.Riwayat.Dashboard.NavbarContainer
 import com.digimbanking.Features.Auth.CreateRekening.Card.PilihKartu
 import com.digimbanking.Features.Auth.CreateRekening.Cif.BottomSheetPekerjaan
 import com.digimbanking.Features.Auth.CreateRekening.Cif.BuatAkun

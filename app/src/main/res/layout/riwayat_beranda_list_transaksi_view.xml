@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/iv_transaksi_masuk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_masuk" />
 
     <TextView
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="@+id/iv_transaksi_masuk" />
 
     <TextView
-        android:id="@+id/tv_nominal_riwayat_transaksi_masuk"
+        android:id="@+id/tv_nominal_riwayat_transaksi_masuk_beranda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="13dp"
@@ -36,31 +36,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/iv_transaksi_masuk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_transaksi_masuk" />
-
-    <TextView
-        android:id="@+id/tvNamaPentransfer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins"
-        android:text="Salahuddin"
-        android:textColor="@color/grey_neutral"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_transaksi_masuk"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_transaksi_masuk"
-        app:layout_constraintTop_toBottomOf="@+id/tv_transaksi_masuk" />
-
-    <TextView
-        android:id="@+id/tvDateRiwayatTransfer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins"
-        android:text="11 Nov 2022 | 11:20"
-        android:textColor="@color/grey_neutral"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_nominal_riwayat_transaksi_masuk"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nominal_riwayat_transaksi_masuk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

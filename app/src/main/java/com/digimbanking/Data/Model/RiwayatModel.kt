@@ -4,10 +4,10 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class RiwayatItemModel(
+data class RiwayatModel(
     val id: Int,
-    val tipe_transaksi: String,
+    val tipeTransaksi: String,
     val nama: String,
-    val jumlah_transaksi: Int,
-    val time_transaction: String,
+    val jumlahTransaksi: Int,
+    val timeTransaction: String,
 ): Parcelable

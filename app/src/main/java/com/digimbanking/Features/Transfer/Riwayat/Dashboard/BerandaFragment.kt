@@ -1,60 +1,142 @@
 package com.digimbanking.Features.Transfer.Riwayat.Dashboard
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.digimbanking.R
+import android.widget.RelativeLayout
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.core.domain.model.DataRiwayat
+import com.core.domain.model.RiwayatItemModel
+import com.digimbanking.Data.Adapter.RiwayatTransaksiListBerandaAdapter
+import com.digimbanking.Data.Model.DataRiwayatUnused
+import com.digimbanking.Data.Model.RiwayatModel
+import com.digimbanking.databinding.FragmentBerandaBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BerandaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BerandaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val adapterRiwayat: RiwayatTransaksiListBerandaAdapter by lazy{ RiwayatTransaksiListBerandaAdapter()}
+    private lateinit var binding: FragmentBerandaBinding
+    private lateinit var dataRiwayat : MutableList<RiwayatItemModel>
+    private lateinit var layoutEmptyTransaction: RelativeLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_beranda, container, false)
+        binding = FragmentBerandaBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BerandaFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BerandaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+//    companion object {
+//        var isSwitchOn = false
+//    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val layoutManager = LinearLayoutManager(activity)
+        dataRiwayat = DataRiwayat.riwayattransaksiList
+        adapterRiwayat.submitList(DataRiwayat.riwayattransaksiList)
+        binding.rvListRiwayatTerakhir.adapter = adapterRiwayat
+        binding.rvListRiwayatTerakhir.layoutManager = layoutManager
+
+
+
+        binding.ivIcPaste.setOnClickListener{
+            val clipboardManager = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val value = binding.tvIsianNorek.text.toString()
+            clipboardManager.setPrimaryClip(ClipData.newPlainText("data", value))
+            Toast.makeText(context, "Nomor rekening telah disalin", Toast.LENGTH_SHORT).show()
+        }
+
+//private fun copyToClipboard() {
+//    val editText = binding.tvNorek.editText
+//
+//    if (editText != null) {
+//        val textToCopy = editText.text.toString()
+//
+//        if (textToCopy.isNotBlank()) {
+//            val clipboardManager =
+//                getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//            val clipData = ClipData.newPlainText("Teks yang disalin", textToCopy)
+//            clipboardManager.setPrimaryClip(clipData)
+//
+//            Toast.makeText(
+//                this@NomorRekening,
+//                "Nomor rekening berhasil disalin ke clipboard",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        } else {
+//            Toast.makeText(
+//                this@NomorRekening,
+//                "Nomor rekening tidak tersedia",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        }
+//    }
+//}
+//        binding.tvNorek.setOnClickListener {
+//            copyToClipboard()
+//        }
+
+        binding.apply{
+            ivEyeClosed.setOnClickListener {
+                binding.ivEyeSharp.isVisible = true
+                binding.ivEyeClosed.isVisible = false
             }
-    }
+            ivEyeSharp.setOnClickListener {
+                binding.ivEyeClosed.isVisible = true
+                binding.ivEyeSharp.isVisible = false
+            }
+        }
+//        if (dataRiwayat.isEmpty()){
+//            binding.ivEmptyListRiwayat.isVisible = true
+//            binding.tvBelumAdaTransaksi.isVisible = true
+//        }else{
+//            binding.ivEmptyListRiwayat.isVisible = true
+//            binding.tvBelumAdaTransaksi.isVisible = false
+//        }
+
+
+        fun Long.formatDotSeparator(): String{
+            return toString()
+                .reversed()
+                .chunked(3)
+                .joinToString (".")
+                .reversed()
+        }
+
+        fun Long.formatDashSeparator(): String{
+            return toString()
+                .chunked(4)
+                .joinToString { "-" }
+        }
+
+//        val emptyHistory = getEmptyHistory()
+//
+//        if (emptyHistory.isNotEmpty()){
+//          //  recyclerView.visibility = View.VISIBLE
+//            layoutEmptyTransaction.visibility = View.GONE
+//
+//            val adapter = RiwayatTransaksiListAdapter()
+//            recyclerView.adapter = adapterRiwayat
+//            recyclerView.layoutManager = LinearLayoutManager(context)
+//        }else{
+//            recyclerView.visibility = View.GONE
+//            layoutEmptyTransaction.visibility = View.VISIBLE
+//        }
+//    }
+
+//    private fun getEmptyHistory(): List<RiwayatTransaksiModel>{
+//        return listOf(
+//
+//        )
+     }
 }

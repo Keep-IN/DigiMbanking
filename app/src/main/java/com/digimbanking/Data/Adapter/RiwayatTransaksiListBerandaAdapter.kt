@@ -6,16 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.core.domain.model.RiwayatItemModel
 import com.digimbanking.Data.Model.RiwayatModel
 import com.digimbanking.R
-import com.digimbanking.databinding.RiwayatTransakiListViewBinding
+import com.digimbanking.databinding.RiwayatBerandaListTransaksiViewBinding
 
-class RiwayatTransaksiListAdapter : RecyclerView.Adapter<RiwayatTransaksiListAdapter.ViewHolder>()
-{
+class RiwayatTransaksiListBerandaAdapter : RecyclerView.Adapter<RiwayatTransaksiListBerandaAdapter.ViewHolder>() {
     private var itemListener: ((RiwayatItemModel) -> Unit)? = null
     private val data: MutableList<RiwayatItemModel> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RiwayatTransaksiListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RiwayatTransaksiListBerandaAdapter.ViewHolder {
         return ViewHolder(
-            RiwayatTransakiListViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            RiwayatBerandaListTransaksiViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
@@ -31,11 +30,8 @@ class RiwayatTransaksiListAdapter : RecyclerView.Adapter<RiwayatTransaksiListAda
         notifyItemRangeInserted(0, data.size)
     }
 
-    inner class ViewHolder(private val binding: RiwayatTransakiListViewBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: RiwayatBerandaListTransaksiViewBinding): RecyclerView.ViewHolder(binding.root){
         fun setData(item: RiwayatItemModel, listener: ((RiwayatItemModel) -> Unit)?){
-            binding.root.setOnClickListener{
-                listener?.invoke(item)
-            }
             when(item.tipeTransaksi){
                 "kredit" -> {
                     binding.tvTransaksiMasuk.text = "Transaksi Masuk"
