@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.core.domain.model.DataRiwayat
@@ -46,12 +47,45 @@ class BerandaFragment : Fragment() {
         binding.rvListRiwayatTerakhir.adapter = adapterRiwayat
         binding.rvListRiwayatTerakhir.layoutManager = layoutManager
 
+
+
         binding.ivIcPaste.setOnClickListener{
             val clipboardManager = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val value = binding.tvNorek.text.toString()
+            val value = binding.tvIsianNorek.text.toString()
             clipboardManager.setPrimaryClip(ClipData.newPlainText("data", value))
             Toast.makeText(context, "Nomor rekening telah disalin", Toast.LENGTH_SHORT).show()
         }
+
+//private fun copyToClipboard() {
+//    val editText = binding.tvNorek.editText
+//
+//    if (editText != null) {
+//        val textToCopy = editText.text.toString()
+//
+//        if (textToCopy.isNotBlank()) {
+//            val clipboardManager =
+//                getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//            val clipData = ClipData.newPlainText("Teks yang disalin", textToCopy)
+//            clipboardManager.setPrimaryClip(clipData)
+//
+//            Toast.makeText(
+//                this@NomorRekening,
+//                "Nomor rekening berhasil disalin ke clipboard",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        } else {
+//            Toast.makeText(
+//                this@NomorRekening,
+//                "Nomor rekening tidak tersedia",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        }
+//    }
+//}
+//        binding.tvNorek.setOnClickListener {
+//            copyToClipboard()
+//        }
+
         binding.apply{
             ivEyeClosed.setOnClickListener {
                 binding.ivEyeSharp.isVisible = true

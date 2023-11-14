@@ -75,7 +75,7 @@
                         app:lineHeight="16.2sp" />
 
                     <TextView
-                        android:id="@+id/tvNorek"
+                        android:id="@+id/tvIsianNorek"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -93,9 +93,9 @@
                         android:layout_height="17dp"
                         android:layout_marginStart="8dp"
                         android:src="@drawable/ic_paste"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvNorek"
-                        app:layout_constraintStart_toEndOf="@+id/tvNorek"
-                        app:layout_constraintTop_toTopOf="@+id/tvNorek" />
+                        app:layout_constraintBottom_toBottomOf="@+id/tvIsianNorek"
+                        app:layout_constraintStart_toEndOf="@+id/tvIsianNorek"
+                        app:layout_constraintTop_toTopOf="@+id/tvIsianNorek" />
 
 
                     <TextView
@@ -142,8 +142,8 @@
                         android:fontFamily="@font/poppins"
                         android:text="Saldo Rekening"
                         android:textColor="@color/white_primary"
-                        app:layout_constraintStart_toStartOf="@+id/tvNorek"
-                        app:layout_constraintTop_toBottomOf="@+id/tvNorek" />
+                        app:layout_constraintStart_toStartOf="@+id/tvIsianNorek"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIsianNorek" />
 
                     <ImageView
                         android:id="@+id/ivEyeClosed"

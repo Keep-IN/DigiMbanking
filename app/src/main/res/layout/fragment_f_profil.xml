@@ -100,7 +100,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvNamaNik" />
 
             <TextView
-                android:id="@+id/tvNorek"
+                android:id="@+id/tvIsianNorek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -123,7 +123,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNorek" />
+                app:layout_constraintTop_toBottomOf="@+id/tvIsianNorek" />
 
             <TextView
                 android:id="@+id/tvProfEmail"
@@ -142,9 +142,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="47dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvNorek"
+                app:layout_constraintBottom_toBottomOf="@+id/tvIsianNorek"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvNorek"
+                app:layout_constraintTop_toTopOf="@+id/tvIsianNorek"
                 app:srcCompat="@drawable/ic_copy" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
