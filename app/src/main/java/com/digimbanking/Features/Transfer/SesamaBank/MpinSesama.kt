@@ -12,10 +12,7 @@ import com.digimbanking.databinding.ActivityMpinSesamaBinding
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-@HiltViewModel
-class MpinSesama @Inject constructor(
-
-): AppCompatActivity() {
+class MpinSesama: AppCompatActivity() {
     private lateinit var binding: ActivityMpinSesamaBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

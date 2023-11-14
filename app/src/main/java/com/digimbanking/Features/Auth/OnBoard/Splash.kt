@@ -15,20 +15,6 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        val versionName = "Version " + BuildConfig.VERSION_NAME
-//        binding.tvVersion.text = versionName
-//
-//        Log.d("SplashActivity", "Version Name: $versionName")
-//
-//        val dataVersion = DataVersion
-//        val version = dataVersion.versi
-//
-//        val versionName = "Version " + version
-//        binding.tvVersion.text = versionName
-
-
-
-
         Handler().postDelayed({
             val intent = Intent(this@Splash, Onboard::class.java)
             startActivity(intent)

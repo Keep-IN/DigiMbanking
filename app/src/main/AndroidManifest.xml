@@ -53,7 +53,13 @@
             android:exported="false" />
         <activity
             android:name=".Features.Auth.OnBoard.Splash"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Features.Auth.Question.QuestionPage"
             android:exported="false" />
@@ -89,7 +95,7 @@
             android:exported="false" />
         <activity
             android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.BuatMPINsdh"
-             ndroid:exported="false" />
+             android:exported="false" />
         <activity
             android:name=".Features.Transfer.SesamaBank.ResiTransfer"
             android:exported="false" />
@@ -142,12 +148,7 @@
             android:exported="false" />
         <activity
             android:name=".Features.Onboard.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
 
         <meta-data
