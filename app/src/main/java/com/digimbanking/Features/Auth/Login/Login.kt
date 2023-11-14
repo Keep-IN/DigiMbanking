@@ -48,7 +48,8 @@ class Login : AppCompatActivity() {
                 }
             }
             btnLoginMasuk.setOnClickListener{
-                data = loginViewModel.validateLogin(binding.tilLoginEmail.editText?.text.toString(), binding.tilLoginPw.editText?.text.toString())
+                data = loginViewModel.validateLogin(binding.tilLoginEmail.editText?.text.toString(),
+                    binding.tilLoginPw.editText?.text.toString())
                 if(data != null){
                     AlertDialogSuccessLogin().show(supportFragmentManager,"test")
                 } else {
