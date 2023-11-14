@@ -13,6 +13,27 @@
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
         <activity
+            android:name=".Features.Auth.Login.AlertDialog.AlertDialogFailLogin"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Profile.UbahPw.AlertDialogUbahPwSuccess"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.OnBoard.Splash"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.Question.QuestionPage"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.OnBoard.OnBoard2"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.OnBoard.Onboard"
+            android:exported="false" />
+        <activity
             android:name=".Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertSandiDEC"
             android:exported="false" />
         <activity
