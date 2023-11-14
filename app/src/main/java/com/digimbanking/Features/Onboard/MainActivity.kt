@@ -1,7 +1,10 @@
 package com.digimbanking.Features.Onboard
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.digimbanking.Features.Transfer.SesamaBank.ListBank
+import com.digimbanking.Features.Transfer.SesamaBank.RekTujuan
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityMainBinding
 
@@ -11,5 +14,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.tvTest.setOnClickListener {
+            startActivity(Intent(this, RekTujuan::class.java))
+        }
     }
 }
