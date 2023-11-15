@@ -3,6 +3,7 @@ package com.digimbanking.Features.Transfer.Riwayat.Dashboard
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.core.domain.model.RiwayatItemModel
 import com.digimbanking.Data.Adapter.RiwayatTransaksiListBerandaAdapter
 import com.digimbanking.Data.Model.DataRiwayatUnused
 import com.digimbanking.Data.Model.RiwayatModel
+import com.digimbanking.Features.Transfer.SesamaBank.RekTujuan
 import com.digimbanking.databinding.FragmentBerandaBinding
 
 class BerandaFragment : Fragment() {
@@ -94,6 +96,9 @@ class BerandaFragment : Fragment() {
             ivEyeSharp.setOnClickListener {
                 binding.ivEyeClosed.isVisible = true
                 binding.ivEyeSharp.isVisible = false
+            }
+            ivTransfer.setOnClickListener {
+                startActivity(Intent(activity, RekTujuan::class.java))
             }
         }
 //        if (dataRiwayat.isEmpty()){

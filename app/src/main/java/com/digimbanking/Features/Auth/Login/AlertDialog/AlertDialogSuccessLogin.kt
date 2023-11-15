@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
 import com.digimbanking.Features.Onboard.MainActivity
+import com.digimbanking.Features.Transfer.Riwayat.Dashboard.NavbarContainer
 import com.digimbanking.R
 import com.digimbanking.databinding.AlertDialogSuccessLoginBinding
 
@@ -36,7 +37,7 @@ class AlertDialogSuccessLogin : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnOkSuksesLogin.setOnClickListener{
-            startActivity(Intent(activity, MainActivity::class.java))
+            startActivity(Intent(activity, NavbarContainer::class.java))
             requireActivity().finishAffinity()
         }
     }
