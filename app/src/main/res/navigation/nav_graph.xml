@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/BerandaFragment"
-        android:name="com.digimbanking.Features.Transfer.Riwayat.Dashboard.BerandaFragment"
+        android:name="com.digimbanking.Features.Dashboard.BerandaFragment"
         android:label="@string/beranda_fragment"
         tools:layout="@layout/fragment_beranda">
 

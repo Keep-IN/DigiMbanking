@@ -3,6 +3,7 @@ package com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.core.domain.model.Rekening
+import com.core.domain.repository.RekeningRepository
 
 class KonfRekViewModelsdh: ViewModel() {
     private val repository = RekeningRepository()

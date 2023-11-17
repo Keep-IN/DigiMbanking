@@ -1,4 +1,4 @@
-package com.digimbanking.Features.Transfer.Riwayat.Dashboard
+package com.digimbanking.Features.Dashboard
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -11,14 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.core.domain.model.DataRiwayat
 import com.core.domain.model.RiwayatItemModel
 import com.digimbanking.Data.Adapter.RiwayatTransaksiListBerandaAdapter
-import com.digimbanking.Data.Model.DataRiwayatUnused
-import com.digimbanking.Data.Model.RiwayatModel
 import com.digimbanking.Features.Transfer.SesamaBank.RekTujuan
 import com.digimbanking.databinding.FragmentBerandaBinding
 

@@ -124,12 +124,12 @@
             android:name=".Features.Auth.AdaRekening.KonfEmailSdh.KonfirmasiEmailSudah"
             android:exported="false" />
         <activity
-            android:name=".Features.Transfer.Riwayat.Dashboard.NavbarContainer"
+            android:name=".Features.Dashboard.NavbarContainer"
             android:exported="true" >
 
             </activity>
         <activity
-            android:name=".Features.Transfer.Riwayat.Dashboard.DashboardActivity"
+            android:name=".Features.Dashboard.DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".Features.Profile.UbahPw.UbahPw"

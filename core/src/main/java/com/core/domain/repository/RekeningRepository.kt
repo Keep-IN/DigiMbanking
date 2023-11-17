@@ -1,4 +1,4 @@
-package com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh
+package com.core.domain.repository
 
 import com.core.domain.model.Rekening
 

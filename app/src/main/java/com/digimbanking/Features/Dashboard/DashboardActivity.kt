@@ -1,4 +1,4 @@
-package com.digimbanking.Features.Transfer.Riwayat.Dashboard
+package com.digimbanking.Features.Dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_primary"
-    tools:context=".Features.Transfer.Riwayat.Dashboard.BerandaFragment">
+    tools:context=".Features.Dashboard.BerandaFragment">
 
     <ScrollView
         android:layout_width="match_parent"
