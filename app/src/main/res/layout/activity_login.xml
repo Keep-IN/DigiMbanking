@@ -30,7 +30,7 @@
         app:layout_constraintStart_toStartOf="@+id/ivLogoLogin"
         app:layout_constraintTop_toBottomOf="@+id/ivLogoLogin" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
@@ -96,6 +96,7 @@
                 app:boxCornerRadiusTopStart="10dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvJudulEmail"
                 app:layout_constraintTop_toBottomOf="@+id/tvJudulEmail">
@@ -133,6 +134,7 @@
                 app:boxCornerRadiusTopStart="10dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvJudulPw"
                 app:layout_constraintTop_toBottomOf="@+id/tvJudulPw"
@@ -164,5 +166,5 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
