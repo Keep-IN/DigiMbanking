@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvIdentitas"
         android:layout_width="0dp"
         android:layout_height="199dp"
@@ -137,7 +137,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/tvNik"
                 app:layout_constraintTop_toBottomOf="@+id/tvNik" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
                 app:layout_constraintTop_toTopOf="@+id/tvIsianNorek"
                 app:srcCompat="@drawable/ic_copy" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/tvProfAkun"
@@ -161,7 +161,7 @@
         app:layout_constraintStart_toStartOf="@+id/cvIdentitas"
         app:layout_constraintTop_toBottomOf="@+id/cvIdentitas" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvUbahPw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivUbahPw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -199,7 +199,7 @@
                 app:layout_constraintStart_toEndOf="@+id/ivUbahPw"
                 app:layout_constraintTop_toTopOf="@+id/ivUbahPw" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivArrowR1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -209,9 +209,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvUbahMpin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -227,11 +227,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivUbahMpin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_ubahmpin" />
+                android:src="@drawable/ic_ubahmpin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvUbahMpin"
@@ -246,7 +249,7 @@
                 app:layout_constraintStart_toEndOf="@+id/ivUbahMpin"
                 app:layout_constraintTop_toTopOf="@+id/ivUbahMpin" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivArrowR2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -256,9 +259,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -274,11 +277,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/ivKeluar"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_keluar"
+                android:src="@drawable/ic_logout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -287,16 +290,16 @@
                 android:id="@+id/tvKeluar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Keluar Akun"
                 android:textColor="#202327"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ivKeluar"
-                app:layout_constraintStart_toEndOf="@+id/ivKeluar"
-                app:layout_constraintTop_toTopOf="@+id/ivKeluar" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivLogout"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivArrowR3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -306,5 +309,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

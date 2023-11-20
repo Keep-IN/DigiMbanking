@@ -37,10 +37,11 @@
         android:layout_marginTop="37dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="93dp"
+        app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvJudulLogin" >
+        app:layout_constraintTop_toBottomOf="@+id/tvJudulLogin">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -89,6 +90,11 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="23dp"
                 app:boxBackgroundColor="#F3F7FD"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeWidth="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvJudulEmail"
                 app:layout_constraintTop_toBottomOf="@+id/tvJudulEmail">
@@ -120,6 +126,11 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="23dp"
                 app:boxBackgroundColor="#F3F7FD"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeWidth="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvJudulPw"
                 app:layout_constraintTop_toBottomOf="@+id/tvJudulPw"
@@ -145,7 +156,7 @@
                 android:enabled="false"
                 android:text="Masuk"
                 android:textColor="#FFFFFF"
-                app:backgroundTint="@color/primary"
+                app:backgroundTint="@color/bg_button_selector"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
