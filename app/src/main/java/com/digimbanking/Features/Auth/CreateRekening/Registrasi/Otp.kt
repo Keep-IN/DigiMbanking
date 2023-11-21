@@ -20,7 +20,9 @@ import com.digimbanking.Features.Auth.CreateRekening.Mpin.MpinViewModel
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityOtpBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Otp : AppCompatActivity() {
     private lateinit var binding: ActivityOtpBinding
     private lateinit var otpViewModel: RegisViewModel

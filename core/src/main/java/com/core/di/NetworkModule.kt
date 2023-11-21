@@ -1,14 +1,18 @@
 package com.core.di
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
@@ -16,20 +20,33 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://153c-103-189-94-178.ngrok-free.app/api/v1/"
-
-        private  val logging : HttpLoggingInterceptor
-            get(){
-                val httpLoggingInterceptor = HttpLoggingInterceptor()
-                return httpLoggingInterceptor.apply {
-                    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-                }
+        private const val  BASE_URL ="https://155d-103-189-94-178.ngrok-free.app/api/"
+    }
+    @Singleton
+    private val logging: HttpLoggingInterceptor
+        get() {
+            val httpLoggingInterceptor = HttpLoggingInterceptor()
+            return httpLoggingInterceptor.apply {
+                httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             }
+        }
 
-        private val client = OkHttpClient
-            .Builder()
-            .addInterceptor(logging)
-            .build()
+    @Singleton
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .addInterceptor { chain ->
+            val requestBuilder = chain.request()
+                .newBuilder()
+                .header("Authorization", "Bearer ")
+                .build()
+            chain.proceed(requestBuilder)
+        }
+        .build()
+
+    @Singleton
+    @Provides
+    fun getAuthToken(sharedPreferences: SharedPreferences): String {
+        return sharedPreferences.getString("auth_token", "") ?: ""
     }
 
     @Singleton
@@ -43,6 +60,13 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit): ApiContract =
-        retrofit.create(ApiContract::class.java)
+    fun provideApi(retrofit: Retrofit): ApiContractCreateRekening =
+        retrofit.create(ApiContractCreateRekening::class.java)
+
+    @Singleton
+    @Provides
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+    }
+
 }

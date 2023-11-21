@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.core.domain.model.RiwayatItemModel
 import com.digimbanking.databinding.ActivityResiBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ResiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResiBinding

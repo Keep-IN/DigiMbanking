@@ -13,7 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.core.domain.model.BankItemModel
 import com.digimbanking.Features.Transfer.SesamaBank.BottomSheet.BottomSheetDetailPenerima
 import com.digimbanking.databinding.ActivityRekTujuanBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RekTujuan : AppCompatActivity() {
     private lateinit var binding : ActivityRekTujuanBinding
     private lateinit var viewModel: RekTujuanViewModel

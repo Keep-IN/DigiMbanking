@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityResiTransferBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ResiTransfer : AppCompatActivity() {
     private lateinit var binding: ActivityResiTransferBinding
     override fun onCreate(savedInstanceState: Bundle?) {

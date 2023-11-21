@@ -13,7 +13,9 @@ import com.digimbanking.Features.Auth.CreateRekening.Cif.BuatAkun
 import com.digimbanking.Features.Auth.CreateRekening.Registrasi.KataSandi
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityNomorRekeningBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NomorRekening : AppCompatActivity() {
     private lateinit var binding: ActivityNomorRekeningBinding
 

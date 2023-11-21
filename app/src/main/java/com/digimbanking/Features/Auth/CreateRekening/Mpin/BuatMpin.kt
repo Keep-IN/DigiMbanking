@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.digimbanking.R
 import com.chaos.view.PinView
 import com.digimbanking.databinding.ActivityBuatMpinBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BuatMpin : AppCompatActivity() {
     private lateinit var binding : ActivityBuatMpinBinding
     private lateinit var mpinViewModel: MpinViewModel

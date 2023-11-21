@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Di.app"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -33,6 +34,7 @@
         <activity
             android:name=".Features.Auth.CreateRekening.Card.PilihKartu"
             android:exported="false" />
+
         <activity
             android:name=".Features.Auth.CreateRekening.Registrasi.KonfirmasiEmail"
             android:exported="false" />
@@ -93,9 +95,9 @@
         <activity
             android:name=".Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh"
             android:exported="false" />
-        <activity
-            android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.BuatMPINsdh"
-             android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.BuatMPINsdh"-->
+<!--             android:exported="false" />-->
         <activity
             android:name=".Features.Transfer.SesamaBank.ResiTransfer"
             android:exported="false" />

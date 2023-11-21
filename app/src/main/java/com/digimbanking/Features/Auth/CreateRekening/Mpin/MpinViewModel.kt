@@ -3,6 +3,8 @@ package com.digimbanking.Features.Auth.CreateRekening.Mpin
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class MpinViewModel : ViewModel() {
     private val _pin = MutableLiveData<String>()

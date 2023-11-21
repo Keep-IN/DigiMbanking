@@ -10,7 +10,9 @@ import com.core.domain.model.DataBank
 import com.digimbanking.Data.Adapter.BankListAdapter
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityListBankBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ListBank : AppCompatActivity() {
     private lateinit var binding: ActivityListBankBinding
     private val adapterListBank: BankListAdapter by lazy { BankListAdapter() }

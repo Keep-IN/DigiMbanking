@@ -14,7 +14,9 @@ import com.digimbanking.Features.Auth.Login.Login
 import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.R
 import com.digimbanking.databinding.AlertDialogUbahPwSuccessBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlertDialogUbahPwSuccess : DialogFragment() {
     lateinit var binding: AlertDialogUbahPwSuccessBinding
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {

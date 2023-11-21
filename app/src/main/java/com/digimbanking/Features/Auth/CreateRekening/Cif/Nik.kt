@@ -10,7 +10,9 @@ import com.core.domain.model.NikModel
 import com.digimbanking.Features.Auth.CreateRekening.Card.NomorRekening
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityNik2Binding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Nik : AppCompatActivity() {
     private lateinit var binding: ActivityNik2Binding
     lateinit var cifViewModel: CifViewModel

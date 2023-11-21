@@ -7,7 +7,9 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityKonfirmasiEmailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class KonfirmasiEmail : AppCompatActivity() {
     private lateinit var viewmodel : RegisViewModel
     lateinit var binding: ActivityKonfirmasiEmailBinding

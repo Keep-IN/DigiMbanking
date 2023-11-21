@@ -13,7 +13,9 @@ import com.chaos.view.PinView
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityKonfirmasiMpinBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class KonfirmasiMpin : AppCompatActivity() {
     private lateinit var binding: ActivityKonfirmasiMpinBinding
     private lateinit var mpinViewModel: MpinViewModel

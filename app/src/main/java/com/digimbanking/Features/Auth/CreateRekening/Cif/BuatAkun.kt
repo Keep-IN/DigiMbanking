@@ -13,7 +13,9 @@ import com.core.domain.model.PekerjaanItemModel
 import com.core.domain.model.PenghasilanItemModel
 import com.digimbanking.Features.Auth.CreateRekening.Card.NomorRekening
 import com.digimbanking.databinding.ActivityBuatAkunBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BuatAkun : AppCompatActivity(), BottomSheetPekerjaan.PekerjaanListener, BottomSheetPenghasilan.PenghasilanListener{
     lateinit var binding: ActivityBuatAkunBinding
     override fun onCreate(savedInstanceState: Bundle?) {

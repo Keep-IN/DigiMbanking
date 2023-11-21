@@ -12,7 +12,7 @@ import com.digimbanking.R
 import com.digimbanking.databinding.ActivityUbahPwBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class UbahPw : AppCompatActivity() {
     private lateinit var binding: ActivityUbahPwBinding
     private lateinit var ubahPwViewModel: UbahPwViewModel

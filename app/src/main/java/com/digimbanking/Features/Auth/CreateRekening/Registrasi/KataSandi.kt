@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.digimbanking.Features.Auth.CreateRekening.Mpin.BuatMpin
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityKataSandiBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class KataSandi : AppCompatActivity() {
     lateinit var binding: ActivityKataSandiBinding
     private lateinit var viewmodel : RegisViewModel
