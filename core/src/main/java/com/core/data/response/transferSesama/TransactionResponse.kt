@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 data class TransactionResponse(
     @SerializedName("data")
-    val `data`: Data,
+    val dataTransaksi: DataTransaksi,
     @SerializedName("error")
     val error: Boolean,
     @SerializedName("message")
     val message: String,
     @SerializedName("penerima")
-    val penerima: Penerima,
+    val penerima: RekeningModel,
     @SerializedName("pengirim")
-    val pengirim: Pengirim
+    val rekeningModel: RekeningModel
 )

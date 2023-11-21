@@ -3,7 +3,7 @@ package com.core.data.response.transferSesama
 
 import com.google.gson.annotations.SerializedName
 
-data class Data(
+data class DataTransaksi(
     @SerializedName("biaya_admin")
     val biayaAdmin: Int,
     @SerializedName("catatan")
