@@ -34,15 +34,15 @@ class Otp : AppCompatActivity() {
         setContentView(binding.root)
         otpViewModel = ViewModelProvider(this).get(RegisViewModel::class.java)
 
-        otpViewModel.generateRandomOtp()
-        sharedPreferences = getSharedPreferences("Otp", MODE_PRIVATE)
-
-        otpViewModel.otpCodeLiveData.observe(this, Observer { otpCode ->
-            binding.sendOtp.setText(otpCode)
-            Handler(Looper.getMainLooper()).postDelayed({
-                navigateToKonfrek()
-            }, 2000)
-        })
+//        otpViewModel.generateRandomOtp()
+//        sharedPreferences = getSharedPreferences("Otp", MODE_PRIVATE)
+//
+//        otpViewModel.otpCodeLiveData.observe(this, Observer { otpCode ->
+//            binding.sendOtp.setText(otpCode)
+//            Handler(Looper.getMainLooper()).postDelayed({
+//                navigateToKonfrek()
+//            }, 2000)
+//        })
 
     }
 

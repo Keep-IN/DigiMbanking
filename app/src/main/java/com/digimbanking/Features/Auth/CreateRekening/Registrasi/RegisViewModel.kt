@@ -3,12 +3,23 @@ package com.digimbanking.Features.Auth.CreateRekening.Registrasi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.core.data.repositories.OtpRepository
 import com.core.domain.model.DataNik
 import com.core.domain.model.DataOtp
 import com.core.domain.model.NikModel
 import com.core.domain.model.OtpModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RegisViewModel : ViewModel() {
+@HiltViewModel
+class RegisViewModel  @Inject constructor(
+    private val otpRepository: OtpRepository
+) : ViewModel(){
+    fun doOtp(
+        email: String
+    ) = otpRepository.postOtp(email)
+
+
     var isEmailValid = false
     var isPasswordValid = false
 
