@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityOnboardBinding
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class Onboard : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardBinding

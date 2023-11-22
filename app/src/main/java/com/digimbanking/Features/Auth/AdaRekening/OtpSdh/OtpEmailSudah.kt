@@ -6,13 +6,21 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.core.data.network.Result
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityBuatMpinsdhBinding
 import com.digimbanking.databinding.ActivityOtpEmailSudahBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class OtpEmailSudah : AppCompatActivity() {
     private lateinit var binding: ActivityOtpEmailSudahBinding
     private lateinit var timer: CountDownTimer
@@ -22,16 +30,30 @@ class OtpEmailSudah : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this).get(OtpEmailViewModelsdh::class.java)
+        viewModel = ViewModelProvider(this)[OtpEmailViewModelsdh::class.java]
+        binding.sendOtp.doOnTextChanged { text, start, before, count ->
+            if (text?.length == 4){
+                viewModel.viewModelScope.launch(Dispatchers.Main) {
+                    viewModel.checkOtp("").observe(this@OtpEmailSudah, Observer { result ->
+                        when (result) {
+                            is Result.Success -> {
+                                navigateToKonfrek()
+                            }
 
-        viewModel.generateRandomOtp()
+                            is Result.Error -> {
+                                Toast.makeText(this@OtpEmailSudah, result.errorMessage, Toast.LENGTH_SHORT).show()
+                            }
 
-        viewModel.otpCodeLiveData.observe(this, Observer { otpCode ->
-            binding.sendOtp.setText(otpCode)
-            Handler(Looper.getMainLooper()).postDelayed({
-                navigateToKonfrek()
-            }, 2000)
-        })
+                            is Result.Loading -> {
+
+                            }
+                        }
+                    })
+                }
+
+            }
+        }
+
     }
     private fun navigateToKonfrek() {
         val intent = Intent(this, KonfirmasiRekSudah::class.java)

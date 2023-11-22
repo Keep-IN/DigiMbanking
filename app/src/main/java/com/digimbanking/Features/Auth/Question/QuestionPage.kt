@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityKonfirmasiRekSudahBinding
 import com.digimbanking.databinding.ActivityQuestionPageBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 class QuestionPage : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionPageBinding
