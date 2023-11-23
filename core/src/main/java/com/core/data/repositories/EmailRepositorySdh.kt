@@ -2,15 +2,14 @@ package com.core.data.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.core.data.local.entity.User
 import com.core.data.local.preferences.UserPreferences
 import com.core.data.network.Result
 import com.core.data.response.authAdaRekening.OTPVerif.OtpRequestVer
 import com.core.data.response.authAdaRekening.OTPVerif.OtpVerResponse
 import com.core.data.response.authAdaRekening.OTPsdh.DataOtpResponse
 import com.core.data.response.authAdaRekening.OTPsdh.OtpRequest
+import com.core.data.response.authAdaRekening.OTPsdh.OtpResponse
 import com.core.di.ApiContractAdaRekening
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -21,13 +20,13 @@ class EmailRepositorySdh @Inject constructor(
 ){
     fun postOtp(
         email: String,
-    ) : LiveData<Result<DataOtpResponse>> = liveData {
+    ) : LiveData<Result<OtpResponse>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.sendOtpGenerate(OtpRequest(email))
             val responseBody = response.body()
             if (responseBody != null) {
-                userPreferences.getIResponse(responseBody.idUser)
+                userPreferences.setId(responseBody.data.idUser)
             }
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
@@ -45,7 +44,7 @@ class EmailRepositorySdh @Inject constructor(
         emit(Result.Loading)
 
         try {
-            val id = userPreferences.getUser()
+            val id = userPreferences.getIdd()
             val response = apiService.verOtp(id, OtpRequestVer(otp))
             val responseBody = response.body()
 

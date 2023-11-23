@@ -15,6 +15,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,7 +24,7 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://2c6d-103-189-94-178.ngrok-free.app/api/"
+        private const val  BASE_URL ="https://ebfe-103-189-94-178.ngrok-free.app/api/"
         private const val token = ""
     }
     @Singleton
@@ -41,6 +42,8 @@ class NetworkModule {
         sharedPreferences: SharedPreferences
     ): OkHttpClient {
         return OkHttpClient.Builder()
+            .connectTimeout(20,TimeUnit.SECONDS)
+            .readTimeout(20,TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
             .addInterceptor { chain ->
                 val requestBuilder = chain.request()

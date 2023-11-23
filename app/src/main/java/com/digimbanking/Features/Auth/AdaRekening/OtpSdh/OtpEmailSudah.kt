@@ -34,7 +34,7 @@ class OtpEmailSudah : AppCompatActivity() {
         binding.sendOtp.doOnTextChanged { text, start, before, count ->
             if (text?.length == 4){
                 viewModel.viewModelScope.launch(Dispatchers.Main) {
-                    viewModel.checkOtp("").observe(this@OtpEmailSudah, Observer { result ->
+                    viewModel.checkOtp(text.toString()).observe(this@OtpEmailSudah, Observer { result ->
                         when (result) {
                             is Result.Success -> {
                                 navigateToKonfrek()
