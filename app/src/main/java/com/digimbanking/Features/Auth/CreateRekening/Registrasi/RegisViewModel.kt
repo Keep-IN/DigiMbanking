@@ -19,6 +19,9 @@ class RegisViewModel  @Inject constructor(
         email: String
     ) = otpRepository.postOtp(email)
 
+    fun checkOtp(
+        otp: String
+    ) = otpRepository.putOtp(otp)
 
     var isEmailValid = false
     var isPasswordValid = false
@@ -34,10 +37,5 @@ class RegisViewModel  @Inject constructor(
     fun validatePassword(password: String): Boolean{
         isPasswordValid = password.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
         return  isPasswordValid
-    }
-
-    fun generateRandomOtp() {
-        val randomOtp = (1000..9999).random()
-        otpCodeLiveData.value = randomOtp.toString()
     }
 }

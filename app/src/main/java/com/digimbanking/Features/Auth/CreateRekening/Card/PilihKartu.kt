@@ -15,6 +15,7 @@ import androidx.lifecycle.viewModelScope
 import com.core.data.network.Result
 import com.core.data.response.auth.createRekening.pilihKartu.CardResponse
 import com.core.data.response.auth.createRekening.pilihKartu.DataCard
+import com.digimbanking.Features.Auth.CreateRekening.Cif.Nik
 import com.digimbanking.Features.Auth.CreateRekening.Registrasi.KonfirmasiEmail
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityPilihKartuBinding
@@ -108,9 +109,11 @@ class PilihKartu : AppCompatActivity() {
                 } else if (it.idTipe == 1) {
                     txtGold.text = it.namaTipe
                     txtLimit10.text = "Limit transfer: ${it.limitTransfer}"
-                } else {
+                } else if (it.idTipe == 3 ){
                     txtPlatinum.text = it.namaTipe
                     txtLimit15.text = "Limit transfer: ${it.limitTransfer}"
+                } else {
+
                 }
             }
         }

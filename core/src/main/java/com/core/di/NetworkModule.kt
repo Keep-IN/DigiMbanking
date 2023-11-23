@@ -3,6 +3,7 @@ package com.core.di
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +13,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Inject
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -20,28 +21,36 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://155d-103-189-94-178.ngrok-free.app/api/"
+
+        private const val  BASE_URL ="https://ebfe-103-189-94-178.ngrok-free.app/api/"
+
     }
     @Singleton
-    private val logging: HttpLoggingInterceptor
-        get() {
-            val httpLoggingInterceptor = HttpLoggingInterceptor()
-            return httpLoggingInterceptor.apply {
-                httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            }
-        }
+    @Provides
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        return httpLoggingInterceptor
+    }
 
     @Singleton
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(logging)
-        .addInterceptor { chain ->
-            val requestBuilder = chain.request()
-                .newBuilder()
-                .header("Authorization", "Bearer ")
-                .build()
-            chain.proceed(requestBuilder)
-        }
-        .build()
+    @Provides
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        sharedPreferences: SharedPreferences
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
+            .addInterceptor { chain ->
+                val requestBuilder = chain.request()
+                    .newBuilder()
+                    .build()
+                chain.proceed(requestBuilder)
+            }
+            .build()
+    }
 
     @Singleton
     @Provides
@@ -51,17 +60,24 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit() : Retrofit =
+    fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .client(okHttpClient)
             .build()
+
 
     @Singleton
     @Provides
     fun provideApi(retrofit: Retrofit): ApiContractCreateRekening =
         retrofit.create(ApiContractCreateRekening::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApis(retrofit: Retrofit): ApiContractDukcapil =
+        retrofit.create(ApiContractDukcapil::class.java)
 
     @Singleton
     @Provides

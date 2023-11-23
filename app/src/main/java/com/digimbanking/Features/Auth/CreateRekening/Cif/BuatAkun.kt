@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import com.core.data.response.auth.createRekening.dukcapil.DukcapilResponse
 import com.core.domain.model.NikModel
 import com.core.domain.model.PekerjaanItemModel
 import com.core.domain.model.PenghasilanItemModel
@@ -16,28 +17,23 @@ import com.digimbanking.databinding.ActivityBuatAkunBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BuatAkun : AppCompatActivity(), BottomSheetPekerjaan.PekerjaanListener, BottomSheetPenghasilan.PenghasilanListener{
+class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener{
     lateinit var binding: ActivityBuatAkunBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBuatAkunBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val data = intent.getParcelableExtra<NikModel>("dataNik")
+        val data = intent.getParcelableExtra<DukcapilResponse>("nik")
 
         if (data != null) {
-            binding.etNIK.editText?.setText(data.nik)
-            binding.etNama.editText?.setText(data.nama)
-            binding.etAlamat.editText?.setText(data.alamat)
+            binding.etNIK.editText?.setText(data.data.nik)
+            binding.etNama.editText?.setText(data.data.nama)
+            binding.etAlamat.editText?.setText(data.data.alamat)
+            binding.etPekerjaan.editText?.setText(data.data.pekerjaan)
         }
 
         binding.apply {
-            etPekerjaan.editText?.setOnClickListener {
-                val bottomSheetPekerjaan = BottomSheetPekerjaan()
-                bottomSheetPekerjaan.pekerjaanListener = this@BuatAkun
-                bottomSheetPekerjaan.show(supportFragmentManager, "pekerjaan")
-            }
-
             etPenghasilan.editText?.setOnClickListener {
                 val bottomSheetPenghasilan = BottomSheetPenghasilan()
                 bottomSheetPenghasilan.penghasilanListener = this@BuatAkun
@@ -56,36 +52,10 @@ class BuatAkun : AppCompatActivity(), BottomSheetPekerjaan.PekerjaanListener, Bo
         }
     }
 
-    override fun onPekerjaanSelected(selectedPekerjaan: PekerjaanItemModel) {
-        binding.etPekerjaan.editText?.setText(selectedPekerjaan.nama)
-        saveSelectedPekerjaan(selectedPekerjaan)
-        checkButtonStatus()
-    }
-
     override fun onPenghasilanSelected(selectedPenghasilan: PenghasilanItemModel) {
         binding.etPenghasilan.editText?.setText(selectedPenghasilan.nama)
         saveSelectedPenghasilan(selectedPenghasilan)
         checkButtonStatus()
-    }
-
-    private fun saveSelectedPekerjaan(selectedPekerjaan: PekerjaanItemModel) {
-        val sharedPreferences = getSharedPreferences("job", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("pekerjaanId", selectedPekerjaan.id)
-        editor.putString("pekerjaanNama", selectedPekerjaan.nama)
-        editor.apply()
-    }
-
-    private fun getSavedPekerjaan(): PekerjaanItemModel? {
-        val sharedPreferences = getSharedPreferences("job", Context.MODE_PRIVATE)
-        val pekerjaanId = sharedPreferences.getInt("pekerjaanId", -1)
-        val pekerjaanNama = sharedPreferences.getString("pekerjaanNama", "")
-
-        return if (pekerjaanId != -1 && pekerjaanNama?.isNotBlank() == true) {
-            PekerjaanItemModel(pekerjaanId, pekerjaanNama)
-        } else {
-            null
-        }
     }
 
     private fun saveSelectedPenghasilan(selectedPenghasilan: PenghasilanItemModel) {
@@ -109,13 +79,10 @@ class BuatAkun : AppCompatActivity(), BottomSheetPekerjaan.PekerjaanListener, Bo
     }
 
     private fun checkButtonStatus() {
-        val pekerjaan = getSavedPekerjaan()
         val penghasilan = getSavedPenghasilan()
-
-        val isPekerjaanSelected = pekerjaan != null
         val isPenghasilanSelected = penghasilan != null
 
-        binding.btnLanjut.isEnabled = isPekerjaanSelected && isPenghasilanSelected
+        binding.btnLanjut.isEnabled = isPenghasilanSelected
     }
 
     override fun onDestroy() {
@@ -124,8 +91,6 @@ class BuatAkun : AppCompatActivity(), BottomSheetPekerjaan.PekerjaanListener, Bo
     }
 
     private fun clearPreferences() {
-        val jobPreferences = getSharedPreferences("job", Context.MODE_PRIVATE)
-        jobPreferences.edit().clear().apply()
 
         val penghasilanPreferences = getSharedPreferences("nama_file_preferences", Context.MODE_PRIVATE)
         penghasilanPreferences.edit().clear().apply()

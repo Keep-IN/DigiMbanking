@@ -5,22 +5,17 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.core.domain.model.NikModel
-import com.core.domain.model.OtpModel
+import androidx.lifecycle.viewModelScope
 import com.digimbanking.Features.Auth.CreateRekening.Cif.Nik
-import com.digimbanking.Features.Auth.CreateRekening.Mpin.KonfirmasiMpin
-import com.digimbanking.Features.Auth.CreateRekening.Mpin.MpinViewModel
-import com.digimbanking.Features.Onboard.MainActivity
-import com.digimbanking.R
+import com.core.data.network.Result
 import com.digimbanking.databinding.ActivityOtpBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class Otp : AppCompatActivity() {
@@ -34,15 +29,28 @@ class Otp : AppCompatActivity() {
         setContentView(binding.root)
         otpViewModel = ViewModelProvider(this).get(RegisViewModel::class.java)
 
-//        otpViewModel.generateRandomOtp()
-//        sharedPreferences = getSharedPreferences("Otp", MODE_PRIVATE)
-//
-//        otpViewModel.otpCodeLiveData.observe(this, Observer { otpCode ->
-//            binding.sendOtp.setText(otpCode)
-//            Handler(Looper.getMainLooper()).postDelayed({
-//                navigateToKonfrek()
-//            }, 2000)
-//        })
+        binding.sendOtp.doOnTextChanged { text, start, before, count ->
+            if (text?.length == 4){
+                otpViewModel.viewModelScope.launch(Dispatchers.Main) {
+                    otpViewModel.checkOtp(text.toString()).observe(this@Otp, Observer { result ->
+                        when (result) {
+                            is Result.Success -> {
+                                navigateToKonfrek()
+                            }
+
+                            is Result.Error -> {
+                                Toast.makeText(this@Otp, result.errorMessage, Toast.LENGTH_SHORT).show()
+                            }
+
+                            is Result.Loading -> {
+
+                            }
+                        }
+                    })
+                }
+
+            }
+        }
 
     }
 
