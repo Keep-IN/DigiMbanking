@@ -44,8 +44,8 @@ class MpinSesama: AppCompatActivity() {
                                         startActivity(Intent(this@MpinSesama, ResiTransfer::class.java))
                                     }
                                     is Result.Error -> {
-                                        Toast.makeText(this@MpinSesama, "${it.errorMessage}", Toast.LENGTH_SHORT).show()
-                                        Log.d("Tes", "${it.errorMessage}")
+                                        Toast.makeText(this@MpinSesama, it.errorMessage, Toast.LENGTH_SHORT).show()
+                                        Log.d("Tes", it.errorMessage)
                                     }
                                     else -> {
                                         Log.d("Tes", "Empty JSON")

@@ -3,6 +3,8 @@ package com.digimbanking.Features.Transfer.SesamaBank
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputFilter
+import android.widget.EditText
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityInputNominalBinding
 
@@ -32,6 +34,8 @@ class InputNominal : AppCompatActivity() {
         binding.btnToMpin.setOnClickListener {
             startActivity(Intent(this, MpinSesama::class.java))
         }
+
+        binding.tilNominal.editText?.let { setNoLeadingZeroFilter(it) }
     }
     fun capitalizeWords(input: String?): String{
         val words = input?.split(" ")
@@ -42,4 +46,17 @@ class InputNominal : AppCompatActivity() {
         }
         return output
     }
+
+    fun setNoLeadingZeroFilter(editText: EditText) {
+        val inputFilter = InputFilter { source, start, end, dest, dstart, dend ->
+            if (dstart == 0 && source.toString() == "0") {
+                ""
+            } else {
+                null
+            }
+        }
+        editText.filters = arrayOf(inputFilter)
+    }
+
+
 }
