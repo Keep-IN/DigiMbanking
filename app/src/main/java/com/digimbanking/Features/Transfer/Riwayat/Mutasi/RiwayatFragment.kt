@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.core.domain.model.DataRiwayat
 import com.core.domain.model.RiwayatItemModel
 import com.digimbanking.Data.Adapter.RiwayatTransaksiListAdapter
-import com.digimbanking.Data.Model.DataRiwayatUnused
-import com.digimbanking.Data.Model.RiwayatModel
 import com.digimbanking.Features.Transfer.Riwayat.Filter.BottomSheetFilterFragment
 import com.digimbanking.Features.Transfer.Riwayat.Resi.ResiActivity
 import com.digimbanking.databinding.FragmentRiwayatBinding

@@ -3,6 +3,8 @@ package com.digimbanking.Features.Auth.OnBoard
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.digimbanking.Features.Profile.Profil.FProfil
+import com.digimbanking.Features.Transfer.Riwayat.Filter.BottomSheetFilterFragment
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityOnboardBinding
 
@@ -15,6 +17,7 @@ class Onboard : AppCompatActivity() {
 
         binding.ivNextOB1.setOnClickListener{
             startActivity(Intent(this, OnBoard2::class.java))
+
         }
     }
 }

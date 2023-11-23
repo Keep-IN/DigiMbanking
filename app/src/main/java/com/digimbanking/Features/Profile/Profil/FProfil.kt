@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.core.domain.model.DataProfil
+import com.core.domain.model.ProfilModel
 import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogFailLogin
+import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.Features.Profile.Profil.AlertDialog.AlertDialogLogout
 import com.digimbanking.Features.Profile.UbahPw.UbahPw
@@ -28,6 +32,21 @@ class FProfil : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var nama = binding.tvNama.text.toString()
+        var email = binding.tvProfEmail.text.toString()
+        nama = if(nama.length > 20 ){
+            nama.substring(0,20) + "..."
+        } else {
+            nama
+        }
+        email = if(email.length > 20){
+            email.substring(0, 20) + "..."
+        } else {
+            email
+        }
+
+        binding.tvNama.text = nama
+        binding.tvProfEmail.text = email
 
         binding.apply{
             cvUbahPw.setOnClickListener{

@@ -3,9 +3,13 @@ package com.digimbanking.Features.Auth.Login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent.DispatcherState
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.core.data.network.Result
 import com.core.domain.model.LoginModel
 import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogFailLogin
 import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin
@@ -15,7 +19,9 @@ import com.digimbanking.Features.Transfer.TransferSesama.AlertDialog.AlertDialog
 import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.AlertDialogFailLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+@AndroidEntryPoint
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private  lateinit var loginViewModel: LoginViewModel
@@ -23,7 +29,7 @@ class Login : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        var data: LoginModel? = null
+
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         binding.apply {
@@ -44,17 +50,39 @@ class Login : AppCompatActivity() {
                 } else {
                     binding.tilLoginPw.isErrorEnabled = true
                     binding.btnLoginMasuk.isEnabled = false
-                    binding.tilLoginPw.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
+                    binding.tilLoginPw.error = "Kata Sandi harus terdiri dari minimal 5 karakter"
                 }
             }
             btnLoginMasuk.setOnClickListener{
-                data = loginViewModel.validateLogin(binding.tilLoginEmail.editText?.text.toString(),
-                    binding.tilLoginPw.editText?.text.toString())
-                if(data != null){
-                    AlertDialogSuccessLogin().show(supportFragmentManager,"test")
-                } else {
-                    AlertDialogFailLogin().show(supportFragmentManager, "test")
+                loginViewModel.viewModelScope.launch(Dispatchers.Main){
+                    loginViewModel.login(binding.tilLoginEmail.editText?.text.toString(), binding.tilLoginPw.editText?.text.toString())
+                    .observe(this@Login){
+                        when(it){
+                            is Result.Success -> {
+                                it.data
+                                Log.d("Tes", "$it.data")
+                                AlertDialogSuccessLogin().show(supportFragmentManager,"test")
+                            }
+                            is Result.Error -> {
+                                Toast.makeText(
+                                    this@Login,
+                                    "${it.errorMessage}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                AlertDialogFailLogin().show(supportFragmentManager, "test")
+                            }
+
+                            else -> {Log.d("Tes", "Empty JSON")}
+                        }
+                    }
                 }
+//                data = loginViewModel.validateLogin(binding.tilLoginEmail.editText?.text.toString(),
+//                    binding.tilLoginPw.editText?.text.toString())
+//                if(data != null){
+//                    AlertDialogSuccessLogin().show(supportFragmentManager,"test")
+//                } else {
+//                    AlertDialogFailLogin().show(supportFragmentManager, "test")
+//                }
             }
             validateInput()
         }
