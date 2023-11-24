@@ -3,6 +3,7 @@ package com.digimbanking.di
 import android.content.Context
 import com.core.data.local.preferences.UserPreferencesImpl
 import com.core.data.repositories.EmailRepositorySdh
+import com.core.data.repositories.PasswordRepositroySdh
 import com.core.di.ApiContractAdaRekening
 import dagger.Module
 import dagger.Provides
@@ -29,5 +30,14 @@ object AppModule {
         userPreferences: UserPreferencesImpl
     ): EmailRepositorySdh {
         return EmailRepositorySdh(apiService, userPreferences)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserPasswordRepositorySdh (
+        apiService: ApiContractAdaRekening,
+        userPreferences: UserPreferencesImpl
+    ): PasswordRepositroySdh {
+        return PasswordRepositroySdh(apiService, userPreferences)
     }
 }

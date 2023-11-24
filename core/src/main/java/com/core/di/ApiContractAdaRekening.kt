@@ -19,12 +19,12 @@ import retrofit2.http.Path
 
 interface ApiContractAdaRekening {
 
-    @POST("v1/users/otp-generate")
+    @POST("/api/v1/users/otp-generate")
     suspend fun sendOtpGenerate(
         @Body request: OtpRequest
     ): Response<OtpResponse>
 
-    @PUT("v1/users/{id}/otp-verification")
+    @PUT("/api/v1/users/{id}/otp-verification")
     suspend fun verOtp(
         @Path("id") id: Int,
         @Body data: OtpRequestVer
@@ -36,8 +36,9 @@ interface ApiContractAdaRekening {
         @Body data: RekeningRequest
     ): Response <RekeningResponse>
 
-    @PUT("v1/users/{id}/password")
+    @PUT("/api/v1/users/{id}/password")
     suspend fun createPassword(
+        @Path ("id") id: Int,
         @Body data: KataSandiRequest
     ):  Response <KataSandiResponse>
 

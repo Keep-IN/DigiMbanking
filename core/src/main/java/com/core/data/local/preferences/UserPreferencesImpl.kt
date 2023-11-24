@@ -12,27 +12,6 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-//class UserPreferencesImpl @Inject constructor(
-//    @ApplicationContext private val context: Context
-//) : UserPreferences {
-//
-//    private val sharedPreferences: SharedPreferences = context.getSharedPreferences(
-//        "preferences",
-//        Context.MODE_PRIVATE
-//    )
-//
-//    override suspend fun getIdd(): Int {
-//        return sharedPreferences.getInt(USER_ID_KEY, 0)
-//    }
-//
-//    override suspend fun setId(id: Int) {
-//        sharedPreferences.edit().putInt(USER_ID_KEY, id).apply()
-//    }
-//
-//    companion object {
-//        private const val USER_ID_KEY = "user_id"
-//    }
-//}
 
 class UserPreferencesImpl @Inject constructor(
     @ApplicationContext private val context: Context
