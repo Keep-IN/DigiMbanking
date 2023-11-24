@@ -31,7 +31,7 @@ interface ApiContractAdaRekening {
     ): Response<OtpVerResponse>
 
 
-    @POST("v1/users/confirm-accounts")
+    @POST("/api/v1/users/confirm-accounts")
     suspend fun confirmRekening(
         @Body data: RekeningRequest
     ): Response <RekeningResponse>

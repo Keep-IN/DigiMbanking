@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import com.digimbanking.Features.Auth.AdaRekening.KonfEmailSdh.KonfirmasiEmailSudah
+import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.Features.Auth.Login.Login
 import com.digimbanking.databinding.BottomSheetSudahPunyaAkunBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +36,7 @@ class BottomSheetSudahPunyaAkun : SuperBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvSudahPunyaRekening.setOnClickListener {
-            startActivity(Intent(activity, KonfirmasiEmailSudah::class.java))
+            startActivity(Intent(activity, KonfirmasiRekSudah::class.java))
             requireActivity().finishAffinity()
         }
 

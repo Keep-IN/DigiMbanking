@@ -9,7 +9,7 @@ import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import com.digimbanking.R
 import com.digimbanking.databinding.BottomSheetKonfRekBinding
 
-class BottomSheetKonfRek(private val namaPemilik: String, private val nomorRekening: String, private val inisialPemilik: String) : SuperBottomSheetFragment() {
+class BottomSheetKonfRek(private val namaLengkap: String, private val nik: String) : SuperBottomSheetFragment() {
     lateinit var binding: BottomSheetKonfRekBinding
 
     override fun onCreateView(
@@ -24,9 +24,8 @@ class BottomSheetKonfRek(private val namaPemilik: String, private val nomorReken
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvnamaRek.text = namaPemilik
-        binding.tvnoRek.text = nomorRekening
-        binding.tvInisial.text = inisialPemilik
+        binding.tvnamaRek.text = namaLengkap
+        binding.tvnoRek.text = nik
     }
 
     override fun isSheetAlwaysExpanded() = true
