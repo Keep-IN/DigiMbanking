@@ -24,7 +24,7 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://d1bd-103-189-94-178.ngrok-free.app"
+        private const val  BASE_URL ="https://a5f7-182-253-126-4.ngrok-free.app"
         private const val token = ""
     }
     @Singleton

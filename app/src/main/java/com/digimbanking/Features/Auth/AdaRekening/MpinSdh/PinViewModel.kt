@@ -11,6 +11,21 @@ import javax.inject.Inject
 class PinViewModel @Inject constructor(
     private val createMPIN : MPINRepositorySdh
 ) :ViewModel(){
+
+    private val _pin = MutableLiveData<String>()
+    private val _konfirmasiPin = MutableLiveData<String>()
+    val konfirmasiPin: LiveData<String> get() = _konfirmasiPin
+    val pin: LiveData<String> get() = _pin
+
+    fun setPin(pin: String) {
+        _pin.value = pin
+    }
+
+    fun setKonfirmasiPin(pin: String) {
+        _konfirmasiPin.value = pin
+    }
+
+
     fun putMPIN (
         mpin : String
     ) = createMPIN.putMPIN(mpin)

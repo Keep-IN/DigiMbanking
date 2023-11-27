@@ -31,6 +31,9 @@ class OtpEmailSudah : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[OtpEmailViewModelsdh::class.java]
+        binding.tvRegenOTP.setOnClickListener {
+            regenerateOtp()
+        }
         binding.sendOtp.doOnTextChanged { text, start, before, count ->
             if (text?.length == 4){
                 viewModel.viewModelScope.launch(Dispatchers.Main) {
@@ -54,6 +57,27 @@ class OtpEmailSudah : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun regenerateOtp() {
+        viewModel.viewModelScope.launch(Dispatchers.Main) {
+            viewModel.regenOtp().observe(this@OtpEmailSudah, Observer { result ->
+                when (result) {
+                    is Result.Success -> {
+                        // Handle regenerating OTP success if needed
+                        Toast.makeText(this@OtpEmailSudah, "OTP regenerated successfully", Toast.LENGTH_SHORT).show()
+                    }
+
+                    is Result.Error -> {
+                        Toast.makeText(this@OtpEmailSudah, result.errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+
+                    is Result.Loading -> {
+                        // Handle loading state if needed
+                    }
+                }
+            })
+        }
     }
     private fun navigateToKonfrek() {
         val intent = Intent(this, KonfirmasiRekSudah::class.java)

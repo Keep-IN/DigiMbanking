@@ -19,6 +19,10 @@ class OtpEmailViewModelsdh @Inject constructor(
         otp: String
     ) = otpSent.putOtp(otp)
 
+    fun regenOtp(
+
+    ) = otpSent.regenOtp()
+
 
     val otpCodeLiveData = MutableLiveData<String>()
 

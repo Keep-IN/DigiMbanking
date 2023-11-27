@@ -6,6 +6,7 @@ import com.core.data.response.authAdaRekening.KonfirmasiRekening.RekeningRequest
 import com.core.data.response.authAdaRekening.KonfirmasiRekening.RekeningResponse
 import com.core.data.response.authAdaRekening.MPINsdh.MPINRequestsdh
 import com.core.data.response.authAdaRekening.MPINsdh.MPINResponsesdh
+import com.core.data.response.authAdaRekening.OTPRegen.OTPRegenResponse
 import com.core.data.response.authAdaRekening.OTPVerif.OtpRequestVer
 import com.core.data.response.authAdaRekening.OTPVerif.OtpVerResponse
 import com.core.data.response.authAdaRekening.OTPsdh.DataOtpResponse
@@ -29,6 +30,11 @@ interface ApiContractAdaRekening {
         @Path("id") id: Int,
         @Body data: OtpRequestVer
     ): Response<OtpVerResponse>
+
+    @PUT("/api/v1/users/{id}/otp-regenerate")
+    suspend fun regenOtp(
+        @Path("id") id: Int
+    ): Response<OTPRegenResponse>
 
 
     @POST("/api/v1/users/confirm-accounts")

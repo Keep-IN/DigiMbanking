@@ -12,10 +12,12 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chaos.view.PinView
 import com.core.data.network.Result
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
+import com.digimbanking.Features.Auth.CreateRekening.Mpin.KonfirmasiMpin
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,36 +33,26 @@ class BuatMPINsdh : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this)[PinViewModel::class.java]
-        sharedPreferences = getSharedPreferences("pin", MODE_PRIVATE)
-        binding.sendMPIN.doOnTextChanged { text, start, before, count ->
-            if (text?.length == 6){
-                viewModel.viewModelScope.launch(Dispatchers.Main) {
-                    viewModel.putMPIN(text.toString()).observe(this@BuatMPINsdh, Observer { result ->
-                        when (result) {
-                            is Result.Success -> {
-                               val intent = Intent(this@BuatMPINsdh, KonfirmasiMPINsdh::class.java)
-                                startActivity(intent)
-                            }
+        viewModel = ViewModelProvider(this).get(PinViewModel::class.java)
+        sharedPreferences = getSharedPreferences("Mpin", MODE_PRIVATE)
 
-                            is Result.Error -> {
-                                Toast.makeText(this@BuatMPINsdh, result.errorMessage, Toast.LENGTH_SHORT).show()
-                            }
-
-                            is Result.Loading -> {
-
-                            }
-                        }
-                    })
+        val pinView = binding.sendMPIN
+        pinView.addTextChangedListener {
+            it?.let {
+                viewModel.setPin(it.toString())
+                if (it.length == pinView.itemCount) {
+                    val intent = Intent(this, KonfirmasiMPINsdh::class.java)
+                    startActivity(intent)
                 }
-
             }
         }
-
     }
+
     override fun onPause() {
         super.onPause()
-        sharedPreferences.edit().putString("pin", binding.sendMPIN.text.toString()).apply()
+        viewModel.pin.value?.let {
+            sharedPreferences.edit().putString("pin", it).apply()
+        }
     }
 
 }
