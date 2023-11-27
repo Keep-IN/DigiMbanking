@@ -64,7 +64,6 @@ class OtpEmailSudah : AppCompatActivity() {
             viewModel.regenOtp().observe(this@OtpEmailSudah, Observer { result ->
                 when (result) {
                     is Result.Success -> {
-                        // Handle regenerating OTP success if needed
                         Toast.makeText(this@OtpEmailSudah, "OTP regenerated successfully", Toast.LENGTH_SHORT).show()
                     }
 
@@ -73,7 +72,6 @@ class OtpEmailSudah : AppCompatActivity() {
                     }
 
                     is Result.Loading -> {
-                        // Handle loading state if needed
                     }
                 }
             })
