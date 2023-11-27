@@ -24,6 +24,7 @@ import kotlinx.coroutines.launch
 class BuatMPINsdh : AppCompatActivity() {
     private lateinit var binding: ActivityBuatMpinsdhBinding
     private lateinit var viewModel:PinViewModel
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBuatMpinsdhBinding.inflate(layoutInflater)
@@ -31,14 +32,15 @@ class BuatMPINsdh : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[PinViewModel::class.java]
+        sharedPreferences = getSharedPreferences("pin", MODE_PRIVATE)
         binding.sendMPIN.doOnTextChanged { text, start, before, count ->
             if (text?.length == 6){
                 viewModel.viewModelScope.launch(Dispatchers.Main) {
-                    viewModel.putOtp(text.toString()).observe(this@BuatMPINsdh, Observer { result ->
+                    viewModel.putMPIN(text.toString()).observe(this@BuatMPINsdh, Observer { result ->
                         when (result) {
                             is Result.Success -> {
-                               navigateToKonf()
-                                intent.putExtra("pin", text.toString())
+                               val intent = Intent(this@BuatMPINsdh, KonfirmasiMPINsdh::class.java)
+                                startActivity(intent)
                             }
 
                             is Result.Error -> {
@@ -56,11 +58,9 @@ class BuatMPINsdh : AppCompatActivity() {
         }
 
     }
-
-    private fun navigateToKonf() {
-        val intent = Intent(this, KonfirmasiMPINsdh::class.java)
-        startActivity(intent)
-        finish()
+    override fun onPause() {
+        super.onPause()
+        sharedPreferences.edit().putString("pin", binding.sendMPIN.text.toString()).apply()
     }
 
 }

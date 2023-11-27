@@ -11,7 +11,7 @@ import javax.inject.Inject
 class PinViewModel @Inject constructor(
     private val createMPIN : MPINRepositorySdh
 ) :ViewModel(){
-    fun putOtp (
+    fun putMPIN (
         mpin : String
     ) = createMPIN.putMPIN(mpin)
 }
