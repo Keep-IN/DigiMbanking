@@ -42,8 +42,9 @@ interface ApiContractAdaRekening {
         @Body data: KataSandiRequest
     ):  Response <KataSandiResponse>
 
-    @PUT("v1/users/{id}/mpin")
+    @PUT("/api/v1/users/{id}/mpin")
     suspend fun createMPIN(
+        @Path ("id") id: Int,
         @Body data: MPINRequestsdh
     ): Response <MPINResponsesdh>
 }

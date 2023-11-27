@@ -12,35 +12,36 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.chaos.view.PinView
+import com.digimbanking.Features.Auth.OnBoard.Onboard
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityBuatMpinsdhBinding
 import com.digimbanking.databinding.ActivityKonfirmasiEmailSudahBinding
 import com.digimbanking.databinding.ActivityKonfirmasiMpinsdhBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class KonfirmasiMPINsdh : AppCompatActivity() {
     private lateinit var binding: ActivityKonfirmasiMpinsdhBinding
     private lateinit var viewModel: KonfirmasiMPINViewModelsdh
-    private lateinit var sharedPreferences: SharedPreferences
-
+    private var pinFromFirstActivity: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityKonfirmasiMpinsdhBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this).get(KonfirmasiMPINViewModelsdh::class.java)
-        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        viewModel = ViewModelProvider(this)[KonfirmasiMPINViewModelsdh::class.java]
+
+        pinFromFirstActivity = intent.getStringExtra("pin")
 
         val pinView = binding.pinPiw
         val pinErrorText = binding.pinError
 
         viewModel.konfirmasiPin.observe(this, Observer {
             if (it.length == pinView.itemCount) {
-                val pinFromFirstActivity = sharedPreferences.getString("pin", "")
+
                 if (it == pinFromFirstActivity) {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    MPINDone()
                 } else {
                     pinView.setLineColor(Color.RED)
                     pinErrorText.visibility = View.VISIBLE
@@ -52,10 +53,11 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
             }
         })
 
-        pinView.addTextChangedListener {
-            it?.let {
-                viewModel.setKonfirmasiPin(it.toString())
-            }
-        }
+
+    }
+    private fun MPINDone() {
+        val intent = Intent(this, Onboard::class.java)
+        startActivity(intent)
+        finish()
     }
 }
