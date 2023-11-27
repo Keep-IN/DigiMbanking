@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.core.data.response.auth.createRekening.cif.CifResponse
+import com.core.data.response.auth.createRekening.dukcapil.DukcapilResponse
 import com.core.domain.model.NikModel
 import com.digimbanking.Features.Auth.CreateRekening.Cif.BuatAkun
 import com.digimbanking.Features.Auth.CreateRekening.Registrasi.KataSandi
@@ -24,10 +26,10 @@ class NomorRekening : AppCompatActivity() {
         binding = ActivityNomorRekeningBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val data = intent.getParcelableExtra<NikModel>("dataNik")
+        val data = intent.getParcelableExtra<CifResponse>("nik")
 
         if (data != null) {
-            binding.etNomorRekening.editText?.setText(data.nomorRekening)
+            binding.etNomorRekening.editText?.setText(data.norek)
             binding.btnRegist.isEnabled = true
         } else {
             binding.btnRegist.isEnabled = false

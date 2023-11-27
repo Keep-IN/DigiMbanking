@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.core.data.repositories.OtpRepository
+import com.core.data.repositories.PasswordRepository
 import com.core.domain.model.DataNik
 import com.core.domain.model.DataOtp
 import com.core.domain.model.NikModel
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisViewModel  @Inject constructor(
-    private val otpRepository: OtpRepository
+    private val otpRepository: OtpRepository,
+    private val passwordRepository: PasswordRepository
 ) : ViewModel(){
     fun doOtp(
         email: String
@@ -26,8 +28,10 @@ class RegisViewModel  @Inject constructor(
     var isEmailValid = false
     var isPasswordValid = false
 
+    fun putPass(
+        password: String
+    ) = passwordRepository.putPassword(password)
 
-    val otpCodeLiveData = MutableLiveData<String>()
 
     fun validateEmail(email: String): Boolean{
         isEmailValid = email.contains("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$".toRegex())

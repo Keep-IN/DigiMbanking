@@ -22,7 +22,7 @@ import javax.inject.Singleton
 class NetworkModule {
     companion object{
 
-        private const val  BASE_URL ="https://ebfe-103-189-94-178.ngrok-free.app/api/"
+        private const val  BASE_URL ="https://d1bd-103-189-94-178.ngrok-free.app/api/v1/"
 
     }
     @Singleton

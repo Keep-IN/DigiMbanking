@@ -5,26 +5,72 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.core.data.network.Result
 import com.core.data.response.auth.createRekening.dukcapil.DukcapilResponse
+import com.core.domain.model.DataCard
 import com.core.domain.model.NikModel
 import com.core.domain.model.PekerjaanItemModel
 import com.core.domain.model.PenghasilanItemModel
 import com.digimbanking.Features.Auth.CreateRekening.Card.NomorRekening
 import com.digimbanking.databinding.ActivityBuatAkunBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener{
     lateinit var binding: ActivityBuatAkunBinding
+    lateinit var cifViewModel: CifViewModel
+    private val sharedPrefname = "card"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBuatAkunBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val data = intent.getParcelableExtra<DukcapilResponse>("nik")
+
+        cifViewModel = ViewModelProvider(this).get(CifViewModel::class.java)
+        binding.btnLanjut.setOnClickListener {
+            cifViewModel.viewModelScope.launch(Dispatchers.Main) {
+                if (data != null) {
+                    cifViewModel.sentCif(
+                        data.data.nik,
+                        data.data.nama,
+                        data.data.alamat,
+                        data.data.pekerjaan,
+                        binding.etPenghasilan.editText?.text.toString())
+                        .observe(this@BuatAkun) {
+                            when(it) {
+                                is Result.Success -> {
+                                    it.data
+                                    Log.d("Tes", "${it.data}")
+                                    startActivity(Intent(this@BuatAkun, NomorRekening::class.java).apply {
+                                        putExtra("nik", it.data)
+                                    })
+                                }
+
+                                is Result.Error -> {
+                                    Toast.makeText(
+                                        this@BuatAkun,
+                                        "${it.errorMessage}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+
+                                else -> {
+                                    Log.d("Tes", "Empty JSON")
+                                }
+                            }
+                        }
+                }
+            }
+        }
 
         if (data != null) {
             binding.etNIK.editText?.setText(data.data.nik)
@@ -38,16 +84,6 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
                 val bottomSheetPenghasilan = BottomSheetPenghasilan()
                 bottomSheetPenghasilan.penghasilanListener = this@BuatAkun
                 bottomSheetPenghasilan.show(supportFragmentManager, "penghasilan")
-            }
-
-            btnLanjut.setOnClickListener {
-                if (data != null) {
-                    startActivity(Intent(this@BuatAkun, NomorRekening::class.java).apply {
-                        putExtra("dataNik", data)
-                    })
-                } else {
-                    Toast.makeText(this@BuatAkun, "Nik tidak terdaftar", Toast.LENGTH_SHORT).show()
-                }
             }
         }
     }
@@ -85,14 +121,4 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
         binding.btnLanjut.isEnabled = isPenghasilanSelected
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        clearPreferences()
-    }
-
-    private fun clearPreferences() {
-
-        val penghasilanPreferences = getSharedPreferences("nama_file_preferences", Context.MODE_PRIVATE)
-        penghasilanPreferences.edit().clear().apply()
-    }
 }

@@ -23,6 +23,12 @@ class UserPreferencesImpl @Inject constructor(
         }.first()
     }
 
+    override suspend fun getCard(): Int {
+        return context.dataStore.data.map { preferences ->
+            preferences[CARD_ID_KEY] ?: 0
+        }.first()
+    }
+
     override suspend fun setId(id: Int) {
         context.dataStore.edit {preferences ->
             preferences[USER_ID_KEY] = id

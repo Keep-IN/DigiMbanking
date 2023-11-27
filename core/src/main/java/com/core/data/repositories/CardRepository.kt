@@ -26,9 +26,14 @@ class CardRepository  @Inject constructor(
                     idTipe = it.idTipe,
                     limitTransfer = it.limitTransfer,
                     namaTipe = it.namaTipe
+
                 )
+
             }
             val cardResponse = CardResponse(data = tipe)
+            if (response != null) {
+                userPreferences.setCardId(response.data[0].idTipe)
+            }
             emit(Result.Success(cardResponse))
         } catch (e: Exception ) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }

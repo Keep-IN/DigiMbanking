@@ -28,8 +28,9 @@ class PilihKartu : AppCompatActivity() {
     private lateinit var binding: ActivityPilihKartuBinding
     private lateinit var cardViewmodel : CardViewModel
     private lateinit var sharedPref : SharedPreferences
-    private val sharedPrefname = "kartu_preference"
-    private val key_tipeKartu = "tipe_kartu"
+    private lateinit var datarekening: CardResponse
+    private val sharedPrefname = "card"
+    private val key_tipeKartu = "idCard"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPilihKartuBinding.inflate(layoutInflater)
@@ -42,6 +43,7 @@ class PilihKartu : AppCompatActivity() {
                 when (it) {
                     is Result.Success -> {
                         setupView(it.data)
+
                     }
                     is Result.Error -> {
                         Toast.makeText(this@PilihKartu, "${it.errorMessage}", Toast.LENGTH_SHORT).show()
@@ -64,7 +66,7 @@ class PilihKartu : AppCompatActivity() {
         val tipeKartu = getTipeKartu()
 
         binding.cardSilver.setOnClickListener {
-            saveTipeKartu("silver")
+            saveTipeKartu(1)
             binding.apply {
                 cardSilver.strokeWidth = 5
                 cardGold.strokeWidth = 0
@@ -74,7 +76,7 @@ class PilihKartu : AppCompatActivity() {
         }
 
         binding.cardGold.setOnClickListener {
-            saveTipeKartu("gold")
+            saveTipeKartu(2)
             binding.apply {
                 cardSilver.strokeWidth = 0
                 cardGold.strokeWidth = 5
@@ -84,7 +86,7 @@ class PilihKartu : AppCompatActivity() {
         }
 
         binding.cardPlatinum.setOnClickListener {
-            saveTipeKartu("platinum")
+            saveTipeKartu(3)
             binding.apply {
                 cardSilver.strokeWidth = 0
                 cardGold.strokeWidth = 0
@@ -95,7 +97,7 @@ class PilihKartu : AppCompatActivity() {
 
         binding.btnLanjut.setOnClickListener {
             startActivity(Intent(this, KonfirmasiEmail::class.java))
-
+            com.core.domain.model.DataCard.id = getTipeKartu()
         }
 
     }
@@ -106,6 +108,7 @@ class PilihKartu : AppCompatActivity() {
                 if (it.idTipe == 2) {
                     txtSilver.text = it.namaTipe
                     txtLimit5.text = "Limit transfer: ${it.limitTransfer}"
+
                 } else if (it.idTipe == 1) {
                     txtGold.text = it.namaTipe
                     txtLimit10.text = "Limit transfer: ${it.limitTransfer}"
@@ -120,19 +123,19 @@ class PilihKartu : AppCompatActivity() {
     }
 
 
-    private fun saveTipeKartu(tipe: String) {
+    private fun saveTipeKartu(id: Int) {
         val sharedPreferences = getSharedPreferences(sharedPrefname, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putString(key_tipeKartu, tipe)
+        editor.putInt(key_tipeKartu, id)
         editor.apply()
     }
 
-    private fun getTipeKartu(): String? {
+    private fun getTipeKartu(): Int {
         val sharedPreferences = getSharedPreferences(sharedPrefname, Context.MODE_PRIVATE)
-        return sharedPreferences.getString(key_tipeKartu, null)
+        return sharedPreferences.getInt(key_tipeKartu, 0) // 0 is the default value if the key is not found
     }
 
-    fun validateInput () {
-        binding.btnLanjut.isEnabled = getTipeKartu() != null
+    fun validateInput() {
+        binding.btnLanjut.isEnabled = getTipeKartu() != 0
     }
 }
