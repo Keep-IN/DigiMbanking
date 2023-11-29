@@ -1,7 +1,6 @@
 package com.core.data.local.preferences
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -13,9 +12,9 @@ import javax.inject.Singleton
 
 @Singleton
 
-class UserPreferencesImpl @Inject constructor(
+class UserPreferencesSdhImplSdh @Inject constructor(
     @ApplicationContext private val context: Context
-) :UserPreferences {
+) :UserPreferencesSdh {
 
     private val Context.dataStore by preferencesDataStore(name = "preferences")
     override suspend fun getIdd(): Int {

@@ -2,9 +2,8 @@ package com.core.data.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.core.data.local.preferences.UserPreferences
+import com.core.data.local.preferences.UserPreferencesSdh
 import com.core.data.network.Result
-import com.core.data.response.authAdaRekening.BuatKataSandisdh.KataSandiResponse
 import com.core.data.response.authAdaRekening.MPINsdh.MPINRequestsdh
 import com.core.data.response.authAdaRekening.MPINsdh.MPINResponsesdh
 import com.core.di.ApiContractAdaRekening
@@ -12,7 +11,7 @@ import javax.inject.Inject
 
 class MPINRepositorySdh @Inject constructor(
     private val apiService : ApiContractAdaRekening,
-    private val userPreferences: UserPreferences,
+    private val userPreferencesSdh: UserPreferencesSdh,
 ) {
 
     fun putMPIN(
@@ -21,7 +20,7 @@ class MPINRepositorySdh @Inject constructor(
         emit(Result.Loading)
 
         try {
-            val id = userPreferences.getIdd()
+            val id = userPreferencesSdh.getIdd()
             val response = apiService.createMPIN(id, MPINRequestsdh(mpin))
             val responseBody = response.body()
 

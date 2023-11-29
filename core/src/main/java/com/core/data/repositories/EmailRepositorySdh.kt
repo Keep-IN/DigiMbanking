@@ -2,12 +2,11 @@ package com.core.data.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.core.data.local.preferences.UserPreferences
+import com.core.data.local.preferences.UserPreferencesSdh
 import com.core.data.network.Result
 import com.core.data.response.authAdaRekening.OTPRegen.OTPRegenResponse
 import com.core.data.response.authAdaRekening.OTPVerif.OtpRequestVer
 import com.core.data.response.authAdaRekening.OTPVerif.OtpVerResponse
-import com.core.data.response.authAdaRekening.OTPsdh.DataOtpResponse
 import com.core.data.response.authAdaRekening.OTPsdh.OtpRequest
 import com.core.data.response.authAdaRekening.OTPsdh.OtpResponse
 import com.core.di.ApiContractAdaRekening
@@ -17,7 +16,7 @@ import javax.inject.Singleton
 @Singleton
 class EmailRepositorySdh @Inject constructor(
     private val apiService : ApiContractAdaRekening,
-    private val userPreferences: UserPreferences,
+    private val userPreferencesSdh: UserPreferencesSdh,
 ){
     fun postOtp(
         email: String,
@@ -27,7 +26,7 @@ class EmailRepositorySdh @Inject constructor(
             val response = apiService.sendOtpGenerate(OtpRequest(email))
             val responseBody = response.body()
             if (responseBody != null) {
-                userPreferences.setId(responseBody.data.idUser)
+                userPreferencesSdh.setId(responseBody.data.idUser)
             }
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
@@ -45,7 +44,7 @@ class EmailRepositorySdh @Inject constructor(
         emit(Result.Loading)
 
         try {
-            val id = userPreferences.getIdd()
+            val id = userPreferencesSdh.getIdd()
             val response = apiService.verOtp(id, OtpRequestVer(otp))
             val responseBody = response.body()
 
@@ -63,7 +62,7 @@ class EmailRepositorySdh @Inject constructor(
         emit(Result.Loading)
 
         try {
-            val id = userPreferences.getIdd()
+            val id = userPreferencesSdh.getIdd()
             val response = apiService.regenOtp(id)
             val responseBody = response.body()
 

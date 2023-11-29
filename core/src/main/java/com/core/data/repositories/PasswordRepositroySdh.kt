@@ -2,12 +2,10 @@ package com.core.data.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.core.data.local.preferences.UserPreferences
+import com.core.data.local.preferences.UserPreferencesSdh
 import com.core.data.network.Result
 import com.core.data.response.authAdaRekening.BuatKataSandisdh.KataSandiRequest
 import com.core.data.response.authAdaRekening.BuatKataSandisdh.KataSandiResponse
-import com.core.data.response.authAdaRekening.OTPVerif.OtpRequestVer
-import com.core.data.response.authAdaRekening.OTPVerif.OtpVerResponse
 import com.core.di.ApiContractAdaRekening
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,7 +13,7 @@ import javax.inject.Singleton
 @Singleton
 class PasswordRepositroySdh @Inject constructor(
     private val apiService : ApiContractAdaRekening,
-    private val userPreferences: UserPreferences,
+    private val userPreferencesSdh: UserPreferencesSdh,
 ){
     fun putNewpass(
         password: String
@@ -23,7 +21,7 @@ class PasswordRepositroySdh @Inject constructor(
         emit(Result.Loading)
 
         try {
-            val id = userPreferences.getIdd()
+            val id = userPreferencesSdh.getIdd()
             val response = apiService.createPassword(id, KataSandiRequest(password))
             val responseBody = response.body()
 

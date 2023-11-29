@@ -1,7 +1,7 @@
 package com.digimbanking.di
 
 import android.content.Context
-import com.core.data.local.preferences.UserPreferencesImpl
+import com.core.data.local.preferences.UserPreferencesSdhImplSdh
 import com.core.data.repositories.EmailRepositorySdh
 import com.core.data.repositories.MPINRepositorySdh
 import com.core.data.repositories.PasswordRepositroySdh
@@ -16,19 +16,19 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object AppModuleSdh {
 
     @Singleton
     @Provides
-    fun provideUserPreferencesDataStore(@ApplicationContext context: Context): UserPreferencesImpl {
-        return UserPreferencesImpl(context)
+    fun provideUserPreferencesDataStore(@ApplicationContext context: Context): UserPreferencesSdhImplSdh {
+        return UserPreferencesSdhImplSdh(context)
     }
 
     @Singleton
     @Provides
     fun provideUserEmailRepositorySdh (
         apiService: ApiContractAdaRekening,
-        userPreferences: UserPreferencesImpl
+        userPreferences: UserPreferencesSdhImplSdh
     ): EmailRepositorySdh {
         return EmailRepositorySdh(apiService, userPreferences)
     }
@@ -37,7 +37,7 @@ object AppModule {
     @Provides
     fun provideUserPasswordRepositorySdh (
         apiService: ApiContractAdaRekening,
-        userPreferences: UserPreferencesImpl
+        userPreferences: UserPreferencesSdhImplSdh
     ): PasswordRepositroySdh {
         return PasswordRepositroySdh(apiService, userPreferences)
     }
@@ -46,7 +46,7 @@ object AppModule {
     @Provides
     fun provideUserMPINRepositorySdh (
         apiService: ApiContractAdaRekening,
-        userPreferences: UserPreferencesImpl
+        userPreferences: UserPreferencesSdhImplSdh
     ): MPINRepositorySdh {
         return MPINRepositorySdh(apiService, userPreferences)
     }

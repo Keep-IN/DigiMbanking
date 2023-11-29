@@ -3,7 +3,6 @@ package com.core.data.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.core.data.network.Result
-import com.core.data.local.preferences.UserPreferences
 import com.core.data.response.authAdaRekening.KonfirmasiRekening.RekeningRequest
 import com.core.data.response.authAdaRekening.KonfirmasiRekening.RekeningResponse
 import com.core.di.ApiContractAdaRekening

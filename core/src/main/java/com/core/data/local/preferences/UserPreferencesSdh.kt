@@ -1,8 +1,6 @@
 package com.core.data.local.preferences
 
-import com.core.data.response.authAdaRekening.OTPsdh.DataOtpResponse
-
-interface UserPreferences {
+interface UserPreferencesSdh {
 
     suspend fun getIdd(): Int
 
