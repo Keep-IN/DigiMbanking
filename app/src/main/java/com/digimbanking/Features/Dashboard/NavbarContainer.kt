@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.digimbanking.Features.Akun.AkunFragment
+import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.Features.Transfer.Riwayat.Mutasi.RiwayatFragment
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityNavbarContainerBinding
@@ -25,7 +26,7 @@ class NavbarContainer : AppCompatActivity() {
                 R.id.nav_beranda -> replaceFragment(BerandaFragment())
                 R.id.nav_akun -> replaceFragment(AkunFragment())
                 R.id.nav_riwayat -> replaceFragment(RiwayatFragment())
-//                R.id.nav_profil -> replaceFragment(ProfilFragment())
+                R.id.nav_profil -> replaceFragment(FProfil())
             }
             true
         }

@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.ContactsContract.Data
 import com.core.domain.model.DataVersion
+import com.digimbanking.Features.Auth.Question.BottomSheetSudahPunyaAkun
+import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.databinding.ActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +21,7 @@ class Splash : AppCompatActivity() {
         Handler().postDelayed({
             val intent = Intent(this@Splash, Onboard::class.java)
             startActivity(intent)
+
 
             finish()
         }, splashTimeOut)

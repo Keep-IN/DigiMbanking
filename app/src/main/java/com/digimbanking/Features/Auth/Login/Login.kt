@@ -1,30 +1,40 @@
 package com.digimbanking.Features.Auth.Login
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent.DispatcherState
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.core.data.network.Result
 import com.core.domain.model.LoginModel
 import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogFailLogin
 import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin
 import com.digimbanking.Features.Auth.OnBoard.Onboard
 import com.digimbanking.Features.Onboard.MainActivity
+import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.Features.Transfer.TransferSesama.AlertDialog.AlertDialogGagal
 import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.AlertDialogFailLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private  lateinit var loginViewModel: LoginViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        var data: LoginModel? = null
+
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         binding.apply {
@@ -49,13 +59,35 @@ class Login : AppCompatActivity() {
                 }
             }
             btnLoginMasuk.setOnClickListener{
-                data = loginViewModel.validateLogin(binding.tilLoginEmail.editText?.text.toString(),
-                    binding.tilLoginPw.editText?.text.toString())
-                if(data != null){
-                    AlertDialogSuccessLogin().show(supportFragmentManager,"test")
-                } else {
-                    AlertDialogFailLogin().show(supportFragmentManager, "test")
+                loginViewModel.viewModelScope.launch(Dispatchers.Main){
+                    loginViewModel.login(binding.tilLoginEmail.editText?.text.toString(), binding.tilLoginPw.editText?.text.toString())
+                    .observe(this@Login){
+                        when(it){
+                            is Result.Success -> {
+                                it.data
+                                val sharedPref = getSharedPreferences("token", Context.MODE_PRIVATE)
+                                val sPref = sharedPref.edit()
+                                sPref.putString("token", it.data.token)
+
+                                Log.d("Tes", "token: ${it.data.token}")
+                                sPref.apply()
+                                AlertDialogSuccessLogin().show(supportFragmentManager,"test")
+                            }
+                            is Result.Error -> {
+                                AlertDialogFailLogin().show(supportFragmentManager, "test")
+                            }
+
+                            else -> {Log.d("Tes", "Empty JSON")}
+                        }
+                    }
                 }
+//                data = loginViewModel.validateLogin(binding.tilLoginEmail.editText?.text.toString(),
+//                    binding.tilLoginPw.editText?.text.toString())
+//                if(data != null){
+//                    AlertDialogSuccessLogin().show(supportFragmentManager,"test")
+//                } else {
+//                    AlertDialogFailLogin().show(supportFragmentManager, "test")
+//                }
             }
             validateInput()
         }

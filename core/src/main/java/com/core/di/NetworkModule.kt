@@ -11,6 +11,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -101,4 +104,9 @@ class NetworkModule {
     @Provides
     fun provideApiRiwayat(retrofit: Retrofit): ApiContractRiwayat =
         retrofit.create(ApiContractRiwayat::class.java)
+    @Singleton
+    @Provides
+    fun provideApiLogin(retrofit: Retrofit): ApiContractLogin =
+        retrofit.create(ApiContractLogin::class.java)
+
 }

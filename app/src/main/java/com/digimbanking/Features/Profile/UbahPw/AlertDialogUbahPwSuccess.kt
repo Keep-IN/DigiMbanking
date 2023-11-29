@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
 import com.digimbanking.Features.Auth.Login.Login
+import com.digimbanking.Features.Dashboard.NavbarContainer
 import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.R
 import com.digimbanking.databinding.AlertDialogUbahPwSuccessBinding
@@ -38,8 +39,8 @@ class AlertDialogUbahPwSuccess : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnOkSusesUbahPw.setOnClickListener {
-            startActivity(Intent(activity, FProfil::class.java))
-//            requireActivity().finishAffinity()
+            startActivity(Intent(activity, NavbarContainer::class.java))
+            requireActivity().finishAffinity()
         }
     }
 }

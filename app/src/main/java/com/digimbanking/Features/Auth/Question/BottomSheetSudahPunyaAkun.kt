@@ -14,6 +14,7 @@ import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.BuatSandiSudah
 import com.digimbanking.Features.Auth.AdaRekening.KonfEmailSdh.KonfirmasiEmailSudah
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.Features.Auth.Login.Login
+import com.digimbanking.Features.Profile.UbahPw.UbahPw
 import com.digimbanking.databinding.BottomSheetSudahPunyaAkunBinding
 import dagger.hilt.android.AndroidEntryPoint
 
