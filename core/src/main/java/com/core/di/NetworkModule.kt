@@ -22,8 +22,8 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://ebfe-103-189-94-178.ngrok-free.app/api/v1/"
-        private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDA3MDc5NzMsImV4cCI6MTcwMDc5NDM3M30.u8FZcaVQWPSarOOj_Xi00oObfn4sRJriln-R16noOKI"
+        private const val  BASE_URL ="https://81fc-103-189-94-178.ngrok-free.app/api/v1/"
+        private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEyMjUzNjUsImV4cCI6MTcwMTMxMTc2NX0.eIM2PokwcyLjcmZXX_m4d8KE6N9Kjh3y_5gXUK75GuU"
     }
     @Singleton
     @Provides
@@ -70,7 +70,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit): ApiContractTransfer =
+    fun provideApiTransfer(retrofit: Retrofit): ApiContractTransfer =
         retrofit.create(ApiContractTransfer::class.java)
 
     @Singleton

@@ -1,8 +1,11 @@
 package com.core.data.response.transferSesama
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class TransactionResponse(
     @SerializedName("data")
     val dataTransaksi: DataTransaksi,
@@ -13,5 +16,5 @@ data class TransactionResponse(
     @SerializedName("penerima")
     val penerima: RekeningModel,
     @SerializedName("pengirim")
-    val rekeningModel: RekeningModel
-)
+    val pengirim: RekeningModel
+): Parcelable

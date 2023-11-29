@@ -30,7 +30,7 @@ class RekTujuan : AppCompatActivity() {
         binding = ActivityRekTujuanBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        var dataBank = intent.getParcelableExtra<DataBank>("bank")
+        val dataBank = intent.getParcelableExtra<DataBank>("bank")
         Log.d("Content:", "$dataBank")
         if (dataBank != null){
             binding.tilPilihBank.editText?.setText(dataBank.namaBank)

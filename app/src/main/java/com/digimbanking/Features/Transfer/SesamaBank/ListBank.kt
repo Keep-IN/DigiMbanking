@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +35,7 @@ class ListBank : AppCompatActivity() {
         binding.rvListBank.layoutManager = LinearLayoutManager(this)
 
         viewModel.viewModelScope.launch(Dispatchers.Main) {
+            onLoading()
             viewModel.getListBank().observe(this@ListBank){
                 when(it){
                     is Result.Success -> {
@@ -41,13 +43,16 @@ class ListBank : AppCompatActivity() {
                         adapterListBank.submitList(it.data.data)
                         dataBank = it.data.data.toMutableList()
                         adapterListBank.setOnclickItem(rvClickListener)
+                        onFinishedLoading()
                     }
                     is Result.Error -> {
                         Toast.makeText(this@ListBank, it.errorMessage, Toast.LENGTH_SHORT).show()
                         Log.d("Tes", it.errorMessage)
+                        onFinishedLoading()
                     }
                     else -> {
                         Log.d("Tes", "Empty JSON")
+                        onFinishedLoading()
                     }
                 }
             }
@@ -73,4 +78,12 @@ class ListBank : AppCompatActivity() {
                 finish()
             })
         }
+
+    private fun onLoading(){
+        binding.loadScreen.visibility = View.VISIBLE
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreen.visibility = View.GONE
+    }
 }

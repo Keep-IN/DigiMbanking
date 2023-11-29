@@ -1,17 +1,22 @@
 package com.core.data.response.transferSesama
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class DataTransaksi(
-    @SerializedName("biaya_admin")
-    val biayaAdmin: Int,
+    @SerializedName("biayaAdmin")
+    val biayaAdmin: Double,
     @SerializedName("catatan")
     val catatan: String,
-    @SerializedName("kode_transaksi")
-    val kodeTransaksi: Int,
-    @SerializedName("tipe_transaksi")
-    val tipeTransaksi: String,
-    @SerializedName("total_transaksi")
-    val totalTransaksi: Double
-)
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("jenisTransaksi")
+    val jenisTransaksi: String,
+    @SerializedName("timeTransaksi")
+    val timeTransaksi: String,
+    @SerializedName("totalTransaksi")
+    val totalTransaksi: String
+): Parcelable
