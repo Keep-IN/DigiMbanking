@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.KeyEvent.DispatcherState
 import android.widget.Toast
@@ -65,10 +66,9 @@ class Login : AppCompatActivity() {
                         when(it){
                             is Result.Success -> {
                                 it.data
-                                val sharedPref = getSharedPreferences("token", Context.MODE_PRIVATE)
+                                val sharedPref = this@Login.getPreferences(Context.MODE_PRIVATE)
                                 val sPref = sharedPref.edit()
                                 sPref.putString("token", it.data.token)
-
                                 Log.d("Tes", "token: ${it.data.token}")
                                 sPref.apply()
                                 AlertDialogSuccessLogin().show(supportFragmentManager,"test")
