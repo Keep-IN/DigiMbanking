@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/nav_beranda"
-        android:icon="@drawable/ic_beranda"
+        android:icon="@drawable/bg_beranda_selector"
         android:title="@string/beranda"
         app:showAsAction="always"
         />
 
     <item
         android:id="@+id/nav_akun"
-        android:icon="@drawable/ic_akun"
+        android:icon="@drawable/bg_akun_selector"
         android:title="@string/akun"
         app:showAsAction="always"
 
@@ -19,14 +19,14 @@
 
     <item
         android:id="@+id/nav_riwayat"
-        android:icon="@drawable/ic_riwayat"
+        android:icon="@drawable/bg_riwayat_selector"
         android:title="@string/riwayat"
         app:showAsAction="always"
         />
 
     <item
         android:id="@+id/nav_profil"
-        android:icon="@drawable/ic_profil"
+        android:icon="@drawable/bg_profil_selector"
         android:title="@string/profil"
         app:showAsAction="always"
         />

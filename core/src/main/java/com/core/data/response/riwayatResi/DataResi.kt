@@ -1,9 +1,9 @@
-package com.core.data.response.transferSesama
+package com.core.data.response.riwayatResi
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Data(
+data class DataResi(
     @SerializedName("biaya_admin")
     val biayaAdmin: Int,
     @SerializedName("catatan")
@@ -13,5 +13,5 @@ data class Data(
     @SerializedName("tipe_transaksi")
     val tipeTransaksi: String,
     @SerializedName("total_transaksi")
-    val totalTransaksi: Double
+    val totalTransaksi: String
 )

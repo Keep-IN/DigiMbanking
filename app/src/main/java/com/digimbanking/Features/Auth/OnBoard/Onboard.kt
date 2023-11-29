@@ -8,6 +8,7 @@ import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.Features.Transfer.Riwayat.Filter.BottomSheetFilterFragment
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityOnboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 class Onboard : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardBinding

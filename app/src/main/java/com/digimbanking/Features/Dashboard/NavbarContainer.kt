@@ -3,6 +3,7 @@ package com.digimbanking.Features.Dashboard
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.digimbanking.Features.Akun.AkunFragment
 import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.Features.Transfer.Riwayat.Mutasi.RiwayatFragment
 import com.digimbanking.R
@@ -23,7 +24,7 @@ class NavbarContainer : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.nav_beranda -> replaceFragment(BerandaFragment())
-//                R.id.nav_akun -> replaceFragment(AkunFragment())
+                R.id.nav_akun -> replaceFragment(AkunFragment())
                 R.id.nav_riwayat -> replaceFragment(RiwayatFragment())
                 R.id.nav_profil -> replaceFragment(FProfil())
             }
@@ -38,8 +39,4 @@ class NavbarContainer : AppCompatActivity() {
             commit()
         }
     }
-
-//    override fun onBackPressed() {
-//        BottomSheetKeluar().show(supportFragmentManager, "Keluar")
-//    }
 }

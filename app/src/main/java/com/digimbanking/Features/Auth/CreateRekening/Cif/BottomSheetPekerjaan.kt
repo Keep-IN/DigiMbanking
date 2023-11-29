@@ -21,7 +21,9 @@ import com.digimbanking.Data.Adapter.PenghasilanAdapter
 import com.digimbanking.R
 import com.digimbanking.databinding.BottomSheetPekerjaanBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BottomSheetPekerjaan : BottomSheetDialogFragment() {
     lateinit var binding: BottomSheetPekerjaanBinding
     private lateinit var pekerjaanAdapter: PekerjaanAdapter

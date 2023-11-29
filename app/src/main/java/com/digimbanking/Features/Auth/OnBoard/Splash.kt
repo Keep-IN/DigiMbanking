@@ -9,6 +9,7 @@ import com.core.domain.model.DataVersion
 import com.digimbanking.Features.Auth.Question.BottomSheetSudahPunyaAkun
 import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 class Splash : AppCompatActivity() {
     private val splashTimeOut: Long = 3000

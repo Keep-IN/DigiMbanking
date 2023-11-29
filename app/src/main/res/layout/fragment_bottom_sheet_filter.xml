@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white_primary"
     tools:context=".Features.Transfer.Riwayat.Filter.BottomSheetFilterFragment">
 
     <TextView
@@ -91,7 +92,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins"
         android:text="Tanggal"
+        android:textColor="@color/black_basic"
         app:layout_constraintStart_toStartOf="@+id/tv15HariTerakhir"
         app:layout_constraintTop_toBottomOf="@+id/tv15HariTerakhir" />
 
@@ -106,40 +109,6 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/tilDateStart"
         app:layout_constraintStart_toStartOf="@+id/tvTanggal" />
-
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-    <!--        android:id="@+id/cvTanggalMulai"-->
-    <!--        android:layout_width="150dp"-->
-    <!--        android:layout_height="30dp"-->
-    <!--        app:strokeColor="@color/purple_500"-->
-    <!--        app:strokeWidth="1dp"-->
-    <!--        tools:layout_editor_absoluteX="231dp"-->
-    <!--        tools:layout_editor_absoluteY="322dp">-->
-
-    <!--    </com.google.android.material.textfield.TextInputLayout>-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/tvTanggalAkhir"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Tanggal Akhir"-->
-    <!--        android:textColor="@color/grey_neutral"-->
-    <!--        android:textSize="10sp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/tvTanggalMulai"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/tvTanggalMulai"-->
-    <!--        tools:layout_editor_absoluteX="274dp" />-->
-
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-    <!--        android:id="@+id/cvTanggalAkhir"-->
-    <!--        android:layout_width="150dp"-->
-    <!--        android:layout_height="30dp"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/cvTanggalMulai"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/tvTanggalMulai"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/tvTanggalMulai"-->
-    <!--        app:strokeColor="@color/purple_500">-->
-
-    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
         android:id="@+id/btnTerapkan"
@@ -170,12 +139,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTanggal">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tilCalendarStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_filter_selector"
-            android:drawableEnd="@drawable/ic_calendar"
+            android:drawableEnd="@drawable/bg_calendar_selector"
             android:focusable="false"
-            android:hint="dd/mm/yyyy"
+            android:hint="yyyy/MM/dd"
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
@@ -193,12 +163,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTanggal">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tilCalendarEnd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_filter_selector"
-            android:drawableEnd="@drawable/ic_calendar"
+            android:drawableEnd="@drawable/bg_calendar_selector"
             android:focusable="false"
-            android:hint="dd/mm/yyyy"
+            android:hint="yyyy/MM/dd"
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
@@ -209,7 +180,8 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/poppins"
         android:text="Tanggal Akhir"
         android:textColor="#4A5568"

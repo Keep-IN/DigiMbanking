@@ -1,9 +1,9 @@
-package com.core.data.response.transferSesama
+package com.core.data.response.riwayatResi
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Pengirim(
+data class Penerima(
     @SerializedName("nama")
     val nama: String,
     @SerializedName("nama_bank")

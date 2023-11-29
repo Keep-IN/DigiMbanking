@@ -11,22 +11,42 @@ import com.digimbanking.R
 import com.digimbanking.databinding.FragmentBottomSheetFilterBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import androidx.core.util.Pair
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
+import androidx.lifecycle.viewModelScope
+import com.core.data.network.Result
+import com.core.data.response.riwayatTransaksi.Transaction
+import com.core.domain.model.DataRiwayat
+import com.digimbanking.Features.Transfer.Riwayat.Mutasi.RiwayatViewModel
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@AndroidEntryPoint
 class BottomSheetFilterFragment : SuperBottomSheetFragment() {
     private lateinit var binding: FragmentBottomSheetFilterBinding
-    private var dataDateRangePicker: String? = null
+    private lateinit var viewModel: RiwayatViewModel
+    private var dataDateStart: String? = null
+    private var dataDateEnd: String? = null
     companion object {
-        fun newInstance(date: String): BottomSheetFilterFragment{
+        fun newInstance(dateStart: String, dateEnd: String): BottomSheetFilterFragment{
             val fragment = BottomSheetFilterFragment()
             fragment.arguments = Bundle().apply {
-                putString("date", date)
+                putString("dateStart", dateStart)
+                putString("dateEnd", dateEnd)
             }
             return fragment
         }
     }
+    interface DateFilterListener{
+        fun filteredByDateHistory(start: String, end: String)
+    }
+    var dateFilterListener: DateFilterListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,8 +59,12 @@ class BottomSheetFilterFragment : SuperBottomSheetFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentBottomSheetFilterBinding.bind(view)
-
+        viewModel = ViewModelProvider(this)[RiwayatViewModel::class.java]
+        val today = MaterialDatePicker.todayInUtcMilliseconds()
+        val constraints = CalendarConstraints.Builder()
+            .setStart(today)
+            .setEnd(today)
+            .build()
         val dateRangePicker =
             MaterialDatePicker.Builder.dateRangePicker()
                 .setTitleText("Select dates")
@@ -55,12 +79,12 @@ class BottomSheetFilterFragment : SuperBottomSheetFragment() {
                 dateRangePicker.show(fragmentManager, dateRangePicker.toString())
             }
             dateRangePicker.addOnPositiveButtonClickListener {
-                val formattedStartDate = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+                dataDateStart = SimpleDateFormat("yyyy-MM-dd", Locale.US)
                     .format(Date(it.first))
-                val formattedEndDate = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+                dataDateEnd = SimpleDateFormat("yyyy-MM-dd", Locale.US)
                     .format(Date(it.second))
-                binding.tilDateStart.editText?.setText(formattedStartDate)
-                binding.tilDateEnd.editText?.setText(formattedEndDate)
+                binding.tilDateStart.editText?.setText(dataDateStart)
+                binding.tilDateEnd.editText?.setText(dataDateEnd)
             }
         }
 
@@ -69,9 +93,9 @@ class BottomSheetFilterFragment : SuperBottomSheetFragment() {
                 dateRangePicker.show(fragmentManager, dateRangePicker.toString())
             }
             dateRangePicker.addOnPositiveButtonClickListener {
-                val formattedStartDate = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+                val formattedStartDate = SimpleDateFormat("yyyy-MM-dd", Locale.US)
                     .format(Date(it.first))
-                val formattedEndDate = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+                val formattedEndDate = SimpleDateFormat("yyyy-MM-dd", Locale.US)
                     .format(Date(it.second))
                 binding.tilDateStart.editText?.setText(formattedStartDate)
                 binding.tilDateEnd.editText?.setText(formattedEndDate)
@@ -79,9 +103,6 @@ class BottomSheetFilterFragment : SuperBottomSheetFragment() {
 
         }
 
-//        binding.tilDateEnd.editText?.setOnClickListener {
-//            fragmentManager?.let { it1 -> DatePicker().show(it1, "test") }
-//        }
 
         binding.rgFilter.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId){
@@ -95,6 +116,11 @@ class BottomSheetFilterFragment : SuperBottomSheetFragment() {
             tilDateStart.isEnabled = false
             tilDateEnd.isEnabled = false
 
+        }
+
+        binding.btnTerapkan.setOnClickListener{
+            dateFilterListener?.filteredByDateHistory(dataDateStart.toString(), dataDateEnd.toString())
+            dismiss()
         }
     }
     private fun handleFilter7HariSelection(){
@@ -141,6 +167,7 @@ class BottomSheetFilterFragment : SuperBottomSheetFragment() {
             }
         }
     }
+
     override fun isSheetAlwaysExpanded() = true
     override fun getExpandedHeight() = -2
 }

@@ -41,6 +41,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
 
     //lifecycle
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.x.x"
-    implementation "androidx.lifecycle:lifecycle-livedata:2.x.x"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+
+    // auto scroll to top
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
 }

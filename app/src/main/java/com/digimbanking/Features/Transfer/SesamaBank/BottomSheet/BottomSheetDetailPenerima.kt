@@ -12,7 +12,9 @@ import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import com.digimbanking.Features.Transfer.SesamaBank.InputNominal
 import com.digimbanking.Features.Transfer.SesamaBank.ResiTransfer
 import com.digimbanking.databinding.BottomSheetRekTujuanBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BottomSheetDetailPenerima: SuperBottomSheetFragment() {
     private lateinit var binding: BottomSheetRekTujuanBinding
     private var dataRekNama: String? = null

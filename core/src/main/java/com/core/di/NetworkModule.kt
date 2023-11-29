@@ -1,12 +1,9 @@
 package com.core.di
 
+import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
-import android.os.CountDownTimer
 import android.preference.PreferenceManager
-import androidx.core.app.ActivityCompat.finishAffinity
-import androidx.core.content.ContextCompat.startActivity
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -21,6 +18,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
+import retrofit2.create
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -28,9 +28,9 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://81fc-103-189-94-178.ngrok-free.app/"
+        private const val  BASE_URL ="https://81fc-103-189-94-178.ngrok-free.app/api/v1/"
+        private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEyMjUzNjUsImV4cCI6MTcwMTMxMTc2NX0.eIM2PokwcyLjcmZXX_m4d8KE6N9Kjh3y_5gXUK75GuU"
     }
-
     @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
@@ -45,9 +45,7 @@ class NetworkModule {
         loggingInterceptor: HttpLoggingInterceptor,
         sharedPreferences: SharedPreferences
     ): OkHttpClient {
-        val token = sharedPreferences.getString("token", null)
         return OkHttpClient.Builder()
-
             .addInterceptor(loggingInterceptor)
             .addInterceptor { chain ->
                 val requestBuilder = chain.request()
@@ -67,24 +65,34 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit {
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(provideHttpLoggingInterceptor())
-            .build()
-
-        return Retrofit.Builder()
+    fun provideRetrofit(okHttpClient: OkHttpClient) : Retrofit =
+        Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(okHttpClient)
             .build()
-    }
-
 
     @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit): ApiContractLogin =
-        retrofit.create(ApiContractLogin::class.java)
+    fun provideApi(retrofit: Retrofit): ApiContractCreateRekening =
+        retrofit.create(ApiContractCreateRekening::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApis(retrofit: Retrofit): ApiContractDukcapil =
+        retrofit.create(ApiContractDukcapil::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApiTransfer(retrofit: Retrofit): ApiContractTransfer =
+        retrofit.create(ApiContractTransfer::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApisdh(retrofit: Retrofit): ApiContractAdaRekening =
+        retrofit.create(ApiContractAdaRekening::class.java)
+
 
     @Singleton
     @Provides
@@ -92,46 +100,13 @@ class NetworkModule {
         return PreferenceManager.getDefaultSharedPreferences(context)
     }
 
-//    @Singleton
-//    @Provides
-//    fun scheduleTokenCheck() {
-//    CoroutineScope(Dispatchers.IO).launch {
-//        while (true) {
-//            delay(60000) // Cek setiap menit, sesuaikan dengan kebutuhan Anda
-//            checkTokenExpiration()
-//        }
-//    }
-//}
-//
-//    @Singleton
-//    @Provides
-//    suspend fun checkTokenExpiration() {
-//    // Dapatkan waktu kedaluwarsa dari token atau server
-//    val expirationTime = // ...
-//
-//    if (System.currentTimeMillis() > expirationTime) {
-//        // Token telah kedaluwarsa, lakukan logout
-//        logout()
-//    }
-//}
-//
-//    @Singleton
-//    @Provides
-//    fun logout(
-//        sharedPreferences: SharedPreferences
-//    ) {
-//        val editor = sharedPreferences.edit()
-//        editor.remove("token")
-//        editor.apply()
-//
-//    // Pindah ke layar login
-//    // Contoh menggunakan Intent pada Android
-//       val intent = Intent(context, Login::class.java)
-//       startActivity(intent)
-//
-//    // Sebaiknya, hapus juga semua aktivitas sebelumnya dari tumpukan aktivitas
-//    // agar pengguna tidak dapat kembali ke layar yang seharusnya hanya dapat diakses setelah login.
-//       finishAffinity()
-//    }
+    @Singleton
+    @Provides
+    fun provideApiRiwayat(retrofit: Retrofit): ApiContractRiwayat =
+        retrofit.create(ApiContractRiwayat::class.java)
+    @Singleton
+    @Provides
+    fun provideApiLogin(retrofit: Retrofit): ApiContractLogin =
+        retrofit.create(ApiContractLogin::class.java)
 
 }
