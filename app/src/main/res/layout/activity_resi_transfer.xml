@@ -56,7 +56,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
                     <TextView
-                        android:id="@+id/textView33"
+                        android:id="@+id/tvTimeStamp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
@@ -78,7 +78,7 @@
                         android:textColor="#202327"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvTimeStamp" />
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView9"
@@ -109,7 +109,7 @@
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <TextView
-                                    android:id="@+id/textView35"
+                                    android:id="@+id/tvInitialSender"
                                     android:layout_width="wrap_content"
                                     android:layout_height="30dp"
                                     android:layout_gravity="center"
@@ -120,7 +120,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
-                                android:id="@+id/textView36"
+                                android:id="@+id/tvSenderName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
@@ -131,7 +131,7 @@
                                 app:layout_constraintTop_toTopOf="@+id/cardView6" />
 
                             <TextView
-                                android:id="@+id/textView37"
+                                android:id="@+id/tvSenderRekening"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins"
@@ -139,8 +139,8 @@
                                 android:textColor="#4A5568"
                                 android:textSize="12sp"
                                 app:layout_constraintBottom_toBottomOf="@+id/cardView6"
-                                app:layout_constraintStart_toStartOf="@+id/textView36"
-                                app:layout_constraintTop_toBottomOf="@+id/textView36" />
+                                app:layout_constraintStart_toStartOf="@+id/tvSenderName"
+                                app:layout_constraintTop_toBottomOf="@+id/tvSenderName" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -227,7 +227,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
                     <TextView
-                        android:id="@+id/textView43"
+                        android:id="@+id/tvRefNumb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
@@ -238,7 +238,7 @@
                         app:layout_constraintTop_toTopOf="@+id/textView39" />
 
                     <TextView
-                        android:id="@+id/textView44"
+                        android:id="@+id/tvTransType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
@@ -246,11 +246,11 @@
                         android:textColor="#323A43"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView40"
-                        app:layout_constraintEnd_toEndOf="@+id/textView43"
+                        app:layout_constraintEnd_toEndOf="@+id/tvRefNumb"
                         app:layout_constraintTop_toTopOf="@+id/textView40" />
 
                     <TextView
-                        android:id="@+id/textView45"
+                        android:id="@+id/tvAdminFee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
@@ -258,11 +258,11 @@
                         android:textColor="#323A43"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView41"
-                        app:layout_constraintEnd_toEndOf="@+id/textView44"
+                        app:layout_constraintEnd_toEndOf="@+id/tvTransType"
                         app:layout_constraintTop_toTopOf="@+id/textView41" />
 
                     <TextView
-                        android:id="@+id/textView46"
+                        android:id="@+id/tvSum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
@@ -270,7 +270,7 @@
                         android:textColor="#323A43"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView42"
-                        app:layout_constraintEnd_toEndOf="@+id/textView45"
+                        app:layout_constraintEnd_toEndOf="@+id/tvAdminFee"
                         app:layout_constraintTop_toTopOf="@+id/textView42" />
 
                     <TextView
@@ -313,7 +313,7 @@
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <TextView
-                                    android:id="@+id/textView48"
+                                    android:id="@+id/tvInitialReciever"
                                     android:layout_width="wrap_content"
                                     android:layout_height="30dp"
                                     android:layout_gravity="center"
@@ -324,7 +324,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
-                                android:id="@+id/textView49"
+                                android:id="@+id/tvRecieverName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
@@ -335,7 +335,7 @@
                                 app:layout_constraintTop_toTopOf="@+id/cardView10" />
 
                             <TextView
-                                android:id="@+id/textView50"
+                                android:id="@+id/tvrecieverRekening"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins"
@@ -343,8 +343,8 @@
                                 android:textColor="#4A5568"
                                 android:textSize="12sp"
                                 app:layout_constraintBottom_toBottomOf="@+id/cardView10"
-                                app:layout_constraintStart_toStartOf="@+id/textView49"
-                                app:layout_constraintTop_toBottomOf="@+id/textView49" />
+                                app:layout_constraintStart_toStartOf="@+id/tvRecieverName"
+                                app:layout_constraintTop_toBottomOf="@+id/tvRecieverName" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -377,7 +377,7 @@
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/textView52"
+                                android:id="@+id/tvCatatan"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
@@ -396,7 +396,7 @@
             </FrameLayout>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btnSelesaiResi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -419,10 +419,10 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="7dp"
                 app:cardCornerRadius="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/button4"
+                app:layout_constraintBottom_toBottomOf="@+id/btnSelesaiResi"
                 app:layout_constraintEnd_toEndOf="@+id/frameLayout2"
-                app:layout_constraintStart_toEndOf="@+id/button4"
-                app:layout_constraintTop_toTopOf="@+id/button4"
+                app:layout_constraintStart_toEndOf="@+id/btnSelesaiResi"
+                app:layout_constraintTop_toTopOf="@+id/btnSelesaiResi"
                 app:strokeColor="@color/primary"
                 app:strokeWidth="1dp">
 

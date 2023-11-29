@@ -87,4 +87,21 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+    <TextView
+        android:id="@+id/tvMpinErrorMsg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Error Message"
+        android:textColor="#E71414"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/pvMpin"
+        app:layout_constraintStart_toStartOf="@+id/pvMpin"
+        app:layout_constraintTop_toBottomOf="@+id/pvMpin" />
 </androidx.constraintlayout.widget.ConstraintLayout>
