@@ -17,7 +17,9 @@ import com.core.domain.model.PenghasilanItemModel
 import com.digimbanking.Data.Adapter.PenghasilanAdapter
 import com.digimbanking.databinding.BottomSheetPenghasilanBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BottomSheetPenghasilan : BottomSheetDialogFragment() {
     lateinit var binding: BottomSheetPenghasilanBinding
     private lateinit var penghasilanAdapter: PenghasilanAdapter

@@ -16,6 +16,7 @@ import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.AlertDialogFailLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private  lateinit var loginViewModel: LoginViewModel

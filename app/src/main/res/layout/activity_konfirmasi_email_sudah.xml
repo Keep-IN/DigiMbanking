@@ -118,7 +118,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCheckrek"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/ic_bgtextinput"
                     android:hint="Email" />
             </com.google.android.material.textfield.TextInputLayout>

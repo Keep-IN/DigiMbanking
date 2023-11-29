@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
 import com.digimbanking.databinding.AlertDialogRekeningErrorBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlertDialogGagal: DialogFragment() {
     private lateinit var binding: AlertDialogRekeningErrorBinding
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {

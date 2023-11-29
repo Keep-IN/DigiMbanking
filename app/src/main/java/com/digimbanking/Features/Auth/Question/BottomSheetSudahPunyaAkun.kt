@@ -9,8 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
+import com.digimbanking.Features.Auth.CreateRekening.Card.PilihKartu
+import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.BuatSandiSudah
+import com.digimbanking.Features.Auth.AdaRekening.KonfEmailSdh.KonfirmasiEmailSudah
+import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.Features.Auth.Login.Login
 import com.digimbanking.databinding.BottomSheetSudahPunyaAkunBinding
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class BottomSheetSudahPunyaAkun : SuperBottomSheetFragment() {
     lateinit var binding: BottomSheetSudahPunyaAkunBinding
@@ -33,12 +39,16 @@ class BottomSheetSudahPunyaAkun : SuperBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvSudahPunyaRekening.setOnClickListener {
-            startActivity(Intent(activity, Login::class.java))
+            startActivity(Intent(activity, KonfirmasiEmailSudah::class.java))
             requireActivity().finishAffinity()
         }
 
         binding.ivXDaftarRek.setOnClickListener {
             dialog?.cancel()
+        }
+
+        binding.btnDaftarRekening.setOnClickListener {
+            startActivity(Intent(activity, PilihKartu::class.java))
         }
     }
 

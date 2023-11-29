@@ -15,6 +15,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -27,10 +28,9 @@ class NetworkModule {
         private const val  BASE_URL ="https://81fc-103-189-94-178.ngrok-free.app/api/v1/"
         private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEyMjUzNjUsImV4cCI6MTcwMTMxMTc2NX0.eIM2PokwcyLjcmZXX_m4d8KE6N9Kjh3y_5gXUK75GuU"
     }
-
     @Singleton
     @Provides
-    fun httpLoggingInterceptor(): HttpLoggingInterceptor{
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return httpLoggingInterceptor
@@ -41,10 +41,10 @@ class NetworkModule {
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
         sharedPreferences: SharedPreferences
-    ): OkHttpClient{
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor{ chain ->
+            .addInterceptor { chain ->
                 val requestBuilder = chain.request()
                     .newBuilder()
                     .header("Authorization", "Bearer $token")
@@ -72,12 +72,31 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiRiwayat(retrofit: Retrofit): ApiContractRiwayat =
-        retrofit.create(ApiContractRiwayat::class.java)
+    fun provideApi(retrofit: Retrofit): ApiContractCreateRekening =
+        retrofit.create(ApiContractCreateRekening::class.java)
 
     @Singleton
     @Provides
-    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences{
+    fun provideApis(retrofit: Retrofit): ApiContractDukcapil =
+        retrofit.create(ApiContractDukcapil::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApiTransfer(retrofit: Retrofit): ApiContractTransfer =
+        retrofit.create(ApiContractTransfer::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApisdh(retrofit: Retrofit): ApiContractAdaRekening =
+        retrofit.create(ApiContractAdaRekening::class.java)
+
+
+    @Singleton
+    @Provides
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context)
     }
+
+    fun provideApiRiwayat(retrofit: Retrofit): ApiContractRiwayat =
+        retrofit.create(ApiContractRiwayat::class.java)
 }
