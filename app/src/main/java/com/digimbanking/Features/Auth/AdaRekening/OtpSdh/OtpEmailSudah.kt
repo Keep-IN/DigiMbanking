@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.core.data.network.Result
+import com.digimbanking.Features.Auth.AdaRekening.KonfEmailSdh.KonfirmasiEmailSudah
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityBuatMpinsdhBinding
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 class OtpEmailSudah : AppCompatActivity() {
     private lateinit var binding: ActivityOtpEmailSudahBinding
     private lateinit var timer: CountDownTimer
+    private var isTimerFinished = false
     private lateinit var viewModel: OtpEmailViewModelsdh
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityOtpEmailSudahBinding.inflate(layoutInflater)
@@ -31,6 +33,7 @@ class OtpEmailSudah : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[OtpEmailViewModelsdh::class.java]
+        binding.tvRegenOTP.isEnabled = false
         binding.tvRegenOTP.setOnClickListener {
             regenerateOtp()
         }
@@ -96,7 +99,14 @@ class OtpEmailSudah : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                binding.tvRegenOTP.isEnabled = true
                 binding.tvTimerOTP.text = "00:00"
+                isTimerFinished = true
+                if (isTimerFinished) {
+                    val intent = Intent(this@OtpEmailSudah, KonfirmasiEmailSudah::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             }
         }
         timer.start()

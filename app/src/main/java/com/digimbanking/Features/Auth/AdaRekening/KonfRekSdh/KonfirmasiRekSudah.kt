@@ -24,7 +24,7 @@ class KonfirmasiRekSudah : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(KonfRekViewModelsdh::class.java)
 
         binding.btnKonfrek.setOnClickListener {
-            val noRekening = binding.etNorek.text.toString().toLongOrNull() ?: 0
+            val noRekening = binding.etNorek.text.toString()
             viewModel.checkRekening(noRekening)
 
 

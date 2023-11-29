@@ -17,7 +17,7 @@ class RekeningRepositorySdh @Inject constructor(
 ) {
 
     fun checkRekening(
-        noRekening: Long,
+        noRekening: String,
     ): LiveData<Result<RekeningResponse>> = liveData {
         emit(Result.Loading)
 

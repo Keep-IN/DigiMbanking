@@ -29,7 +29,7 @@ class KonfRekViewModelsdh @Inject constructor(
 
 
     fun checkRekening(
-        noRekening: Long
+        noRekening: String
     ) {
         rekeningRepository.checkRekening(noRekening).observeForever { result ->
             checkRekeningResult.value = result
