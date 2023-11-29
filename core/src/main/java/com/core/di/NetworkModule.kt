@@ -50,7 +50,7 @@ class NetworkModule {
             .addInterceptor { chain ->
                 val requestBuilder = chain.request()
                     .newBuilder()
-                    .header("Authorization", "Bearer $token")
+                    .header("Authorization", "Bearer ${getAuthToken(sharedPreferences)}")
                     .build()
                 chain.proceed(requestBuilder)
             }
@@ -60,7 +60,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun getAuthToken(sharedPreferences: SharedPreferences): String {
-        return sharedPreferences.getString("auth_token", "") ?: ""
+        return sharedPreferences.getString("token", "") ?: ""
     }
 
     @Singleton

@@ -22,13 +22,12 @@ class UbahPwRepository @Inject constructor(
     private val apiService: ApiContractLogin
 ) {
     fun ubahPw (
-        token: String,
         pwLama: String,
         pwBaru: String,
         konfirmPw: String
     ): LiveData<Result<UbahPwResponse>> = liveData {
      emit(Result.Loading)
-        val response = apiService.ubahPw("Bearer $token", UbahPwRequest(pwLama, pwBaru, konfirmPw))
+        val response = apiService.ubahPw(UbahPwRequest(pwLama, pwBaru, konfirmPw))
         val responseBody = response.body() ?: UbahPwResponse("", 0)
      try {
          if(response.isSuccessful) {

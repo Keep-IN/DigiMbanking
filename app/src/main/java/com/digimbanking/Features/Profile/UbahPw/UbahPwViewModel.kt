@@ -18,11 +18,10 @@ class UbahPwViewModel @Inject constructor(
     var isPasswordSama = false
 
     fun ubahPw(
-        token: String,
         pwLama: String,
         pwBaru: String,
         konfirmPw: String
-    ) = ubahPwRepository.ubahPw(token, pwLama, pwBaru, konfirmPw)
+    ) = ubahPwRepository.ubahPw(pwLama, pwBaru, konfirmPw)
 
     fun validatePasswordLama(passwordLama: String): Boolean{
         isPasswordLamaValid = passwordLama.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())

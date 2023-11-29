@@ -23,10 +23,10 @@ import javax.inject.Singleton
 class ProfilRepository @Inject constructor(
     private val apiService: ApiContractLogin,
 ) {
-    fun getProfil(token : String): LiveData<Result<ProfilResponse>> =liveData {
+    fun getProfil(): LiveData<Result<ProfilResponse>> =liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.profile("Bearer $token")
+            val response = apiService.profile()
             val responseBody = response.body() ?: ProfilResponse(DataProfilResponse("", listOf(), "",""), "", 0)
             if(response.isSuccessful){
                 emit(Result.Success(responseBody))

@@ -23,13 +23,10 @@ interface ApiContractLogin {
     ): Response<LoginResponse>
 
     @GET("profiling/accounts")
-    suspend fun profile(
-        @Header("Authorization") accessToken: String
-    ): Response<ProfilResponse>
+    suspend fun profile(): Response<ProfilResponse>
 
     @PUT ("profiling/change-password")
     suspend fun ubahPw(
-        @Header("Authorization") accessToken: String,
         @Body response: UbahPwRequest
     ): Response<UbahPwResponse>
 }

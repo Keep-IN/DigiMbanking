@@ -92,7 +92,7 @@ class UbahPw : AppCompatActivity() {
             btnSimpanPwBaru.setOnClickListener{
                 ubahPwViewModel.viewModelScope.launch(Dispatchers.Main) {
                     val token = sharedPref.getString("token", "").toString()
-                    ubahPwViewModel.ubahPw(token,binding.tilPwLama.editText?.text.toString(), binding.tilPwBaru.editText?.text.toString(), binding.tilKonfirmPwBaru.editText?.text.toString())
+                    ubahPwViewModel.ubahPw(binding.tilPwLama.editText?.text.toString(), binding.tilPwBaru.editText?.text.toString(), binding.tilKonfirmPwBaru.editText?.text.toString())
                         .observe(this@UbahPw){result ->
                             when(result){
                                 is Result.Success -> {

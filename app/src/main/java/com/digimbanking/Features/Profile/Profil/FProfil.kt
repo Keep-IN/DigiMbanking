@@ -56,7 +56,7 @@ class FProfil : Fragment() {
 
         profilViewModel.viewModelScope.launch(Dispatchers.Main){
             val token = sharedPref.getString("token", "").toString()
-            profilViewModel.getProfil(token)
+            profilViewModel.getProfil()
                 .observe(viewLifecycleOwner){result ->
                 when(result){
                     is Result.Success -> {

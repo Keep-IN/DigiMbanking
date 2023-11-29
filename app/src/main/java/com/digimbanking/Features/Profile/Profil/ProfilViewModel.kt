@@ -14,7 +14,5 @@ import javax.inject.Inject
 class ProfilViewModel @Inject constructor(
     private val profilRepository: ProfilRepository
 ): ViewModel(){
-    fun getProfil(
-        token : String
-    ) = profilRepository.getProfil(token)
+    fun getProfil() = profilRepository.getProfil()
 }
