@@ -97,6 +97,8 @@ class NetworkModule {
         return PreferenceManager.getDefaultSharedPreferences(context)
     }
 
+    @Singleton
+    @Provides
     fun provideApiRiwayat(retrofit: Retrofit): ApiContractRiwayat =
         retrofit.create(ApiContractRiwayat::class.java)
 }
