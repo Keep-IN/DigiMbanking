@@ -16,7 +16,9 @@ import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.R
 import com.digimbanking.databinding.AlertDialogLogoutBinding
 import com.digimbanking.databinding.AlertDialogUbahPwSuccessBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlertDialogLogout : DialogFragment() {
     lateinit var binding: AlertDialogLogoutBinding
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {

@@ -15,7 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Features.Auth.CreateRekening.Alert.AlertPassword.PasswordFailed"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Alert.AlertPassword.PasswordSuccess"
+            android:exported="false" />
         <activity
             android:name=".Features.Auth.CreateRekening.Card.NomorRekening"
             android:exported="false" />
@@ -95,9 +100,6 @@
             android:name=".Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh"
             android:exported="false" />
         <activity
-            android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.BuatMPINsdh"
-             android:exported="false" />
-        <activity
             android:name=".Features.Transfer.SesamaBank.ResiTransfer"
             android:exported="false" />
         <activity
@@ -126,9 +128,7 @@
             android:exported="false" />
         <activity
             android:name=".Features.Dashboard.NavbarContainer"
-            android:exported="true" >
-
-            </activity>
+            android:exported="true" />
         <activity
             android:name=".Features.Dashboard.DashboardActivity"
             android:exported="false" />

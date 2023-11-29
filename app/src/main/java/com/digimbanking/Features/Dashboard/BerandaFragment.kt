@@ -18,7 +18,9 @@ import com.core.domain.model.RiwayatItemModel
 import com.digimbanking.Data.Adapter.RiwayatTransaksiListBerandaAdapter
 import com.digimbanking.Features.Transfer.SesamaBank.RekTujuan
 import com.digimbanking.databinding.FragmentBerandaBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BerandaFragment : Fragment() {
     private val adapterRiwayat: RiwayatTransaksiListBerandaAdapter by lazy{ RiwayatTransaksiListBerandaAdapter()}
     private lateinit var binding: FragmentBerandaBinding

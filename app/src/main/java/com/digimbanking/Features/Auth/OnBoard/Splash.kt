@@ -9,8 +9,6 @@ import com.core.domain.model.DataVersion
 import com.digimbanking.databinding.ActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
-
 class Splash : AppCompatActivity() {
     private val splashTimeOut: Long = 3000
     private  lateinit var binding: ActivitySplashBinding

@@ -8,6 +8,7 @@ import com.digimbanking.databinding.ActivityKonfirmasiRekSudahBinding
 import com.digimbanking.databinding.ActivityQuestionPageBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+
 class QuestionPage : AppCompatActivity() {
     private lateinit var binding: ActivityQuestionPageBinding
     override fun onCreate(savedInstanceState: Bundle?) {

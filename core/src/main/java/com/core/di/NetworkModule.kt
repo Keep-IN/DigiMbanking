@@ -14,9 +14,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 import retrofit2.create
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
@@ -24,8 +24,8 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://81fc-103-189-94-178.ngrok-free.app"
-        private const val token = ""
+        private const val  BASE_URL ="https://81fc-103-189-94-178.ngrok-free.app/api/v1/"
+        private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEyMjUzNjUsImV4cCI6MTcwMTMxMTc2NX0.eIM2PokwcyLjcmZXX_m4d8KE6N9Kjh3y_5gXUK75GuU"
     }
     @Singleton
     @Provides
@@ -42,8 +42,6 @@ class NetworkModule {
         sharedPreferences: SharedPreferences
     ): OkHttpClient {
         return OkHttpClient.Builder()
-            .connectTimeout(20,TimeUnit.SECONDS)
-            .readTimeout(20,TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
             .addInterceptor { chain ->
                 val requestBuilder = chain.request()
@@ -73,13 +71,24 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit): ApiContract =
-        retrofit.create(ApiContract::class.java)
+    fun provideApi(retrofit: Retrofit): ApiContractCreateRekening =
+        retrofit.create(ApiContractCreateRekening::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApis(retrofit: Retrofit): ApiContractDukcapil =
+        retrofit.create(ApiContractDukcapil::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApiTransfer(retrofit: Retrofit): ApiContractTransfer =
+        retrofit.create(ApiContractTransfer::class.java)
 
     @Singleton
     @Provides
     fun provideApisdh(retrofit: Retrofit): ApiContractAdaRekening =
         retrofit.create(ApiContractAdaRekening::class.java)
+
 
     @Singleton
     @Provides

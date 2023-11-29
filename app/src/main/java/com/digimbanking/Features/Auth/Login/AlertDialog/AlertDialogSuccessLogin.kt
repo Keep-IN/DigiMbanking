@@ -12,7 +12,9 @@ import android.view.Window
 import androidx.fragment.app.DialogFragment
 import com.digimbanking.Features.Dashboard.NavbarContainer
 import com.digimbanking.databinding.AlertDialogSuccessLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlertDialogSuccessLogin : DialogFragment() {
     lateinit var binding: AlertDialogSuccessLoginBinding
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {

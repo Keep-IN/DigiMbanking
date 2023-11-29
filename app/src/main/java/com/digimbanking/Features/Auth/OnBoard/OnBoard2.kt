@@ -9,7 +9,6 @@ import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.ActivityOnBoard2Binding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 class OnBoard2 : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoard2Binding
     override fun onCreate(savedInstanceState: Bundle?) {

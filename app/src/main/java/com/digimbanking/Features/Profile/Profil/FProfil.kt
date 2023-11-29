@@ -14,7 +14,9 @@ import com.digimbanking.Features.Profile.UbahPw.UbahPw
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.FragmentFProfilBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FProfil : Fragment() {
     private lateinit var binding: FragmentFProfilBinding
 
