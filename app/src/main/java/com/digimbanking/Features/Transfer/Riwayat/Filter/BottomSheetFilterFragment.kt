@@ -11,10 +11,11 @@ import com.digimbanking.R
 import com.digimbanking.databinding.FragmentBottomSheetFilterBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import androidx.core.util.Pair
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
+@AndroidEntryPoint
 class BottomSheetFilterFragment : SuperBottomSheetFragment() {
     private lateinit var binding: FragmentBottomSheetFilterBinding
     private var dataDateRangePicker: String? = null

@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
+import com.digimbanking.Features.Auth.CreateRekening.Card.PilihKartu
 import com.digimbanking.Features.Auth.Login.Login
 import com.digimbanking.databinding.BottomSheetSudahPunyaAkunBinding
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class BottomSheetSudahPunyaAkun : SuperBottomSheetFragment() {
     lateinit var binding: BottomSheetSudahPunyaAkunBinding
@@ -39,6 +42,10 @@ class BottomSheetSudahPunyaAkun : SuperBottomSheetFragment() {
 
         binding.ivXDaftarRek.setOnClickListener {
             dialog?.cancel()
+        }
+
+        binding.btnDaftarRekening.setOnClickListener {
+            startActivity(Intent(activity, PilihKartu::class.java))
         }
     }
 

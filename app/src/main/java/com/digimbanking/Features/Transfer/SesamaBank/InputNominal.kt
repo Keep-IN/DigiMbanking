@@ -10,7 +10,9 @@ import com.core.data.response.transferSesama.DataNasabahTujuan
 import com.core.data.response.transferSesama.TransactionModel
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityInputNominalBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InputNominal : AppCompatActivity() {
     private lateinit var binding: ActivityInputNominalBinding
     private lateinit var dataNama: String

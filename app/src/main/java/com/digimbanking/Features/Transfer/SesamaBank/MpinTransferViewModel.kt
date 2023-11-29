@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MpinViewModel @Inject constructor(
+class MpinTransferViewModel @Inject constructor(
     private val transferRepository: TransferRepository
 ): ViewModel(){
     fun doTransaction(

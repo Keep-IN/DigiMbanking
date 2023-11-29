@@ -7,6 +7,7 @@ import com.digimbanking.Features.Auth.Question.QuestionPage
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.ActivityOnBoard2Binding
+import dagger.hilt.android.AndroidEntryPoint
 
 class OnBoard2 : AppCompatActivity() {
     private lateinit var binding: ActivityOnBoard2Binding

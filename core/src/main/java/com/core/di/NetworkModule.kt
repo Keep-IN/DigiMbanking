@@ -67,11 +67,21 @@ class NetworkModule {
             .client(okHttpClient)
             .build()
 
+    @Singleton
+    @Provides
+    fun provideApi(retrofit: Retrofit): ApiContractCreateRekening =
+        retrofit.create(ApiContractCreateRekening::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApis(retrofit: Retrofit): ApiContractDukcapil =
+        retrofit.create(ApiContractDukcapil::class.java)
 
     @Singleton
     @Provides
     fun provideApiTransfer(retrofit: Retrofit): ApiContractTransfer =
         retrofit.create(ApiContractTransfer::class.java)
+
 
     @Singleton
     @Provides

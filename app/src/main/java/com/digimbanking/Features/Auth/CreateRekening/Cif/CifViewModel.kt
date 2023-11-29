@@ -4,18 +4,34 @@ import androidx.lifecycle.ViewModel
 import com.core.domain.model.PekerjaanItemModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.core.data.repositories.CifRespository
+import com.core.data.repositories.DukcapilRepository
 import com.core.domain.model.DataNik
 import com.core.domain.model.NikModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CifViewModel : ViewModel() {
+@HiltViewModel
+class CifViewModel @Inject constructor(
+    private val dukcapilRepository: DukcapilRepository,
+    private val cifRepository: CifRespository
+) :ViewModel() {
 
-    fun validateNik(nik: String): NikModel? {
-        var dataNik: NikModel? = null
-        DataNik.listNik.forEach {
-            if (it.nik == nik)
-                dataNik = it
-            return@forEach
-        }
-        return dataNik
+    var isNikValid = true
+    fun doDukcapil(
+        nik: String
+    ) = dukcapilRepository.postDukcapil(nik)
+
+    fun sentCif (
+        nik: String,
+        namaLengkap: String,
+        alamat: String,
+        pekerjaan: String,
+        penghasilan : String
+    ) = cifRepository.postCif(nik, namaLengkap, alamat, pekerjaan, penghasilan)
+
+    fun validateNik(nik : String) : Boolean{
+        isNikValid = nik.length > 15
+        return isNikValid
     }
 }
