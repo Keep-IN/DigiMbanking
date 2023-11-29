@@ -69,4 +69,7 @@
     <string name="konf_mpin">Untuk melanjutkan, mohon konfirmasi MPIN sebelumnya</string>
     <string name="selamat_nomor_rekening_berhasil_dibuat">Selamat! Nomor Rekening Berhasil dibuat</string>
     <string name="nomor_rekening_sudah_dapat_digunakan">Nomor Rekening sudah dapat digunakan</string>
+    <string name="retry">Coba lagi</string>
+    <string name="content_description_scroll_top">auto scroll to top</string>
+    <string name="akun_saya">Akun Saya</string>
 </resources>

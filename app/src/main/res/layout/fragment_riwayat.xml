@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/purple_primary_400"
+    android:background="@color/white_primary"
     tools:context=".Features.Transfer.Riwayat.Mutasi.RiwayatFragment">
 
     <TextView
@@ -22,8 +22,8 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvLoad"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="21dp"
+        android:layout_height="23dp"
         android:layout_marginStart="182dp"
         android:layout_marginEnd="182dp"
         app:cardBackgroundColor="@color/white"
@@ -32,7 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvTransaksiRiwayat">
+        app:layout_constraintTop_toBottomOf="@+id/rvTransaksiRiwayat"
+        tools:visibility="gone">
 
 
         <!--        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
@@ -59,22 +60,11 @@
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_primary_400" />
+            android:backgroundTint="@color/purple_primary_400"
+            android:visibility="invisible"
+            tools:visibility="gone" />
     </com.google.android.material.card.MaterialCardView>
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:scrollbars="none">
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </HorizontalScrollView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_filter"
@@ -82,7 +72,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="39dp"
-        app:cardCornerRadius="12dp"
+        app:cardCornerRadius="17.5dp"
         app:layout_constraintEnd_toStartOf="@+id/cvRiwayatTransaksiSemua"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_RiwayatTransaksi"
@@ -170,12 +160,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="30dp"
         app:cardCornerRadius="20dp"
-        app:strokeColor="@color/purple"
-        app:strokeWidth="1dp"
         app:layout_constraintBottom_toBottomOf="@+id/cvRiwayatTransaksiMasuk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cvRiwayatTransaksiMasuk"
-        app:layout_constraintTop_toTopOf="@+id/cvRiwayatTransaksiMasuk">
+        app:layout_constraintTop_toTopOf="@+id/cvRiwayatTransaksiMasuk"
+        app:strokeColor="@color/purple"
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -201,24 +191,24 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_filter" />
+        app:layout_constraintTop_toBottomOf="@+id/cv_filter"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
         android:src="@drawable/empty_list_riwayat"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/rvTransaksiRiwayat"
         app:layout_constraintEnd_toEndOf="@+id/rvTransaksiRiwayat"
         app:layout_constraintStart_toStartOf="@+id/rvTransaksiRiwayat"
         app:layout_constraintTop_toTopOf="@+id/rvTransaksiRiwayat" />
-        />
+    />
 
     <TextView
         android:id="@+id/tvEmptyTransaksi"
@@ -234,31 +224,48 @@
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAutoScrollTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="41dp"
         android:backgroundTint="@color/purple_500"
-        app:cardCornerRadius="16dp"
+        android:contentDescription="@string/content_description_scroll_top"
+        android:src="@drawable/auto_scroll"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="@style/RoundedCorner"
+        app:tint="@android:color/white" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/ivAutoScroll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/auto_scroll"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="36dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_marginEnd="30dp"-->
+<!--            android:layout_marginBottom="30dp"-->
+<!--            android:backgroundTint="@color/purple_500"-->
+<!--            app:cardCornerRadius="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent">-->
 
-    </androidx.cardview.widget.CardView>
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/btnAutoScroll"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/auto_scroll"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

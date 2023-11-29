@@ -1,16 +1,17 @@
 package com.digimbanking.Data.Adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.core.data.response.riwayatTransaksi.Transaction
 import com.core.domain.model.RiwayatItemModel
-import com.digimbanking.Data.Model.RiwayatModel
 import com.digimbanking.R
 import com.digimbanking.databinding.RiwayatBerandaListTransaksiViewBinding
 
 class RiwayatTransaksiListBerandaAdapter : RecyclerView.Adapter<RiwayatTransaksiListBerandaAdapter.ViewHolder>() {
-    private var itemListener: ((RiwayatItemModel) -> Unit)? = null
-    private val data: MutableList<RiwayatItemModel> = mutableListOf()
+    private var itemListener: ((Transaction) -> Unit)? = null
+    private val data: MutableList<Transaction> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RiwayatTransaksiListBerandaAdapter.ViewHolder {
         return ViewHolder(
@@ -20,32 +21,50 @@ class RiwayatTransaksiListBerandaAdapter : RecyclerView.Adapter<RiwayatTransaksi
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
         holder.setData(data[position], itemListener)
     }
-    override fun getItemCount(): Int = 5
+    override fun getItemCount(): Int = data.size
 
-    fun submitList(list: List<RiwayatItemModel>){
-        val initSize = itemCount
+    fun submitList(list: List<Transaction>){
         data.clear()
-        notifyItemRangeRemoved(0, initSize)
-        data.addAll(list)
-        notifyItemRangeInserted(0, data.size)
+        val limitedList = if(list.size > 4){
+            list.subList(0,4)
+        }else{
+            list
+        }
+        data.addAll(limitedList)
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(private val binding: RiwayatBerandaListTransaksiViewBinding): RecyclerView.ViewHolder(binding.root){
-        fun setData(item: RiwayatItemModel, listener: ((RiwayatItemModel) -> Unit)?){
+        fun setData(item: Transaction, listener: ((Transaction) -> Unit)?){
+            binding.root.setOnClickListener{
+                listener?.invoke(item)
+            }
             when(item.tipeTransaksi){
-                "kredit" -> {
+                "KREDIT" -> {
                     binding.tvTransaksiMasuk.text = "Transaksi Masuk"
                     binding.ivTransaksiMasuk.setImageResource(R.drawable.ic_masuk)
+                    binding.tvNominalRiwayatTransaksiMasukBeranda.text = "+ Rp.${item.jumlahTransaksi.toLong().formatDotSeparator()}"
+                    binding.tvNominalRiwayatTransaksiMasukBeranda.setTextColor(Color.parseColor("#25AC57"))
                 }
-                "debit" -> {
+                "DEBIT" -> {
                     binding.tvTransaksiMasuk.text = "Transaksi Keluar"
                     binding.ivTransaksiMasuk.setImageResource(R.drawable.ic_keluar)
+                    binding.tvNominalRiwayatTransaksiMasukBeranda.text = "- Rp.${item.jumlahTransaksi.toLong().formatDotSeparator()}"
+                    binding.tvNominalRiwayatTransaksiMasukBeranda.setTextColor(Color.parseColor("#E71414"))
                 }
             }
         }
     }
 
-    fun setOnClickItem(listener: ((RiwayatItemModel) -> Unit)?){
+    fun setOnClickItem(listener: ((Transaction) -> Unit)?){
         this.itemListener = listener
+    }
+
+    fun Long.formatDotSeparator(): String{
+        return toString()
+            .reversed()
+            .chunked(3)
+            .joinToString (".")
+            .reversed()
     }
 }
