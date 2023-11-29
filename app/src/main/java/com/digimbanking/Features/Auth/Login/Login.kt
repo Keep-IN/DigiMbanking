@@ -66,7 +66,7 @@ class Login : AppCompatActivity() {
                         when(it){
                             is Result.Success -> {
                                 it.data
-                                val sharedPref = this@Login.getPreferences(Context.MODE_PRIVATE)
+                                val sharedPref = PreferenceManager.getDefaultSharedPreferences(this@Login)
                                 val sPref = sharedPref.edit()
                                 sPref.putString("token", it.data.token)
                                 Log.d("Tes", "token: ${it.data.token}")
