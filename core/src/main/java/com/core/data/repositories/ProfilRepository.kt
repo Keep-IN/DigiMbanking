@@ -22,8 +22,6 @@ import javax.inject.Singleton
 @Singleton
 class ProfilRepository @Inject constructor(
     private val apiService: ApiContractLogin,
-    private val userPreferences: UserPreferences,
-    private val sharedPreferences: SharedPreferences
 ) {
     fun getProfil(token : String): LiveData<Result<ProfilResponse>> =liveData {
         emit(Result.Loading)

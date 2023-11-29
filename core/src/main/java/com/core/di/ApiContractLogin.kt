@@ -17,17 +17,17 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiContractLogin {
-    @POST("api/v1/users/login")
+    @POST("users/login")
     suspend fun login(
         @Body response: LoginRequest
     ): Response<LoginResponse>
 
-    @GET("api/v1/profiling/accounts")
+    @GET("profiling/accounts")
     suspend fun profile(
         @Header("Authorization") accessToken: String
     ): Response<ProfilResponse>
 
-    @PUT ("api/v1/profiling/change-password")
+    @PUT ("profiling/change-password")
     suspend fun ubahPw(
         @Header("Authorization") accessToken: String,
         @Body response: UbahPwRequest

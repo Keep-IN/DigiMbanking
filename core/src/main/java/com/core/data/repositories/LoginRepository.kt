@@ -18,8 +18,7 @@ import javax.inject.Singleton
 
 @Singleton
 class LoginRepository @Inject constructor(
-    private val apiService: ApiContractLogin,
-    private val userPreferences: UserPreferences
+    private val apiService: ApiContractLogin
 
 ) {
     fun login(

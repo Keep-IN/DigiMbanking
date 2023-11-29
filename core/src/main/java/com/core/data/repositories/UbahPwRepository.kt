@@ -19,9 +19,7 @@ import javax.inject.Singleton
 
 @Singleton
 class UbahPwRepository @Inject constructor(
-    private val apiService: ApiContractLogin,
-    private val userPreferences: UserPreferences,
-    private val sharedPreferences: SharedPreferences
+    private val apiService: ApiContractLogin
 ) {
     fun ubahPw (
         token: String,
