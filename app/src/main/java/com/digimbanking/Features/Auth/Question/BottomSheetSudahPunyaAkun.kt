@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import com.digimbanking.Features.Auth.Login.Login
+import com.digimbanking.Features.Profile.UbahPw.UbahPw
 import com.digimbanking.databinding.BottomSheetSudahPunyaAkunBinding
 
 class BottomSheetSudahPunyaAkun : SuperBottomSheetFragment() {
@@ -32,8 +33,13 @@ class BottomSheetSudahPunyaAkun : SuperBottomSheetFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnDaftarRekening.setOnClickListener {
+//            startActivity(Intent(this, buat rekening))
+        }
+
         binding.tvSudahPunyaRekening.setOnClickListener {
-            startActivity(Intent(activity, Login::class.java))
+            startActivity(Intent(activity, UbahPw::class.java))
             requireActivity().finishAffinity()
         }
 

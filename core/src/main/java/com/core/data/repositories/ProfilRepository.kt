@@ -1,38 +1,37 @@
 package com.core.data.repositories
 
-import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.datastore.dataStore
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.core.data.local.preferences.UserPreferences
 import com.core.data.network.Result
-import com.core.data.response.login.DataLoginResponse
-import com.core.data.response.login.LoginRequest
-import com.core.data.response.login.LoginResponse
+import com.core.data.response.Nasabah.DataUser
+import com.core.data.response.Nasabah.UserResponse
+import com.core.data.response.Profile.Profile.DataProfilResponse
+import com.core.data.response.Profile.Profile.ProfilResponse
+
 import com.core.di.ApiContractLogin
-import com.core.domain.model.RiwayatGetResponse
 import org.json.JSONException
 import org.json.JSONObject
+import java.lang.reflect.Executable
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LoginRepository @Inject constructor(
+class ProfilRepository @Inject constructor(
     private val apiService: ApiContractLogin,
-    private val userPreferences: UserPreferences
-
+    private val userPreferences: UserPreferences,
+    private val sharedPreferences: SharedPreferences
 ) {
-    fun login(
-        email: String,
-        password: String
-    ): LiveData<Result<DataLoginResponse>> = liveData {
+    fun getProfil(token : String): LiveData<Result<ProfilResponse>> =liveData {
         emit(Result.Loading)
-        val response = apiService.login(LoginRequest(password, email))
-        val responseBody = response.body() ?: LoginResponse(DataLoginResponse(""), "", 0)
         try {
-
+            val response = apiService.profile("Bearer $token")
+            val responseBody = response.body() ?: ProfilResponse(DataProfilResponse("", listOf(), "",""), "", 0)
             if(response.isSuccessful){
-                emit(Result.Success(responseBody.data))
+                emit(Result.Success(responseBody))
             } else {
                 val errorBody = response.errorBody()?.string()
                 val errorMessage = try {
@@ -42,7 +41,7 @@ class LoginRepository @Inject constructor(
                 }
                 emit(Result.Error(errorMessage))
             }
-        } catch (e: Exception) {
+        } catch (e: Exception){
             emit(Result.Error(e.message ?: "An error occured"))
         }
     }

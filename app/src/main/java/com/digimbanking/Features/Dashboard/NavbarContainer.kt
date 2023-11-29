@@ -7,7 +7,9 @@ import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.Features.Transfer.Riwayat.Mutasi.RiwayatFragment
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityNavbarContainerBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NavbarContainer : AppCompatActivity() {
     private lateinit var binding: ActivityNavbarContainerBinding
     override fun onCreate(savedInstanceState: Bundle?) {

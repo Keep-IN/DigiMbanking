@@ -2,10 +2,10 @@ package com.core.data.response.Profile.Profile
 
 import com.google.gson.annotations.SerializedName
 
-data class ProfileResponse(
+data class ProfilResponse(
 
 	@field:SerializedName("data")
-	val data: DataProfileResponse,
+	val data: DataProfilResponse,
 
 	@field:SerializedName("message")
 	val message: String,
@@ -19,11 +19,11 @@ data class RekeningItem(
 	@field:SerializedName("createdAt")
 	val createdAt: String,
 
-	@field:SerializedName("tipeRekening")
+	@field:SerializedName("typeRekening")
 	val tipeRekening: TipeRekening,
 
-	@field:SerializedName("noRekening")
-	val noRekening: Long,
+	@field:SerializedName("rekening")
+	val noRekening: String,
 
 	@field:SerializedName("saldo")
 	val saldo: Any

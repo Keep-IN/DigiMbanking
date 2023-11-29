@@ -1,16 +1,11 @@
 package com.core.data.local.preferences
 
 import android.content.Context
-import android.provider.ContactsContract.CommonDataKinds.Email
-import androidx.core.os.persistableBundleOf
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.core.data.local.entity.User
 import com.core.data.response.login.DataLoginResponse
-import com.core.data.response.login.LoginResponse
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -22,15 +17,6 @@ class UserPreferencesImpl @Inject constructor(
 ) :UserPreferences{
 
     private val Context.dataStore by preferencesDataStore(name = "preferences")
-
-    override fun getUser(): Flow<User> {
-        return context.dataStore.data.map { preferences ->
-            User(
-                preferences[STATE_KEY] ?: false,
-                preferences[TOKEN_KEY] ?: "token"
-            )
-        }
-    }
 
     override suspend fun getToken(): String {
         return context.dataStore.data.map { preferences ->

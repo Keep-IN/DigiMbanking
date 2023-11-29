@@ -1,6 +1,8 @@
 package com.digimbanking.Features.Auth.Login
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,16 +17,19 @@ import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogFailLogin
 import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin
 import com.digimbanking.Features.Auth.OnBoard.Onboard
 import com.digimbanking.Features.Onboard.MainActivity
+import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.Features.Transfer.TransferSesama.AlertDialog.AlertDialogGagal
 import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.AlertDialogFailLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 @AndroidEntryPoint
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private  lateinit var loginViewModel: LoginViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -50,7 +55,7 @@ class Login : AppCompatActivity() {
                 } else {
                     binding.tilLoginPw.isErrorEnabled = true
                     binding.btnLoginMasuk.isEnabled = false
-                    binding.tilLoginPw.error = "Kata Sandi harus terdiri dari minimal 5 karakter"
+                    binding.tilLoginPw.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                 }
             }
             btnLoginMasuk.setOnClickListener{
@@ -60,15 +65,15 @@ class Login : AppCompatActivity() {
                         when(it){
                             is Result.Success -> {
                                 it.data
-                                Log.d("Tes", "$it.data")
+                                val sharedPref = getSharedPreferences("token", Context.MODE_PRIVATE)
+                                val sPref = sharedPref.edit()
+                                sPref.putString("token", it.data.token)
+
+                                Log.d("Tes", "token: ${it.data.token}")
+                                sPref.apply()
                                 AlertDialogSuccessLogin().show(supportFragmentManager,"test")
                             }
                             is Result.Error -> {
-                                Toast.makeText(
-                                    this@Login,
-                                    "${it.errorMessage}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
                                 AlertDialogFailLogin().show(supportFragmentManager, "test")
                             }
 

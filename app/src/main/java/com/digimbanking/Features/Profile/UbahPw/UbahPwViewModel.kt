@@ -1,16 +1,28 @@
 package com.digimbanking.Features.Profile.UbahPw
 
 import androidx.lifecycle.ViewModel
+import com.core.data.repositories.UbahPwRepository
 import com.core.domain.model.DataLogin
 import com.core.domain.model.LoginModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-
-class UbahPwViewModel (): ViewModel() {
+@HiltViewModel
+class UbahPwViewModel @Inject constructor(
+    private val ubahPwRepository: UbahPwRepository
+): ViewModel() {
     var isPasswordLamaValid = false
     var isPasswordBaruValid = false
     var isPasswordKonfValid = false
     var isPasswordBeda = false
     var isPasswordSama = false
+
+    fun ubahPw(
+        token: String,
+        pwLama: String,
+        pwBaru: String,
+        konfirmPw: String
+    ) = ubahPwRepository.ubahPw(token, pwLama, pwBaru, konfirmPw)
 
     fun validatePasswordLama(passwordLama: String): Boolean{
         isPasswordLamaValid = passwordLama.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
@@ -25,15 +37,15 @@ class UbahPwViewModel (): ViewModel() {
         return isPasswordKonfValid
     }
 
-    fun validatePasswordLogin(password: String): LoginModel?{
-        var dataLogin: LoginModel? = null
-        DataLogin.listUserLogin.forEach {
-            if (it.password == password)
-                dataLogin = it
-            return@forEach
-        }
-        return dataLogin
-    }
+//    fun validatePasswordLogin(password: String): LoginModel?{
+//        var dataLogin: LoginModel? = null
+//        DataLogin.listUserLogin.forEach {
+//            if (it.password == password)
+//                dataLogin = it
+//            return@forEach
+//        }
+//        return dataLogin
+//    }
 
     fun validatePasswordBeda(passwordLama: String, passwordBaru: String): Boolean {
         isPasswordBeda = passwordBaru != passwordLama

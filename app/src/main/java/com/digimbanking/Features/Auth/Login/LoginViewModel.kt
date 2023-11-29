@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.core.data.repositories.LoginRepository
 import com.core.domain.model.DataLogin
 import com.core.domain.model.LoginModel
-import com.core.data.repositories.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository
@@ -26,18 +26,20 @@ class LoginViewModel @Inject constructor(
     }
 
     fun validatePassword(password: String): Boolean{
-        isPasswordValid = password.contains ("^[0-9]{5}$".toRegex())
-//        ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        isPasswordValid = password.contains("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        //("^[0-9]{8}$".toRegex())
+        //("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+
         return  isPasswordValid
     }
 
-    fun validateLogin(email: String, password: String): LoginModel? {
-        var dataLogin: LoginModel? = null
-        DataLogin.listUserLogin.forEach {
-            if (it.email == email && it.password == password)
-                dataLogin = it
-            return@forEach
-        }
-        return dataLogin
-    }
+//    fun validateLogin(email: String, password: String): LoginModel? {
+//        var dataLogin: LoginModel? = null
+//        DataLogin.listUserLogin.forEach {
+//            if (it.email == email && it.password == password)
+//                dataLogin = it
+//            return@forEach
+//        }
+//        return dataLogin
+//    }
 }
