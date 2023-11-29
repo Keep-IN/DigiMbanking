@@ -15,6 +15,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
+import retrofit2.create
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -81,6 +83,11 @@ class NetworkModule {
     @Provides
     fun provideApiTransfer(retrofit: Retrofit): ApiContractTransfer =
         retrofit.create(ApiContractTransfer::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApisdh(retrofit: Retrofit): ApiContractAdaRekening =
+        retrofit.create(ApiContractAdaRekening::class.java)
 
 
     @Singleton
