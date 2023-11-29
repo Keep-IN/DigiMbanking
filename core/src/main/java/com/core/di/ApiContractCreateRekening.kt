@@ -11,6 +11,7 @@ import com.core.data.response.auth.createRekening.otp.VerificationOtpResponse
 import com.core.data.response.auth.createRekening.password.PasswordModel
 import com.core.data.response.auth.createRekening.password.PasswordResponse
 import com.core.data.response.auth.createRekening.pilihKartu.CardResponse
+import com.core.data.response.auth.createRekening.resendotp.RegenerateOtpresponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -27,6 +28,11 @@ interface ApiContractCreateRekening {
     suspend fun generateOtp (
         @Body request: OtpModel
     ) : Response<OtpResponse>
+
+    @PUT("users/{id}/otp-regenerate")
+    suspend fun resendOtp(
+        @Path("id") id: Int
+    ): Response<RegenerateOtpresponse>
 
     @PUT("users/{id}/otp-verification")
     suspend fun verOtp(

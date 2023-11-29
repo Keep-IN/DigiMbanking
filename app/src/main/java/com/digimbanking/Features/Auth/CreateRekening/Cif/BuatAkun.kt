@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -50,12 +51,14 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
                                 is Result.Success -> {
                                     it.data
                                     Log.d("Tes", "${it.data}")
+                                    showLoading()
                                     startActivity(Intent(this@BuatAkun, NomorRekening::class.java).apply {
                                         putExtra("nik", it.data)
                                     })
                                 }
 
                                 is Result.Error -> {
+                                    hideLoading()
                                     Toast.makeText(
                                         this@BuatAkun,
                                         "${it.errorMessage}",
@@ -119,6 +122,14 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
         val isPenghasilanSelected = penghasilan != null
 
         binding.btnLanjut.isEnabled = isPenghasilanSelected
+    }
+
+    private fun showLoading() {
+        binding.spinKit.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        binding.spinKit.visibility = View.GONE
     }
 
 }

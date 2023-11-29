@@ -25,6 +25,10 @@ class RegisViewModel  @Inject constructor(
         otp: String
     ) = otpRepository.putOtp(otp)
 
+    fun regenOtp(
+
+    ) = otpRepository.regenerateOtp()
+
     var isEmailValid = false
     var isPasswordValid = false
 

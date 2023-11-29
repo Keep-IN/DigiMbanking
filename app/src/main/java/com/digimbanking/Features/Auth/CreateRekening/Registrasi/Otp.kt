@@ -29,6 +29,10 @@ class Otp : AppCompatActivity() {
         setContentView(binding.root)
         otpViewModel = ViewModelProvider(this).get(RegisViewModel::class.java)
 
+        binding.kirimUlang.setOnClickListener {
+            regenerateOtp()
+        }
+
         binding.sendOtp.doOnTextChanged { text, start, before, count ->
             if (text?.length == 4){
                 otpViewModel.viewModelScope.launch(Dispatchers.Main) {
@@ -54,6 +58,24 @@ class Otp : AppCompatActivity() {
 
     }
 
+    private fun regenerateOtp() {
+        otpViewModel.viewModelScope.launch(Dispatchers.Main) {
+            otpViewModel.regenOtp().observe(this@Otp, Observer { result ->
+                when(result) {
+                    is Result.Success -> {
+                        Toast.makeText(this@Otp, "OTP regenerated successfully", Toast.LENGTH_SHORT).show()
+                    }
+
+                    is Result.Error -> {
+                        Toast.makeText(this@Otp, result.errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+                    is Result.Loading -> {
+                    }
+                }
+            })
+        }
+    }
+
     private fun navigateToKonfrek() {
         val intent = Intent(this, Nik::class.java)
         startActivity(intent)
@@ -75,6 +97,7 @@ class Otp : AppCompatActivity() {
 
             override fun onFinish() {
                 binding.etWaktu.text = "00:00"
+                binding.kirimUlang.isEnabled = true
             }
         }
         timer.start()

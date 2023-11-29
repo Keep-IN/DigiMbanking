@@ -31,7 +31,7 @@ class CifViewModel @Inject constructor(
     ) = cifRepository.postCif(nik, namaLengkap, alamat, pekerjaan, penghasilan)
 
     fun validateNik(nik : String) : Boolean{
-        isNikValid = nik.length > 5
+        isNikValid = nik.length > 15
         return isNikValid
     }
 }

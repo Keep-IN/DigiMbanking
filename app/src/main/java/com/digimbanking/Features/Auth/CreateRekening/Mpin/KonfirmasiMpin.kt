@@ -42,8 +42,27 @@ class KonfirmasiMpin : AppCompatActivity() {
                 mpinViewModel.viewModelScope.launch(Dispatchers.Main) {
                     mpinViewModel.konfirmasiPin.observe(this@KonfirmasiMpin, Observer {
                         if (it.length == pinView.itemCount) {
-                            val pinFromFirstActivity = sharedPreferences.getString("pin", "")
-                            if (it == pinFromFirstActivity) {
+                            val getMpin = sharedPreferences.getString("pin", "")
+                            if (it == getMpin) {
+                                mpinViewModel.putMpin(text.toString())
+                                    .observe(this@KonfirmasiMpin, Observer { result ->
+                                        when (result) {
+                                            is Result.Error -> {
+                                                Toast.makeText(
+                                                    this@KonfirmasiMpin,
+                                                    result.errorMessage,
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                            is Result.Loading -> {
+
+                                            }
+
+                                            else -> {
+
+                                            }
+                                        }
+                                    })
                                 val intent = Intent(this@KonfirmasiMpin, Login::class.java)
                                 startActivity(intent)
                                 finish()
@@ -56,25 +75,7 @@ class KonfirmasiMpin : AppCompatActivity() {
                             pinErrorText.visibility = View.GONE
                         }
                     })
-                    mpinViewModel.putMpin(text.toString())
-                        .observe(this@KonfirmasiMpin, Observer { result ->
-                            when (result) {
-                                is Result.Error -> {
-                                    Toast.makeText(
-                                        this@KonfirmasiMpin,
-                                        result.errorMessage,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                                is Result.Loading -> {
 
-                                }
-
-                                else -> {
-
-                                }
-                            }
-                        })
                 }
             }
         }
