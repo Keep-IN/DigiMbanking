@@ -6,7 +6,6 @@ import com.core.data.lokal.preferences.UserPreferences
 import com.core.data.network.Result
 import com.core.data.response.auth.createRekening.pilihKartu.CardResponse
 import com.core.data.response.auth.createRekening.pilihKartu.DataCard
-import com.core.di.ApiContract
 import com.core.di.ApiContractCreateRekening
 import java.lang.Exception
 import javax.inject.Inject

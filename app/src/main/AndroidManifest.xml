@@ -100,9 +100,6 @@
             android:name=".Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh"
             android:exported="false" />
         <activity
-            android:name=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.BuatMPINsdh"
-             android:exported="false" />
-        <activity
             android:name=".Features.Transfer.SesamaBank.ResiTransfer"
             android:exported="false" />
         <activity

@@ -1,4 +1,4 @@
-package com.digimbanking.Di
+package com.digimbanking.di
 
 import android.content.Context
 import com.core.data.lokal.preferences.UserPreferences
