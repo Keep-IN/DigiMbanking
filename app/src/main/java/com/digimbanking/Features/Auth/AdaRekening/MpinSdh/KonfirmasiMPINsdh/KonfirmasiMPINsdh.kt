@@ -34,13 +34,33 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("Mpin", MODE_PRIVATE)
         val pinView = binding.pinPiw
         val pinErrorText = binding.pinError
+
         binding.pinPiw.doOnTextChanged { text, start, before, count ->
             if (text?.length == 6) {
                 viewModel.viewModelScope.launch(Dispatchers.Main) {
                     viewModel.konfirmasiPin.observe(this@KonfirmasiMPINsdh, Observer {
                         if (it.length == pinView.itemCount) {
-                            val pinFromFirstActivity = sharedPreferences.getString("pin", "")
-                            if (it == pinFromFirstActivity) {
+                            val getMpin = sharedPreferences.getString("pin", "")
+                            if (it == getMpin) {
+                                viewModel.putMPIN(text.toString())
+                                    .observe(this@KonfirmasiMPINsdh, Observer { result ->
+                                        when (result) {
+                                            is Result.Error -> {
+                                                Toast.makeText(
+                                                    this@KonfirmasiMPINsdh,
+                                                    result.errorMessage,
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                            is Result.Loading -> {
+
+                                            }
+
+                                            else -> {
+
+                                            }
+                                        }
+                                    })
                                 val intent = Intent(this@KonfirmasiMPINsdh, Login::class.java)
                                 startActivity(intent)
                                 finish()
@@ -53,25 +73,7 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
                             pinErrorText.visibility = View.GONE
                         }
                     })
-                    viewModel.putMPIN(text.toString())
-                        .observe(this@KonfirmasiMPINsdh, Observer { result ->
-                            when (result) {
-                                is Result.Error -> {
-                                    Toast.makeText(
-                                        this@KonfirmasiMPINsdh,
-                                        result.errorMessage,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                                is Result.Loading -> {
 
-                                }
-
-                                else -> {
-
-                                }
-                            }
-                        })
                 }
             }
         }
@@ -81,5 +83,6 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
                 viewModel.setKonfirmasiPin(it.toString())
             }
         }
-        }
+
+    }
 }
