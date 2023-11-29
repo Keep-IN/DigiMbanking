@@ -10,10 +10,15 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.core.data.network.Result
+import com.core.data.response.listbank.DataBank
 import com.core.domain.model.BankItemModel
 import com.digimbanking.Features.Transfer.SesamaBank.BottomSheet.BottomSheetDetailPenerima
 import com.digimbanking.databinding.ActivityRekTujuanBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RekTujuan : AppCompatActivity() {
@@ -25,10 +30,10 @@ class RekTujuan : AppCompatActivity() {
         binding = ActivityRekTujuanBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        var dataBank = intent.getParcelableExtra<BankItemModel>("bank")
+        val dataBank = intent.getParcelableExtra<DataBank>("bank")
         Log.d("Content:", "$dataBank")
         if (dataBank != null){
-            binding.tilPilihBank.editText?.setText(dataBank.nama)
+            binding.tilPilihBank.editText?.setText(dataBank.namaBank)
             validateRekField()
         }
 
@@ -42,13 +47,23 @@ class RekTujuan : AppCompatActivity() {
         }
 
         binding.btnLanjut.setOnClickListener {
-            viewModel.validateRekening(txRekening)
-            val data = viewModel.validateCredential(txBank, txRekening)
-            if (data != null) {
-                val bottomSheet = BottomSheetDetailPenerima.newInstance(data.nama, data.rekening, data.bank)
-                bottomSheet.show(supportFragmentManager, "Detail Rekening Tujuan")
-            } else {
-                Toast.makeText(this, "Nasabah Tidak Ditemukan", Toast.LENGTH_SHORT).show()
+            viewModel.viewModelScope.launch(Dispatchers.Main) {
+                viewModel.postRekening(txRekening).observe(this@RekTujuan){
+                    when(it){
+                        is Result.Success -> {
+                            val data = it.data.data
+                            val bottomSheet = BottomSheetDetailPenerima.newInstance(data.nama, data.noRekening.toString(), data.namaBank)
+                            bottomSheet.show(supportFragmentManager, "Detail Rekening Tujuan")
+                        }
+                        is Result.Error -> {
+                            Toast.makeText(this@RekTujuan, it.errorMessage, Toast.LENGTH_SHORT).show()
+                            Log.d("Error Post", it.errorMessage)
+                        }
+                        else -> {
+                            Log.d("Unexpected Result", "Received an unexpected result: $it")
+                    }
+                    }
+                }
             }
         }
     }

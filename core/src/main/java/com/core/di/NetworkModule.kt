@@ -1,5 +1,6 @@
 package com.core.di
 
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
@@ -13,7 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
@@ -21,9 +22,8 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-
-        private const val  BASE_URL ="https://9f58-103-189-94-178.ngrok-free.app/api/v1/"
-
+        private const val  BASE_URL ="https://81fc-103-189-94-178.ngrok-free.app/api/v1/"
+        private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEyMjUzNjUsImV4cCI6MTcwMTMxMTc2NX0.eIM2PokwcyLjcmZXX_m4d8KE6N9Kjh3y_5gXUK75GuU"
     }
     @Singleton
     @Provides
@@ -40,12 +40,11 @@ class NetworkModule {
         sharedPreferences: SharedPreferences
     ): OkHttpClient {
         return OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
             .addInterceptor { chain ->
                 val requestBuilder = chain.request()
                     .newBuilder()
+                    .header("Authorization", "Bearer $token")
                     .build()
                 chain.proceed(requestBuilder)
             }
@@ -68,7 +67,6 @@ class NetworkModule {
             .client(okHttpClient)
             .build()
 
-
     @Singleton
     @Provides
     fun provideApi(retrofit: Retrofit): ApiContractCreateRekening =
@@ -78,6 +76,12 @@ class NetworkModule {
     @Provides
     fun provideApis(retrofit: Retrofit): ApiContractDukcapil =
         retrofit.create(ApiContractDukcapil::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApiTransfer(retrofit: Retrofit): ApiContractTransfer =
+        retrofit.create(ApiContractTransfer::class.java)
+
 
     @Singleton
     @Provides

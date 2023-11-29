@@ -2,10 +2,16 @@ package com.digimbanking.Features.Transfer.SesamaBank
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.core.data.repositories.TransferRepository
 import com.core.domain.model.DataNasabah
 import com.core.domain.model.NasabahModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RekTujuanViewModel: ViewModel() {
+@HiltViewModel
+class RekTujuanViewModel @Inject constructor(
+    private val transferRepository: TransferRepository
+): ViewModel() {
     var rekeningValid = false
     fun validateRekening(rekening: String): Boolean {
         rekeningValid = rekening.length > 16
@@ -22,4 +28,6 @@ class RekTujuanViewModel: ViewModel() {
         }
         return dataNasabah
     }
+
+    fun postRekening(rekening: String) = transferRepository.postRekeningTujuan(rekening)
 }

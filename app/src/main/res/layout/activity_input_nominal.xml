@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvRekeningNasabah" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/tilNominal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
@@ -117,8 +117,8 @@
         android:text="Minimal Transfer Rp10.000"
         android:textColor="#323A43"
         android:textSize="9sp"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintStart_toStartOf="@+id/tilNominal"
+        app:layout_constraintTop_toBottomOf="@+id/tilNominal" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -264,13 +264,13 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/tilCatatan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="@+id/tilNominal"
+        app:layout_constraintStart_toStartOf="@+id/tilNominal"
         app:layout_constraintTop_toBottomOf="@+id/textView30">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -296,7 +296,7 @@
         android:textColor="#FFFFFF"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout2" />
+        app:layout_constraintEnd_toEndOf="@+id/tilCatatan"
+        app:layout_constraintStart_toStartOf="@+id/tilCatatan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
