@@ -12,6 +12,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.core.data.network.Result
+import com.core.data.response.akun.AkunResponse
 import com.core.data.response.listbank.DataBank
 import com.core.domain.model.BankItemModel
 import com.digimbanking.Features.Transfer.SesamaBank.BottomSheet.BottomSheetDetailPenerima
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 class RekTujuan : AppCompatActivity() {
     private lateinit var binding : ActivityRekTujuanBinding
     private lateinit var viewModel: RekTujuanViewModel
+    private lateinit var dataUser: AkunResponse
     private val txRekening: String get() = binding.tilNorekTujuan.editText?.text.toString()
     private val txBank: String get() = binding.tilPilihBank.editText?.text.toString()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,9 +48,25 @@ class RekTujuan : AppCompatActivity() {
             validateInput()
         }
 
+        viewModel.viewModelScope.launch(Dispatchers.Main) {
+            viewModel.getUser().observe(this@RekTujuan){
+                when(it){
+                    is Result.Success -> {
+                        dataUser = it.data
+                    }
+                    is Result.Error -> {
+                        Log.d("Error Post Rekening", "${it.errorMessage}")
+                    }
+                    else -> {
+                        Log.d("Unexpected Result", "Received an unexpected result: $it")
+                    }
+                }
+            }
+        }
+
         binding.btnLanjut.setOnClickListener {
             viewModel.viewModelScope.launch(Dispatchers.Main) {
-                viewModel.postRekening(txRekening).observe(this@RekTujuan){
+                viewModel.postRekening(dataUser.data.rekening.joinToString { it.noRekening }, txRekening).observe(this@RekTujuan){
                     when(it){
                         is Result.Success -> {
                             val data = it.data.data

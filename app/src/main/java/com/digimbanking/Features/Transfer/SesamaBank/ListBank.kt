@@ -33,9 +33,8 @@ class ListBank : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[ListBankViewModel::class.java]
         binding.rvListBank.adapter = adapterListBank
         binding.rvListBank.layoutManager = LinearLayoutManager(this)
-
+        onLoading()
         viewModel.viewModelScope.launch(Dispatchers.Main) {
-            onLoading()
             viewModel.getListBank().observe(this@ListBank){
                 when(it){
                     is Result.Success -> {
@@ -52,7 +51,7 @@ class ListBank : AppCompatActivity() {
                     }
                     else -> {
                         Log.d("Tes", "Empty JSON")
-                        onFinishedLoading()
+                        onLoading()
                     }
                 }
             }
