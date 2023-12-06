@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Transfer.SesamaBank
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,9 +34,8 @@ class ListBank : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[ListBankViewModel::class.java]
         binding.rvListBank.adapter = adapterListBank
         binding.rvListBank.layoutManager = LinearLayoutManager(this)
-
+        onLoading()
         viewModel.viewModelScope.launch(Dispatchers.Main) {
-            onLoading()
             viewModel.getListBank().observe(this@ListBank){
                 when(it){
                     is Result.Success -> {
@@ -52,7 +52,7 @@ class ListBank : AppCompatActivity() {
                     }
                     else -> {
                         Log.d("Tes", "Empty JSON")
-                        onFinishedLoading()
+                        onLoading()
                     }
                 }
             }
@@ -79,8 +79,12 @@ class ListBank : AppCompatActivity() {
             })
         }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun onFinishedLoading(){
