@@ -9,8 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.digimbanking.Features.Auth.CreateRekening.Mpin.BuatMpin
 import com.core.data.network.Result
-import com.digimbanking.Features.Auth.CreateRekening.Alert.AlertPassword.PasswordFailed
-import com.digimbanking.Features.Auth.CreateRekening.Alert.AlertPassword.PasswordSuccess
+import com.digimbanking.Features.Auth.CreateRekening.Registrasi.AlertPassword.PasswordFailed
+import com.digimbanking.Features.Auth.CreateRekening.Registrasi.AlertPassword.PasswordSuccess
+import com.digimbanking.Features.Auth.CreateRekening.Card.NomorRekening
 import com.digimbanking.databinding.ActivityKataSandiBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -48,14 +49,13 @@ class KataSandi : AppCompatActivity() {
                 viewmodel.putPass(password).observe(this@KataSandi, Observer { result ->
                     when (result) {
                         is Result.Success -> {
-                            PasswordSuccess().show(supportFragmentManager, "yes")
-                            startActivity(Intent(this@KataSandi, BuatMpin::class.java))
-
-
+                            val allertSucces = PasswordSuccess.newInstance(result.data.message)
+                            allertSucces.show(supportFragmentManager, "success")
                         }
 
                         is Result.Error -> {
-                            PasswordFailed().show(supportFragmentManager, "no")
+                            val allertError = PasswordFailed.newInstance(result.errorMessage)
+                            allertError.show(supportFragmentManager, "failed")
                         }
                         is Result.Loading -> {
                         }
@@ -64,13 +64,9 @@ class KataSandi : AppCompatActivity() {
             }
         }
 
-//        binding.btnRegist.setOnClickListener {
-//            if (validateInput() != null) {
-//                startActivity(Intent(this, BuatMpin::class.java))
-//            } else {
-//                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+        binding.btnKembali.setOnClickListener {
+            startActivity(Intent(this, NomorRekening::class.java))
+        }
     }
 
     private fun validateInput(){

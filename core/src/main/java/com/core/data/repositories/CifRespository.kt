@@ -8,6 +8,8 @@ import com.core.data.response.auth.createRekening.cif.CifModel
 import com.core.data.response.auth.createRekening.cif.CifResponse
 import com.core.di.ApiContractCreateRekening
 import com.core.domain.model.DataCard
+import org.json.JSONException
+import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,21 +20,27 @@ class CifRespository @Inject constructor(
 ) {
 
     fun postCif(
-        nik: String,
+        alamat: String,
         namaLengkap : String,
-        alamat : String,
+        nik : String,
         pekerjaan : String,
         penghasilan : String
     ) : LiveData<Result<CifResponse>> = liveData {
         emit(Result.Loading)
         try {
             val id = userPreferences.getUser()
-            val response = apiService.postCif(id, DataCard.id,CifModel(nik, namaLengkap, alamat, pekerjaan, penghasilan))
+            val response = apiService.postCif(id, DataCard.id,CifModel(alamat, namaLengkap, nik, pekerjaan, penghasilan))
             val responseBody = response.body()
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
             } else {
-                emit(Result.Error("Failed to get a valid response"))
+                val errorBody = response.errorBody()?.string()
+                val errorMassage = try {
+                    JSONObject(errorBody).getString("massage")
+                } catch (e : JSONException) {
+                    "Unknown error occurred"
+                }
+                emit(Result.Error(errorMassage))
             }
         } catch (e : Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }

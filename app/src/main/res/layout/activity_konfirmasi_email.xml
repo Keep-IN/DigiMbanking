@@ -17,7 +17,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView2"
+                android:id="@+id/btnKembali"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="24dp"
@@ -25,6 +25,7 @@
                 android:layout_marginEnd="81dp"
                 android:backgroundTint="#6C63FF"
                 app:cardCornerRadius="50dp"
+                app:strokeWidth="0dp"
                 app:layout_constraintEnd_toStartOf="@+id/textView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -48,11 +49,11 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="Buat Akun"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/materialCardView2"
+                app:layout_constraintBottom_toBottomOf="@+id/btnKembali"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/materialCardView2" />
+                app:layout_constraintTop_toTopOf="@+id/btnKembali" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
@@ -84,16 +85,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtInformasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/informasi"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDatadiri" />
+                    <TextView
+                        android:id="@+id/txtInformasi"
+                        android:layout_width="291dp"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/informasi"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDatadiri" />
 
                     <ImageView
                         android:id="@+id/imageView3"
@@ -125,6 +126,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hintEnabled="false"
+                        app:boxStrokeWidth="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtEmail">
@@ -132,10 +134,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:hint="Email"
+                            android:background="@drawable/bgfield"
                             android:textColorHint="#323A43"
                             android:fontFamily="@font/poppins"
                             android:textSize="14sp"
-                            android:background="@drawable/bg_text_field"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress" />
 

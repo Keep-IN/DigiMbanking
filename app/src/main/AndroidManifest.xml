@@ -16,10 +16,10 @@
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
         <activity
-            android:name=".Features.Auth.CreateRekening.Alert.AlertPassword.PasswordFailed"
+            android:name=".Features.Auth.CreateRekening.Registrasi.AlertPassword.PasswordFailed"
             android:exported="false" />
         <activity
-            android:name=".Features.Auth.CreateRekening.Alert.AlertPassword.PasswordSuccess"
+            android:name=".Features.Auth.CreateRekening.Registrasi.AlertPassword.PasswordSuccess"
             android:exported="false" />
         <activity
             android:name=".Features.Auth.CreateRekening.Card.NomorRekening"
