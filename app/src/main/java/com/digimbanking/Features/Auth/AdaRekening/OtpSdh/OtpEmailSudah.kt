@@ -14,6 +14,9 @@ import androidx.lifecycle.viewModelScope
 import com.core.data.network.Result
 import com.digimbanking.Features.Auth.AdaRekening.KonfEmailSdh.KonfirmasiEmailSudah
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
+import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.AlertMPIN.ALERTMPINDEC
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertBerhasilOTP
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertUnvalidOTPsdh
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityBuatMpinsdhBinding
 import com.digimbanking.databinding.ActivityOtpEmailSudahBinding
@@ -33,7 +36,7 @@ class OtpEmailSudah : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[OtpEmailViewModelsdh::class.java]
-        binding.tvRegenOTP.isEnabled = false
+        binding.tvRegenOTP.isEnabled = !isTimerFinished
         binding.tvRegenOTP.setOnClickListener {
             regenerateOtp()
         }
@@ -43,11 +46,12 @@ class OtpEmailSudah : AppCompatActivity() {
                     viewModel.checkOtp(text.toString()).observe(this@OtpEmailSudah, Observer { result ->
                         when (result) {
                             is Result.Success -> {
-                                navigateToKonfrek()
+                                val allertSuccess = AlertBerhasilOTP.newInstance(result.data.message)
+                                allertSuccess.show(supportFragmentManager, "success")
                             }
 
                             is Result.Error -> {
-                                Toast.makeText(this@OtpEmailSudah, result.errorMessage, Toast.LENGTH_SHORT).show()
+                                AlertUnvalidOTPsdh().show(supportFragmentManager, "no")
                             }
 
                             is Result.Loading -> {
@@ -80,17 +84,17 @@ class OtpEmailSudah : AppCompatActivity() {
             })
         }
     }
-    private fun navigateToKonfrek() {
-        val intent = Intent(this, KonfirmasiRekSudah::class.java)
-        startActivity(intent)
-        finish()
-    }
+//    private fun navigateToKonfrek() {
+//        val intent = Intent(this, KonfirmasiRekSudah::class.java)
+//        startActivity(intent)
+//        finish()
+//    }
     override fun onStart() {
         super.onStart()
 
-        val totalTimeMillis: Long = 2 * 60 * 1000 + 30 * 1000// 2 minutes 30 sec in milliseconds
+        val totalSeconds: Long = 120
 
-        timer = object : CountDownTimer(totalTimeMillis, 1000) {
+        timer = object : CountDownTimer(totalSeconds * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val seconds = millisUntilFinished / 1000
                 val minutes = seconds / 60
@@ -99,16 +103,12 @@ class OtpEmailSudah : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                isTimerFinished = true
                 binding.tvRegenOTP.isEnabled = true
                 binding.tvTimerOTP.text = "00:00"
-                isTimerFinished = true
-                if (isTimerFinished) {
-                    val intent = Intent(this@OtpEmailSudah, KonfirmasiEmailSudah::class.java)
-                    startActivity(intent)
-                    finish()
-                }
             }
         }
         timer.start()
+        binding.tvRegenOTP.isEnabled = false
     }
 }

@@ -37,6 +37,10 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this@Login)
+        val sPref = sharedPref.edit()
+        sPref.clear()
+        sPref.apply()
 
         binding.apply {
             tilLoginEmail.editText?.doOnTextChanged{ text, start, before, count ->
@@ -66,8 +70,6 @@ class Login : AppCompatActivity() {
                         when(it){
                             is Result.Success -> {
                                 it.data
-                                val sharedPref = this@Login.getPreferences(Context.MODE_PRIVATE)
-                                val sPref = sharedPref.edit()
                                 sPref.putString("token", it.data.token)
                                 Log.d("Tes", "token: ${it.data.token}")
                                 sPref.apply()

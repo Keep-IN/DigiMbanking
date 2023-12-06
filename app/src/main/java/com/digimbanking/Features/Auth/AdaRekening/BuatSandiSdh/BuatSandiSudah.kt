@@ -15,6 +15,7 @@ import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.AlertDialog.AlertUn
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.BottomSheetKonfRek
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfRekViewModelsdh
 import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertBerhasilOTP
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityBuatSandiSudahBinding
 import com.digimbanking.databinding.ActivityKonfirmasiEmailSudahBinding
@@ -55,8 +56,8 @@ class BuatSandiSudah : AppCompatActivity() {
                 viewmodel.putPass(password).observe(this@BuatSandiSudah, Observer { result ->
                     when (result) {
                         is Result.Success -> {
-                            AlertSandiACC().show(supportFragmentManager,"yes")
-                            startActivity(Intent(this@BuatSandiSudah, BuatMPINsdh::class.java))
+                            val allertSuccess = AlertSandiACC.newInstance(result.data.message)
+                            allertSuccess.show(supportFragmentManager, "success")
 
 
                         }

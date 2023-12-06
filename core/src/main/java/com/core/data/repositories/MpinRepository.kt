@@ -9,6 +9,8 @@ import com.core.data.response.auth.createRekening.mpin.MpinResponse
 import com.core.data.response.auth.createRekening.password.PasswordModel
 import com.core.data.response.auth.createRekening.password.PasswordResponse
 import com.core.di.ApiContractCreateRekening
+import org.json.JSONException
+import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,9 +33,15 @@ class MpinRepository @Inject constructor(
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
             } else {
-                emit(Result.Error("Failed to get a valid response"))
+                val errorBody = response.errorBody()?.string()
+                val errorMessage = try {
+                JSONObject(errorBody).getString("message")
+            }catch (e : JSONException) {
+                "Unknown error occured"
             }
-        } catch (e : Exception) {
+            emit(Result.Error(errorMessage))
+            }
+        } catch (e: Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }
         }
     }
