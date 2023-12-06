@@ -7,6 +7,28 @@
     android:background="#FFFFFF"
     tools:context=".Features.Transfer.SesamaBank.InputNominal">
 
+    <FrameLayout
+        android:id="@+id/loadScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1D000000"
+        android:elevation="3dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.FadingCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/primary" />
+
+    </FrameLayout>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/btnBack1"
         android:layout_width="36dp"
@@ -166,7 +188,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView26"
+                        android:id="@+id/tvRekSumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
@@ -177,7 +199,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
                     <TextView
-                        android:id="@+id/textView27"
+                        android:id="@+id/tvSaldoSumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
@@ -185,12 +207,12 @@
                         android:text="Rp 30.000.000"
                         android:textColor="#202327"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/textView26" />
+                        app:layout_constraintStart_toStartOf="@+id/tvRekSumber" />
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cvBgCardSumber"
                         android:layout_width="100dp"
                         android:layout_height="0dp"
-                        app:cardBackgroundColor="#FFD700"
                         app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

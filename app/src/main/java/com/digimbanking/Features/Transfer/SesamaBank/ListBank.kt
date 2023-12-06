@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Transfer.SesamaBank
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -78,8 +79,12 @@ class ListBank : AppCompatActivity() {
             })
         }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun onFinishedLoading(){

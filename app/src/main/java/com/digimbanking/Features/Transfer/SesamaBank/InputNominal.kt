@@ -1,11 +1,15 @@
 package com.digimbanking.Features.Transfer.SesamaBank
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
 import android.util.Log
+import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -41,14 +45,27 @@ class InputNominal : AppCompatActivity() {
 
         viewModel.viewModelScope.launch(Dispatchers.Main) {
             viewModel.getUser().observe(this@InputNominal){ result ->
+                onLoading()
                 when(result){
                     is Result.Success -> {
                         dataNasabah = result.data.data
+                        binding.apply {
+                            tvRekSumber.text = result.data.data.rekening.joinToString { it.noRekening }
+                            tvSaldoSumber.text = "Rp ${result.data.data.rekening.joinToString { it.saldo.toLong().formatDotSeparator() }}"
+                            when(result.data.data.rekening.joinToString { it.tipeRekening.idTipe.toString() }){
+                                "1" -> cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
+                                "2" -> cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#C0C0C0"))
+                                "3" -> cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#696865"))
+                            }
+                        }
+                        onFinishedLoading()
                     }
                     is Result.Error -> {
-                        result.errorMessage
+                        Toast.makeText(this@InputNominal, result.errorMessage, Toast.LENGTH_SHORT).show()
+                        onFinishedLoading()
                     } else -> {
                         Log.d("Unexpected Error", "$result")
+                        onLoading()
                     }
                 }
             }
@@ -68,6 +85,7 @@ class InputNominal : AppCompatActivity() {
         binding.btnToMpin.setOnClickListener {
             startActivity(Intent(this, MpinSesama::class.java).apply {
                 putExtra("data", TransactionModel(txCatatan, "", "", dataRekening, txNominal.toInt()))
+                putExtra("akun", dataNasabah)
             })
         }
 
@@ -78,7 +96,7 @@ class InputNominal : AppCompatActivity() {
             }
         }
     }
-    fun capitalizeWords(input: String?): String{
+    private fun capitalizeWords(input: String?): String{
         val words = input?.split(" ")
         val capitalizedWords = words?.map { it.capitalize() }
         var output: String = ""
@@ -88,7 +106,7 @@ class InputNominal : AppCompatActivity() {
         return output
     }
 
-    fun setNoLeadingZeroFilter(editText: EditText) {
+    private fun setNoLeadingZeroFilter(editText: EditText) {
         val inputFilter = InputFilter { source, start, end, dest, dstart, dend ->
             if (dstart == 0 && source.toString() == "0") {
                 ""
@@ -101,5 +119,25 @@ class InputNominal : AppCompatActivity() {
 
     private fun validateInput(){
         binding.btnToMpin.isEnabled = binding.tilNominal.editText?.text.toString().isNotBlank()
+    }
+
+    private fun Long.formatDotSeparator(): String{
+        return toString()
+            .reversed()
+            .chunked(3)
+            .joinToString (".")
+            .reversed()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun onLoading(){
+        binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreen.visibility = View.GONE
     }
 }

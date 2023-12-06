@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
-                android:id="@+id/frameLayout2"
+                android:id="@+id/recieptView"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
@@ -410,17 +410,18 @@
                 android:textColor="#F3F3F3"
                 app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/frameLayout2"
-                app:layout_constraintStart_toStartOf="@+id/frameLayout2"
-                app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+                app:layout_constraintEnd_toEndOf="@+id/recieptView"
+                app:layout_constraintStart_toStartOf="@+id/recieptView"
+                app:layout_constraintTop_toBottomOf="@+id/recieptView" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnShareResi"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="7dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/btnSelesaiResi"
-                app:layout_constraintEnd_toEndOf="@+id/frameLayout2"
+                app:layout_constraintEnd_toEndOf="@+id/recieptView"
                 app:layout_constraintStart_toEndOf="@+id/btnSelesaiResi"
                 app:layout_constraintTop_toTopOf="@+id/btnSelesaiResi"
                 app:strokeColor="@color/primary"

@@ -16,7 +16,7 @@ class RekTujuanViewModel @Inject constructor(
 ): ViewModel() {
     var rekeningValid = false
     fun validateRekening(rekening: String): Boolean {
-        rekeningValid = rekening.length > 16
+        rekeningValid = rekening.length > 9
         return rekeningValid
     }
 

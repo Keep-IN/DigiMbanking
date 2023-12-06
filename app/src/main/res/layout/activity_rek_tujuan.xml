@@ -5,7 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#F1F4F9"
-    tools:context=".Features.Transfer.TransferSesama.RekTujuan">
+    tools:context=".Features.Transfer.SesamaBank.RekTujuan">
+
+    <FrameLayout
+        android:id="@+id/loadScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1D000000"
+        android:elevation="3dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.FadingCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/primary" />
+
+    </FrameLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -134,10 +156,11 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_field_selector"
                             android:enabled="false"
+                            android:fontFamily="@font/poppins"
                             android:hint="Masukkan Nomor Rekening"
                             android:inputType="number"
                             android:textColorHint="#4A5568"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
