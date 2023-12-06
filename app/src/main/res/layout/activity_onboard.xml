@@ -40,7 +40,7 @@
         android:layout_marginEnd="83dp"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
-        android:text="Selamat Datang  di DigiBank"
+        android:text="Selamat Datang                  di DigiBank"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

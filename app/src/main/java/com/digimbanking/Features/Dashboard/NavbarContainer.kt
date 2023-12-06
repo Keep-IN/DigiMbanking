@@ -2,6 +2,7 @@ package com.digimbanking.Features.Dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.digimbanking.Features.Akun.AkunFragment
 import com.digimbanking.Features.Profile.Profil.FProfil

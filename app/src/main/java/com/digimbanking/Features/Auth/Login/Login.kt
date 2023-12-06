@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.KeyEvent.DispatcherState
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.core.data.network.Result
@@ -37,6 +38,10 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this@Login)
+        val sPref = sharedPref.edit()
+        sPref.clear()
+        sPref.apply()
 
         binding.apply {
             tilLoginEmail.editText?.doOnTextChanged{ text, start, before, count ->
@@ -48,38 +53,39 @@ class Login : AppCompatActivity() {
                     binding.btnLoginMasuk.isEnabled = false
                     binding.tilLoginEmail.error = "Email harus sesuai format penulisan"
                 }
-            }
-            tilLoginPw.editText?.doOnTextChanged { text, start, before, count ->
-                if(loginViewModel.validatePassword(text.toString())){
-                    binding.tilLoginPw.isErrorEnabled = false
-                    binding.btnLoginMasuk.isEnabled = true
-                } else {
-                    binding.tilLoginPw.isErrorEnabled = true
-                    binding.btnLoginMasuk.isEnabled = false
-                    binding.tilLoginPw.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
+                tilLoginPw.editText?.doOnTextChanged { text, start, before, count ->
+                    if(loginViewModel.validatePassword(text.toString())){
+                        binding.tilLoginPw.isErrorEnabled = false
+                        binding.btnLoginMasuk.isEnabled = true
+                    }
                 }
             }
+
+            ivBack.setOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+            }
+
             btnLoginMasuk.setOnClickListener{
                 loginViewModel.viewModelScope.launch(Dispatchers.Main){
                     loginViewModel.login(binding.tilLoginEmail.editText?.text.toString(), binding.tilLoginPw.editText?.text.toString())
-                    .observe(this@Login){
-                        when(it){
+                    .observe(this@Login, Observer { result ->
+                        when(result){
                             is Result.Success -> {
-                                it.data
-                                val sharedPref = this@Login.getPreferences(Context.MODE_PRIVATE)
-                                val sPref = sharedPref.edit()
-                                sPref.putString("token", it.data.token)
-                                Log.d("Tes", "token: ${it.data.token}")
+                                result.data
+                                sPref.putString("token", result.data.data.token)
+                                Log.d("Tes", "token: ${result.data.data.token}")
                                 sPref.apply()
-                                AlertDialogSuccessLogin().show(supportFragmentManager,"test")
+                                val allertSuccess = AlertDialogSuccessLogin.newInstance(result.data.message)
+                                allertSuccess.show(supportFragmentManager,"success")
                             }
                             is Result.Error -> {
-                                AlertDialogFailLogin().show(supportFragmentManager, "test")
+                                val allertFailed = AlertDialogFailLogin.newInstance(result.errorMessage)
+                                allertFailed.show(supportFragmentManager, "fail")
                             }
 
                             else -> {Log.d("Tes", "Empty JSON")}
                         }
-                    }
+                    })
                 }
 //                data = loginViewModel.validateLogin(binding.tilLoginEmail.editText?.text.toString(),
 //                    binding.tilLoginPw.editText?.text.toString())

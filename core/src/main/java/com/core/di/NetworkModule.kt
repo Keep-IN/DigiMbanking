@@ -2,8 +2,11 @@ package com.core.di
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import androidx.core.content.ContextCompat.startActivity
+import com.core.data.local.preferences.UserPreferencesImpl
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -28,7 +31,7 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://81fc-103-189-94-178.ngrok-free.app/api/v1/"
+        private const val  BASE_URL ="https://ccbb-103-189-94-178.ngrok-free.app/api/v1/"
         private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEyMjUzNjUsImV4cCI6MTcwMTMxMTc2NX0.eIM2PokwcyLjcmZXX_m4d8KE6N9Kjh3y_5gXUK75GuU"
     }
     @Singleton
@@ -43,7 +46,8 @@ class NetworkModule {
     @Provides
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-        sharedPreferences: SharedPreferences
+        sharedPreferences: SharedPreferences,
+        userPreferencesImpl: UserPreferencesImpl
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
@@ -52,7 +56,16 @@ class NetworkModule {
                     .newBuilder()
                     .header("Authorization", "Bearer ${getAuthToken(sharedPreferences)}")
                     .build()
-                chain.proceed(requestBuilder)
+                val response = chain.proceed(requestBuilder)
+
+                if (response.code == 401) {
+                    // Token expired, lakukan proses logout di sini
+                    // Misalnya: AuthManager.logout()
+                    //userPreferencesImpl.logout()
+                    // Setelah logout, Anda dapat membuka halaman login atau melakukan tindakan lain
+                }
+
+                response
             }
             .build()
     }

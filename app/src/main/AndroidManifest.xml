@@ -16,6 +16,9 @@
         android:theme="@style/Theme.DigiMbanking"
         tools:targetApi="31">
         <activity
+            android:name=".Features.Profile.UbahMpin.UbahMpin"
+            android:exported="false" />
+        <activity
             android:name=".Features.Auth.CreateRekening.Alert.AlertPassword.PasswordFailed"
             android:exported="false" />
         <activity
@@ -151,8 +154,7 @@
             android:exported="false" />
         <activity
             android:name=".Features.Onboard.MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

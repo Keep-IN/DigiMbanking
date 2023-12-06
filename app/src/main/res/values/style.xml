@@ -4,4 +4,8 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">250dp</item> <!-- Adjust this value for the desired border radius -->
     </style>
+
+    <style name="TextAppearance.CustomError" parent="TextAppearance.Design.Error">
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
 </resources>

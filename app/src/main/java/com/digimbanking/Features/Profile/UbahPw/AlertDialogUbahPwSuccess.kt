@@ -19,7 +19,20 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AlertDialogUbahPwSuccess : DialogFragment() {
-    lateinit var binding: AlertDialogUbahPwSuccessBinding
+    private lateinit var binding: AlertDialogUbahPwSuccessBinding
+
+    companion object{
+        fun newInstance(massage : String): AlertDialogUbahPwSuccess {
+            val fragment = AlertDialogUbahPwSuccess()
+            val args = Bundle()
+            args.apply {
+                putString("massage", massage)
+                fragment.arguments = args
+                return fragment
+            }
+        }
+    }
+
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {
         return Dialog(requireContext())
     }
@@ -31,7 +44,7 @@ class AlertDialogUbahPwSuccess : DialogFragment() {
     ): View? {
         binding =AlertDialogUbahPwSuccessBinding.inflate(layoutInflater, container, false)
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog?.setCanceledOnTouchOutside(false)
         return binding.root
     }

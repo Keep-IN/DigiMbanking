@@ -2,6 +2,7 @@ package com.digimbanking.Features.Profile.UbahPw
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -37,6 +38,10 @@ class UbahPw : AppCompatActivity() {
 //        if (token != null) {
 //            Log.d("isi Token:", token)
 //        }
+        val errorTextView = binding.tilPwLama
+
+        val customTypeface = Typeface.createFromAsset(assets, "poppins.ttf")
+        errorTextView.typeface = customTypeface
 
         ubahPwViewModel =  ViewModelProvider(this).get(UbahPwViewModel::class.java)
 
@@ -97,7 +102,8 @@ class UbahPw : AppCompatActivity() {
                             when(result){
                                 is Result.Success -> {
                                     result.data
-                                    AlertDialogUbahPwSuccess().show(supportFragmentManager, "done")
+                                    val allertSuccess = AlertDialogUbahPwSuccess.newInstance(result.data.message)
+                                    allertSuccess.show(supportFragmentManager, "done")
                                 }
                                 is Result.Error -> {
                                     binding.tilPwLama.isErrorEnabled = true

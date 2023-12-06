@@ -9,21 +9,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
+import androidx.core.view.marginRight
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.core.data.network.Result
-import com.core.data.response.login.DataLoginResponse
-import com.core.domain.model.DataProfil
-import com.core.domain.model.ProfilModel
-import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogFailLogin
-import com.digimbanking.Features.Auth.Login.AlertDialog.AlertDialogSuccessLogin
-import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.Features.Profile.Profil.AlertDialog.AlertDialogLogout
 import com.digimbanking.Features.Profile.UbahPw.UbahPw
 import com.digimbanking.R
-import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.FragmentFProfilBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -49,13 +41,8 @@ class FProfil : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         sharedPref = requireActivity().getSharedPreferences("token", Context.MODE_PRIVATE)
-//        val token = sharedPref.getString("token", null)
-//        if (token != null) {
-//            Log.d("isi Token:", token)
-//        }
-
         profilViewModel.viewModelScope.launch(Dispatchers.Main){
-            val token = sharedPref.getString("token", "").toString()
+            onLoading()
             profilViewModel.getProfil()
                 .observe(viewLifecycleOwner){result ->
                 when(result){
@@ -79,16 +66,30 @@ class FProfil : Fragment() {
                             tvProfEmail.text = email
                             tvGold.text = result.data.data.rekening.map { it.tipeRekening.namaTipe }.joinToString("")
                         }
+
+                        when(binding.tvGold.text){
+                            "Silver" -> {
+                                binding.clCard.setBackgroundResource(R.drawable.card_silver)
+                            }
+                            "Gold" -> {
+                                binding.clCard.setBackgroundResource(R.drawable.card_gold)
+                            }
+                            "Platinum" -> {
+                                binding.clCard.setBackgroundResource(R.drawable.card_platinum)
+                            }
+                        }
+                        onFinishedLoading()
                     }
                     is Result.Error -> {
                         Log.d("error get", result.errorMessage)
+                        onFinishedLoading()
                     } else -> {
                         Log.d("Unexpected Error", "eror nyuk")
+                        onLoading()
                     }
                 }
             }
         }
-
 
         binding.apply{
             cvUbahPw.setOnClickListener{
@@ -103,5 +104,13 @@ class FProfil : Fragment() {
                 AlertDialogLogout().show(childFragmentManager, "test")
             }
         }
+    }
+
+    private fun onLoading(){
+        binding.flLoading.visibility  = View.VISIBLE
+    }
+
+    private fun  onFinishedLoading(){
+        binding.flLoading.visibility = View.GONE
     }
 }
