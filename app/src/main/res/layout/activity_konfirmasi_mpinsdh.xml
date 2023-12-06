@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/neutral200"
     tools:context=".Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.KonfirmasiMPINsdh">
 
     <FrameLayout
@@ -93,7 +94,7 @@
         android:layout_marginTop="24dp"
         android:cursorVisible="true"
         android:inputType="numberPassword"
-        android:itemBackground="@color/backgroundapps"
+        android:itemBackground="@color/white"
         android:textColor="@color/primary"
         android:textSize="10dp"
         app:hideLineWhenFilled="false"

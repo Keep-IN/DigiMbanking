@@ -14,6 +14,7 @@ import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertS
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.AlertDialog.AlertUnregsdh
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.BottomSheetKonfRek
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfRekViewModelsdh
+import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh
 import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertBerhasilOTP
 import com.digimbanking.R
@@ -33,6 +34,9 @@ class BuatSandiSudah : AppCompatActivity() {
         setContentView(binding.root)
 
         viewmodel = ViewModelProvider(this).get(KonfRekViewModelsdh::class.java)
+        binding.cvBacksan.setOnClickListener{
+            startActivity(Intent(this, KonfirmasiRekSudah::class.java))
+        }
 
         binding.apply {
             etSandibr.editText?.doOnTextChanged { text, start, before, count ->

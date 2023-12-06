@@ -8,6 +8,7 @@
     tools:context=".Features.Auth.AdaRekening.BuatSandiSdh.BuatSandiSudah">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvBacksan"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="23dp"
@@ -15,7 +16,7 @@
         app:cardBackgroundColor="@color/primary"
         app:cardCornerRadius="36dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -117,6 +118,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="12dp"
                     android:background="@drawable/ic_bgtextinput"
                     android:hint="Kata Sandi" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -154,6 +156,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="12dp"
                     android:background="@drawable/ic_bgtextinput"
                     android:hint="Kata Sandi" />
             </com.google.android.material.textfield.TextInputLayout>

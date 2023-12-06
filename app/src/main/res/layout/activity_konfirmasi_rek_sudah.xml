@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="89dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="85dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Konfirmasi Rekening"
@@ -101,7 +101,10 @@
                     android:id="@+id/etNorek"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/poppins"
                     android:inputType="number"
+                    android:textColorHint="#323A43"
                     android:background="@drawable/ic_bgtextinput"
                      />
             </com.google.android.material.textfield.TextInputLayout>
