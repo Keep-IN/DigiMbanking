@@ -5,19 +5,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.core.data.response.riwayatTransaksi.Transaction
-import com.core.domain.model.RiwayatItemModel
 import com.digimbanking.R
 import com.digimbanking.databinding.RiwayatTransakiListViewBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class RiwayatTransaksiListAdapter : RecyclerView.Adapter<RiwayatTransaksiListAdapter.ViewHolder>()
+class RiwayatTransakiListAdapter : RecyclerView.Adapter<RiwayatTransakiListAdapter.ViewHolder>()
 {
     private var itemListener: ((Transaction) -> Unit)? = null
     private val data: MutableList<Transaction> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RiwayatTransaksiListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RiwayatTransakiListAdapter.ViewHolder {
         return ViewHolder(
             RiwayatTransakiListViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
@@ -44,17 +43,18 @@ class RiwayatTransaksiListAdapter : RecyclerView.Adapter<RiwayatTransaksiListAda
             val originalDate: Date = convertedDate.parse(item.tanggal)
             val targetDateFormat = SimpleDateFormat("dd MMM yyyy | HH:mm", Locale.US)
             binding.tvDateRiwayatTransfer.text = targetDateFormat.format(originalDate).toString()
+            binding.tvNamaPentransfer.text = item.nama
             when(item.tipeTransaksi){
                 "KREDIT" -> {
                     binding.tvTransaksiMasuk.text = "Transaksi Masuk"
                     binding.ivTransaksiMasuk.setImageResource(R.drawable.ic_masuk)
-                    binding.tvNominalRiwayatTransaksiMasuk.text = "+ Rp.${item.jumlahTransaksi.toLong().formatDotSeparator()}"
+                    binding.tvNominalRiwayatTransaksiMasuk.text = "+ Rp${item.jumlahTransaksi.toLong().formatDotSeparator()}"
                     binding.tvNominalRiwayatTransaksiMasuk.setTextColor(Color.parseColor("#25AC57"))
                 }
                 "DEBIT" -> {
                     binding.tvTransaksiMasuk.text = "Transaksi Keluar"
                     binding.ivTransaksiMasuk.setImageResource(R.drawable.ic_keluar)
-                    binding.tvNominalRiwayatTransaksiMasuk.text = "- Rp.${item.jumlahTransaksi.toLong().formatDotSeparator()}"
+                    binding.tvNominalRiwayatTransaksiMasuk.text = "- Rp${item.jumlahTransaksi.toLong().formatDotSeparator()}"
                     binding.tvNominalRiwayatTransaksiMasuk.setTextColor(Color.parseColor("#E71414"))
                 }
             }

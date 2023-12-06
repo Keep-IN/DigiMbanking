@@ -1,4 +1,4 @@
-package com.digimbanking.Features.Transfer.Riwayat.Mutasi
+package com.digimbanking.Features.Transfer.Riwayat.Riwayat2
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,21 +8,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.core.data.network.Result
 import com.core.data.response.riwayatTransaksi.Transaction
-import com.core.domain.model.DataRiwayat
-import com.core.domain.model.RiwayatItemModel
-import com.digimbanking.Data.Adapter.LoadingStateAdapter
-import com.digimbanking.Data.Adapter.RiwayatTransaksiListAdapter
+import com.digimbanking.Data.Adapter.RiwayatTransakiListAdapter
 import com.digimbanking.Features.Transfer.Riwayat.Filter.BottomSheetFilterFragment
 import com.digimbanking.Features.Transfer.Riwayat.Resi.ResiActivity
+import com.digimbanking.R
 import com.digimbanking.databinding.FragmentRiwayatBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,9 +25,14 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener {
     private lateinit var binding: FragmentRiwayatBinding
-    private val adapterRiwayat: RiwayatTransaksiListAdapter by lazy { RiwayatTransaksiListAdapter() }
+    private val adapterRiwayat: RiwayatTransakiListAdapter by lazy { RiwayatTransakiListAdapter() }
     private lateinit var dataRiwayat: MutableList<Transaction>
     private lateinit var viewModel: RiwayatViewModel
+
+//    private var isScrollingUp = false
+//    private var isAutoScrollTopIconVisible = true
+//    private val scrollDelay = 100L
+//    private val scrollHandler = Handler()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -57,7 +57,20 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
                             is Result.Success -> {
                                 dataRiwayat = it.data.transactions.toMutableList()
                                 adapterRiwayat.submitList(it.data.transactions)
+                                binding.apply {
+                                    imageEmptyListRiwayat.setImageResource(R.drawable.empty_list_riwayat)
+                                    tvEmptyTransaksi.text = it.data.transactions.toString()
+
+                                    if (it.data.transactions.isEmpty()) {
+                                        imageEmptyListRiwayat.visibility = View.VISIBLE
+                                        tvEmptyTransaksi.visibility = View.VISIBLE
+                                    } else {
+                                        imageEmptyListRiwayat.visibility = View.GONE
+                                        tvEmptyTransaksi.visibility = View.GONE
+                                    }
+                                }
                                 Log.d("Isi data Riwayat", "${it.data}")
+
                             }
                             is Result.Error -> {
                                 Log.d("Error get Riwayat", it.errorMessage)
@@ -70,8 +83,19 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
             }
         }
 
+//        // tambahan code baru
+//        binding.rvTransaksiRiwayat.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                isScrollingUp = dy < 0
+//                if (isScrollingUp && isAutoScrollTopIconVisible) {
+//                    hideScrollToTopIconWithDelay()
+//                }
+//            }
+//        })
+
         binding.fabAutoScrollTop.setOnClickListener {
             binding.rvTransaksiRiwayat.smoothScrollToPosition(0)
+    //        isAutoScrollTopIconVisible = true // tambahan code baru, show the icon again
         }
 
         adapterRiwayat.setOnClickItem(rvClickListener)
@@ -109,6 +133,18 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
         }
     }
 
+//    // tambahan code baru
+//    private fun hideScrollToTopIconWithDelay() {
+//        isAutoScrollTopIconVisible = false // hide the icon
+//        scrollHandler.removeCallbacksAndMessages(null)
+//        scrollHandler.postDelayed({
+//            if(isScrollingUp){
+//                isAutoScrollTopIconVisible = true // show the icon again
+//                binding.fabAutoScrollTop.visibility = View.GONE
+//            }
+//        }, scrollDelay)
+//    }
+
     private val rvClickListener: (Transaction) -> Unit = { item ->
         startActivity(Intent(activity, ResiActivity::class.java).apply {
             putExtra("riwayat", item)
@@ -134,15 +170,27 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
     override fun filteredByDateHistory(start: String, end: String) {
         Log.d("Isi Instance Riwayat", "$start $end")
         viewModel.doRiwayat(true,true, start, end)
-            .observe(viewLifecycleOwner){
-                when(it){
+            .observe(viewLifecycleOwner){ result ->
+                when(result){
                     is Result.Success -> {
-                        dataRiwayat = it.data.transactions.toMutableList()
-                        adapterRiwayat.submitList(it.data.transactions)
-                        Log.d("Isi data Riwayat", "${it.data}")
+                        dataRiwayat = result.data.transactions.toMutableList()
+                        adapterRiwayat.submitList(result.data.transactions)
+                        binding.apply {
+                            imageEmptyListRiwayat.setImageResource(R.drawable.empty_list_riwayat)
+                            tvEmptyTransaksi.text = result.data.transactions.toString()
+
+                            if (result.data.transactions.isEmpty()) {
+                                imageEmptyListRiwayat.visibility = View.VISIBLE
+                                tvEmptyTransaksi.visibility = View.VISIBLE
+                            } else {
+                                imageEmptyListRiwayat.visibility = View.GONE
+                                tvEmptyTransaksi.visibility = View.GONE
+                            }
+                        }
+                        Log.d("Isi data Riwayat", "${result.data}")
                     }
                     is Result.Error -> {
-                        Log.d("Error get Riwayat", it.errorMessage)
+                        Log.d("Error get Riwayat", result.errorMessage)
                     }
                     else -> {
                         Log.d("Test", "JSON empty")

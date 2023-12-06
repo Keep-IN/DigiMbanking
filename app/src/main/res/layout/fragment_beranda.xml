@@ -9,25 +9,55 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/iv_inisial_akun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="38dp"
-                android:layout_marginTop="20dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_inisial"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/purple"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/inisial_akun" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvInisialAkun"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="S"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintVertical_bias="0.5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--        <ImageView-->
+            <!--            android:id="@+id/iv_inisial_akun"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginStart="38dp"-->
+            <!--            android:layout_marginTop="20dp"-->
+            <!--            app:layout_constraintStart_toStartOf="parent"-->
+            <!--            app:layout_constraintTop_toTopOf="parent"-->
+            <!--            app:srcCompat="@drawable/inisial_akun" />-->
 
             <TextView
                 android:id="@+id/tv_profil"
@@ -40,8 +70,8 @@
                 android:textColor="#202327"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/iv_inisial_akun"
-                app:layout_constraintTop_toTopOf="@+id/iv_inisial_akun" />
+                app:layout_constraintStart_toEndOf="@+id/cv_inisial"
+                app:layout_constraintTop_toTopOf="@+id/cv_inisial" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_dashboard"
@@ -53,7 +83,7 @@
                 app:cardCornerRadius="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_inisial_akun">
+                app:layout_constraintTop_toBottomOf="@+id/cv_inisial">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -221,6 +251,7 @@
                         android:text="E-Wallet"
                         android:textSize="9sp"
                         app:layout_constraintEnd_toEndOf="@+id/iv_ewallet"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="@+id/iv_ewallet"
                         app:layout_constraintTop_toBottomOf="@+id/iv_ewallet" />
 
@@ -317,6 +348,7 @@
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.digimbanking.Features.Akun.AkunFragment
 import com.digimbanking.Features.Profile.Profil.FProfil
-import com.digimbanking.Features.Transfer.Riwayat.Mutasi.RiwayatFragment
+import com.digimbanking.Features.Transfer.Riwayat.Riwayat2.RiwayatFragment
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityNavbarContainerBinding
 import dagger.hilt.android.AndroidEntryPoint

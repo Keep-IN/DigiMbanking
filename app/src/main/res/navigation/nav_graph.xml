@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/RiwayatFragment"
-        android:name="com.digimbanking.Features.Transfer.Riwayat.Mutasi.RiwayatFragment"
+        android:name="com.digimbanking.Features.Transfer.Riwayat.Riwayat2.RiwayatFragment"
         android:label="Riwayat Fragment"
         tools:layout="@layout/fragment_riwayat" >
 

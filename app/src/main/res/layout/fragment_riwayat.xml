@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_primary"
-    tools:context=".Features.Transfer.Riwayat.Mutasi.RiwayatFragment">
+    tools:context=".Features.Transfer.Riwayat.Riwayat2.RiwayatFragment">
 
     <TextView
         android:id="@+id/tv_title_RiwayatTransaksi"
@@ -199,11 +199,11 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageEmptyListRiwayat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/empty_list_riwayat"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/rvTransaksiRiwayat"
         app:layout_constraintEnd_toEndOf="@+id/rvTransaksiRiwayat"
         app:layout_constraintStart_toStartOf="@+id/rvTransaksiRiwayat"
@@ -218,11 +218,11 @@
         android:text="Belum Ada Transaksi"
         android:textColor="@color/disable"
         android:textSize="14sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/rvTransaksiRiwayat"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintEnd_toEndOf="@+id/imageEmptyListRiwayat"
+        app:layout_constraintStart_toStartOf="@+id/imageEmptyListRiwayat"
+        app:layout_constraintTop_toBottomOf="@+id/imageEmptyListRiwayat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAutoScrollTop"
