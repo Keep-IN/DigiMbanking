@@ -48,8 +48,8 @@ class ResiTransfer : AppCompatActivity() {
                 tvrecieverRekening.text = "${dataResi.penerima.namaBank} - ${dataResi.penerima.noRekening.toString()}"
                 tvRefNumb.text = dataResi.dataTransaksi.id.toString()
                 tvTimeStamp.text = targetDateFormat.format(originalDate).toString()
-                tvAdminFee.text = "Rp ${dataResi.dataTransaksi.biayaAdmin.toLong().toString()}"
-                tvSum.text = "Rp ${dataResi.dataTransaksi.totalTransaksi}"
+                tvAdminFee.text = "Rp ${dataResi.dataTransaksi.biayaAdmin.toLong().formatDotSeparator()}"
+                tvSum.text = "Rp ${dataResi.dataTransaksi.totalTransaksi.toLong().formatDotSeparator()}"
                 tvTransType.text = dataResi.dataTransaksi.jenisTransaksi
                 if (dataResi.dataTransaksi.catatan.isEmpty()){
                     tvCatatan.text = "Tidak ada"
@@ -139,5 +139,13 @@ class ResiTransfer : AppCompatActivity() {
 
         sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
         startActivity(Intent.createChooser(sendIntent, "Share Receipt"))
+    }
+
+    private fun Long.formatDotSeparator(): String{
+        return toString()
+            .reversed()
+            .chunked(3)
+            .joinToString (".")
+            .reversed()
     }
 }
