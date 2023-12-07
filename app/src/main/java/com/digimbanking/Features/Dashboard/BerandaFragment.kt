@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Dashboard
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -89,6 +90,7 @@ class BerandaFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[RiwayatViewModel::class.java]
         viewModel.viewModelScope.launch(Dispatchers.Main) {
+            onLoading()
             activity?.let {
 
                 viewModel.doRiwayat(true,true, "", "")
@@ -104,18 +106,22 @@ class BerandaFragment : Fragment() {
                                     if (dataRiwayat.isEmpty()) {
                                         ivEmptyListRiwayat.visibility = View.VISIBLE
                                         tvBelumAdaTransaksi.visibility = View.VISIBLE
+                                        tvBelumAdaTransaksi.text = "Belum ada transaksi"
                                     } else {
                                         ivEmptyListRiwayat.visibility = View.GONE
                                         tvBelumAdaTransaksi.visibility = View.GONE
                                     }
                                 }
                                 Log.d("Isi data home", "${result.data}")
+                                onFinishedLoading()
                             }
                             is Result.Error -> {
                                 Log.d("Error get Riwayat", result.errorMessage)
+                                onFinishedLoading()
                             }
                             else -> {
                                 Log.d("Test", "JSON empty")
+                                onLoading()
                             }
                         }
                     }
@@ -154,6 +160,17 @@ class BerandaFragment : Fragment() {
             }
             isBalanceVisible = !isBalanceVisible
         }
+    }
+    @SuppressLint("ClickableViewAccessibility")
+    private fun onLoading(){
+        binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreen.visibility = View.GONE
     }
     fun Long.formatDotSeparator(): String{
         return toString()

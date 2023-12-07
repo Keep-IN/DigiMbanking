@@ -7,6 +7,28 @@
     android:background="@color/white_primary"
     tools:context=".Features.Dashboard.BerandaFragment">
 
+    <FrameLayout
+        android:id="@+id/loadScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1D000000"
+        android:elevation="3dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.FadingCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/primary" />
+
+    </FrameLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,15 +57,15 @@
                         android:id="@+id/tvInisialAkun"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="S"
                         android:fontFamily="@font/poppins_semibold"
-                        android:textSize="20sp"
+                        android:text=" "
                         android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.5" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -66,7 +88,7 @@
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="3dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Suparman"
+                android:text=" "
                 android:textColor="#202327"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -110,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="6253 - 4629 - 4765 - 9503"
+                        android:text=" "
                         android:textColor="#F3F7FD"
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@+id/tv_norek"
@@ -147,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Rp500.000.000"
+                        android:text="Rp 0"
                         android:textColor="@color/white_primary"
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/tvSaldo"

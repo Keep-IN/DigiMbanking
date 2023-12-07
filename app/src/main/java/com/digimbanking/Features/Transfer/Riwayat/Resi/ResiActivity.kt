@@ -3,10 +3,14 @@ package com.digimbanking.Features.Transfer.Riwayat.Resi
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.pdf.PdfDocument
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.FileProvider
@@ -15,26 +19,59 @@ import androidx.lifecycle.viewModelScope
 import com.core.data.network.Result
 import com.core.data.response.riwayatResi.ResiResponse
 import com.core.data.response.riwayatTransaksi.Transaction
+import com.core.data.response.transferSesama.TransactionResponse
 import com.core.domain.model.RiwayatItemModel
+import com.digimbanking.BuildConfig
 import com.digimbanking.Features.Dashboard.BerandaFragment
+import com.digimbanking.Features.Dashboard.NavbarContainer
 import com.digimbanking.databinding.ActivityResiBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class ResiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityResiBinding
     private lateinit var viewModel: ResiViewModel
-    private lateinit var shareButton : CardView
+    private lateinit var resiView : View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResiBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this)[ResiViewModel::class.java]
         setContentView(binding.root)
+
+        val dataReceipt = intent.getParcelableExtra<TransactionResponse>("dataReceipt")
+        resiView = binding.FrameLWatermark
+        binding.apply {
+            if (dataReceipt != null){
+                val convertTanggal = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+                val originalTanggal: Date = convertTanggal.parse(dataReceipt.dataTransaksi.timeTransaksi)
+                val targetTanggalFormat = SimpleDateFormat("dd MM yyyy | HH:mm", Locale.US)
+                tvNamaPengirim.text = dataReceipt.pengirim.nama
+                tvInisialPengirim.text = dataReceipt.pengirim.nama.first().toString()
+                tvBankPengirim.text = "${dataReceipt.pengirim.namaBank} - ${dataReceipt.penerima.noRekening.toString()}"
+                tvNamaPenerimaResi.text = dataReceipt.penerima.nama
+                tvInisialPenerimaResi.text = dataReceipt.penerima.nama.first().toString()
+                tvBankPenerimaResi.text = "${dataReceipt.penerima.namaBank} - ${dataReceipt.penerima.noRekening.toString()}"
+                tvIsianNomorReferensi.text = dataReceipt.dataTransaksi.id.toString()
+                tvDateTimeTransaksi.text = targetTanggalFormat.format(originalTanggal).toString()
+                tvIsianBiayaAdmin.text = "Rp${dataReceipt.dataTransaksi.biayaAdmin.toLong().formatDotSeparator()}"
+                tvIsianTotalTransaksi.text = "Rp${dataReceipt.dataTransaksi.totalTransaksi.toLong().formatDotSeparator()}"
+                tvTipeTransaksi.text = dataReceipt.dataTransaksi.jenisTransaksi
+
+                if (dataReceipt.dataTransaksi.catatan.isEmpty()){
+                    tvIsianCatatan.text = "Tidak ada"
+                } else {
+                    tvIsianCatatan.text = dataReceipt.dataTransaksi.catatan
+                }
+            }
+        }
 
         val dataTransaksi = intent.getParcelableExtra<Transaction>("riwayat")
         viewModel.viewModelScope.launch(Dispatchers.Main) {
@@ -75,17 +112,89 @@ class ResiActivity : AppCompatActivity() {
                     }
 
                     binding.btnSelesai.setOnClickListener {
-                        val intent = Intent(this@ResiActivity, BerandaFragment::class.java)
+                        val intent = Intent(this@ResiActivity, NavbarContainer::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()
+                    }
+
+                    binding.buttonShareResi.setOnClickListener {
+                        val pdfFile = generatePdf()
+                        if (pdfFile != null) {
+                            sharePdf(pdfFile, "application/pdf")
+                        } else {
+                            Toast.makeText(this@ResiActivity, "Failed to generate PDF", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }
         }
     }
+    private fun generatePdf(): File? {
+        val pdfDocument = PdfDocument()
+        val pageInfo = PdfDocument.PageInfo.Builder(resiView.width, resiView.height, 1).create()
+        val page = pdfDocument.startPage(pageInfo)
+        val canvas = page.canvas
+        canvas.drawColor(Color.WHITE)
 
-    fun Int.formatDotSeparator(): String{
+        // Draw the view on the PDF page
+        try {
+            resiView.draw(canvas)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.e("PDF_GENERATION", "Error drawing view on PDF canvas: ${e.message}")
+            pdfDocument.close()
+            return null
+        }
+
+        // Finish the page
+        pdfDocument.finishPage(page)
+
+        // Save the PDF file in the application-specific directory
+        val folder = File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "ReceiptPDFs")
+        if (!folder.exists()) {
+            if (!folder.mkdirs()) {
+                Log.e("PDF_GENERATION", "Error creating directory: ${folder.absolutePath}")
+                pdfDocument.close()
+                return null
+            }
+        }
+
+        val pdfFile = File(folder, "Resi_Transfer_DigiBank.pdf")
+        try {
+            pdfDocument.writeTo(FileOutputStream(pdfFile))
+            Log.d("PDF_GENERATION", "PDF successfully generated: ${pdfFile.absolutePath}")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.e("PDF_GENERATION", "Error saving PDF file: ${e.message}")
+            return null
+        } finally {
+            pdfDocument.close()
+        }
+
+        return pdfFile
+    }
+
+
+    private fun sharePdf(pdfFile: File, mimeType: String) {
+        val pdfUri = FileProvider.getUriForFile(
+            this,
+            BuildConfig.APPLICATION_ID + ".provider",
+            pdfFile
+        )
+
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_STREAM, pdfUri)
+            type = mimeType
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+
+        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+        startActivity(Intent.createChooser(sendIntent, "Share Receipt"))
+    }
+
+    private fun Long.formatDotSeparator(): String{
         return toString()
             .reversed()
             .chunked(3)

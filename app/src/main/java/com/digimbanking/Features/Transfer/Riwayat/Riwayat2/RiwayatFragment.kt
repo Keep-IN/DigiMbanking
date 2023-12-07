@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Transfer.Riwayat.Riwayat2
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -29,10 +30,6 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
     private lateinit var dataRiwayat: MutableList<Transaction>
     private lateinit var viewModel: RiwayatViewModel
 
-//    private var isScrollingUp = false
-//    private var isAutoScrollTopIconVisible = true
-//    private val scrollDelay = 100L
-//    private val scrollHandler = Handler()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -50,12 +47,14 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
 
         viewModel = ViewModelProvider(this)[RiwayatViewModel::class.java]
         viewModel.viewModelScope.launch(Dispatchers.Main) {
+            onLoading()
             activity?.let {
                 viewModel.doRiwayat(true,true, "", "")
                     .observe(viewLifecycleOwner){
                         when(it){
                             is Result.Success -> {
                                 dataRiwayat = it.data.transactions.toMutableList()
+                                dataRiwayat.sortBy { it.nama }
                                 adapterRiwayat.submitList(it.data.transactions)
                                 binding.apply {
                                     imageEmptyListRiwayat.setImageResource(R.drawable.empty_list_riwayat)
@@ -64,45 +63,37 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
                                     if (it.data.transactions.isEmpty()) {
                                         imageEmptyListRiwayat.visibility = View.VISIBLE
                                         tvEmptyTransaksi.visibility = View.VISIBLE
+                                        tvEmptyTransaksi.text = "Belum ada transaksi"
                                     } else {
                                         imageEmptyListRiwayat.visibility = View.GONE
                                         tvEmptyTransaksi.visibility = View.GONE
                                     }
                                 }
                                 Log.d("Isi data Riwayat", "${it.data}")
-
+                                onFinishedLoading()
                             }
                             is Result.Error -> {
                                 Log.d("Error get Riwayat", it.errorMessage)
+                                onFinishedLoading()
                             }
                             else -> {
                                 Log.d("Test", "JSON empty")
+                                onLoading()
                             }
                         }
                     }
             }
         }
 
-//        // tambahan code baru
-//        binding.rvTransaksiRiwayat.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                isScrollingUp = dy < 0
-//                if (isScrollingUp && isAutoScrollTopIconVisible) {
-//                    hideScrollToTopIconWithDelay()
-//                }
-//            }
-//        })
-
         binding.fabAutoScrollTop.setOnClickListener {
             binding.rvTransaksiRiwayat.smoothScrollToPosition(0)
-    //        isAutoScrollTopIconVisible = true // tambahan code baru, show the icon again
         }
 
         adapterRiwayat.setOnClickItem(rvClickListener)
         binding.cvRiwayatTransaksiSemua.setCardBackgroundColor(Color.parseColor(("#918AFF")))
         binding.tvSemuaRiwayatTransaksi.setTextColor(Color.parseColor("#FFFFFF"))
         binding.cvFilter.setOnClickListener {
-            // tambahan code baru
+
             val bottomSheetFilter = BottomSheetFilterFragment()
             bottomSheetFilter.dateFilterListener = this@RiwayatFragment
             bottomSheetFilter.show(childFragmentManager, "show dialog")
@@ -132,18 +123,6 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
                 "#202327", "#918AFF", "#FFFFFF")
         }
     }
-
-//    // tambahan code baru
-//    private fun hideScrollToTopIconWithDelay() {
-//        isAutoScrollTopIconVisible = false // hide the icon
-//        scrollHandler.removeCallbacksAndMessages(null)
-//        scrollHandler.postDelayed({
-//            if(isScrollingUp){
-//                isAutoScrollTopIconVisible = true // show the icon again
-//                binding.fabAutoScrollTop.visibility = View.GONE
-//            }
-//        }, scrollDelay)
-//    }
 
     private val rvClickListener: (Transaction) -> Unit = { item ->
         startActivity(Intent(activity, ResiActivity::class.java).apply {
@@ -197,5 +176,17 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
                     }
                 }
             }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun onLoading(){
+        binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreen.visibility = View.GONE
     }
 }

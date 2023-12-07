@@ -429,7 +429,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/FrameLWatermark" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvShareResi"
+                android:id="@+id/buttonShareResi"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
