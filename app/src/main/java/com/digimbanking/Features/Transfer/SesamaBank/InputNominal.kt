@@ -83,16 +83,38 @@ class InputNominal : AppCompatActivity() {
         }
 
         binding.btnToMpin.setOnClickListener {
-            startActivity(Intent(this, MpinSesama::class.java).apply {
-                putExtra("data", TransactionModel(txCatatan, "", "", dataRekening, txNominal.toInt()))
-                putExtra("akun", dataNasabah)
-            })
+            val saldo = dataNasabah.rekening.joinToString { it.saldo.toLong().toString() }
+            if (txNominal.toLong() <= saldo.toLong()){
+                startActivity(Intent(this, MpinSesama::class.java).apply {
+                    putExtra("data", TransactionModel(txCatatan, "", "", dataRekening, txNominal.toInt()))
+                    putExtra("akun", dataNasabah)
+                })
+            } else {
+                binding.tvWarningNominal.apply {
+                    setTextColor(Color.parseColor("#E71414"))
+                    text = "Saldo tidak mencukupi"
+                }
+            }
         }
 
         binding.tilNominal.editText?.apply {
-            let { setNoLeadingZeroFilter(it) }
+            setNoLeadingZeroFilter(this)
             doOnTextChanged { text, start, before, count ->
-                validateInput()
+                if (text != null) {
+                    if (text.isNotEmpty()){
+                        if(viewModel.validateNoninal(text.toString())) {
+                            validateInput()
+                            binding.apply {
+                                tvWarningNominal.setTextColor(Color.parseColor("#323A43"))
+                                tvWarningNominal.text = "Minimal Transfer Rp10.000"
+                            }
+                        } else {
+                            binding.apply {
+                                tvWarningNominal.setTextColor(Color.parseColor("#E71414"))
+                            }
+                        }
+                    }
+                }
             }
         }
     }

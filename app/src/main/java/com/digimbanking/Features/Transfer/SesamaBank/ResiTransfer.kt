@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import androidx.core.view.isVisible
 import com.core.data.response.transferSesama.TransactionResponse
 import com.digimbanking.BuildConfig
 import com.digimbanking.Features.Dashboard.NavbarContainer
@@ -52,7 +53,9 @@ class ResiTransfer : AppCompatActivity() {
                 tvSum.text = "Rp ${dataResi.dataTransaksi.totalTransaksi.toLong().formatDotSeparator()}"
                 tvTransType.text = dataResi.dataTransaksi.jenisTransaksi
                 if (dataResi.dataTransaksi.catatan.isEmpty()){
-                    tvCatatan.text = "Tidak ada"
+                    tvCatatan.visibility = View.INVISIBLE
+                    cvCatatan.visibility = View.INVISIBLE
+                    tvTittleCatatan.visibility = View.INVISIBLE
                 } else {
                     tvCatatan.text = dataResi.dataTransaksi.catatan
                 }

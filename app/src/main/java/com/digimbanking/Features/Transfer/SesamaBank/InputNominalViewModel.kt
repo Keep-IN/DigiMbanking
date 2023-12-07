@@ -11,5 +11,11 @@ import javax.inject.Inject
 class InputNominalViewModel @Inject constructor(
     private val apiService: AkunRepository
 ): ViewModel() {
+    private var isNominalValid = false
+
     fun getUser() = apiService.getAkun()
+    fun validateNoninal(nominal: String): Boolean{
+        isNominalValid = nominal.toLong() >= 10000L
+        return isNominalValid
+    }
 }
