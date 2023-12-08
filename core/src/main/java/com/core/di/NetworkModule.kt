@@ -2,8 +2,11 @@ package com.core.di
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import androidx.core.content.ContextCompat.startActivity
+import com.core.data.local.preferences.UserPreferencesImpl
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -43,7 +46,8 @@ class NetworkModule {
     @Provides
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-        sharedPreferences: SharedPreferences
+        sharedPreferences: SharedPreferences,
+        userPreferencesImpl: UserPreferencesImpl
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(60, TimeUnit.SECONDS)
@@ -54,7 +58,18 @@ class NetworkModule {
                     .newBuilder()
                     .header("Authorization", "Bearer ${getAuthToken(sharedPreferences)}")
                     .build()
-                chain.proceed(requestBuilder)
+                val response = chain.proceed(requestBuilder)
+
+                if (response.code == 401) {
+                    // Token expired, lakukan proses logout di sini
+                    // Misalnya: AuthManager.logout()
+                    CoroutineScope(Dispatchers.Main).launch {
+                        userPreferencesImpl.logout()
+                    }
+                    // Setelah logout, Anda dapat membuka halaman login atau melakukan tindakan lain
+                }
+
+                response
             }
             .build()
     }

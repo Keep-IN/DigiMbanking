@@ -14,8 +14,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="Belum punya rekening ?
-                                                   Daftar sekarang!"
+        android:text="Belum punya rekening?                                                    Daftar sekarang!"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +23,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnDaftarRekening"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
         android:layout_marginStart="47dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="47dp"
@@ -32,6 +31,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="Daftar Rekening"
         android:textSize="14sp"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="@+id/tvDescDaftarSekarang"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/tvDescDaftarSekarang"

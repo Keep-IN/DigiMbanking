@@ -5,6 +5,10 @@
         <item name="cornerSize">250dp</item> <!-- Adjust this value for the desired border radius -->
     </style>
 
+    <style name="TextAppearance.CustomError" parent="TextAppearance.Design.Error">
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+  
     <style name="BottomNavigationViewTextStyle">
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>

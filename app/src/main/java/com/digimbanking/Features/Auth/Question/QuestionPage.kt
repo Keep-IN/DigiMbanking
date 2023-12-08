@@ -30,6 +30,7 @@ class QuestionPage : AppCompatActivity() {
 
             ivBackQuestion.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
+                finish()
             }
         }
     }

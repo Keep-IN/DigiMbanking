@@ -24,14 +24,14 @@ class LoginRepository @Inject constructor(
     fun login(
         email: String,
         password: String
-    ): LiveData<Result<DataLoginResponse>> = liveData {
+    ): LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         val response = apiService.login(LoginRequest(password, email))
         val responseBody = response.body() ?: LoginResponse(DataLoginResponse(""), "", 0)
         try {
 
-            if(response.isSuccessful){
-                emit(Result.Success(responseBody.data))
+            if(response.isSuccessful && responseBody != null){
+                emit(Result.Success(responseBody))
             } else {
                 val errorBody = response.errorBody()?.string()
                 val errorMessage = try {
@@ -42,7 +42,7 @@ class LoginRepository @Inject constructor(
                 emit(Result.Error(errorMessage))
             }
         } catch (e: Exception) {
-            emit(Result.Error(e.message ?: "An error occured"))
+            e.message?.let { Result.Error(it) }?.let { emit(it) }
         }
     }
 }

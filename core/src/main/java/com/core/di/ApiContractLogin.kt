@@ -3,6 +3,8 @@ package com.core.di
 import com.core.data.response.Nasabah.UserResponse
 import com.core.data.response.Profile.Profile.DataProfilResponse
 import com.core.data.response.Profile.Profile.ProfilResponse
+//import com.core.data.response.Profile.UbahMpin.UbahMpinRequest
+//import com.core.data.response.Profile.UbahMpin.UbahMpinResponse
 import com.core.data.response.Profile.UbahPw.UbahPwRequest
 import com.core.data.response.Profile.UbahPw.UbahPwResponse
 import com.core.data.response.login.DataLoginResponse
@@ -29,4 +31,9 @@ interface ApiContractLogin {
     suspend fun ubahPw(
         @Body response: UbahPwRequest
     ): Response<UbahPwResponse>
+
+//    @PUT ("users/{id}/mpin")
+//    suspend fun ubahMpin(
+//        @Body response: UbahMpinRequest
+//    ): Response<UbahMpinResponse>
 }

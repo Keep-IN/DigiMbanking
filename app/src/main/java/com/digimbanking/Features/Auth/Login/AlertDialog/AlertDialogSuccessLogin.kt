@@ -16,7 +16,20 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AlertDialogSuccessLogin : DialogFragment() {
-    lateinit var binding: AlertDialogSuccessLoginBinding
+    private lateinit var binding: AlertDialogSuccessLoginBinding
+
+    companion object{
+        fun newInstance(massage : String): AlertDialogSuccessLogin {
+            val fragment = AlertDialogSuccessLogin()
+            val args = Bundle()
+            args.apply {
+                putString("massage", massage)
+                fragment.arguments = args
+                return fragment
+            }
+        }
+    }
+
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {
         return Dialog(requireContext())
     }

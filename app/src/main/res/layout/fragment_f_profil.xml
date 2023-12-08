@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".Features.Profile.Profil.FProfil">
 
+    <FrameLayout
+        android:id="@+id/flLoading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="3dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.FadingCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/primary"/>
+
+    </FrameLayout>
+
     <TextView
         android:id="@+id/tvProfile"
         android:layout_width="wrap_content"
@@ -15,6 +36,7 @@
         android:layout_marginEnd="168dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Profil"
+        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,16 +56,17 @@
         app:strokeWidth="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clCard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_card_gold">
+            android:background="@drawable/card_gold">
 
             <TextView
                 android:id="@+id/tvGold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="13dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Gold"
                 android:textColor="@color/white"
@@ -104,13 +127,13 @@
                 android:id="@+id/tvIsianNorek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="47dp"
                 android:fontFamily="@font/poppins"
                 android:text="20144511320"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvNamaNorek"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvNamaNorek" />
 
             <TextView
@@ -138,15 +161,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/tvNik"
                 app:layout_constraintTop_toBottomOf="@+id/tvNik" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="47dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvIsianNorek"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvIsianNorek"
-                app:srcCompat="@drawable/ic_copy" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -157,7 +171,7 @@
         android:layout_marginTop="65dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Akun"
-        android:textColor="@color/primary"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/cvIdentitas"
         app:layout_constraintTop_toBottomOf="@+id/cvIdentitas" />
