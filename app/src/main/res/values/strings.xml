@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DigiMbanking</string>
+    <string name="app_name">Digi Mbanking</string>
     <string name="beranda">Beranda</string>
     <string name="akun">Akun</string>
     <string name="riwayat">Riwayat</string>
@@ -72,4 +72,7 @@
     <string name="retry">Coba lagi</string>
     <string name="content_description_scroll_top">auto scroll to top</string>
     <string name="akun_saya">Akun Saya</string>
+    <string name="akunNavbarCustomFont">Akun</string>
+    <string name="berandaNavbarCustomFont">Beranda</string>
+    <string name="profilNavbarCustomFont">Profil</string>
 </resources>

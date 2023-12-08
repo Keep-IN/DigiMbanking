@@ -10,22 +10,15 @@ import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import com.digimbanking.R
 import com.digimbanking.databinding.FragmentBottomSheetFilterBinding
 import com.google.android.material.datepicker.MaterialDatePicker
-import androidx.core.util.Pair
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
-import androidx.lifecycle.viewModelScope
-import com.core.data.network.Result
-import com.core.data.response.riwayatTransaksi.Transaction
-import com.core.domain.model.DataRiwayat
-import com.digimbanking.Features.Transfer.Riwayat.Mutasi.RiwayatViewModel
+import com.digimbanking.Features.Transfer.Riwayat.Riwayat2.RiwayatViewModel
 import com.google.android.material.datepicker.CalendarConstraints
-import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class BottomSheetFilterFragment : SuperBottomSheetFragment() {
@@ -134,6 +127,14 @@ class BottomSheetFilterFragment : SuperBottomSheetFragment() {
                 rbTanggal.isSelected = false
                 tilDateStart.isEnabled = false
                 tilDateEnd.isEnabled = false
+
+                val calendar = Calendar.getInstance()
+                dataDateEnd = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(calendar.time)
+                calendar.add(Calendar.DAY_OF_MONTH, -6) // 7 days ago
+                dataDateStart = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(calendar.time)
+
+                tilDateStart.editText?.setText(dataDateStart)
+                tilDateEnd.editText?.setText(dataDateEnd)
             }
         }
     }
@@ -149,6 +150,14 @@ class BottomSheetFilterFragment : SuperBottomSheetFragment() {
                 rbTanggal.isSelected = false
                 tilDateStart.isEnabled = false
                 tilDateEnd.isEnabled = false
+
+                val calendar = Calendar.getInstance()
+                dataDateEnd = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(calendar.time)
+                calendar.add(Calendar.DAY_OF_MONTH, -14) // 15 days ago
+                dataDateStart = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(calendar.time)
+
+                tilDateStart.editText?.setText(dataDateStart)
+                tilDateEnd.editText?.setText(dataDateEnd)
             }
         }
     }

@@ -30,7 +30,7 @@ class RiwayatTransaksiListBerandaAdapter : RecyclerView.Adapter<RiwayatTransaksi
         }else{
             list
         }
-        data.addAll(limitedList)
+        data.addAll(limitedList.sortedByDescending { it.tanggal })
         notifyDataSetChanged()
     }
 
@@ -43,13 +43,13 @@ class RiwayatTransaksiListBerandaAdapter : RecyclerView.Adapter<RiwayatTransaksi
                 "KREDIT" -> {
                     binding.tvTransaksiMasuk.text = "Transaksi Masuk"
                     binding.ivTransaksiMasuk.setImageResource(R.drawable.ic_masuk)
-                    binding.tvNominalRiwayatTransaksiMasukBeranda.text = "+ Rp.${item.jumlahTransaksi.toLong().formatDotSeparator()}"
+                    binding.tvNominalRiwayatTransaksiMasukBeranda.text = "+ Rp${item.jumlahTransaksi.toLong().formatDotSeparator()}"
                     binding.tvNominalRiwayatTransaksiMasukBeranda.setTextColor(Color.parseColor("#25AC57"))
                 }
                 "DEBIT" -> {
                     binding.tvTransaksiMasuk.text = "Transaksi Keluar"
                     binding.ivTransaksiMasuk.setImageResource(R.drawable.ic_keluar)
-                    binding.tvNominalRiwayatTransaksiMasukBeranda.text = "- Rp.${item.jumlahTransaksi.toLong().formatDotSeparator()}"
+                    binding.tvNominalRiwayatTransaksiMasukBeranda.text = "- Rp${item.jumlahTransaksi.toLong().formatDotSeparator()}"
                     binding.tvNominalRiwayatTransaksiMasukBeranda.setTextColor(Color.parseColor("#E71414"))
                 }
             }

@@ -1,11 +1,13 @@
 package com.digimbanking.Features.Dashboard
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.digimbanking.Features.Akun.AkunFragment
+import com.digimbanking.Features.Dashboard.BottomSheet.BottomSheetLogout
 import com.digimbanking.Features.Profile.Profil.FProfil
-import com.digimbanking.Features.Transfer.Riwayat.Mutasi.RiwayatFragment
+import com.digimbanking.Features.Transfer.Riwayat.Riwayat2.RiwayatFragment
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityNavbarContainerBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,5 +40,10 @@ class NavbarContainer : AppCompatActivity() {
             replace(R.id.fragContainer, fragment)
             commit()
         }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+        BottomSheetLogout().show(supportFragmentManager, "Alert Logout")
     }
 }

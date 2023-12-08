@@ -52,7 +52,7 @@
         android:src="@drawable/ic_mpinsdh" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/tvWarningNominal"
         android:layout_width="328dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -83,8 +83,8 @@
         app:itemWidth="40dp"
         android:textColor="@color/primary"
         android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView23"
-        app:layout_constraintStart_toStartOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:layout_constraintEnd_toEndOf="@+id/tvWarningNominal"
+        app:layout_constraintStart_toStartOf="@+id/tvWarningNominal"
+        app:layout_constraintTop_toBottomOf="@+id/tvWarningNominal"
         app:lineColor="@color/primary" />
 </androidx.constraintlayout.widget.ConstraintLayout>

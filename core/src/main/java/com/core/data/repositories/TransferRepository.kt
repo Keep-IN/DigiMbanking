@@ -69,9 +69,9 @@ class TransferRepository @Inject constructor(
         }
     }
 
-    fun postRekeningTujuan(rekening: String): LiveData<Result<NasabahTujuanResponse>> = liveData {
+    fun postRekeningTujuan(rekeningSumber: String, rekeningTujuan: String): LiveData<Result<NasabahTujuanResponse>> = liveData {
         emit(Result.Loading)
-        val response = apiService.postRekTujuan(RekTujuanRequest(rekening))
+        val response = apiService.postRekTujuan(RekTujuanRequest(rekeningSumber, rekeningTujuan))
         val responseBody = response.body() ?: NasabahTujuanResponse(DataNasabahTujuan("", "", 0L), "", 0)
         try{
             if(response.isSuccessful){
