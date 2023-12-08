@@ -98,6 +98,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cv_inisial">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ivCardBackground"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/card_dashboard">
