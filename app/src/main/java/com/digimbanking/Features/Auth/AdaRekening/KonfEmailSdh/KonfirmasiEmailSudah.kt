@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import com.core.data.network.Result
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
@@ -45,6 +46,7 @@ class KonfirmasiEmailSudah : AppCompatActivity() {
                                 it.data
                                 Log.d("Tes", "${it.data}")
                                 startActivity(Intent(this@KonfirmasiEmailSudah, OtpEmailSudah::class.java))
+                                onFinishedLoading()
                             }
 
                             is Result.Error -> {
@@ -55,10 +57,11 @@ class KonfirmasiEmailSudah : AppCompatActivity() {
 
                                 ).show()
                                 Log.d("konfirmasiemailsudah",it.errorMessage)
+                                onFinishedLoading()
                             }
 
                             else -> {
-                                Log.d("Tes", "Empty JSON")
+                                onLoading()
                             }
                         }
                     }
@@ -101,4 +104,12 @@ class KonfirmasiEmailSudah : AppCompatActivity() {
     private fun validateInput(){
         binding.btnCheckrek.isEnabled = viewModel.isEmailValid(binding.etBuatakun.editText?.text.toString())
     }
+
+    private fun onLoading(){
+        binding.bgLoading2.visibility = View.VISIBLE
+    }
+    private fun onFinishedLoading(){
+        binding.bgLoading2.visibility = View.GONE
+    }
+
 }
