@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
@@ -35,6 +36,7 @@ class KonfirmasiEmail : AppCompatActivity() {
                                 it.data
                                 Log.d("Tes", "${it.data}")
                                 startActivity(Intent(this@KonfirmasiEmail, Otp::class.java))
+                                onFinishedLoading()
                             }
 
                             is Result.Error -> {
@@ -43,11 +45,13 @@ class KonfirmasiEmail : AppCompatActivity() {
                                     "${it.errorMessage}",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                onFinishedLoading()
                                 Log.d("Error Post", it.errorMessage)
                             }
 
                             else -> {
                                 Log.d("Unexpected Result", "Received an unexpected result: $it")
+                                onLoading()
                             }
                         }
                     }
@@ -75,5 +79,13 @@ class KonfirmasiEmail : AppCompatActivity() {
 
     private fun validateInput(){
         binding.btnRegist.isEnabled = viewmodel.validateEmail(binding.etEmail.editText?.text.toString())
+    }
+
+    private fun onLoading(){
+        binding.loadScreen.visibility = View.VISIBLE
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreen.visibility = View.GONE
     }
 }
