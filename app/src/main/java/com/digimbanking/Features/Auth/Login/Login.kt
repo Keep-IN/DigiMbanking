@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.KeyEvent.DispatcherState
+import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
@@ -73,6 +74,7 @@ class Login : AppCompatActivity() {
 
             btnLoginMasuk.setOnClickListener {
                 loginViewModel.viewModelScope.launch(Dispatchers.Main) {
+                    onLoading()
                     loginViewModel.login(
                         binding.tilLoginEmail.editText?.text.toString(),
                         binding.tilLoginPw.editText?.text.toString()
@@ -84,19 +86,20 @@ class Login : AppCompatActivity() {
                                     sPref.putString("token", result.data.data.token)
                                     Log.d("Tes", "token: ${result.data.data.token}")
                                     sPref.apply()
-                                    val allertSuccess =
-                                        AlertDialogSuccessLogin.newInstance(result.data.message)
+                                    val allertSuccess = AlertDialogSuccessLogin.newInstance(result.data.message)
                                     allertSuccess.show(supportFragmentManager, "success")
+                                    onFinishedLoading()
                                 }
 
                                 is Result.Error -> {
-                                    val allertFailed =
-                                        AlertDialogFailLogin.newInstance(result.errorMessage)
+                                    val allertFailed = AlertDialogFailLogin.newInstance(result.errorMessage)
                                     allertFailed.show(supportFragmentManager, "fail")
+                                    onFinishedLoading()
                                 }
 
                                 else -> {
                                     Log.d("Tes", "Empty JSON")
+                                    onFinishedLoading()
                                 }
                             }
                         })
@@ -119,5 +122,13 @@ class Login : AppCompatActivity() {
         val isPasswordValid = loginViewModel.validatePassword(password)
 
         binding.btnLoginMasuk.isEnabled = isEmailValid && isPasswordValid
+    }
+
+    private fun onLoading(){
+        binding.flLoading.visibility = View.VISIBLE
+    }
+
+    private fun  onFinishedLoading(){
+        binding.flLoading.visibility = View.GONE
     }
 }
