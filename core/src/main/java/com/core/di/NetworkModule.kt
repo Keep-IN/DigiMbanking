@@ -29,7 +29,7 @@ import javax.inject.Singleton
 class NetworkModule {
     companion object{
         private const val  BASE_URL ="https://5380-103-189-94-178.ngrok-free.app/api/v1/"
-        private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEyMjUzNjUsImV4cCI6MTcwMTMxMTc2NX0.eIM2PokwcyLjcmZXX_m4d8KE6N9Kjh3y_5gXUK75GuU"
+        private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEzMTQ5NDksImV4cCI6MTcwMTQwMTM0OX0.__CKBQY1TO4Ru7hYNtcp-N9TBRuIBO2r16CxO6F8E3A"
     }
     @Singleton
     @Provides

@@ -24,7 +24,8 @@
         android:text="Transfer Masuk"
         app:layout_constraintBottom_toBottomOf="@+id/iv_transaksi_masuk"
         app:layout_constraintStart_toEndOf="@+id/iv_transaksi_masuk"
-        app:layout_constraintTop_toTopOf="@+id/iv_transaksi_masuk" />
+        app:layout_constraintTop_toTopOf="@+id/iv_transaksi_masuk"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_nominal_riwayat_transaksi_masuk"
