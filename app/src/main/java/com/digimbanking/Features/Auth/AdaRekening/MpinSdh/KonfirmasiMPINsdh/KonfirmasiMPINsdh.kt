@@ -13,6 +13,12 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertSandiACC
+import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertSandiDEC
+import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.BuatSandiSudah
+import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh
+import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.AlertMPIN.ALERTMPINDEC
+import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.AlertMPIN.AlertMPINACC
 import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.PinViewModel
 import com.digimbanking.Features.Auth.Login.Login
 import com.digimbanking.databinding.ActivityKonfirmasiMpinsdhBinding
@@ -30,10 +36,14 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this).get(viewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PinViewModel::class.java)
         sharedPreferences = getSharedPreferences("Mpin", MODE_PRIVATE)
         val pinView = binding.pinPiw
         val pinErrorText = binding.pinError
+
+        binding.btnBackkMPIN.setOnClickListener{
+            startActivity(Intent(this, BuatMPINsdh::class.java))
+        }
 
         binding.pinPiw.doOnTextChanged { text, start, before, count ->
             if (text?.length == 6) {
@@ -45,31 +55,37 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
                                 viewModel.putMPIN(text.toString())
                                     .observe(this@KonfirmasiMPINsdh, Observer { result ->
                                         when (result) {
+                                            is Result.Success -> {
+                                                val allertSuccess = AlertMPINACC.newInstance(result.data.message)
+                                                allertSuccess.show(supportFragmentManager, "success")
+                                                onFinishedLoading()
+                                            }
+
                                             is Result.Error -> {
-                                                Toast.makeText(
-                                                    this@KonfirmasiMPINsdh,
-                                                    result.errorMessage,
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
+                                                ALERTMPINDEC().show(supportFragmentManager, "no")
+                                                ALERTMPINDEC().setErrorMessage(result.errorMessage)
+                                                Toast.makeText(this@KonfirmasiMPINsdh, result.errorMessage, Toast.LENGTH_SHORT).show()
+                                                onFinishedLoading()
                                             }
                                             is Result.Loading -> {
-
+                                                onFinishedLoading()
                                             }
 
                                             else -> {
-
+                                                onLoading()
                                             }
                                         }
                                     })
-                                val intent = Intent(this@KonfirmasiMPINsdh, Login::class.java)
-                                startActivity(intent)
-                                finish()
+//                                AlertMPINACC().show(supportFragmentManager,"yes")
+//                                startActivity(Intent(this@KonfirmasiMPINsdh, Login::class.java))
                             } else {
                                 pinView.setLineColor(Color.RED)
+                                pinView.setTextColor(Color.RED)
                                 pinErrorText.visibility = View.VISIBLE
                             }
                         } else {
                             pinView.setLineColor(Color.parseColor("#6C63FF"))
+                            pinView.setTextColor(Color.parseColor("#6C63FF"))
                             pinErrorText.visibility = View.GONE
                         }
                     })
@@ -77,12 +93,17 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
                 }
             }
         }
-
         pinView.addTextChangedListener {
             it?.let {
                 viewModel.setKonfirmasiPin(it.toString())
             }
         }
 
+    }
+    private fun onLoading(){
+        binding.bgLoading.visibility = View.VISIBLE
+    }
+    private fun onFinishedLoading(){
+        binding.bgLoading.visibility = View.GONE
     }
 }

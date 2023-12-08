@@ -53,13 +53,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins"
-                android:text="Email berhasil diverifiaksi"
+                android:text="test"
                 android:textSize="12dp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView9"
                 app:layout_constraintStart_toStartOf="@+id/imageView9"
                 app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnSuksesOTP"
                 android:layout_width="0dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="20dp"

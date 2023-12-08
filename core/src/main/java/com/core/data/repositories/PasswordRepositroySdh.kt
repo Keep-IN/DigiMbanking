@@ -7,6 +7,8 @@ import com.core.data.network.Result
 import com.core.data.response.authAdaRekening.BuatKataSandisdh.KataSandiRequest
 import com.core.data.response.authAdaRekening.BuatKataSandisdh.KataSandiResponse
 import com.core.di.ApiContractAdaRekening
+import org.json.JSONException
+import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,7 +16,7 @@ import javax.inject.Singleton
 class PasswordRepositroySdh @Inject constructor(
     private val apiService : ApiContractAdaRekening,
     private val userPreferencesSdh: UserPreferencesSdh,
-){
+) {
     fun putNewpass(
         password: String
     ): LiveData<Result<KataSandiResponse>> = liveData {
@@ -28,7 +30,13 @@ class PasswordRepositroySdh @Inject constructor(
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
             } else {
-                emit(Result.Error("Failed to get a valid response"))
+                val errorBody = response.errorBody()?.string()
+                val errorMessage = try {
+                    JSONObject(errorBody).getString("message")
+                } catch (e: JSONException) {
+                    "Unknown error occured"
+                }
+                emit(Result.Error(errorMessage))
             }
         } catch (e: Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }

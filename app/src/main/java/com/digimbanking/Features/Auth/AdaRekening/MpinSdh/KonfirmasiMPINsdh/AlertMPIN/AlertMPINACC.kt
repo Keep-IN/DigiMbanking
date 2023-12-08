@@ -1,4 +1,4 @@
-package com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh
+package com.digimbanking.Features.Auth.AdaRekening.MpinSdh.KonfirmasiMPINsdh.AlertMPIN
 
 import android.app.Dialog
 import android.content.Intent
@@ -11,17 +11,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
-import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
+import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi.AlertSandiACC
+import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh
+import com.digimbanking.Features.Auth.Login.Login
+import com.digimbanking.Features.Dashboard.NavbarContainer
 import com.digimbanking.R
-import com.digimbanking.databinding.AlertBerhasilOtpBinding
+import com.digimbanking.databinding.AlertDialogSuccessLoginBinding
 import com.digimbanking.databinding.AlertMpinAccBinding
 
-class AlertBerhasilOTP : DialogFragment(){
-    lateinit var binding: AlertBerhasilOtpBinding
+class AlertMPINACC : DialogFragment() {
+    lateinit var binding: AlertMpinAccBinding
 
-    companion object{
-        fun newInstance(massage : String): AlertBerhasilOTP {
-            val fragment = AlertBerhasilOTP()
+    companion object {
+        fun newInstance(massage: String): AlertMPINACC {
+            val fragment = AlertMPINACC()
             val args = Bundle()
             args.apply {
                 putString("massage", massage)
@@ -30,7 +33,8 @@ class AlertBerhasilOTP : DialogFragment(){
             }
         }
     }
-    override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return Dialog(requireContext())
     }
 
@@ -39,7 +43,7 @@ class AlertBerhasilOTP : DialogFragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = AlertBerhasilOtpBinding.inflate(layoutInflater, container, false)
+        binding = AlertMpinAccBinding.inflate(layoutInflater, container, false)
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog?.setCanceledOnTouchOutside(false)
@@ -51,13 +55,12 @@ class AlertBerhasilOTP : DialogFragment(){
         val massage = arguments?.getString("massage")
 
         binding.apply {
-            textView27.text = massage
+            textView48.text = massage
         }
 
-        binding.btnSuksesOTP.setOnClickListener{
-            startActivity(Intent(activity, KonfirmasiRekSudah::class.java))
+        binding.btnokMPIN.setOnClickListener {
+            startActivity(Intent(activity, Login::class.java))
             requireActivity().finishAffinity()
         }
     }
-
 }

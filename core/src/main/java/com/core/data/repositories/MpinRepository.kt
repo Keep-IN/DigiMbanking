@@ -33,15 +33,15 @@ class MpinRepository @Inject constructor(
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
             } else {
-                val erorBody = response.errorBody()?.string()
-                val errorMassage = try {
-                    JSONObject(erorBody).getString("massage")
-                } catch (e : JSONException) {
-                    "Unknown error occurred"
-                }
-                emit(Result.Error(errorMassage))
+                val errorBody = response.errorBody()?.string()
+                val errorMessage = try {
+                JSONObject(errorBody).getString("message")
+            }catch (e : JSONException) {
+                "Unknown error occured"
             }
-        } catch (e : Exception) {
+            emit(Result.Error(errorMessage))
+            }
+        } catch (e: Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }
         }
     }

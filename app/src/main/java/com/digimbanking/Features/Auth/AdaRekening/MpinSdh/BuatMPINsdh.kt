@@ -16,8 +16,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chaos.view.PinView
 import com.core.data.network.Result
+import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.BuatSandiSudah
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.Features.Auth.CreateRekening.Mpin.KonfirmasiMpin
+import com.digimbanking.Features.Auth.OnBoard.OnBoard2
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,6 +37,9 @@ class BuatMPINsdh : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(PinViewModel::class.java)
         sharedPreferences = getSharedPreferences("Mpin", MODE_PRIVATE)
+        binding.btnBackMPIN.setOnClickListener{
+            startActivity(Intent(this, BuatSandiSudah::class.java))
+        }
 
         val pinView = binding.sendMPIN
         pinView.addTextChangedListener {

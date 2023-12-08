@@ -11,9 +11,11 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.BuatSandiSudah
 import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.OtpEmailSudah
 import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.OtpEmailViewModelsdh
 import com.digimbanking.Features.Auth.CreateRekening.Registrasi.Otp
+import com.digimbanking.Features.Auth.Question.QuestionPage
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityKonfirmasiEmailSudahBinding
@@ -29,6 +31,9 @@ class KonfirmasiEmailSudah : AppCompatActivity() {
         binding =ActivityKonfirmasiEmailSudahBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.cvbackKonf.setOnClickListener{
+            startActivity(Intent(this, QuestionPage::class.java))
+        }
 
         viewModel = ViewModelProvider(this).get(OtpEmailViewModelsdh::class.java)
         binding.btnCheckrek.setOnClickListener {
