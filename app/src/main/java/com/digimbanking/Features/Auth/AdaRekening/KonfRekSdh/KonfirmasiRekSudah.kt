@@ -2,6 +2,7 @@ package com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.widget.doOnTextChanged
 import com.core.data.network.Result
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -22,6 +23,10 @@ class KonfirmasiRekSudah : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(KonfRekViewModelsdh::class.java)
+        binding.etNorek.doOnTextChanged { text, _, _, _ ->
+            val isTextInputNotEmpty = text?.isNotEmpty() == true
+            binding.btnKonfrek.isEnabled = isTextInputNotEmpty
+        }
 
         binding.btnKonfrek.setOnClickListener {
             val noRekening = binding.etNorek.text.toString()
@@ -36,6 +41,7 @@ class KonfirmasiRekSudah : AppCompatActivity() {
                             val bottomSheetFragment = BottomSheetKonfRek(
                                 rekeningResponse.data.namaLengkap,
                                 rekeningResponse.data.nik,
+                                noRekening
                             )
                             bottomSheetFragment.show(
                                 supportFragmentManager,

@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +24,8 @@
         android:text="Transfer Masuk"
         app:layout_constraintBottom_toBottomOf="@+id/iv_transaksi_masuk"
         app:layout_constraintStart_toEndOf="@+id/iv_transaksi_masuk"
-        app:layout_constraintTop_toTopOf="@+id/iv_transaksi_masuk" />
+        app:layout_constraintTop_toTopOf="@+id/iv_transaksi_masuk"
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/tv_nominal_riwayat_transaksi_masuk_beranda"

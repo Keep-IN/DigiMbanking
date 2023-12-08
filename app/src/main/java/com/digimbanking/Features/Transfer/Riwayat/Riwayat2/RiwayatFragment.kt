@@ -1,5 +1,6 @@
-package com.digimbanking.Features.Transfer.Riwayat.Mutasi
+package com.digimbanking.Features.Transfer.Riwayat.Riwayat2
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -8,21 +9,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.core.data.network.Result
 import com.core.data.response.riwayatTransaksi.Transaction
-import com.core.domain.model.DataRiwayat
-import com.core.domain.model.RiwayatItemModel
-import com.digimbanking.Data.Adapter.LoadingStateAdapter
-import com.digimbanking.Data.Adapter.RiwayatTransaksiListAdapter
+import com.digimbanking.Data.Adapter.RiwayatTransakiListAdapter
 import com.digimbanking.Features.Transfer.Riwayat.Filter.BottomSheetFilterFragment
 import com.digimbanking.Features.Transfer.Riwayat.Resi.ResiActivity
+import com.digimbanking.R
 import com.digimbanking.databinding.FragmentRiwayatBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,9 +26,10 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener {
     private lateinit var binding: FragmentRiwayatBinding
-    private val adapterRiwayat: RiwayatTransaksiListAdapter by lazy { RiwayatTransaksiListAdapter() }
+    private val adapterRiwayat: RiwayatTransakiListAdapter by lazy { RiwayatTransakiListAdapter() }
     private lateinit var dataRiwayat: MutableList<Transaction>
     private lateinit var viewModel: RiwayatViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -50,20 +47,38 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
 
         viewModel = ViewModelProvider(this)[RiwayatViewModel::class.java]
         viewModel.viewModelScope.launch(Dispatchers.Main) {
+            onLoading()
             activity?.let {
                 viewModel.doRiwayat(true,true, "", "")
                     .observe(viewLifecycleOwner){
                         when(it){
                             is Result.Success -> {
                                 dataRiwayat = it.data.transactions.toMutableList()
+                                dataRiwayat.sortBy { it.nama }
                                 adapterRiwayat.submitList(it.data.transactions)
+                                binding.apply {
+                                    imageEmptyListRiwayat.setImageResource(R.drawable.empty_list_riwayat)
+                                    tvEmptyTransaksi.text = it.data.transactions.toString()
+
+                                    if (it.data.transactions.isEmpty()) {
+                                        imageEmptyListRiwayat.visibility = View.VISIBLE
+                                        tvEmptyTransaksi.visibility = View.VISIBLE
+                                        tvEmptyTransaksi.text = "Belum ada transaksi"
+                                    } else {
+                                        imageEmptyListRiwayat.visibility = View.GONE
+                                        tvEmptyTransaksi.visibility = View.GONE
+                                    }
+                                }
                                 Log.d("Isi data Riwayat", "${it.data}")
+                                onFinishedLoading()
                             }
                             is Result.Error -> {
                                 Log.d("Error get Riwayat", it.errorMessage)
+                                onFinishedLoading()
                             }
                             else -> {
                                 Log.d("Test", "JSON empty")
+                                onLoading()
                             }
                         }
                     }
@@ -78,7 +93,7 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
         binding.cvRiwayatTransaksiSemua.setCardBackgroundColor(Color.parseColor(("#918AFF")))
         binding.tvSemuaRiwayatTransaksi.setTextColor(Color.parseColor("#FFFFFF"))
         binding.cvFilter.setOnClickListener {
-            // tambahan code baru
+
             val bottomSheetFilter = BottomSheetFilterFragment()
             bottomSheetFilter.dateFilterListener = this@RiwayatFragment
             bottomSheetFilter.show(childFragmentManager, "show dialog")
@@ -134,20 +149,44 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
     override fun filteredByDateHistory(start: String, end: String) {
         Log.d("Isi Instance Riwayat", "$start $end")
         viewModel.doRiwayat(true,true, start, end)
-            .observe(viewLifecycleOwner){
-                when(it){
+            .observe(viewLifecycleOwner){ result ->
+                when(result){
                     is Result.Success -> {
-                        dataRiwayat = it.data.transactions.toMutableList()
-                        adapterRiwayat.submitList(it.data.transactions)
-                        Log.d("Isi data Riwayat", "${it.data}")
+                        dataRiwayat = result.data.transactions.toMutableList()
+                        adapterRiwayat.submitList(result.data.transactions)
+                        binding.apply {
+                            imageEmptyListRiwayat.setImageResource(R.drawable.empty_list_riwayat)
+                            tvEmptyTransaksi.text = result.data.transactions.toString()
+
+                            if (result.data.transactions.isEmpty()) {
+                                imageEmptyListRiwayat.visibility = View.VISIBLE
+                                tvEmptyTransaksi.visibility = View.VISIBLE
+                            } else {
+                                imageEmptyListRiwayat.visibility = View.GONE
+                                tvEmptyTransaksi.visibility = View.GONE
+                            }
+                        }
+                        Log.d("Isi data Riwayat", "${result.data}")
                     }
                     is Result.Error -> {
-                        Log.d("Error get Riwayat", it.errorMessage)
+                        Log.d("Error get Riwayat", result.errorMessage)
                     }
                     else -> {
                         Log.d("Test", "JSON empty")
                     }
                 }
             }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun onLoading(){
+        binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreen.visibility = View.GONE
     }
 }

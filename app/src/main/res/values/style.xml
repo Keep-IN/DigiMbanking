@@ -8,4 +8,8 @@
     <style name="TextAppearance.CustomError" parent="TextAppearance.Design.Error">
         <item name="android:fontFamily">@font/poppins</item>
     </style>
+  
+    <style name="BottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
 </resources>

@@ -13,4 +13,4 @@ data class DukcapilResponse(
     val message: String,
     @SerializedName("status")
     val status: Int
-): Parcelable
+) : Parcelable

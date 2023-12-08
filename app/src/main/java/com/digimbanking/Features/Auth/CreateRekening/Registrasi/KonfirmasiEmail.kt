@@ -9,6 +9,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.core.data.network.Result
+import com.digimbanking.Features.Auth.CreateRekening.Card.PilihKartu
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityKonfirmasiEmailBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,10 +43,11 @@ class KonfirmasiEmail : AppCompatActivity() {
                                     "${it.errorMessage}",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                Log.d("Error Post", it.errorMessage)
                             }
 
                             else -> {
-                                Log.d("Tes", "Empty JSON")
+                                Log.d("Unexpected Result", "Received an unexpected result: $it")
                             }
                         }
                     }
@@ -58,10 +60,14 @@ class KonfirmasiEmail : AppCompatActivity() {
                     binding.etEmail.isErrorEnabled = false
                 } else {
                     binding.etEmail.isErrorEnabled = true
-                    binding.etEmail.error = "Email yang dimasukkan harus sesuai format"
+                    binding.etEmail.error = "Email harus sesuai format penulisan"
                 }
                 validateInput()
             }
+        }
+
+        binding.btnKembali.setOnClickListener {
+            startActivity(Intent(this, PilihKartu::class.java))
         }
 
 

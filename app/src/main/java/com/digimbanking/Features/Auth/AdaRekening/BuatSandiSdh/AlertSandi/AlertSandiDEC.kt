@@ -1,6 +1,7 @@
 package com.digimbanking.Features.Auth.AdaRekening.BuatSandiSdh.AlertSandi
 
 import android.app.Dialog
+import android.content.Intent
 
 import androidx.fragment.app.DialogFragment
 import android.graphics.Color
@@ -12,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.core.content.ContentProviderCompat.requireContext
+import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh
 import com.digimbanking.R
 import com.digimbanking.databinding.AlertSandiDecBinding
 import com.digimbanking.databinding.AlertUnregsdhBinding
@@ -36,6 +38,11 @@ class AlertSandiDEC : DialogFragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnDecSandi.setOnClickListener {
+            startActivity(Intent(activity, BuatMPINsdh::class.java))
+            requireActivity().finishAffinity()
+        }
 
     }
 }

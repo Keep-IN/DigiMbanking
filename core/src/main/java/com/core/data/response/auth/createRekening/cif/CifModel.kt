@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class CifModel(
     @SerializedName("alamat")
-    val nik: String,
+    val alamat: String,
     @SerializedName("namaLengkap")
     val namaLengkap: String,
     @SerializedName("nik")
-    val alamat: String,
+    val nik: String,
     @SerializedName("pekerjaan")
     val pekerjaan: String,
     @SerializedName("penghasilan")
