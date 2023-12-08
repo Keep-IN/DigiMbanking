@@ -75,6 +75,20 @@ class BerandaFragment : Fragment() {
                                     ivEyeSharp.setOnClickListener {
                                         toggleAccountBalance(saldo)
                                     }
+                                    when(result.data.data.rekening.joinToString { it.tipeRekening.idTipe.toString() }){
+                                        "1" -> {
+                                            ivCardBackground.setBackgroundResource(R.drawable.silvercard)
+                                            tvVisualCard.text = "Silver"
+                                        }
+                                        "2" -> {
+                                            ivCardBackground.setBackgroundResource(R.drawable.goldcard)
+                                            tvVisualCard.text = "Gold"
+                                        }
+                                        "3" -> {
+                                            ivCardBackground.setBackgroundResource(R.drawable.platinumcard)
+                                            tvVisualCard.text = "Platinum"
+                                        }
+                                    }
                                 }
                             }
                             is Result.Error -> {
