@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DigiMbanking</string>
+    <string name="app_name">Digi Mbanking</string>
     <string name="beranda">Beranda</string>
     <string name="akun">Akun</string>
     <string name="riwayat">Riwayat</string>
@@ -10,11 +10,11 @@
     <string name="pilih_kartu">Pilih kartu untuk melihat transaksi kartu Anda</string>
     <string name="silver">Silver</string>
     <string name="xxxxxxxx">xxxxxxxx</string>
-    <string name="limit_transfer_5_juta">limit transfer : 500000000</string>
+    <string name="limit_transfer_5_juta">limit transfer : 5 juta</string>
     <string name="debit">Debit</string>
     <string name="gold">Gold</string>
-    <string name="limit_transfer_10_juta">limit transfer : 1000000000</string>
-    <string name="limit_transfer_15_juta">limit transfer : 1500000000</string>
+    <string name="limit_transfer_10_juta">limit transfer : 10 juta</string>
+    <string name="limit_transfer_15_juta">limit transfer : 15 juta</string>
     <string name="title_activity_kata_sandi">KataSandi</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -72,4 +72,7 @@
     <string name="retry">Coba lagi</string>
     <string name="content_description_scroll_top">auto scroll to top</string>
     <string name="akun_saya">Akun Saya</string>
+    <string name="akunNavbarCustomFont">Akun</string>
+    <string name="berandaNavbarCustomFont">Beranda</string>
+    <string name="profilNavbarCustomFont">Profil</string>
 </resources>

@@ -58,7 +58,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tvErrorMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
@@ -79,8 +79,8 @@
                 android:text="Masukkan alamat email untuk proses pembuatan akun."
                 android:textColor="#323A43"
                 android:textSize="12dp"
-                app:layout_constraintStart_toStartOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintStart_toStartOf="@+id/tvErrorMessage"
+                app:layout_constraintTop_toBottomOf="@+id/tvErrorMessage" />
 
             <View
                 android:id="@+id/view"

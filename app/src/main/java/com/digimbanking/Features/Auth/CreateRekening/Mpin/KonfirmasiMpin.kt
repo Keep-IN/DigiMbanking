@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.chaos.view.PinView
 import com.core.data.network.Result
+import com.digimbanking.Features.Auth.CreateRekening.Mpin.AlertMpin.MpinSuccess
+import com.digimbanking.Features.Auth.CreateRekening.Registrasi.AlertOtp.OtpSuccess
 import com.digimbanking.Features.Auth.Login.Login
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.R
@@ -47,31 +49,40 @@ class KonfirmasiMpin : AppCompatActivity() {
                                 mpinViewModel.putMpin(text.toString())
                                     .observe(this@KonfirmasiMpin, Observer { result ->
                                         when (result) {
+                                            is Result.Success -> {
+                                                val allertSuccess = MpinSuccess.newInstance(result.data.message)
+                                                allertSuccess.show(supportFragmentManager, "success")
+                                                onFinishedLoading()
+                                            }
                                             is Result.Error -> {
                                                 Toast.makeText(
                                                     this@KonfirmasiMpin,
                                                     result.errorMessage,
                                                     Toast.LENGTH_SHORT
                                                 ).show()
+                                                onFinishedLoading()
                                             }
                                             is Result.Loading -> {
+                                                onFinishedLoading()
 
                                             }
 
                                             else -> {
-
+                                                onLoading()
                                             }
                                         }
                                     })
-                                val intent = Intent(this@KonfirmasiMpin, Login::class.java)
-                                startActivity(intent)
-                                finish()
+//                                val intent = Intent(this@KonfirmasiMpin, Login::class.java)
+//                                startActivity(intent)
+//                                finish()
                             } else {
                                 pinView.setLineColor(Color.RED)
+                                pinView.setTextColor(Color.RED)
                                 pinErrorText.visibility = View.VISIBLE
                             }
                         } else {
                             pinView.setLineColor(Color.parseColor("#6C63FF"))
+                            pinView.setTextColor(Color.parseColor("#6C63FF"))
                             pinErrorText.visibility = View.GONE
                         }
                     })
@@ -80,11 +91,23 @@ class KonfirmasiMpin : AppCompatActivity() {
             }
         }
 
+        binding.btnKembali.setOnClickListener {
+            startActivity(Intent(this, BuatMpin::class.java))
+        }
+
         pinView.addTextChangedListener {
             it?.let {
                 mpinViewModel.setKonfirmasiPin(it.toString())
             }
         }
 
+    }
+
+    private fun onLoading(){
+        binding.loadScreen.visibility = View.VISIBLE
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreen.visibility = View.GONE
     }
 }

@@ -7,6 +7,28 @@
     android:background="#FFFFFF"
     tools:context=".Features.Transfer.SesamaBank.InputNominal">
 
+    <FrameLayout
+        android:id="@+id/loadScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1D000000"
+        android:elevation="3dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.FadingCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/primary" />
+
+    </FrameLayout>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/btnBack1"
         android:layout_width="36dp"
@@ -105,18 +127,20 @@
             android:hint="0"
             android:inputType="number"
             android:textColor="#202327"
+            android:maxLength="12"
+            android:maxLines="1"
             android:textSize="24sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/tvWarningNominal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins"
         android:text="Minimal Transfer Rp10.000"
         android:textColor="#323A43"
-        android:textSize="9sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tilNominal"
         app:layout_constraintTop_toBottomOf="@+id/tilNominal" />
 
@@ -128,7 +152,7 @@
         android:background="#F1F4F9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23">
+        app:layout_constraintTop_toBottomOf="@+id/tvWarningNominal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -139,7 +163,7 @@
                 android:layout_width="0dp"
                 android:layout_height="112dp"
                 android:layout_marginStart="26dp"
-                android:layout_marginTop="29dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="26dp"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="12dp"
@@ -166,7 +190,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView26"
+                        android:id="@+id/tvRekSumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
@@ -177,20 +201,20 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
                     <TextView
-                        android:id="@+id/textView27"
+                        android:id="@+id/tvSaldoSumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Rp 30.000.000"
+                        android:text="Rp 0"
                         android:textColor="#202327"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/textView26" />
+                        app:layout_constraintStart_toStartOf="@+id/tvRekSumber" />
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cvBgCardSumber"
                         android:layout_width="100dp"
                         android:layout_height="0dp"
-                        app:cardBackgroundColor="#FFD700"
                         app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -224,14 +248,14 @@
                                 app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
                             <ImageView
-                                android:id="@+id/imageView7"
+                                android:id="@+id/ivCardTypeLogo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="17dp"
                                 android:layout_marginBottom="12dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:srcCompat="@drawable/ic_visa_logo" />
+                                app:srcCompat="@null" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -241,11 +265,11 @@
                 android:id="@+id/textView29"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
+                android:layout_marginBottom="4dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Rekening Sumber"
                 android:textColor="#4A5568"
-                android:textSize="9sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/cardView8"
                 app:layout_constraintStart_toStartOf="@+id/cardView8" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -260,7 +284,7 @@
         android:text="Catatan :"
         android:textColor="#323A43"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textView23"
+        app:layout_constraintStart_toStartOf="@+id/tvWarningNominal"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -278,7 +302,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_field_selector"
             android:fontFamily="@font/poppins"
-            android:hint="masukkan catatan (Optional)"
+            android:hint="Masukkan Catatan (Opsional)"
+            android:maxLength="35"
+            android:maxLines="1"
             android:textColorHint="#4A5568"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -289,6 +315,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="45dp"
         android:backgroundTint="@color/bg_button_selector"
+        android:enabled="false"
         android:fontFamily="@font/poppins_medium"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"

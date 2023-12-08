@@ -8,11 +8,11 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Data(
     @SerializedName("alamat")
-    val nik: String,
+    val alamat: String,
     @SerializedName("nama")
     val nama: String,
     @SerializedName("nik")
-    val alamat: String,
+    val nik: String,
     @SerializedName("pekerjaan")
     val pekerjaan: String
 ) : Parcelable

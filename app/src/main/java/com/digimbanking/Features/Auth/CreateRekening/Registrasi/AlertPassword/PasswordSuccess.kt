@@ -1,6 +1,7 @@
-package com.digimbanking.Features.Auth.CreateRekening.Alert.AlertPassword
+package com.digimbanking.Features.Auth.CreateRekening.Registrasi.AlertPassword
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +11,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
+import com.digimbanking.Features.Auth.CreateRekening.Cif.Nik
+import com.digimbanking.Features.Auth.CreateRekening.Mpin.BuatMpin
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityPasswordSuccessBinding
 import com.digimbanking.databinding.AlertSandiAccBinding
 
 class PasswordSuccess : DialogFragment() {
     private lateinit var binding: ActivityPasswordSuccessBinding
+
+    companion object {
+        fun newInstance(massage : String) : PasswordSuccess {
+            val fragment = PasswordSuccess()
+            val args = Bundle()
+            args.apply {
+                putString("massage", massage)
+                fragment.arguments = args
+                return fragment
+            }
+        }
+    }
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {
         return Dialog(requireContext())
     }
@@ -33,6 +48,16 @@ class PasswordSuccess : DialogFragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val massage = arguments?.getString("massage")
+        binding.apply {
+            txtSandi.text = massage
+        }
+
+        binding.btnOkSukses.setOnClickListener {
+            startActivity(Intent(activity, BuatMpin::class.java))
+            requireActivity().finishAffinity()
+        }
 
     }
 }

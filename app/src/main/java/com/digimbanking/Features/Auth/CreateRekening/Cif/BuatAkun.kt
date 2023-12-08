@@ -1,6 +1,5 @@
 package com.digimbanking.Features.Auth.CreateRekening.Cif
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,14 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.core.data.network.Result
 import com.core.data.response.auth.createRekening.dukcapil.DukcapilResponse
-import com.core.domain.model.DataCard
-import com.core.domain.model.NikModel
 import com.core.domain.model.PekerjaanItemModel
 import com.core.domain.model.PenghasilanItemModel
 import com.digimbanking.Features.Auth.CreateRekening.Card.NomorRekening
@@ -41,9 +36,9 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
             cifViewModel.viewModelScope.launch(Dispatchers.Main) {
                 if (data != null) {
                     cifViewModel.sentCif(
-                        data.data.nik,
-                        data.data.nama,
                         data.data.alamat,
+                        data.data.nama,
+                        data.data.nik,
                         data.data.pekerjaan,
                         binding.etPenghasilan.editText?.text.toString())
                         .observe(this@BuatAkun) {
@@ -51,23 +46,24 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
                                 is Result.Success -> {
                                     it.data
                                     Log.d("Tes", "${it.data}")
-                                    showLoading()
                                     startActivity(Intent(this@BuatAkun, NomorRekening::class.java).apply {
                                         putExtra("nik", it.data)
                                     })
+                                    onFinishedLoading()
                                 }
 
                                 is Result.Error -> {
-                                    hideLoading()
                                     Toast.makeText(
                                         this@BuatAkun,
                                         "${it.errorMessage}",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    onFinishedLoading()
                                 }
 
                                 else -> {
                                     Log.d("Tes", "Empty JSON")
+                                    onLoading()
                                 }
                             }
                         }
@@ -76,9 +72,9 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
         }
 
         if (data != null) {
-            binding.etNIK.editText?.setText(data.data.nik)
-            binding.etNama.editText?.setText(data.data.nama)
             binding.etAlamat.editText?.setText(data.data.alamat)
+            binding.etNama.editText?.setText(data.data.nama)
+            binding.etNIK.editText?.setText(data.data.nik)
             binding.etPekerjaan.editText?.setText(data.data.pekerjaan)
         }
 
@@ -88,6 +84,10 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
                 bottomSheetPenghasilan.penghasilanListener = this@BuatAkun
                 bottomSheetPenghasilan.show(supportFragmentManager, "penghasilan")
             }
+        }
+
+        binding.btnKembali.setOnClickListener {
+            startActivity(Intent(this, Nik::class.java))
         }
     }
 
@@ -124,12 +124,12 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
         binding.btnLanjut.isEnabled = isPenghasilanSelected
     }
 
-    private fun showLoading() {
-        binding.spinKit.visibility = View.VISIBLE
+    private fun onLoading(){
+        binding.loadScreen.visibility = View.VISIBLE
     }
 
-    private fun hideLoading() {
-        binding.spinKit.visibility = View.GONE
+    private fun onFinishedLoading(){
+        binding.loadScreen.visibility = View.GONE
     }
 
 }

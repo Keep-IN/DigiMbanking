@@ -23,12 +23,12 @@ class CifViewModel @Inject constructor(
     ) = dukcapilRepository.postDukcapil(nik)
 
     fun sentCif (
-        nik: String,
-        namaLengkap: String,
         alamat: String,
+        namaLengkap: String,
+        nik: String,
         pekerjaan: String,
         penghasilan : String
-    ) = cifRepository.postCif(nik, namaLengkap, alamat, pekerjaan, penghasilan)
+    ) = cifRepository.postCif(alamat, namaLengkap, nik, pekerjaan, penghasilan)
 
     fun validateNik(nik : String) : Boolean{
         isNikValid = nik.length > 15

@@ -6,14 +6,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import com.core.data.response.auth.createRekening.cif.CifResponse
-import com.core.data.response.auth.createRekening.dukcapil.DukcapilResponse
-import com.core.domain.model.NikModel
-import com.digimbanking.Features.Auth.CreateRekening.Cif.BuatAkun
 import com.digimbanking.Features.Auth.CreateRekening.Registrasi.KataSandi
-import com.digimbanking.R
 import com.digimbanking.databinding.ActivityNomorRekeningBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -64,7 +59,7 @@ class NomorRekening : AppCompatActivity() {
 
                 Toast.makeText(
                     this@NomorRekening,
-                    "Nomor rekening berhasil disalin ke clipboard",
+                    "Nomor rekening telah disalin",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {

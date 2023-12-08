@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".di.App"
@@ -25,7 +26,10 @@
             android:name=".Features.Auth.CreateRekening.Alert.AlertPassword.PasswordFailed"
             android:exported="false" />
         <activity
-            android:name=".Features.Auth.CreateRekening.Alert.AlertPassword.PasswordSuccess"
+            android:name=".Features.Auth.CreateRekening.Registrasi.AlertPassword.PasswordFailed"
+            android:exported="false" />
+        <activity
+            android:name=".Features.Auth.CreateRekening.Registrasi.AlertPassword.PasswordSuccess"
             android:exported="false" />
         <activity
             android:name=".Features.Auth.CreateRekening.Card.NomorRekening"
@@ -162,6 +166,17 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

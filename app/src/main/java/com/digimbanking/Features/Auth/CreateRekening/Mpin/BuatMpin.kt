@@ -8,6 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.digimbanking.R
 import com.chaos.view.PinView
+import com.digimbanking.Features.Auth.CreateRekening.Registrasi.KataSandi
 import com.digimbanking.databinding.ActivityBuatMpinBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,6 +34,10 @@ class BuatMpin : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
+        }
+
+        binding.btnKembali.setOnClickListener {
+            startActivity(Intent(this, KataSandi::class.java))
         }
     }
 

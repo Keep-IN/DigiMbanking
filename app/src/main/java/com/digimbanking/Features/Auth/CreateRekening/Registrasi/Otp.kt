@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.digimbanking.Features.Auth.CreateRekening.Cif.Nik
 import com.core.data.network.Result
+import com.digimbanking.Features.Auth.CreateRekening.Registrasi.AlertOtp.OtpFailed
+import com.digimbanking.Features.Auth.CreateRekening.Registrasi.AlertOtp.OtpSuccess
 import com.digimbanking.databinding.ActivityOtpBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -22,13 +24,14 @@ class Otp : AppCompatActivity() {
     private lateinit var binding: ActivityOtpBinding
     private lateinit var otpViewModel: RegisViewModel
     private lateinit var timer: CountDownTimer
+    private var isTimerFinished = false
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         otpViewModel = ViewModelProvider(this).get(RegisViewModel::class.java)
-
+        binding.kirimUlang.isEnabled = !isTimerFinished
         binding.kirimUlang.setOnClickListener {
             regenerateOtp()
         }
@@ -39,11 +42,13 @@ class Otp : AppCompatActivity() {
                     otpViewModel.checkOtp(text.toString()).observe(this@Otp, Observer { result ->
                         when (result) {
                             is Result.Success -> {
-                                navigateToKonfrek()
+                                val allertSuccess = OtpSuccess.newInstance(result.data.message)
+                                allertSuccess.show(supportFragmentManager, "success")
                             }
 
                             is Result.Error -> {
-                                Toast.makeText(this@Otp, result.errorMessage, Toast.LENGTH_SHORT).show()
+                                val allertFailed = OtpFailed.newInstance(result.errorMessage)
+                                allertFailed.show(supportFragmentManager, "failed")
                             }
 
                             is Result.Loading -> {
@@ -76,16 +81,16 @@ class Otp : AppCompatActivity() {
         }
     }
 
-    private fun navigateToKonfrek() {
-        val intent = Intent(this, Nik::class.java)
-        startActivity(intent)
-        finish()
-    }
+//    private fun navigateToKonfrek() {
+//        val intent = Intent(this, Nik::class.java)
+//        startActivity(intent)
+//        finish()
+//    }
 
     override fun onStart() {
         super.onStart()
 
-        val totalTimeMillis: Long = 2 * 60 * 1000 + 30 * 1000// 2 minutes 30 sec in milliseconds
+        val totalTimeMillis: Long = 120 * 1000// 2 minutes 30 sec in milliseconds
 
         timer = object : CountDownTimer(totalTimeMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -98,8 +103,10 @@ class Otp : AppCompatActivity() {
             override fun onFinish() {
                 binding.etWaktu.text = "00:00"
                 binding.kirimUlang.isEnabled = true
+                isTimerFinished = true
             }
         }
         timer.start()
+        binding.kirimUlang.isEnabled = false
     }
 }

@@ -8,12 +8,13 @@
     tools:context=".Features.Auth.CreateRekening.Mpin.BuatMpin">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView2"
+        android:id="@+id/btnKembali"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="81dp"
+        app:strokeWidth="0dp"
         android:backgroundTint="#6C63FF"
         app:cardCornerRadius="50dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,11 +39,11 @@
         android:fontFamily="@font/poppins_bold"
         android:text="Buat MPIN"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/materialCardView2"
+        app:layout_constraintBottom_toBottomOf="@+id/btnKembali"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialCardView2" />
+        app:layout_constraintTop_toTopOf="@+id/btnKembali" />
 
     <ImageView
         android:id="@+id/imgHp"
@@ -86,7 +87,7 @@
         android:inputType="numberPassword"
         android:itemBackground="@color/white"
         android:textColor="#6C63FF"
-        android:textSize="20sp"
+        android:textSize="10sp"
         app:hideLineWhenFilled="false"
         app:itemCount="6"
         app:itemHeight="58dp"
