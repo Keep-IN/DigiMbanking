@@ -51,7 +51,7 @@ class AlertBerhasilOTP : DialogFragment(){
         val massage = arguments?.getString("massage")
 
         binding.apply {
-            textView27.text = massage
+            tvSaldoSumber.text = massage
         }
 
         binding.btnSuksesOTP.setOnClickListener{
