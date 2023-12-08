@@ -53,9 +53,18 @@ class InputNominal : AppCompatActivity() {
                             tvRekSumber.text = result.data.data.rekening.joinToString { it.noRekening }
                             tvSaldoSumber.text = "Rp ${result.data.data.rekening.joinToString { it.saldo.toLong().formatDotSeparator() }}"
                             when(result.data.data.rekening.joinToString { it.tipeRekening.idTipe.toString() }){
-                                "1" -> cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
-                                "2" -> cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#C0C0C0"))
-                                "3" -> cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#696865"))
+                                "1" -> {
+                                    cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
+                                    ivCardTypeLogo.setImageResource(R.drawable.ic_visa_logo)
+                                }
+                                "2" -> {
+                                    cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#C0C0C0"))
+                                    ivCardTypeLogo.setImageResource(R.drawable.gpn)
+                                }
+                                "3" -> {
+                                    cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#696865"))
+                                    ivCardTypeLogo.setImageResource(R.drawable.platinum)
+                                }
                             }
                         }
                         onFinishedLoading()

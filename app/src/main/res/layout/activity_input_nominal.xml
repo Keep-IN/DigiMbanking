@@ -140,7 +140,7 @@
         android:fontFamily="@font/poppins"
         android:text="Minimal Transfer Rp10.000"
         android:textColor="#323A43"
-        android:textSize="9sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tilNominal"
         app:layout_constraintTop_toBottomOf="@+id/tilNominal" />
 
@@ -163,7 +163,7 @@
                 android:layout_width="0dp"
                 android:layout_height="112dp"
                 android:layout_marginStart="26dp"
-                android:layout_marginTop="29dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="26dp"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="12dp"
@@ -248,14 +248,14 @@
                                 app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
                             <ImageView
-                                android:id="@+id/imageView7"
+                                android:id="@+id/ivCardTypeLogo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="17dp"
                                 android:layout_marginBottom="12dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:srcCompat="@drawable/ic_visa_logo" />
+                                app:srcCompat="@null" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -265,11 +265,11 @@
                 android:id="@+id/textView29"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
+                android:layout_marginBottom="4dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Rekening Sumber"
                 android:textColor="#4A5568"
-                android:textSize="9sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/cardView8"
                 app:layout_constraintStart_toStartOf="@+id/cardView8" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -302,10 +302,10 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_field_selector"
             android:fontFamily="@font/poppins"
-            android:hint="masukkan catatan (Opsional)"
-            android:textColorHint="#4A5568"
+            android:hint="Masukkan Catatan (Opsional)"
             android:maxLength="35"
             android:maxLines="1"
+            android:textColorHint="#4A5568"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
