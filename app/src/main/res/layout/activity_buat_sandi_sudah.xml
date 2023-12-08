@@ -119,7 +119,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
+                    android:fontFamily="@font/poppins"
                     android:background="@drawable/ic_bgtextinput"
+                    android:inputType="textPassword"
                     android:hint="Kata Sandi" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,8 +159,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
+                    android:fontFamily="@font/poppins"
                     android:background="@drawable/ic_bgtextinput"
-                    android:hint="Kata Sandi" />
+                    android:hint="Konfirmasi Kata Sandi"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

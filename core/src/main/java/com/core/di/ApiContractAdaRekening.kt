@@ -2,6 +2,8 @@ package com.core.di
 
 import com.core.data.response.authAdaRekening.BuatKataSandisdh.KataSandiRequest
 import com.core.data.response.authAdaRekening.BuatKataSandisdh.KataSandiResponse
+import com.core.data.response.authAdaRekening.CreateUserCif.CreateUserResponse
+import com.core.data.response.authAdaRekening.CreateUserCif.CreateuserRequest
 import com.core.data.response.authAdaRekening.KonfirmasiRekening.RekeningRequest
 import com.core.data.response.authAdaRekening.KonfirmasiRekening.RekeningResponse
 import com.core.data.response.authAdaRekening.MPINsdh.MPINRequestsdh
@@ -42,6 +44,11 @@ interface ApiContractAdaRekening {
         @Body data: RekeningRequest
     ): Response <RekeningResponse>
 
+    @PUT("users/{id}/user-cif")
+    suspend fun createUserCif(
+        @Path("id") id: Int,
+        @Body data: CreateuserRequest
+    ): Response <CreateUserResponse>
     @PUT("users/{id}/password")
     suspend fun createPassword(
         @Path ("id") id: Int,

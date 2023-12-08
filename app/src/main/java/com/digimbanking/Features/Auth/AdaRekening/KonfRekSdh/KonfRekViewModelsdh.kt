@@ -40,6 +40,10 @@ class KonfRekViewModelsdh @Inject constructor(
         password: String
     ) = passworRepository.putNewpass(password)
 
+    fun confirmUsercif(
+        noRekening: String
+    ) = rekeningRepository.createUserCif(noRekening)
+
     fun validatePassword(password: String): Boolean{
         isPasswordValid = password.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
         return  isPasswordValid

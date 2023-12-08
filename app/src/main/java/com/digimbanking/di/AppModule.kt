@@ -1,6 +1,7 @@
 package com.digimbanking.di
 
 import android.content.Context
+import com.core.data.local.preferences.UserPreferencesSdh
 import com.core.data.local.preferences.UserPreferencesSdhImplSdh
 import com.core.data.lokal.preferences.UserPreferences
 import com.core.data.lokal.preferences.UserPreferencesImpl
@@ -11,6 +12,7 @@ import com.core.data.repositories.MpinRepository
 import com.core.data.repositories.OtpRepository
 import com.core.data.repositories.PasswordRepository
 import com.core.data.repositories.PasswordRepositroySdh
+import com.core.data.repositories.RekeningRepositorySdh
 import com.core.di.ApiContractAdaRekening
 import com.core.di.ApiContractCreateRekening
 import dagger.Module
@@ -69,6 +71,15 @@ class AppModule {
         userPreferences: UserPreferencesImpl
     ): MpinRepository {
         return MpinRepository(apiService, userPreferences)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCreateUserCif (
+        apiService: ApiContractAdaRekening,
+        userPreferences: UserPreferencesSdhImplSdh
+    ): RekeningRepositorySdh {
+        return RekeningRepositorySdh(apiService, userPreferences)
     }
 
     @Singleton

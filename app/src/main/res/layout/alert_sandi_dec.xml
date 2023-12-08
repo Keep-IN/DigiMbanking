@@ -59,6 +59,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnDecSandi"
                 android:layout_width="0dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="20dp"
