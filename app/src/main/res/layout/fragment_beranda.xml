@@ -71,16 +71,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!--        <ImageView-->
-            <!--            android:id="@+id/iv_inisial_akun"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginStart="38dp"-->
-            <!--            android:layout_marginTop="20dp"-->
-            <!--            app:layout_constraintStart_toStartOf="parent"-->
-            <!--            app:layout_constraintTop_toTopOf="parent"-->
-            <!--            app:srcCompat="@drawable/inisial_akun" />-->
-
             <TextView
                 android:id="@+id/tv_profil"
                 android:layout_width="wrap_content"

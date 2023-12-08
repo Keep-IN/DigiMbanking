@@ -30,7 +30,7 @@ class RiwayatTransakiListAdapter : RecyclerView.Adapter<RiwayatTransakiListAdapt
         val initSize = itemCount
         data.clear()
         notifyItemRangeRemoved(0, initSize)
-        data.addAll(list)
+        data.addAll(list.sortedByDescending { it.tanggal })
         notifyItemRangeInserted(0, data.size)
     }
 

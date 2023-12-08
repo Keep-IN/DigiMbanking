@@ -30,7 +30,7 @@ class RiwayatTransaksiListBerandaAdapter : RecyclerView.Adapter<RiwayatTransaksi
         }else{
             list
         }
-        data.addAll(limitedList)
+        data.addAll(limitedList.sortedByDescending { it.tanggal })
         notifyDataSetChanged()
     }
 
