@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Features.Auth.CreateRekening.Registrasi.AlertPassword.PasswordSuccess">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Features.Auth.CreateRekening.Registrasi.AlertOtp.OtpFailed">
 
     <androidx.cardview.widget.CardView
         android:layout_width="335dp"
         android:layout_height="379dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         app:cardCornerRadius="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,41 +24,43 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView39"
+                android:id="@+id/textView43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Sukses"
+                android:text="Peringatan"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView12"
+                android:id="@+id/imageView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView39"
-                app:layout_constraintStart_toStartOf="@+id/textView39"
-                app:layout_constraintTop_toBottomOf="@+id/textView39"
-                app:srcCompat="@drawable/ic_check_alert" />
+                android:layout_marginTop="57dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView43"
+                app:layout_constraintStart_toStartOf="@+id/textView43"
+                app:layout_constraintTop_toBottomOf="@+id/textView43"
+                app:srcCompat="@drawable/ic_xmark_otp" />
 
             <TextView
-                android:id="@+id/txtSandi"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView44"
+                android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins"
-                android:text="Kata Sandi Berhasil Disimpan"
+                android:gravity="center"
+                android:text="Maaf! Kode OTP yang dimasukkan tidak valid.
+                Silakan coba lagi."
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView12"
-                app:layout_constraintStart_toStartOf="@+id/imageView12"
-                app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+                app:layout_constraintEnd_toEndOf="@+id/imageView14"
+                app:layout_constraintStart_toStartOf="@+id/imageView14"
+                app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnOkSukses"
+                android:id="@+id/btnKembali"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -67,11 +69,11 @@
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/poppins_bold"
                 android:backgroundTint="@color/primary"
-                android:text="OK"
+                android:text="Kembali"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtSandi" />
+                app:layout_constraintTop_toBottomOf="@+id/textView44" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

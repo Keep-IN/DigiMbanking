@@ -17,13 +17,14 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView2"
+                android:id="@+id/btnKembali"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="81dp"
                 android:backgroundTint="#6C63FF"
+                app:strokeWidth="0dp"
                 app:cardCornerRadius="50dp"
                 app:layout_constraintEnd_toStartOf="@+id/textView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,11 +49,11 @@
                 android:fontFamily="@font/poppins_bold"
                 android:text="Buat Kata Sandi"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/materialCardView2"
+                app:layout_constraintBottom_toBottomOf="@+id/btnKembali"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/materialCardView2" />
+                app:layout_constraintTop_toTopOf="@+id/btnKembali" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
@@ -136,7 +137,7 @@
                             android:textSize="12sp"
                             android:textColorHint="#323A43"
                             android:fontFamily="@font/poppins"
-                            android:background="@drawable/bg_text_field"
+                            android:background="@drawable/bgfield"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword" />
 
@@ -171,7 +172,7 @@
                             android:textSize="12sp"
                             android:textColorHint="#323A43"
                             android:hint="Konfirmasi  Kata Sandi"
-                            android:background="@drawable/bg_text_field"
+                            android:background="@drawable/bgfield"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword" />
 

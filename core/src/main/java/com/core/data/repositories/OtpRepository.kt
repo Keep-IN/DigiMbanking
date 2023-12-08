@@ -10,6 +10,8 @@ import com.core.data.response.auth.createRekening.otp.VerifOtpModel
 import com.core.data.response.auth.createRekening.otp.VerificationOtpResponse
 import com.core.data.response.auth.createRekening.resendotp.RegenerateOtpresponse
 import com.core.di.ApiContractCreateRekening
+import org.json.JSONException
+import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,7 +33,13 @@ class OtpRepository @Inject constructor(
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
             } else {
-                emit(Result.Error("Failed to get a valid response"))
+                val errorBody = response.errorBody()?.string()
+                val errorMassage = try {
+                    JSONObject(errorBody).getString("massage")
+                } catch (e : JSONException) {
+                    "Unknown error occurred"
+                }
+                emit(Result.Error(errorMassage))
             }
         } catch (e : Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }
@@ -50,7 +58,13 @@ class OtpRepository @Inject constructor(
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
             } else {
-                emit(Result.Error("Failed to get a valid response"))
+                val errorBody = response.errorBody()?.string()
+                val errorMassage = try {
+                    JSONObject(errorBody).getString("massage")
+                } catch (e : JSONException) {
+                    "Unknown error occurred"
+                }
+                emit(Result.Error(errorMassage))
             }
         } catch (e: Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }
@@ -68,7 +82,13 @@ class OtpRepository @Inject constructor(
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
             } else {
-                emit(Result.Error("Failed to get a valid response"))
+                val errorBody = response.errorBody()?.string()
+                val errorMassage = try {
+                    JSONObject(errorBody).getString("massage")
+                } catch (e : JSONException) {
+                    "Unknown error occurred"
+                }
+                emit(Result.Error(errorMassage))
             }
         } catch (e : Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }

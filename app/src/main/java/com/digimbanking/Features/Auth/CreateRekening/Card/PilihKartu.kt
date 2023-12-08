@@ -17,6 +17,7 @@ import com.core.data.response.auth.createRekening.pilihKartu.CardResponse
 import com.core.data.response.auth.createRekening.pilihKartu.DataCard
 import com.digimbanking.Features.Auth.CreateRekening.Cif.Nik
 import com.digimbanking.Features.Auth.CreateRekening.Registrasi.KonfirmasiEmail
+import com.digimbanking.Features.Auth.Question.QuestionPage
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityPilihKartuBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,7 +43,7 @@ class PilihKartu : AppCompatActivity() {
             cardViewmodel.getCard().observe(this@PilihKartu) {
                 when (it) {
                     is Result.Success -> {
-                        setupView(it.data)
+                        it.data
 
                     }
                     is Result.Error -> {
@@ -100,27 +101,32 @@ class PilihKartu : AppCompatActivity() {
             com.core.domain.model.DataCard.id = getTipeKartu()
         }
 
-    }
-
-    private fun setupView(data: CardResponse) {
-        data.data.forEach {
-            binding.apply {
-                if (it.idTipe == 2) {
-                    txtSilver.text = it.namaTipe
-                    txtLimit5.text = "Limit transfer: ${it.limitTransfer}"
-
-                } else if (it.idTipe == 1) {
-                    txtGold.text = it.namaTipe
-                    txtLimit10.text = "Limit transfer: ${it.limitTransfer}"
-                } else if (it.idTipe == 3 ){
-                    txtPlatinum.text = it.namaTipe
-                    txtLimit15.text = "Limit transfer: ${it.limitTransfer}"
-                } else {
-
-                }
-            }
+        binding.btnKembali.setOnClickListener {
+            startActivity(Intent(this, QuestionPage::class.java))
+            finish()
         }
+
     }
+
+//    private fun setupView(data: CardResponse) {
+//        data.data.forEach {
+//            binding.apply {
+//                if (it.idTipe == 2) {
+//                    txtSilver.text = it.namaTipe
+//                    txtLimit5.text = "Limit transfer: ${it.limitTransfer}"
+//
+//                } else if (it.idTipe == 1) {
+//                    txtGold.text = it.namaTipe
+//                    txtLimit10.text = "Limit transfer: ${it.limitTransfer}"
+//                } else if (it.idTipe == 3 ){
+//                    txtPlatinum.text = it.namaTipe
+//                    txtLimit15.text = "Limit transfer: ${it.limitTransfer}"
+//                } else {
+//
+//                }
+//            }
+//        }
+//    }
 
 
     private fun saveTipeKartu(id: Int) {

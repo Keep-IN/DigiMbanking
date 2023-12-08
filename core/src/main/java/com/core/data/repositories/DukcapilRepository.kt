@@ -6,6 +6,8 @@ import com.core.data.network.Result
 import com.core.data.response.auth.createRekening.dukcapil.DukcapilModel
 import com.core.data.response.auth.createRekening.dukcapil.DukcapilResponse
 import com.core.di.ApiContractDukcapil
+import org.json.JSONException
+import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,7 +25,13 @@ class DukcapilRepository @Inject constructor(
             if (response.isSuccessful && responseBody != null) {
                 emit(Result.Success(responseBody))
             } else {
-                emit(Result.Error("Failed to get a valid response"))
+                val errorBody = response.errorBody()?.string()
+                val errorMassage = try {
+                    JSONObject(errorBody).getString("massage")
+                } catch (e : JSONException) {
+                    "Unknown error occurred"
+                }
+                emit(Result.Error(errorMassage))
             }
         } catch (e : Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }
