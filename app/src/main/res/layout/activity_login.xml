@@ -144,7 +144,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvJudulPw"
                 app:layout_constraintTop_toBottomOf="@+id/tvJudulPw"
-                app:passwordToggleDrawable="@drawable/ic_eye_close"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/primary">
 

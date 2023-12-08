@@ -60,7 +60,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvPwLama"
         app:layout_constraintTop_toBottomOf="@+id/tvPwLama"
-        app:passwordToggleDrawable="@drawable/ic_eye_close"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/primary">
 
@@ -106,7 +105,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvPwBaru"
         app:layout_constraintTop_toBottomOf="@+id/tvPwBaru"
-        app:passwordToggleDrawable="@drawable/ic_eye_close"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/primary">
 
@@ -149,7 +147,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvKonfirmPwBaru"
         app:layout_constraintTop_toBottomOf="@+id/tvKonfirmPwBaru"
-        app:passwordToggleDrawable="@drawable/ic_eye_close"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/primary">
 

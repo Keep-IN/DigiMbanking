@@ -38,10 +38,6 @@ class UbahPw : AppCompatActivity() {
 //        if (token != null) {
 //            Log.d("isi Token:", token)
 //        }
-        val errorTextView = binding.tilPwLama
-
-        val customTypeface = Typeface.createFromAsset(assets, "poppins.ttf")
-        errorTextView.typeface = customTypeface
 
         ubahPwViewModel =  ViewModelProvider(this).get(UbahPwViewModel::class.java)
 
@@ -49,18 +45,18 @@ class UbahPw : AppCompatActivity() {
             tilPwLama.editText?.doOnTextChanged { text, start, before, count ->
                 if(ubahPwViewModel.validatePasswordLama(text.toString())){
                     binding.tilPwLama.isErrorEnabled = false
-                    binding.btnSimpanPwBaru.isEnabled = true
                 } else {
                     binding.tilPwLama.isErrorEnabled = true
                     binding.btnSimpanPwBaru.isEnabled = false
                     binding.tilPwLama.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                 }
+                validateInput()
             }
+
             tilPwBaru.editText?.doOnTextChanged { text, start, before, count ->
                 if(ubahPwViewModel.validatePasswordBaru(text.toString())){
                     if(ubahPwViewModel.validatePasswordBeda(binding.tilPwLama.editText?.text.toString(), binding.tilPwBaru.editText?.text.toString())){
                         binding.tilPwBaru.isErrorEnabled = false
-                        binding.btnSimpanPwBaru.isEnabled = true
                     } else {
                         binding.tilPwBaru.isErrorEnabled = true
                         binding.btnSimpanPwBaru.isEnabled = false
@@ -71,12 +67,12 @@ class UbahPw : AppCompatActivity() {
                     binding.btnSimpanPwBaru.isEnabled = false
                     binding.tilPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                 }
+                validateInput()
             }
             tilKonfirmPwBaru.editText?.doOnTextChanged { text, start, before, count ->
                 if(ubahPwViewModel.validatePasswordKonfirm(text.toString())){
                     if(ubahPwViewModel.validatePasswordSama(binding.tilPwBaru.editText?.text.toString(), binding.tilKonfirmPwBaru.editText?.text.toString())){
                         binding.tilKonfirmPwBaru.isErrorEnabled = false
-                        binding.btnSimpanPwBaru.isEnabled = true
                     } else {
                         binding.tilKonfirmPwBaru.isErrorEnabled = true
                         binding.btnSimpanPwBaru.isEnabled = false
@@ -87,13 +83,13 @@ class UbahPw : AppCompatActivity() {
                     binding.btnSimpanPwBaru.isEnabled = false
                     binding.tilKonfirmPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                 }
+                validateInput()
             }
 
             ivBackUbahPw.setOnClickListener{
                 onBackPressedDispatcher.onBackPressed()
             }
 
-            validateInput()
             btnSimpanPwBaru.setOnClickListener{
                 ubahPwViewModel.viewModelScope.launch(Dispatchers.Main) {
                     val token = sharedPref.getString("token", "").toString()
@@ -115,6 +111,8 @@ class UbahPw : AppCompatActivity() {
                             }
                         }
                 }
+                finish()
+
 //                data = ubahPwViewModel.validatePasswordLogin(binding.tilPwLama.editText?.text.toString())
 //                if(data != null){
 //                    AlertDialogUbahPwSuccess().show(supportFragmentManager, "test")

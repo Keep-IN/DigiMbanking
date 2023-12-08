@@ -3,6 +3,7 @@ package com.digimbanking.Features.Auth.Login
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -21,6 +22,7 @@ import com.digimbanking.Features.Auth.OnBoard.Onboard
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.Features.Profile.Profil.FProfil
 import com.digimbanking.Features.Transfer.TransferSesama.AlertDialog.AlertDialogGagal
+import com.digimbanking.R
 import com.digimbanking.databinding.ActivityLoginBinding
 import com.digimbanking.databinding.AlertDialogFailLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,48 +46,60 @@ class Login : AppCompatActivity() {
         sPref.apply()
 
         binding.apply {
-            tilLoginEmail.editText?.doOnTextChanged{ text, start, before, count ->
-                if(loginViewModel.validateEmail(text.toString())){
-                    binding.tilLoginEmail.isErrorEnabled = false
-                    binding.btnLoginMasuk.isEnabled = true
+            tilLoginEmail.editText?.doOnTextChanged { text, start, before, count ->
+                if (loginViewModel.validateEmail(text.toString())) {
+                    tilLoginEmail.isErrorEnabled = false
                 } else {
-                    binding.tilLoginPw.isErrorEnabled = true
+                    tilLoginPw.isErrorEnabled = true
+                    btnLoginMasuk.isEnabled = false
+                    tilLoginEmail.error = "Email harus sesuai format penulisan"
+                }
+                validateInput()
+            }
+
+            tilLoginPw.editText?.doOnTextChanged { text, start, before, count ->
+                if (loginViewModel.validatePassword(text.toString())) {
+                    binding.tilLoginPw.isErrorEnabled = false
+                } else {
                     binding.btnLoginMasuk.isEnabled = false
-                    binding.tilLoginEmail.error = "Email harus sesuai format penulisan"
                 }
-                tilLoginPw.editText?.doOnTextChanged { text, start, before, count ->
-                    if(loginViewModel.validatePassword(text.toString())){
-                        binding.tilLoginPw.isErrorEnabled = false
-                        binding.btnLoginMasuk.isEnabled = true
-                    }
-                }
+                validateInput()
             }
 
             ivBack.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
+                finish()
             }
 
-            btnLoginMasuk.setOnClickListener{
-                loginViewModel.viewModelScope.launch(Dispatchers.Main){
-                    loginViewModel.login(binding.tilLoginEmail.editText?.text.toString(), binding.tilLoginPw.editText?.text.toString())
-                    .observe(this@Login, Observer { result ->
-                        when(result){
-                            is Result.Success -> {
-                                result.data
-                                sPref.putString("token", result.data.data.token)
-                                Log.d("Tes", "token: ${result.data.data.token}")
-                                sPref.apply()
-                                val allertSuccess = AlertDialogSuccessLogin.newInstance(result.data.message)
-                                allertSuccess.show(supportFragmentManager,"success")
-                            }
-                            is Result.Error -> {
-                                val allertFailed = AlertDialogFailLogin.newInstance(result.errorMessage)
-                                allertFailed.show(supportFragmentManager, "fail")
-                            }
+            btnLoginMasuk.setOnClickListener {
+                loginViewModel.viewModelScope.launch(Dispatchers.Main) {
+                    loginViewModel.login(
+                        binding.tilLoginEmail.editText?.text.toString(),
+                        binding.tilLoginPw.editText?.text.toString()
+                    )
+                        .observe(this@Login, Observer { result ->
+                            when (result) {
+                                is Result.Success -> {
+                                    result.data
+                                    sPref.putString("token", result.data.data.token)
+                                    Log.d("Tes", "token: ${result.data.data.token}")
+                                    sPref.apply()
+                                    val allertSuccess =
+                                        AlertDialogSuccessLogin.newInstance(result.data.message)
+                                    allertSuccess.show(supportFragmentManager, "success")
+                                }
 
-                            else -> {Log.d("Tes", "Empty JSON")}
-                        }
-                    })
+                                is Result.Error -> {
+                                    val allertFailed =
+                                        AlertDialogFailLogin.newInstance(result.errorMessage)
+                                    allertFailed.show(supportFragmentManager, "fail")
+                                }
+
+                                else -> {
+                                    Log.d("Tes", "Empty JSON")
+                                }
+                            }
+                        })
                 }
 //                data = loginViewModel.validateLogin(binding.tilLoginEmail.editText?.text.toString(),
 //                    binding.tilLoginPw.editText?.text.toString())
@@ -95,7 +109,6 @@ class Login : AppCompatActivity() {
 //                    AlertDialogFailLogin().show(supportFragmentManager, "test")
 //                }
             }
-            validateInput()
         }
     }
     private fun validateInput(){

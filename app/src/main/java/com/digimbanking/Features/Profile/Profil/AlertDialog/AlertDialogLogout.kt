@@ -55,7 +55,9 @@ class AlertDialogLogout : DialogFragment() {
         }
 
         binding.btnOkLogout.setOnClickListener{
-            startActivity(Intent(activity, Login::class.java))
+            val i = Intent(this.requireActivity(), Login::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
         }
     }
 }
