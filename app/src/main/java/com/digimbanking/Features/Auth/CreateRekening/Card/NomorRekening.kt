@@ -59,7 +59,7 @@ class NomorRekening : AppCompatActivity() {
 
                 Toast.makeText(
                     this@NomorRekening,
-                    "Nomor rekening berhasil disalin ke clipboard",
+                    "Nomor rekening telah disalin",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {

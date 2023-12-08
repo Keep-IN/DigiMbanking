@@ -28,7 +28,7 @@ import javax.inject.Singleton
 // Define Network Client Here
 class NetworkModule {
     companion object{
-        private const val  BASE_URL ="https://ccbb-103-189-94-178.ngrok-free.app/api/v1/"
+        private const val  BASE_URL ="https://5380-103-189-94-178.ngrok-free.app/api/v1/"
         private const val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MDEyMjUzNjUsImV4cCI6MTcwMTMxMTc2NX0.eIM2PokwcyLjcmZXX_m4d8KE6N9Kjh3y_5gXUK75GuU"
     }
     @Singleton
@@ -46,6 +46,8 @@ class NetworkModule {
         sharedPreferences: SharedPreferences
     ): OkHttpClient {
         return OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
             .addInterceptor { chain ->
                 val requestBuilder = chain.request()

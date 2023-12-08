@@ -103,6 +103,7 @@ class PilihKartu : AppCompatActivity() {
 
         binding.btnKembali.setOnClickListener {
             startActivity(Intent(this, QuestionPage::class.java))
+            finish()
         }
 
     }
