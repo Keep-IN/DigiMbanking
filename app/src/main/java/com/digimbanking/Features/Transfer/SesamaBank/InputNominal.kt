@@ -54,12 +54,12 @@ class InputNominal : AppCompatActivity() {
                             tvSaldoSumber.text = "Rp ${result.data.data.rekening.joinToString { it.saldo.toLong().formatDotSeparator() }}"
                             when(result.data.data.rekening.joinToString { it.tipeRekening.idTipe.toString() }){
                                 "1" -> {
-                                    cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
-                                    ivCardTypeLogo.setImageResource(R.drawable.ic_visa_logo)
-                                }
-                                "2" -> {
                                     cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#C0C0C0"))
                                     ivCardTypeLogo.setImageResource(R.drawable.gpn)
+                                }
+                                "2" -> {
+                                    cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
+                                    ivCardTypeLogo.setImageResource(R.drawable.ic_visa_logo)
                                 }
                                 "3" -> {
                                     cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#696865"))
