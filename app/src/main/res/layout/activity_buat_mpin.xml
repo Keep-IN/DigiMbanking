@@ -86,7 +86,7 @@
         android:inputType="numberPassword"
         android:itemBackground="@color/white"
         android:textColor="#6C63FF"
-        android:textSize="20sp"
+        android:textSize="10sp"
         app:hideLineWhenFilled="false"
         app:itemCount="6"
         app:itemHeight="58dp"
