@@ -4,62 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Features.Profile.UbahPw.UbahPw">
+    tools:context=".Features.Profile.UbahMpin.UbahMpin">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ivBackUbahPw"
+        android:id="@+id/ivBackUbahMpin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="19dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/tvJudulUbahPw"
+        android:id="@+id/tvJudulUbahMpin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="109dp"
-        android:layout_marginEnd="109dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="139dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Ubah Kata Sandi"
+        android:text="Ubah MPIN"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivBackUbahPw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivBackUbahPw" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvPwLama"
+        android:id="@+id/tvMpinLama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Masukkan Kata Sandi Lama :"
-        android:textColor="#323A43"
+        android:text="Masukkan MPIN Lama :"
+        android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/ivBackUbahPw"
-        app:layout_constraintTop_toBottomOf="@+id/ivBackUbahPw" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBackUbahMpin" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPwLama"
+        android:id="@+id/tilMpinLama"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="28dp"
-        app:boxBackgroundColor="#F3F7FD"
+        android:layout_marginEnd="31dp"
+        app:boxBackgroundColor="@color/grey200"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:errorTextAppearance="@style/TextAppearance.CustomError"
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvPwLama"
-        app:layout_constraintTop_toBottomOf="@+id/tvPwLama"
+        app:layout_constraintStart_toStartOf="@+id/tvMpinLama"
+        app:layout_constraintTop_toBottomOf="@+id/tvMpinLama"
+        app:passwordToggleDrawable="@drawable/ic_eye_close"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/primary">
 
@@ -67,44 +69,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:hint="Masukkan Kata Sandi Lama"
-            android:inputType="text|textPassword"
-            android:textColor="#4A5568"
-            android:textColorHint="@color/grey_regular"
+            android:hint="Masukkan MPIN Lama"
+            android:inputType="textPassword"
+            android:textColor="@color/grey_regular"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/tvPwBaru"
+        android:id="@+id/tvMpinBaru"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Masukkan Kata Sandi Baru :"
-        android:textColor="#323A43"
+        android:text="Masukkan MPIN Baru :"
+        android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tilPwLama"
-        app:layout_constraintTop_toBottomOf="@+id/tilPwLama" />
+        app:layout_constraintStart_toStartOf="@+id/tilMpinLama"
+        app:layout_constraintTop_toBottomOf="@+id/tilMpinLama" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPwBaru"
+        android:id="@+id/tilMpinBaru"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="28dp"
-        app:boxBackgroundColor="#F3F7FD"
+        android:layout_marginEnd="31dp"
+        app:boxBackgroundColor="@color/grey200"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
-        app:boxStrokeColor="#000000"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:errorTextAppearance="@style/TextAppearance.CustomError"
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvPwBaru"
-        app:layout_constraintTop_toBottomOf="@+id/tvPwBaru"
+        app:layout_constraintStart_toStartOf="@+id/tvMpinBaru"
+        app:layout_constraintTop_toBottomOf="@+id/tvMpinBaru"
+        app:passwordToggleDrawable="@drawable/ic_eye_close"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/primary">
 
@@ -112,41 +112,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:hint="Masukkan Kata Sandi Baru"
-            android:inputType="text|textPassword"
-            android:textColorHint="@color/grey_regular"
+            android:hint="Masukkan MPIN Baru"
+            android:inputType="textPassword"
+            android:shadowColor="@color/grey200"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/tvKonfirmPwBaru"
+        android:id="@+id/tvKonfirmMpin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Konfirmasi Kata Sandi Baru :"
+        android:text="Konfirmasi MPIN Baru :"
+        android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tilPwBaru"
-        app:layout_constraintTop_toBottomOf="@+id/tilPwBaru" />
+        app:layout_constraintStart_toStartOf="@+id/tilMpinBaru"
+        app:layout_constraintTop_toBottomOf="@+id/tilMpinBaru" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilKonfirmPwBaru"
+        android:id="@+id/tilKonfirmMpin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="28dp"
-        app:boxBackgroundColor="#F3F7FD"
+        android:layout_marginEnd="31dp"
+        app:boxBackgroundColor="@color/grey200"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:errorTextAppearance="@style/TextAppearance.CustomError"
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvKonfirmPwBaru"
-        app:layout_constraintTop_toBottomOf="@+id/tvKonfirmPwBaru"
+        app:layout_constraintStart_toStartOf="@+id/tvKonfirmMpin"
+        app:layout_constraintTop_toBottomOf="@+id/tvKonfirmMpin"
+        app:passwordToggleDrawable="@drawable/ic_eye_close"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/primary">
 
@@ -154,28 +155,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:hint="Konfirmasi Kata Sandi Baru"
-            android:inputType="text|textPassword"
-            android:textColorHint="@color/grey_regular"
+            android:hint="Konfirmasi MPIN Baru"
+            android:inputType="textPassword"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSimpanPwBaru"
+        android:id="@+id/btnSimpanMpin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="44dp"
         android:backgroundTint="@color/bg_button_selector"
         android:enabled="false"
         android:fontFamily="@font/poppins_semibold"
         android:text="Simpan"
-        android:textColor="@color/white"
+        android:textColor="@color/white_primary"
         android:textSize="14sp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
