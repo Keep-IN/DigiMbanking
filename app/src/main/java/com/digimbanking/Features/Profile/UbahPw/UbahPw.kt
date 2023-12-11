@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
@@ -92,7 +93,7 @@ class UbahPw : AppCompatActivity() {
 
             btnSimpanPwBaru.setOnClickListener{
                 ubahPwViewModel.viewModelScope.launch(Dispatchers.Main) {
-                    val token = sharedPref.getString("token", "").toString()
+                    onLoading()
                     ubahPwViewModel.ubahPw(binding.tilPwLama.editText?.text.toString(), binding.tilPwBaru.editText?.text.toString(), binding.tilKonfirmPwBaru.editText?.text.toString())
                         .observe(this@UbahPw){result ->
                             when(result){
@@ -100,13 +101,16 @@ class UbahPw : AppCompatActivity() {
                                     result.data
                                     val allertSuccess = AlertDialogUbahPwSuccess.newInstance(result.data.message)
                                     allertSuccess.show(supportFragmentManager, "done")
+                                    onFinishedLoading()
                                 }
                                 is Result.Error -> {
                                     binding.tilPwLama.isErrorEnabled = true
                                     binding.tilPwLama.error = "Kata Sandi salah"
+                                    onFinishedLoading()
                                 }
                                 else -> {
                                     Log.d("Tes", "Empty JSON")
+                                    onFinishedLoading()
                                 }
                             }
                         }
@@ -134,5 +138,13 @@ class UbahPw : AppCompatActivity() {
         val isPasswordKonfirm = ubahPwViewModel.validatePasswordKonfirm(passwordKonfirm)
 
         binding.btnSimpanPwBaru.isEnabled = isPasswordLamaValid && isPasswordBaruValid && isPasswordKonfirm
+    }
+
+    private fun onLoading(){
+        binding.flLoading.visibility = View.VISIBLE
+    }
+
+    private fun  onFinishedLoading(){
+        binding.flLoading.visibility = View.GONE
     }
 }
