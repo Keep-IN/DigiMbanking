@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Transfer.Riwayat.Resi
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -48,6 +49,7 @@ class ResiActivity : AppCompatActivity() {
 
         val dataTransaksi = intent.getParcelableExtra<Transaction>("riwayat")
         viewModel.viewModelScope.launch(Dispatchers.Main) {
+            onLoading()
             if (dataTransaksi != null) {
                 viewModel.doResi(dataTransaksi.kodeTransaksi).observe(this@ResiActivity){result ->
                     when(result){
@@ -77,14 +79,17 @@ class ResiActivity : AppCompatActivity() {
                                 tvBankPenerimaResi.text = "${result.data.penerima.namaBank} - ${result.data.penerima.noRekening.toString()}"
                                 tvInisialPenerimaResi.text = result.data.penerima.nama.first().toString()
                             }
+                            onFinishedLoading()
                         }
 
                         is Result.Error -> {
                             Log.d("Error get Resi", result.errorMessage)
+                            onFinishedLoading()
                         }
 
                         else -> {
                             Log.d("Test", "JSON empty")
+                            onLoading()
                         }
                     }
                 }
@@ -170,6 +175,19 @@ class ResiActivity : AppCompatActivity() {
         startActivity(Intent.createChooser(sendIntent, "Share Receipt"))
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    private fun onLoading(){
+        binding.loadScreenResi.visibility = View.VISIBLE
+        binding.loadScreenResi.setOnTouchListener { _, _ ->
+            true
+        }
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreenResi.visibility = View.GONE
+    }
+}
+
     private fun Long.formatDotSeparator(): String{
         return toString()
             .reversed()
@@ -177,4 +195,3 @@ class ResiActivity : AppCompatActivity() {
             .joinToString (".")
             .reversed()
     }
-}
