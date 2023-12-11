@@ -73,8 +73,8 @@ class Login : AppCompatActivity() {
             }
 
             btnLoginMasuk.setOnClickListener {
+                onLoading()
                 loginViewModel.viewModelScope.launch(Dispatchers.Main) {
-                    onLoading()
                     loginViewModel.login(
                         binding.tilLoginEmail.editText?.text.toString(),
                         binding.tilLoginPw.editText?.text.toString()
@@ -93,13 +93,13 @@ class Login : AppCompatActivity() {
 
                                 is Result.Error -> {
                                     val allertFailed = AlertDialogFailLogin.newInstance(result.errorMessage)
-                                    allertFailed.show(supportFragmentManager, "fail")
+                                    allertFailed.show(supportFragmentManager, "failed")
                                     onFinishedLoading()
                                 }
 
                                 else -> {
                                     Log.d("Tes", "Empty JSON")
-                                    onFinishedLoading()
+                                    onLoading()
                                 }
                             }
                         })

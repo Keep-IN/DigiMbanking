@@ -34,12 +34,12 @@ class OtpRepository @Inject constructor(
                 emit(Result.Success(responseBody))
             } else {
                 val errorBody = response.errorBody()?.string()
-                val errorMassage = try {
+                val errorMessage = try {
                     JSONObject(errorBody).getString("message")
                 } catch (e : JSONException) {
                     "Unknown error occurred"
                 }
-                emit(Result.Error(errorMassage))
+                emit(Result.Error(errorMessage))
             }
         } catch (e : Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }
@@ -54,7 +54,6 @@ class OtpRepository @Inject constructor(
                 val id = userPreferences.getUser()
                 val response = apiService.verOtp(id, VerifOtpModel(otp))
                 val responseBody = response.body()
-
                 if (response.isSuccessful && responseBody != null) {
                     emit(Result.Success(responseBody))
                 } else {
@@ -83,12 +82,12 @@ class OtpRepository @Inject constructor(
                 emit(Result.Success(responseBody))
             } else {
                 val errorBody = response.errorBody()?.string()
-                val errorMassage = try {
+                val errorMessage = try {
                     JSONObject(errorBody).getString("message")
                 } catch (e : JSONException) {
                     "Unknown error occurred"
                 }
-                emit(Result.Error(errorMassage))
+                emit(Result.Error(errorMessage))
             }
         } catch (e : Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }

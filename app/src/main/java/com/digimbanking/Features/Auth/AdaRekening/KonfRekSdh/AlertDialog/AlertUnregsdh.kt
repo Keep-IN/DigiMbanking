@@ -10,12 +10,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertBerhasilOTP
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityBuatMpinsdhBinding
 import com.digimbanking.databinding.AlertUnregsdhBinding
 
 class AlertUnregsdh : DialogFragment() {
     private lateinit var binding: AlertUnregsdhBinding
+
+    companion object{
+        fun newInstance(message : String): AlertBerhasilOTP {
+            val fragment = AlertBerhasilOTP()
+            val args = Bundle()
+            args.apply {
+                putString("message", message)
+                fragment.arguments = args
+                return fragment
+            }
+        }
+    }
 
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {
         return Dialog(requireContext())
@@ -33,6 +46,10 @@ class AlertUnregsdh : DialogFragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val message = arguments?.getString("message")
+        binding.apply {
+            tvUnreg.text = message
+        }
         binding.btnKembaliRek.setOnClickListener{
             dialog?.cancel()
         }

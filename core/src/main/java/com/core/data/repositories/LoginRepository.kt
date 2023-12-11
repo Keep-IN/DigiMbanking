@@ -35,7 +35,7 @@ class LoginRepository @Inject constructor(
             } else {
                 val errorBody = response.errorBody()?.string()
                 val errorMessage = try {
-                    JSONObject(errorBody).getString("")
+                    JSONObject(errorBody).getString("message")
                 } catch (e: JSONException){
                     "Unknown Error Occured"
                 }

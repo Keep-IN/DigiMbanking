@@ -52,7 +52,8 @@ import kotlinx.coroutines.launch
                         }
 
                         is Result.Error -> {
-                            AlertUnregsdh().show(parentFragmentManager, "test")
+                            val allertGagal = AlertUnregsdh.newInstance(result.errorMessage)
+                            allertGagal.show(parentFragmentManager, "test")
                         }
 
                         is Result.Loading -> {

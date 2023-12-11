@@ -46,33 +46,6 @@ class ResiActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[ResiViewModel::class.java]
         setContentView(binding.root)
 
-        val dataReceipt = intent.getParcelableExtra<TransactionResponse>("dataReceipt")
-        resiView = binding.FrameLWatermark
-        binding.apply {
-            if (dataReceipt != null){
-                val convertTanggal = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-                val originalTanggal: Date = convertTanggal.parse(dataReceipt.dataTransaksi.timeTransaksi)
-                val targetTanggalFormat = SimpleDateFormat("dd MM yyyy | HH:mm", Locale.US)
-                tvNamaPengirim.text = dataReceipt.pengirim.nama
-                tvInisialPengirim.text = dataReceipt.pengirim.nama.first().toString()
-                tvBankPengirim.text = "${dataReceipt.pengirim.namaBank} - ${dataReceipt.penerima.noRekening.toString()}"
-                tvNamaPenerimaResi.text = dataReceipt.penerima.nama
-                tvInisialPenerimaResi.text = dataReceipt.penerima.nama.first().toString()
-                tvBankPenerimaResi.text = "${dataReceipt.penerima.namaBank} - ${dataReceipt.penerima.noRekening.toString()}"
-                tvIsianNomorReferensi.text = dataReceipt.dataTransaksi.id.toString()
-                tvDateTimeTransaksi.text = targetTanggalFormat.format(originalTanggal).toString()
-                tvIsianBiayaAdmin.text = "Rp${dataReceipt.dataTransaksi.biayaAdmin.toLong().formatDotSeparator()}"
-                tvIsianTotalTransaksi.text = "Rp${dataReceipt.dataTransaksi.totalTransaksi.toLong().formatDotSeparator()}"
-                tvTipeTransaksi.text = dataReceipt.dataTransaksi.jenisTransaksi
-
-                if (dataReceipt.dataTransaksi.catatan.isEmpty()){
-                    tvIsianCatatan.text = "Tidak ada"
-                } else {
-                    tvIsianCatatan.text = dataReceipt.dataTransaksi.catatan
-                }
-            }
-        }
-
         val dataTransaksi = intent.getParcelableExtra<Transaction>("riwayat")
         viewModel.viewModelScope.launch(Dispatchers.Main) {
             if (dataTransaksi != null) {
@@ -80,13 +53,17 @@ class ResiActivity : AppCompatActivity() {
                     when(result){
                         is Result.Success -> {
                             binding.apply {
+                                val convertTanggal = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+                                val originalTanggal: Date = convertTanggal.parse(dataTransaksi.tanggal)
+                                val targetTanggalFormat = SimpleDateFormat("dd MM yyyy | HH:mm", Locale.US)
+                                tvDateTimeTransaksi.text = targetTanggalFormat.format(originalTanggal).toString()
                                 tvNamaPengirim.text = result.data.pengirim.nama
                                 tvBankPengirim.text = "${result.data.pengirim.namaBank} - ${result.data.pengirim.noRekening.toString()}"
                                 tvInisialPengirim.text = result.data.pengirim.nama.first().toString()
                                 tvIsianNomorReferensi.text = result.data.data.kodeTransaksi.toString()
                                 tvIsianTipeTransaksi.text = result.data.data.tipeTransaksi
-                                tvIsianBiayaAdmin.text = result.data.data.biayaAdmin.toString()
-                                tvIsianTotalTransaksi.text = result.data.data.totalTransaksi.toString()
+                                tvIsianBiayaAdmin.text = "Rp${result.data.data.biayaAdmin.toLong().formatDotSeparator()}"
+                                tvIsianTotalTransaksi.text = "Rp${result.data.data.totalTransaksi.toLong().formatDotSeparator()}"
 
                                 // pengecekan jika catatan kosong
                                 if(result.data.data.catatan.isNullOrEmpty()){
@@ -110,23 +87,22 @@ class ResiActivity : AppCompatActivity() {
                             Log.d("Test", "JSON empty")
                         }
                     }
-
-                    binding.btnSelesai.setOnClickListener {
-                        val intent = Intent(this@ResiActivity, NavbarContainer::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                        finish()
-                    }
-
-                    binding.buttonShareResi.setOnClickListener {
-                        val pdfFile = generatePdf()
-                        if (pdfFile != null) {
-                            sharePdf(pdfFile, "application/pdf")
-                        } else {
-                            Toast.makeText(this@ResiActivity, "Failed to generate PDF", Toast.LENGTH_SHORT).show()
-                        }
-                    }
                 }
+            }
+        }
+        binding.btnSelesai.setOnClickListener {
+            val intent = Intent(this@ResiActivity, NavbarContainer::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.buttonShareResi.setOnClickListener {
+            val pdfFile = generatePdf()
+            if (pdfFile != null) {
+                sharePdf(pdfFile, "application/pdf")
+            } else {
+                Toast.makeText(this@ResiActivity, "Failed to generate PDF", Toast.LENGTH_SHORT).show()
             }
         }
     }

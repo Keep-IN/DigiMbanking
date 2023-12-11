@@ -53,9 +53,7 @@ class ResiTransfer : AppCompatActivity() {
                 tvSum.text = "Rp ${dataResi.dataTransaksi.totalTransaksi.toLong().formatDotSeparator()}"
                 tvTransType.text = dataResi.dataTransaksi.jenisTransaksi
                 if (dataResi.dataTransaksi.catatan.isEmpty()){
-                    tvCatatan.visibility = View.INVISIBLE
-                    cvCatatan.visibility = View.INVISIBLE
-                    tvTittleCatatan.visibility = View.INVISIBLE
+                    tvCatatan.text = ""
                 } else {
                     tvCatatan.text = dataResi.dataTransaksi.catatan
                 }

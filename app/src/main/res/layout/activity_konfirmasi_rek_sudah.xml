@@ -93,7 +93,14 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="23dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="Nomor Rekening"
+                app:boxBackgroundColor="#F3F7FD"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
                 app:layout_constraintTop_toBottomOf="@+id/textView14">
 
@@ -101,11 +108,12 @@
                     android:id="@+id/etNorek"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="No Rekening"
+                    android:maxLength="16"
                     android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:inputType="number"
                     android:textColorHint="#323A43"
-                    android:background="@drawable/ic_bgtextinput"
                      />
             </com.google.android.material.textfield.TextInputLayout>
 

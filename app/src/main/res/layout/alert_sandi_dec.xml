@@ -46,7 +46,7 @@
                 app:srcCompat="@drawable/ic_xmark_otp" />
 
             <TextView
-                android:id="@+id/textView44"
+                android:id="@+id/tvSandiDec"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView44">
+                app:layout_constraintTop_toBottomOf="@+id/tvSandiDec">
 
                 <TextView
                     android:id="@+id/textView45"

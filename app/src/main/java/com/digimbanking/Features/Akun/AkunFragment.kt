@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Akun
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -40,18 +41,22 @@ class AkunFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[AkunViewModel::class.java]
         viewModel.viewModelScope.launch(Dispatchers.Main) {
+            onLoading()
             activity?.let {
                 viewModel.doAkun().observe(viewLifecycleOwner){result ->
                     when(result){
                         is Result.Success -> {
                             Log.d("Isi Akun", "${result.data}")
                             adapterAkun.submitList(result.data.data.rekening)
+                            onFinishedLoading()
                         }
                         is Result.Error -> {
                             Log.d("Error Get Akun", result.errorMessage)
+                            onFinishedLoading()
                         }
                         else -> {
                             Log.d("Unexpected Result", result.toString())
+                            onLoading()
                         }
                     }
                 }
@@ -61,5 +66,17 @@ class AkunFragment : Fragment() {
         binding.buttonKartuBaru.setOnClickListener {
             Toast.makeText(requireContext(), "Tombol Kartu Baru diklik", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun onLoading(){
+        binding.loadScreenAkun.visibility = View.VISIBLE
+        binding.loadScreenAkun.setOnTouchListener { _, _ ->
+            true
+        }
+    }
+
+    private fun onFinishedLoading(){
+        binding.loadScreenAkun.visibility = View.GONE
     }
 }

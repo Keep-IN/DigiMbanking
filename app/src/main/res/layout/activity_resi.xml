@@ -240,8 +240,6 @@
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/tvTipeTransaksi"
                         app:layout_constraintEnd_toEndOf="@+id/tvIsianNomorReferensi"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/tvIsianNomorReferensi"
                         app:layout_constraintTop_toBottomOf="@+id/tvIsianNomorReferensi" />
 
                     <TextView
@@ -254,8 +252,6 @@
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/tvBiayaAdmin"
                         app:layout_constraintEnd_toEndOf="@+id/tvIsianTipeTransaksi"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/tvIsianTipeTransaksi"
                         app:layout_constraintTop_toBottomOf="@+id/tvIsianTipeTransaksi" />
 
                     <TextView
@@ -267,9 +263,7 @@
                         android:text=" "
                         android:textColor="@color/black_basic"
                         app:layout_constraintBottom_toBottomOf="@+id/tvTotalTransaksi"
-                        app:layout_constraintEnd_toEndOf="@+id/tvIsianTipeTransaksi"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/tvIsianTipeTransaksi"
+                        app:layout_constraintEnd_toEndOf="@+id/tvIsianBiayaAdmin"
                         app:layout_constraintTop_toBottomOf="@+id/tvIsianBiayaAdmin" />
 
                     <ImageView

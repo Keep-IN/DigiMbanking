@@ -19,11 +19,11 @@ class AlertDialogFailLogin : DialogFragment() {
     private lateinit var binding: AlertDialogFailLoginBinding
 
     companion object{
-        fun newInstance(massage : String): AlertDialogFailLogin {
+        fun newInstance(message : String): AlertDialogFailLogin {
             val fragment = AlertDialogFailLogin()
             val args = Bundle()
             args.apply {
-                putString("massage", massage)
+                putString("message", message)
                 fragment.arguments = args
                 return fragment
             }
@@ -48,6 +48,12 @@ class AlertDialogFailLogin : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val message = arguments?.getString("message")
+        binding.apply {
+            tvDescLoginGagal.text = message
+        }
+
         binding.btnOkGagalLogin.setOnClickListener{
             dialog?.cancel()
         }
