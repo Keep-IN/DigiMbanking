@@ -46,14 +46,13 @@
                 app:srcCompat="@drawable/ic_xmark_otp" />
 
             <TextView
-                android:id="@+id/textView44"
+                android:id="@+id/txtError"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center"
-                android:text="Maaf! Kode OTP yang dimasukkan tidak valid.
-                Silakan coba lagi."
+                android:text="Pesen Error"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView14"
                 app:layout_constraintStart_toStartOf="@+id/imageView14"
@@ -73,7 +72,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView44" />
+                app:layout_constraintTop_toBottomOf="@+id/txtError" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

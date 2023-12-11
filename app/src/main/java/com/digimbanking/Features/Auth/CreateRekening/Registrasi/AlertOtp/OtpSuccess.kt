@@ -27,7 +27,7 @@ class OtpSuccess : DialogFragment() {
             val fragment = OtpSuccess()
             val args = Bundle()
             args.apply {
-                putString("massage", massage)
+                putString("message", massage)
                 fragment.arguments = args
                 return fragment
             }
@@ -51,7 +51,7 @@ class OtpSuccess : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val massage = arguments?.getString("massage")
+        val massage = arguments?.getString("message")
 
         binding.apply {
             textView40.text = massage

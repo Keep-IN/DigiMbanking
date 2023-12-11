@@ -46,30 +46,29 @@ class OtpRepository @Inject constructor(
         }
     }
 
-    fun putOtp(
-        otp: String
-    ): LiveData<Result<VerificationOtpResponse>> = liveData {
-        emit(Result.Loading)
-        try {
-            val id = userPreferences.getUser()
-            val response = apiService.verOtp(id, VerifOtpModel(otp))
-            val responseBody = response.body()
-
-            if (response.isSuccessful && responseBody != null) {
-                emit(Result.Success(responseBody))
-            } else {
-                val errorBody = response.errorBody()?.string()
-                val errorMessage = try {
-                    JSONObject(errorBody).getString("message")
-                } catch (e : JSONException) {
-                    "Unknown error occurred"
+        fun putOtp(
+            otp: String
+        ): LiveData<Result<VerificationOtpResponse>> = liveData {
+            emit(Result.Loading)
+            try {
+                val id = userPreferences.getUser()
+                val response = apiService.verOtp(id, VerifOtpModel(otp))
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    emit(Result.Success(responseBody))
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    val errorMassage = try {
+                        JSONObject(errorBody).getString("message")
+                    } catch (e : JSONException) {
+                        "Unknown error occurred"
+                    }
+                    emit(Result.Error(errorMassage))
                 }
-                emit(Result.Error(errorMessage))
+            } catch (e: Exception) {
+                e.message?.let { Result.Error(it) }?.let { emit(it) }
             }
-        } catch (e: Exception) {
-            e.message?.let { Result.Error(it) }?.let { emit(it) }
         }
-    }
 
     fun regenerateOtp () : LiveData<Result<RegenerateOtpresponse>> = liveData {
         emit(Result.Loading)

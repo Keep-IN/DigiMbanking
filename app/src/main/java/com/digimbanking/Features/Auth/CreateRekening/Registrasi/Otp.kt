@@ -69,6 +69,7 @@ class Otp : AppCompatActivity() {
                 when(result) {
                     is Result.Success -> {
                         Toast.makeText(this@Otp, "OTP regenerated successfully", Toast.LENGTH_SHORT).show()
+                        resetTimer()
                     }
 
                     is Result.Error -> {
@@ -80,12 +81,6 @@ class Otp : AppCompatActivity() {
             })
         }
     }
-
-//    private fun navigateToKonfrek() {
-//        val intent = Intent(this, Nik::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
 
     override fun onStart() {
         super.onStart()
@@ -109,4 +104,26 @@ class Otp : AppCompatActivity() {
         timer.start()
         binding.kirimUlang.isEnabled = false
     }
+
+    private fun resetTimer() {
+        timer.cancel()
+        val totalSeconds: Long = 120
+        timer = object : CountDownTimer(totalSeconds * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val seconds = millisUntilFinished / 1000
+                val minutes = seconds / 60
+                val time = String.format("%02d:%02d", minutes % 60, seconds % 60)
+                binding.etWaktu.text = time
+            }
+
+            override fun onFinish() {
+                isTimerFinished = true
+                binding.kirimUlang.isEnabled = true
+                binding.etWaktu.text = "00:00"
+            }
+        }
+        timer.start()
+        binding.kirimUlang.isEnabled = false
+    }
+
 }
