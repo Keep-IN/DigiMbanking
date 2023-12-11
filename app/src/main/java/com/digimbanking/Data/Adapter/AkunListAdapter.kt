@@ -39,25 +39,27 @@ class AkunListAdapter: RecyclerView.Adapter<AkunListAdapter.ViewHolder>() {
             }
             binding.txtNomorRekening.text = item.noRekening
             binding.txtDebit.text = "Debit"
-            binding.txtLimit5.text = item.tipeRekening.limitTransfer
             when(item.tipeRekening.idTipe){
                 1 -> {
                     binding.txtJenisKartu.text = "Silver"
-                    binding.imgKotak.setImageResource(R.drawable.kotak)
+                    binding.imgKotak.setImageResource(R.drawable.chip_card)
                     binding.cvBgCard.setCardBackgroundColor(Color.parseColor("#BBBBBB"))
                     binding.imgLogoBank.setImageResource(R.drawable.gpn)
+                    binding.txtLimit5.text = "Limit transfer : 5 juta"
                 }
                 2 -> {
                     binding.txtJenisKartu.text = "Gold"
-                    binding.imgKotak.setImageResource(R.drawable.kotak)
+                    binding.imgKotak.setImageResource(R.drawable.chip_card)
                     binding.cvBgCard.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
                     binding.imgLogoBank.setImageResource(R.drawable.ic_visa_logo)
+                    binding.txtLimit5.text = "Limit transfer : 10 juta"
                 }
                 3 -> {
                     binding.txtJenisKartu.text = "Platinum"
-                    binding.imgKotak.setImageResource(R.drawable.kotak)
+                    binding.imgKotak.setImageResource(R.drawable.chip_card)
                     binding.cvBgCard.setCardBackgroundColor(Color.parseColor("#696865"))
                     binding.imgLogoBank.setImageResource(R.drawable.platinum)
+                    binding.txtLimit5.text = "Limit transfer : 15 juta"
                 }
             }
         }
