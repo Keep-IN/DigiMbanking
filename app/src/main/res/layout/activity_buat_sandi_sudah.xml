@@ -194,6 +194,7 @@
         android:backgroundTint="@color/bg_button_selector"
         android:enabled="false"
         android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white_primary"
         android:text="Simpan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
