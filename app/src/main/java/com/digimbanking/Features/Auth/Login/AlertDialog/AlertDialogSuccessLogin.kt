@@ -19,11 +19,11 @@ class AlertDialogSuccessLogin : DialogFragment() {
     private lateinit var binding: AlertDialogSuccessLoginBinding
 
     companion object{
-        fun newInstance(massage : String): AlertDialogSuccessLogin {
+        fun newInstance(message : String): AlertDialogSuccessLogin {
             val fragment = AlertDialogSuccessLogin()
             val args = Bundle()
             args.apply {
-                putString("massage", massage)
+                putString("message", message)
                 fragment.arguments = args
                 return fragment
             }
@@ -48,6 +48,13 @@ class AlertDialogSuccessLogin : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val message = arguments?.getString("message")
+
+        binding.apply {
+            tvDescLoginSukses.text = message
+        }
+
         binding.btnOkSuksesLogin.setOnClickListener{
             startActivity(Intent(activity, NavbarContainer::class.java))
             requireActivity().finishAffinity()

@@ -30,19 +30,19 @@ class UbahPwRepository @Inject constructor(
         val response = apiService.ubahPw(UbahPwRequest(pwLama, pwBaru, konfirmPw))
         val responseBody = response.body() ?: UbahPwResponse("", 0)
      try {
-         if(response.isSuccessful) {
+         if(response.isSuccessful && responseBody != null) {
              emit(Result.Success(responseBody))
          } else {
              val errorBody = response.errorBody()?.string()
              val errorMessage = try {
-                 JSONObject(errorBody).getString("")
+                 JSONObject(errorBody).getString("message")
              } catch (e: JSONException){
                  "Unknown Error Occured"
              }
              emit(Result.Error(errorMessage))
          }
      } catch (e: Exception) {
-         emit(Result.Error(e.message ?: "An error occured"))
+         e.message?.let { Result.Error(it) }?.let { emit(it) }
      }
     }
 }
