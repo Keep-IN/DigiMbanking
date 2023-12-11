@@ -34,7 +34,6 @@ import kotlinx.coroutines.launch
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private  lateinit var loginViewModel: LoginViewModel
-    private var failedLoginAttempts = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -74,8 +73,9 @@ class Login : AppCompatActivity() {
             }
 
             btnLoginMasuk.setOnClickListener {
+                onLoading()
                 loginViewModel.viewModelScope.launch(Dispatchers.Main) {
-                    onLoading()
+
                     loginViewModel.login(
                         binding.tilLoginEmail.editText?.text.toString(),
                         binding.tilLoginPw.editText?.text.toString()
