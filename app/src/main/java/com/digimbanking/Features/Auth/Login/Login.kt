@@ -34,6 +34,7 @@ import kotlinx.coroutines.launch
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private  lateinit var loginViewModel: LoginViewModel
+    private var failedLoginAttempts = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -93,7 +94,7 @@ class Login : AppCompatActivity() {
 
                                 is Result.Error -> {
                                     val allertFailed = AlertDialogFailLogin.newInstance(result.errorMessage)
-                                    allertFailed.show(supportFragmentManager, "fail")
+                                    allertFailed.show(supportFragmentManager, "failed")
                                     onFinishedLoading()
                                 }
 
