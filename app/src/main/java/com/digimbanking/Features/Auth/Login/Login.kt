@@ -75,7 +75,6 @@ class Login : AppCompatActivity() {
             btnLoginMasuk.setOnClickListener {
                 onLoading()
                 loginViewModel.viewModelScope.launch(Dispatchers.Main) {
-
                     loginViewModel.login(
                         binding.tilLoginEmail.editText?.text.toString(),
                         binding.tilLoginPw.editText?.text.toString()
@@ -100,7 +99,7 @@ class Login : AppCompatActivity() {
 
                                 else -> {
                                     Log.d("Tes", "Empty JSON")
-                                    onFinishedLoading()
+                                    onLoading()
                                 }
                             }
                         })

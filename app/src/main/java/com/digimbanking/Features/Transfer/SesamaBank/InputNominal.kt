@@ -93,11 +93,19 @@ class InputNominal : AppCompatActivity() {
 
         binding.btnToMpin.setOnClickListener {
             val saldo = dataNasabah.rekening.joinToString { it.saldo.toLong().toString() }
-            if (txNominal.toLong() <= saldo.toLong()){
-                startActivity(Intent(this, MpinSesama::class.java).apply {
-                    putExtra("data", TransactionModel(txCatatan, "", "", dataRekening, txNominal.toInt()))
-                    putExtra("akun", dataNasabah)
-                })
+            val limit = dataNasabah.rekening.joinToString { it.tipeRekening.limitTransfer }
+            if (txNominal.toBigInteger() <= saldo.toBigInteger()){
+                if (txNominal.toBigInteger() <= limit.toBigInteger()) {
+                    startActivity(Intent(this, MpinSesama::class.java).apply {
+                        putExtra("data", TransactionModel(txCatatan, "", "", dataRekening, txNominal.toInt()))
+                        putExtra("akun", dataNasabah)
+                    })
+                } else {
+                    binding.tvWarningNominal.apply {
+                        setTextColor(Color.parseColor("#E71414"))
+                        text = "Limit transfer Rp ${limit.toLong().formatDotSeparator()}"
+                    }
+                }
             } else {
                 binding.tvWarningNominal.apply {
                     setTextColor(Color.parseColor("#E71414"))
