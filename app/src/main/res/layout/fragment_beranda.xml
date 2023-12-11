@@ -56,7 +56,7 @@
                     <TextView
                         android:id="@+id/tvInisialAkun"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text=" "
                         android:textColor="@color/white"
