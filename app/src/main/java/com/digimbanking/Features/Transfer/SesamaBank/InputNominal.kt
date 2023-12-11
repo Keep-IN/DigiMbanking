@@ -54,12 +54,12 @@ class InputNominal : AppCompatActivity() {
                             tvSaldoSumber.text = "Rp ${result.data.data.rekening.joinToString { it.saldo.toLong().formatDotSeparator() }}"
                             when(result.data.data.rekening.joinToString { it.tipeRekening.idTipe.toString() }){
                                 "1" -> {
-                                    cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
-                                    ivCardTypeLogo.setImageResource(R.drawable.ic_visa_logo)
-                                }
-                                "2" -> {
                                     cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#C0C0C0"))
                                     ivCardTypeLogo.setImageResource(R.drawable.gpn)
+                                }
+                                "2" -> {
+                                    cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
+                                    ivCardTypeLogo.setImageResource(R.drawable.ic_visa_logo)
                                 }
                                 "3" -> {
                                     cvBgCardSumber.setCardBackgroundColor(Color.parseColor("#696865"))
@@ -93,11 +93,19 @@ class InputNominal : AppCompatActivity() {
 
         binding.btnToMpin.setOnClickListener {
             val saldo = dataNasabah.rekening.joinToString { it.saldo.toLong().toString() }
-            if (txNominal.toLong() <= saldo.toLong()){
-                startActivity(Intent(this, MpinSesama::class.java).apply {
-                    putExtra("data", TransactionModel(txCatatan, "", "", dataRekening, txNominal.toInt()))
-                    putExtra("akun", dataNasabah)
-                })
+            val limit = dataNasabah.rekening.joinToString { it.tipeRekening.limitTransfer }
+            if (txNominal.toBigInteger() <= saldo.toBigInteger()){
+                if (txNominal.toBigInteger() <= limit.toBigInteger()) {
+                    startActivity(Intent(this, MpinSesama::class.java).apply {
+                        putExtra("data", TransactionModel(txCatatan, "", "", dataRekening, txNominal.toInt()))
+                        putExtra("akun", dataNasabah)
+                    })
+                } else {
+                    binding.tvWarningNominal.apply {
+                        setTextColor(Color.parseColor("#E71414"))
+                        text = "Limit transfer Rp ${limit.toLong().formatDotSeparator()}"
+                    }
+                }
             } else {
                 binding.tvWarningNominal.apply {
                     setTextColor(Color.parseColor("#E71414"))
