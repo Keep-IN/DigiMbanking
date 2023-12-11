@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Profile.UbahPw
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Typeface
@@ -140,8 +141,12 @@ class UbahPw : AppCompatActivity() {
         binding.btnSimpanPwBaru.isEnabled = isPasswordLamaValid && isPasswordBaruValid && isPasswordKonfirm
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.flLoading.visibility = View.VISIBLE
+        binding.flLoading.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun  onFinishedLoading(){
