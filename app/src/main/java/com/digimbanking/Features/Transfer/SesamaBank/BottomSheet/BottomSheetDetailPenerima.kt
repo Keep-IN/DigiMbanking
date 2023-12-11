@@ -68,6 +68,9 @@ class BottomSheetDetailPenerima: SuperBottomSheetFragment() {
         binding.tvUbahPenerima.setOnClickListener {
             dialog?.cancel()
         }
+        binding.ivXDaftarRek2.setOnClickListener {
+            dialog?.cancel()
+        }
     }
     override fun isSheetAlwaysExpanded() = true
 
