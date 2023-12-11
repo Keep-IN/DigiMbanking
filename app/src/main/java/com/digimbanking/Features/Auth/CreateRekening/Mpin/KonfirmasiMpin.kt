@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Auth.CreateRekening.Mpin
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -88,7 +89,7 @@ class KonfirmasiMpin : AppCompatActivity() {
         }
 
         binding.btnKembali.setOnClickListener {
-            startActivity(Intent(this, BuatMpin::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
 
         pinView.addTextChangedListener {
@@ -99,8 +100,12 @@ class KonfirmasiMpin : AppCompatActivity() {
 
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun onFinishedLoading(){
