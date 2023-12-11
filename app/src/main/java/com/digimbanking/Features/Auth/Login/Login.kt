@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Auth.Login
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -124,8 +125,12 @@ class Login : AppCompatActivity() {
         binding.btnLoginMasuk.isEnabled = isEmailValid && isPasswordValid
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.flLoading.visibility = View.VISIBLE
+        binding.flLoading.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun  onFinishedLoading(){

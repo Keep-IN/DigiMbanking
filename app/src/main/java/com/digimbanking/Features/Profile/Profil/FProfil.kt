@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Profile.Profil
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -109,9 +110,12 @@ class FProfil : Fragment() {
     }
 
 
-
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.flLoading.visibility = View.VISIBLE
+        binding.flLoading.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun  onFinishedLoading(){
