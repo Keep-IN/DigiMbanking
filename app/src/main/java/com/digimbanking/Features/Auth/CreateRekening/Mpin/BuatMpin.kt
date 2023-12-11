@@ -37,7 +37,7 @@ class BuatMpin : AppCompatActivity() {
         }
 
         binding.btnKembali.setOnClickListener {
-            startActivity(Intent(this, KataSandi::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 

@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Auth.CreateRekening.Registrasi
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -71,7 +72,7 @@ class KonfirmasiEmail : AppCompatActivity() {
         }
 
         binding.btnKembali.setOnClickListener {
-            startActivity(Intent(this, PilihKartu::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
 
 
@@ -81,8 +82,12 @@ class KonfirmasiEmail : AppCompatActivity() {
         binding.btnRegist.isEnabled = viewmodel.validateEmail(binding.etEmail.editText?.text.toString())
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun onFinishedLoading(){

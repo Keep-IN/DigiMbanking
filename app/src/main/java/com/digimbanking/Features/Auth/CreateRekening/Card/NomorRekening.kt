@@ -25,9 +25,8 @@ class NomorRekening : AppCompatActivity() {
 
         if (data != null) {
             binding.etNomorRekening.editText?.setText(data.norek)
-            binding.btnRegist.isEnabled = true
         } else {
-            binding.btnRegist.isEnabled = false
+            Toast.makeText(this, "Tidak menerima nomor rekening", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnRegist.setOnClickListener {

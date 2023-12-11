@@ -65,7 +65,7 @@ class KataSandi : AppCompatActivity() {
         }
 
         binding.btnKembali.setOnClickListener {
-            startActivity(Intent(this, NomorRekening::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 

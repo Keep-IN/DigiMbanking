@@ -43,6 +43,10 @@ class BottomSheetPenghasilan : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+
+        binding.btnBack.setOnClickListener {
+            dismiss()
+        }
     }
 
     private fun setupRecyclerView() {

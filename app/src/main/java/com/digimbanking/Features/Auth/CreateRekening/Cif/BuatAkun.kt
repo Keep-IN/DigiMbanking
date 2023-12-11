@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Auth.CreateRekening.Cif
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -87,7 +88,7 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
         }
 
         binding.btnKembali.setOnClickListener {
-            startActivity(Intent(this, Nik::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 
@@ -124,8 +125,12 @@ class BuatAkun : AppCompatActivity(), BottomSheetPenghasilan.PenghasilanListener
         binding.btnLanjut.isEnabled = isPenghasilanSelected
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.loadScreen.visibility = View.VISIBLE
+        binding.loadScreen.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun onFinishedLoading(){
