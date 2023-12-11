@@ -42,7 +42,7 @@ class KonfirmasiMPINsdh : AppCompatActivity() {
         val pinErrorText = binding.pinError
 
         binding.btnBackkMPIN.setOnClickListener{
-            startActivity(Intent(this, BuatMPINsdh::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
 
         binding.pinPiw.doOnTextChanged { text, start, before, count ->

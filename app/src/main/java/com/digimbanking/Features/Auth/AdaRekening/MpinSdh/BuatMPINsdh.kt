@@ -38,7 +38,7 @@ class BuatMPINsdh : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(PinViewModel::class.java)
         sharedPreferences = getSharedPreferences("Mpin", MODE_PRIVATE)
         binding.btnBackMPIN.setOnClickListener{
-            startActivity(Intent(this, BuatSandiSudah::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
 
         val pinView = binding.sendMPIN

@@ -1,5 +1,6 @@
 package com.digimbanking.Features.Auth.AdaRekening.KonfEmailSdh
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,7 +34,7 @@ class KonfirmasiEmailSudah : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.cvbackKonf.setOnClickListener{
-            startActivity(Intent(this, QuestionPage::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
 
         viewModel = ViewModelProvider(this).get(OtpEmailViewModelsdh::class.java)
@@ -105,8 +106,12 @@ class KonfirmasiEmailSudah : AppCompatActivity() {
         binding.btnCheckrek.isEnabled = viewModel.isEmailValid(binding.etBuatakun.editText?.text.toString())
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
         binding.bgLoading2.visibility = View.VISIBLE
+        binding.bgLoading2.setOnTouchListener { _, _ ->
+            true
+        }
     }
     private fun onFinishedLoading(){
         binding.bgLoading2.visibility = View.GONE

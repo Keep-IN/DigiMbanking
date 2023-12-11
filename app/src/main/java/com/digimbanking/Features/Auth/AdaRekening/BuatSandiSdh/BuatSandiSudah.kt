@@ -35,8 +35,9 @@ class BuatSandiSudah : AppCompatActivity() {
         setContentView(binding.root)
 
         viewmodel = ViewModelProvider(this).get(KonfRekViewModelsdh::class.java)
+
         binding.cvBacksan.setOnClickListener{
-            startActivity(Intent(this, KonfirmasiRekSudah::class.java))
+            onBackPressedDispatcher.onBackPressed()
         }
 
         binding.apply {
