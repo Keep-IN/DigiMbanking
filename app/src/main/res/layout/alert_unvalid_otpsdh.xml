@@ -51,7 +51,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center"
-                android:text="Maaf! Kode OTP yang dimasukkan tidak valid.  Silakan coba lagi."
+                android:text="sadas"
                 android:textSize="12dp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView11"
                 app:layout_constraintStart_toStartOf="@+id/imageView11"

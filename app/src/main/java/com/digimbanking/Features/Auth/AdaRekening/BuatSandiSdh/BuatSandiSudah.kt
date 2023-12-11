@@ -17,6 +17,7 @@ import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfRekViewModelsdh
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.KonfirmasiRekSudah
 import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh
 import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertBerhasilOTP
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertUnvalidOTPsdh
 import com.digimbanking.R
 import com.digimbanking.databinding.ActivityBuatSandiSudahBinding
 import com.digimbanking.databinding.ActivityKonfirmasiEmailSudahBinding
@@ -46,7 +47,6 @@ class BuatSandiSudah : AppCompatActivity() {
                     binding.etSandibr.isErrorEnabled = true
                     binding.etSandibr.error = "Password harus terdiri dari huruf dan angka"
                 }
-                validateInput()
             }
             etKonfSandi.editText?.doOnTextChanged { text, start, before, count ->
                 validateInput()
@@ -67,7 +67,8 @@ class BuatSandiSudah : AppCompatActivity() {
                         }
 
                         is Result.Error -> {
-                            AlertSandiDEC().show(supportFragmentManager, "no")
+                            val allertGagal = AlertSandiDEC.newInstance(result.errorMessage)
+                            allertGagal.show(supportFragmentManager, "no")
                         }
 
                         is Result.Loading -> {

@@ -30,6 +30,7 @@ class OtpEmailSudah : AppCompatActivity() {
     private lateinit var timer: CountDownTimer
     private var isTimerFinished = false
     private lateinit var viewModel: OtpEmailViewModelsdh
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityOtpEmailSudahBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -51,7 +52,8 @@ class OtpEmailSudah : AppCompatActivity() {
                             }
 
                             is Result.Error -> {
-                                AlertUnvalidOTPsdh().show(supportFragmentManager, "no")
+                                val allertGagal = AlertUnvalidOTPsdh.newInstance(result.errorMessage)
+                                allertGagal.show(supportFragmentManager, "no")
                             }
 
                             is Result.Loading -> {
@@ -72,6 +74,7 @@ class OtpEmailSudah : AppCompatActivity() {
                 when (result) {
                     is Result.Success -> {
                         Toast.makeText(this@OtpEmailSudah, "OTP regenerated successfully", Toast.LENGTH_SHORT).show()
+                        resetTimer()
                     }
 
                     is Result.Error -> {
@@ -84,16 +87,32 @@ class OtpEmailSudah : AppCompatActivity() {
             })
         }
     }
-//    private fun navigateToKonfrek() {
-//        val intent = Intent(this, KonfirmasiRekSudah::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
+
     override fun onStart() {
         super.onStart()
 
         val totalSeconds: Long = 120
 
+        timer = object : CountDownTimer(totalSeconds * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val seconds = millisUntilFinished / 1000
+                val minutes = seconds / 60
+                val time = String.format("%02d:%02d", minutes % 60, seconds % 60)
+                binding.tvTimerOTP.text = time
+            }
+
+            override fun onFinish() {
+                isTimerFinished = true
+                binding.tvRegenOTP.isEnabled = true
+                binding.tvTimerOTP.text = "00:00"
+            }
+        }
+        timer.start()
+        binding.tvRegenOTP.isEnabled = false
+    }
+    private fun resetTimer() {
+        timer.cancel()
+        val totalSeconds: Long = 120
         timer = object : CountDownTimer(totalSeconds * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val seconds = millisUntilFinished / 1000

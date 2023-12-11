@@ -34,12 +34,12 @@ class OtpRepository @Inject constructor(
                 emit(Result.Success(responseBody))
             } else {
                 val errorBody = response.errorBody()?.string()
-                val errorMassage = try {
-                    JSONObject(errorBody).getString("massage")
+                val errorMessage = try {
+                    JSONObject(errorBody).getString("message")
                 } catch (e : JSONException) {
                     "Unknown error occurred"
                 }
-                emit(Result.Error(errorMassage))
+                emit(Result.Error(errorMessage))
             }
         } catch (e : Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }
@@ -59,12 +59,12 @@ class OtpRepository @Inject constructor(
                 emit(Result.Success(responseBody))
             } else {
                 val errorBody = response.errorBody()?.string()
-                val errorMassage = try {
-                    JSONObject(errorBody).getString("massage")
+                val errorMessage = try {
+                    JSONObject(errorBody).getString("message")
                 } catch (e : JSONException) {
                     "Unknown error occurred"
                 }
-                emit(Result.Error(errorMassage))
+                emit(Result.Error(errorMessage))
             }
         } catch (e: Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }
@@ -83,12 +83,12 @@ class OtpRepository @Inject constructor(
                 emit(Result.Success(responseBody))
             } else {
                 val errorBody = response.errorBody()?.string()
-                val errorMassage = try {
-                    JSONObject(errorBody).getString("massage")
+                val errorMessage = try {
+                    JSONObject(errorBody).getString("message")
                 } catch (e : JSONException) {
                     "Unknown error occurred"
                 }
-                emit(Result.Error(errorMassage))
+                emit(Result.Error(errorMessage))
             }
         } catch (e : Exception) {
             e.message?.let { Result.Error(it) }?.let { emit(it) }

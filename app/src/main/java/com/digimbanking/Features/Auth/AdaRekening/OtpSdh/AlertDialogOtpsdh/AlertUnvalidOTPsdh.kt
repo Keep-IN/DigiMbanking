@@ -17,11 +17,11 @@ import com.digimbanking.databinding.AlertUnvalidOtpsdhBinding
 class AlertUnvalidOTPsdh : DialogFragment() {
     lateinit var binding: AlertUnvalidOtpsdhBinding
     companion object{
-        fun newInstance(massage : String): AlertUnvalidOTPsdh {
+        fun newInstance(message : String): AlertUnvalidOTPsdh {
             val fragment = AlertUnvalidOTPsdh()
             val args = Bundle()
             args.apply {
-                putString("massage", massage)
+                putString("message", message)
                 fragment.arguments = args
                 return fragment
             }
@@ -47,11 +47,11 @@ class AlertUnvalidOTPsdh : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val massage = arguments?.getString("massage")
-//
-//        binding.apply {
-//            textView40.text = massage
-//        }
+        val massage = arguments?.getString("message")
+
+        binding.apply {
+            tvErrorOTP.text = massage
+        }
 
         binding.btnKembaliOTP.setOnClickListener{
             dialog?.cancel()

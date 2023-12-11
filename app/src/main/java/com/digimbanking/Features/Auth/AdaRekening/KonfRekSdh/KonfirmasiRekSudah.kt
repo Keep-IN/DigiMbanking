@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.digimbanking.Features.Auth.AdaRekening.KonfRekSdh.AlertDialog.AlertUnregsdh
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertUnvalidOTPsdh
 import com.digimbanking.databinding.ActivityKonfirmasiRekSudahBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -50,7 +51,8 @@ class KonfirmasiRekSudah : AppCompatActivity() {
                         }
 
                         is Result.Error -> {
-                            AlertUnregsdh().show(supportFragmentManager, "test")
+                            val allertGagal = AlertUnregsdh.newInstance(result.errorMessage)
+                            allertGagal.show(supportFragmentManager, "test")
                         }
 
                         is Result.Loading -> {
