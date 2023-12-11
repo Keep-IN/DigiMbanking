@@ -23,7 +23,7 @@ class OtpFailed : DialogFragment() {
             val fragment= OtpFailed()
             val args = Bundle()
             args.apply {
-                putString("massage", massage)
+                putString("message", massage)
                 fragment.arguments = args
                 return fragment
             }
@@ -47,13 +47,12 @@ class OtpFailed : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val massage = arguments?.getString("massage")
-//        binding.apply {
-//            textView44.text = massage
-//        }
-
-        binding.btnKembali.setOnClickListener{
-            dialog?.cancel()
+        val massage = arguments?.getString("message")
+        binding.apply {
+            txtError.text = massage
+            btnKembali.setOnClickListener{
+                dialog?.cancel()
+            }
         }
     }
 }

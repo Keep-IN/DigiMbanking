@@ -14,8 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.chaos.view.PinView
 import com.core.data.network.Result
+import com.digimbanking.Features.Auth.CreateRekening.Mpin.AlertMpin.MpinFailed
 import com.digimbanking.Features.Auth.CreateRekening.Mpin.AlertMpin.MpinSuccess
 import com.digimbanking.Features.Auth.CreateRekening.Registrasi.AlertOtp.OtpSuccess
+import com.digimbanking.Features.Auth.CreateRekening.Registrasi.AlertPassword.PasswordFailed
 import com.digimbanking.Features.Auth.Login.Login
 import com.digimbanking.Features.Onboard.MainActivity
 import com.digimbanking.R
@@ -55,11 +57,8 @@ class KonfirmasiMpin : AppCompatActivity() {
                                                 onFinishedLoading()
                                             }
                                             is Result.Error -> {
-                                                Toast.makeText(
-                                                    this@KonfirmasiMpin,
-                                                    result.errorMessage,
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
+                                                val allertError = MpinFailed.newInstance(result.errorMessage)
+                                                allertError.show(supportFragmentManager, "failed")
                                                 onFinishedLoading()
                                             }
                                             is Result.Loading -> {
@@ -72,9 +71,6 @@ class KonfirmasiMpin : AppCompatActivity() {
                                             }
                                         }
                                     })
-//                                val intent = Intent(this@KonfirmasiMpin, Login::class.java)
-//                                startActivity(intent)
-//                                finish()
                             } else {
                                 pinView.setLineColor(Color.RED)
                                 pinView.setTextColor(Color.RED)

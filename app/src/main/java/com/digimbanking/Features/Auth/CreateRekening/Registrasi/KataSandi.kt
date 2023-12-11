@@ -36,7 +36,7 @@ class KataSandi : AppCompatActivity() {
                     binding.etPassword.isErrorEnabled = true
                     binding.etPassword.error = "Password harus terdiri dari huruf dan angka"
                 }
-                validateInput()
+
             }
             etKonfPw.editText?.doOnTextChanged { text, start, before, count ->
                 validateInput()

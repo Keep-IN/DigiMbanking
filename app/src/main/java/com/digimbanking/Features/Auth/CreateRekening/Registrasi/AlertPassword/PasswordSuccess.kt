@@ -25,7 +25,7 @@ class PasswordSuccess : DialogFragment() {
             val fragment = PasswordSuccess()
             val args = Bundle()
             args.apply {
-                putString("massage", massage)
+                putString("message", massage)
                 fragment.arguments = args
                 return fragment
             }
@@ -49,7 +49,7 @@ class PasswordSuccess : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val massage = arguments?.getString("massage")
+        val massage = arguments?.getString("message")
         binding.apply {
             txtSandi.text = massage
         }

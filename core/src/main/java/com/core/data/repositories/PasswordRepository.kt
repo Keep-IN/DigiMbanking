@@ -32,7 +32,7 @@ class PasswordRepository @Inject constructor(
             } else {
                 val errorBody = response.errorBody()?.string()
                 val errorMassage = try {
-                    JSONObject(errorBody).getString("massage")
+                    JSONObject(errorBody).getString("message")
                 } catch (e : JSONException) {
                     "Unknown error occurred"
                 }
