@@ -20,11 +20,11 @@ class AlertBerhasilOTP : DialogFragment(){
     lateinit var binding: AlertBerhasilOtpBinding
 
     companion object{
-        fun newInstance(massage : String): AlertBerhasilOTP {
+        fun newInstance(message : String): AlertBerhasilOTP {
             val fragment = AlertBerhasilOTP()
             val args = Bundle()
             args.apply {
-                putString("massage", massage)
+                putString("message", message)
                 fragment.arguments = args
                 return fragment
             }
@@ -48,10 +48,10 @@ class AlertBerhasilOTP : DialogFragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val massage = arguments?.getString("massage")
+        val message = arguments?.getString("message")
 
         binding.apply {
-            tvSaldoSumber.text = massage
+            tvSaldoSumber.text = message
         }
 
         binding.btnSuksesOTP.setOnClickListener{

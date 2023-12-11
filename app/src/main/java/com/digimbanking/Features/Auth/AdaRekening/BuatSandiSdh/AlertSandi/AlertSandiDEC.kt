@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.digimbanking.Features.Auth.AdaRekening.MpinSdh.BuatMPINsdh
+import com.digimbanking.Features.Auth.AdaRekening.OtpSdh.AlertDialogOtpsdh.AlertBerhasilOTP
 import com.digimbanking.R
 import com.digimbanking.databinding.AlertSandiDecBinding
 import com.digimbanking.databinding.AlertUnregsdhBinding
@@ -22,6 +23,17 @@ import dagger.hilt.android.AndroidEntryPoint
 
 class AlertSandiDEC : DialogFragment() {
     private lateinit var binding: AlertSandiDecBinding
+    companion object{
+        fun newInstance(message : String): AlertSandiDEC {
+            val fragment = AlertSandiDEC()
+            val args = Bundle()
+            args.apply {
+                putString("message", message)
+                fragment.arguments = args
+                return fragment
+            }
+        }
+    }
     override fun onCreateDialog( savedInstanceState: Bundle?): Dialog {
         return Dialog(requireContext())
     }
@@ -38,6 +50,11 @@ class AlertSandiDEC : DialogFragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val message = arguments?.getString("message")
+
+        binding.apply {
+            tvSandiDec.text = message
+        }
 
         binding.btnDecSandi.setOnClickListener {
             startActivity(Intent(activity, BuatMPINsdh::class.java))

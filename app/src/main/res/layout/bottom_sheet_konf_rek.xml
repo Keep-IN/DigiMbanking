@@ -99,7 +99,7 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
         android:layout_marginTop="34dp"
         android:layout_marginBottom="51dp"
         android:backgroundTint="@color/primary"
