@@ -10,7 +10,7 @@ data class DataResi(
     val catatan: String,
     @SerializedName("kode_transaksi")
     val kodeTransaksi: Int,
-    @SerializedName("tipe_transaksi")
+    @SerializedName("jenis_transaksi")
     val tipeTransaksi: String,
     @SerializedName("total_transaksi")
     val totalTransaksi: String
