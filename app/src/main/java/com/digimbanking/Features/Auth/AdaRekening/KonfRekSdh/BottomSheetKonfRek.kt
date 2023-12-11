@@ -65,6 +65,9 @@ import kotlinx.coroutines.launch
 
 
         }
+        binding.ivBackkonf.setOnClickListener{
+            dismiss()
+        }
 
 
     }
