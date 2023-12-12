@@ -27,15 +27,15 @@ class UbahPwViewModel @Inject constructor(
     ) = ubahPwRepository.ubahPw(pwLama, pwBaru, konfirmPw)
 
     fun validatePasswordLama(passwordLama: String): Boolean{
-        isPasswordLamaValid = passwordLama.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        isPasswordLamaValid = passwordLama.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]\$".toRegex())
         return  isPasswordLamaValid
     }
     fun validatePasswordBaru(passwordBaru: String): Boolean{
-        isPasswordBaruValid = passwordBaru.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        isPasswordBaruValid = passwordBaru.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]\$".toRegex())
         return  isPasswordBaruValid
     }
     fun validatePasswordKonfirm(passwordKonfirm: String): Boolean{
-        isPasswordKonfValid = passwordKonfirm.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        isPasswordKonfValid = passwordKonfirm.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]\$".toRegex())
         return isPasswordKonfValid
     }
 

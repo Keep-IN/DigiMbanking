@@ -157,7 +157,12 @@ class UbahPw : AppCompatActivity() {
         val isPasswordBaruValid = ubahPwViewModel.validatePasswordBaru(passwordBaru)
         val isPasswordKonfirm = ubahPwViewModel.validatePasswordKonfirm(passwordKonfirm)
 
-        binding.btnSimpanPwBaru.isEnabled = isPasswordLamaValid && isPasswordBaruValid && isPasswordKonfirm
+        val isPanjangPwLama = ubahPwViewModel.validatePasswordLamaLength(passwordLama)
+        val isPanjangPwBaru = ubahPwViewModel.validatePasswordBaruLength(passwordBaru)
+        val isPanjangPwKonf = ubahPwViewModel.validatePasswordKonfLength(passwordKonfirm)
+
+        binding.btnSimpanPwBaru.isEnabled = isPasswordLamaValid && isPasswordBaruValid &&
+                isPasswordKonfirm && isPanjangPwLama && isPanjangPwBaru && isPanjangPwKonf
     }
 
     @SuppressLint("ClickableViewAccessibility")
