@@ -45,45 +45,64 @@ class UbahPw : AppCompatActivity() {
 
         binding.apply {
             tilPwLama.editText?.doOnTextChanged { text, start, before, count ->
-                if(ubahPwViewModel.validatePasswordLama(text.toString())){
-                    binding.tilPwLama.isErrorEnabled = false
-                } else {
-                    binding.tilPwLama.isErrorEnabled = true
+                if(ubahPwViewModel.validatePasswordLamaLength(text.toString())){
+                    if(ubahPwViewModel.validatePasswordLama(text.toString())){
+                        binding.tilPwLama.isErrorEnabled = false
+                    } else {
+                        binding.tilPwLama.isErrorEnabled = true
+                        binding.btnSimpanPwBaru.isEnabled = false
+                        binding.tilPwLama.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
+                    }
+                }else {
+                    binding.tilPwBaru.isErrorEnabled = true
                     binding.btnSimpanPwBaru.isEnabled = false
-                    binding.tilPwLama.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
+                    binding.tilPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                 }
+
                 validateInput()
             }
 
             tilPwBaru.editText?.doOnTextChanged { text, start, before, count ->
                 if(ubahPwViewModel.validatePasswordBaru(text.toString())){
-                    if(ubahPwViewModel.validatePasswordBeda(binding.tilPwLama.editText?.text.toString(), binding.tilPwBaru.editText?.text.toString())){
-                        binding.tilPwBaru.isErrorEnabled = false
+                    if (ubahPwViewModel.validatePasswordBaruLength(text.toString())){
+                        if(ubahPwViewModel.validatePasswordBeda(binding.tilPwLama.editText?.text.toString(), binding.tilPwBaru.editText?.text.toString())){
+                            binding.tilPwBaru.isErrorEnabled = false
+                        } else {
+                            binding.tilPwBaru.isErrorEnabled = true
+                            binding.btnSimpanPwBaru.isEnabled = false
+                            binding.tilPwBaru.error = "Kata Sandi harus berbeda dengan Kata Sandi Lama"
+                        }
                     } else {
                         binding.tilPwBaru.isErrorEnabled = true
                         binding.btnSimpanPwBaru.isEnabled = false
-                        binding.tilPwBaru.error = "Kata Sandi harus berbeda dengan Kata Sandi Lama"
+                        binding.tilPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                     }
                 } else {
                     binding.tilPwBaru.isErrorEnabled = true
                     binding.btnSimpanPwBaru.isEnabled = false
-                    binding.tilPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
+                    binding.tilPwBaru.error = "Kata Sandi harus terdiri dari huruf dan angka"
                 }
                 validateInput()
             }
             tilKonfirmPwBaru.editText?.doOnTextChanged { text, start, before, count ->
                 if(ubahPwViewModel.validatePasswordKonfirm(text.toString())){
-                    if(ubahPwViewModel.validatePasswordSama(binding.tilPwBaru.editText?.text.toString(), binding.tilKonfirmPwBaru.editText?.text.toString())){
-                        binding.tilKonfirmPwBaru.isErrorEnabled = false
-                    } else {
-                        binding.tilKonfirmPwBaru.isErrorEnabled = true
+                    if(ubahPwViewModel.validatePasswordKonfLength(text.toString())){
+                        if(ubahPwViewModel.validatePasswordSama(binding.tilPwBaru.editText?.text.toString(), binding.tilKonfirmPwBaru.editText?.text.toString())){
+                            binding.tilKonfirmPwBaru.isErrorEnabled = false
+                        } else {
+                            binding.tilKonfirmPwBaru.isErrorEnabled = true
+                            binding.btnSimpanPwBaru.isEnabled = false
+                            binding.tilKonfirmPwBaru.error = "Kata Sandi tidak sama"
+                        }
+                    }else {
+                        binding.tilPwBaru.isErrorEnabled = true
                         binding.btnSimpanPwBaru.isEnabled = false
-                        binding.tilKonfirmPwBaru.error = "Kata Sandi tidak sama"
+                        binding.tilPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
                     }
                 } else {
                     binding.tilKonfirmPwBaru.isErrorEnabled = true
                     binding.btnSimpanPwBaru.isEnabled = false
-                    binding.tilKonfirmPwBaru.error = "Kata Sandi harus terdiri dari minimal 8 karakter"
+                    binding.tilKonfirmPwBaru.error = "Kata Sandi harus terdiri dari huruf dan angka"
                 }
                 validateInput()
             }

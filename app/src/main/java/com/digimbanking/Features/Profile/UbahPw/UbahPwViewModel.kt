@@ -16,6 +16,9 @@ class UbahPwViewModel @Inject constructor(
     var isPasswordKonfValid = false
     var isPasswordBeda = false
     var isPasswordSama = false
+    var isPanjangPwLama = false
+    var isPanjangPwBaru = false
+    var isPanjangPwKonf = false
 
     fun ubahPw(
         pwLama: String,
@@ -34,6 +37,21 @@ class UbahPwViewModel @Inject constructor(
     fun validatePasswordKonfirm(passwordKonfirm: String): Boolean{
         isPasswordKonfValid = passwordKonfirm.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
         return isPasswordKonfValid
+    }
+
+    fun validatePasswordLamaLength(passwordLama: String): Boolean{
+        isPanjangPwLama = passwordLama.length > 8
+        return isPanjangPwLama
+    }
+
+    fun validatePasswordBaruLength(passwordBaru: String): Boolean{
+        isPanjangPwBaru = passwordBaru.length > 8
+        return isPanjangPwBaru
+    }
+
+    fun validatePasswordKonfLength(konfirmPw: String): Boolean{
+        isPanjangPwKonf = konfirmPw.length > 8
+        return isPanjangPwKonf
     }
 
 //    fun validatePasswordLogin(password: String): LoginModel?{
