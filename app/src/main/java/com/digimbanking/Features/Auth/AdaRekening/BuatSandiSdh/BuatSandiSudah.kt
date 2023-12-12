@@ -42,11 +42,17 @@ class BuatSandiSudah : AppCompatActivity() {
 
         binding.apply {
             etSandibr.editText?.doOnTextChanged { text, start, before, count ->
-                if (viewmodel.validatePassword(text.toString())) {
+                val password = text.toString()
+
+                if (viewmodel.validatePassword(password) && viewmodel.validatePassLength(password)) {
                     binding.etSandibr.isErrorEnabled = false
                 } else {
                     binding.etSandibr.isErrorEnabled = true
-                    binding.etSandibr.error = "Password harus terdiri dari huruf dan angka"
+                    if (!viewmodel.validatePassword(password)) {
+                        binding.etSandibr.error = "Kata sandi harus terdiri dari huruf dan angka"
+                    } else if(!viewmodel.validatePassLength(password)) {
+                            binding.etSandibr.error = "Kata sandi harus minimal 8 karakter"
+                        }
                 }
             }
             etKonfSandi.editText?.doOnTextChanged { text, start, before, count ->

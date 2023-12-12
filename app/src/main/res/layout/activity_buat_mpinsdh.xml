@@ -53,12 +53,12 @@
 
     <TextView
         android:id="@+id/tvWarningNominal"
-        android:layout_width="328dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="Untuk keamanan dalam bertransaksi silahkan masukkan 6 digit MPIN"
+        android:text="Untuk keamanan dalam bertransaksi silakan masukkan 6 digit MPIN"
         android:textColor="@color/black"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"

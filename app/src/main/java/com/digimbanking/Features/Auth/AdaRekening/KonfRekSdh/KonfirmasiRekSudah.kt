@@ -62,6 +62,16 @@ class KonfirmasiRekSudah : AppCompatActivity() {
                 })
             }
         }
+        binding.apply {
+            txtNorek.editText?.doOnTextChanged { text, start, before, count ->
+                if (viewModel.isRekeningValid(text.toString())){
+                    binding.txtNorek.isErrorEnabled = false
+                } else {
+                    binding.txtNorek.isErrorEnabled = true
+                    binding.txtNorek.error = "Nomor rekening minimal 10 digit"
+                }
+            }
+        }
 
     }
 }
