@@ -30,13 +30,18 @@ class KataSandi : AppCompatActivity() {
 
         binding.apply {
             etPassword.editText?.doOnTextChanged { text, start, before, count ->
-                if (viewmodel.validatePassword(text.toString())){
+                val password = text.toString()
+
+                if (viewmodel.validatePassword(password) && viewmodel.validatePw(password)) {
                     binding.etPassword.isErrorEnabled = false
                 } else {
                     binding.etPassword.isErrorEnabled = true
-                    binding.etPassword.error = "Password harus terdiri dari huruf dan angka"
+                    if (!viewmodel.validatePassword(password)) {
+                        binding.etPassword.error = "Kata sandi harus terdiri dari huruf dan angka"
+                    } else if (!viewmodel.validatePw(password)) {
+                        binding.etPassword.error = "Kata sandi harus minimal 8 karakter"
+                    }
                 }
-
             }
             etKonfPw.editText?.doOnTextChanged { text, start, before, count ->
                 validateInput()

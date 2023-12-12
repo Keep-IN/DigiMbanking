@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="36dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="NIK :"
+                        android:text="NIK:"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtInformasi" />
@@ -172,7 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Nama Lengkap :"
+                        android:text="Nama Lengkap:"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/etNIK" />
@@ -206,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Alamat :"
+                        android:text="Alamat:"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/etNama" />
@@ -241,7 +241,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Pekerjaan :"
+                        android:text="Pekerjaan:"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/etAlamat" />
@@ -276,7 +276,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Penghasilan :"
+                        android:text="Penghasilan:"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/etPekerjaan" />
@@ -319,6 +319,7 @@
                 android:enabled="false"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Lanjut"
+                android:textColor="@color/white"
                 android:backgroundTint="@color/bg_button_selector"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

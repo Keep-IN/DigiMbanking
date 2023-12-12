@@ -47,12 +47,13 @@
 
             <TextView
                 android:id="@+id/textView40"
-                android:layout_width="236dp"
-                android:layout_height="37dp"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center"
-                android:text=""
+                android:textAlignment="center"
+                android:text="sukses"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView12"
                 app:layout_constraintStart_toStartOf="@+id/imageView12"
