@@ -41,6 +41,9 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // set visibility FAB menjadi GONE diawal
+        binding.fabAutoScrollTop.visibility = View.GONE
+
         val layoutManager = LinearLayoutManager(activity)
         binding.rvTransaksiRiwayat.layoutManager = layoutManager
         binding.rvTransaksiRiwayat.adapter = adapterRiwayat
@@ -64,9 +67,13 @@ class RiwayatFragment : Fragment(), BottomSheetFilterFragment.DateFilterListener
                                         imageEmptyListRiwayat.visibility = View.VISIBLE
                                         tvEmptyTransaksi.visibility = View.VISIBLE
                                         tvEmptyTransaksi.text = "Belum ada transaksi"
+                                        // hide FAB
+                                        fabAutoScrollTop.visibility = View.GONE
                                     } else {
                                         imageEmptyListRiwayat.visibility = View.GONE
                                         tvEmptyTransaksi.visibility = View.GONE
+                                        // show FAB
+                                        fabAutoScrollTop.visibility = View.VISIBLE
                                     }
                                 }
                                 Log.d("Isi data Riwayat", "${it.data}")
