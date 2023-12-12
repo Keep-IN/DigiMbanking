@@ -30,7 +30,7 @@
     </FrameLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView3"
+        android:id="@+id/btnBackMpin"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="24dp"
@@ -56,10 +56,10 @@
         android:text="MPIN"
         android:textColor="#202327"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/materialCardView3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBackMpin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialCardView3" />
+        app:layout_constraintTop_toTopOf="@+id/btnBackMpin" />
 
     <ImageView
         android:id="@+id/imageView9"
