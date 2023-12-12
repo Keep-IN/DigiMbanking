@@ -45,21 +45,21 @@ class AkunListAdapter: RecyclerView.Adapter<AkunListAdapter.ViewHolder>() {
                     binding.imgKotak.setImageResource(R.drawable.chip_card)
                     binding.cvBgCard.setCardBackgroundColor(Color.parseColor("#BBBBBB"))
                     binding.imgLogoBank.setImageResource(R.drawable.gpn)
-                    binding.txtLimit5.text = "Limit transfer : 5 juta"
+                    binding.txtLimit5.text = "Limit Transfer : 5 juta"
                 }
                 2 -> {
                     binding.txtJenisKartu.text = "Gold"
                     binding.imgKotak.setImageResource(R.drawable.chip_card)
                     binding.cvBgCard.setCardBackgroundColor(Color.parseColor("#FBDB2F"))
                     binding.imgLogoBank.setImageResource(R.drawable.ic_visa_logo)
-                    binding.txtLimit5.text = "Limit transfer : 10 juta"
+                    binding.txtLimit5.text = "Limit Transfer : 10 juta"
                 }
                 3 -> {
                     binding.txtJenisKartu.text = "Platinum"
                     binding.imgKotak.setImageResource(R.drawable.chip_card)
                     binding.cvBgCard.setCardBackgroundColor(Color.parseColor("#696865"))
                     binding.imgLogoBank.setImageResource(R.drawable.platinum)
-                    binding.txtLimit5.text = "Limit transfer : 15 juta"
+                    binding.txtLimit5.text = "Limit Transfer : 15 juta"
                 }
             }
         }
