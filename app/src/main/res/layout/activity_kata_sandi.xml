@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="36dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Kata Sandi :"
+                        android:text="Kata Sandi:"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtInformasi" />
@@ -125,6 +125,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hintEnabled="false"
+                        app:helperTextEnabled="false"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:passwordToggleEnabled="true"
@@ -149,7 +150,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="22dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Konfirmasi Kata Sandi  :"
+                        android:text="Konfirmasi Kata Sandi:"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
@@ -192,6 +193,7 @@
                 android:enabled="false"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Lanjut"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.478"

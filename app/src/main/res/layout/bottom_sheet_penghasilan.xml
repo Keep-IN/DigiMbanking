@@ -13,7 +13,7 @@
         android:layout_marginTop="28dp"
         android:textColor="@color/black"
         android:fontFamily="@font/poppins_medium"
-        android:text="Penghasulan per bulan"
+        android:text="Penghasilan perbulan"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

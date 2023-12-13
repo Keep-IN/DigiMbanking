@@ -43,7 +43,13 @@ class RegisViewModel  @Inject constructor(
     }
 
     fun validatePassword(password: String): Boolean{
-        isPasswordValid = password.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        isPasswordValid = password.contains("(?=.*[0-9])(?=.*[a-zA-Z])".toRegex())
         return  isPasswordValid
     }
+
+    fun validatePw(password: String): Boolean {
+        return password.length >= 8
+    }
+
+
 }

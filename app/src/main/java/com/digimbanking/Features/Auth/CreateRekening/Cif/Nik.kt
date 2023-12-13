@@ -62,7 +62,7 @@ class Nik : AppCompatActivity() {
                     binding.etNIK.isErrorEnabled = false
                 } else {
                     binding.etNIK.isErrorEnabled = true
-                    binding.etNIK.error = "NIK kurang dari 16 karakter"
+                    binding.etNIK.error = "NIK harus terdiri dari 16 digit"
                 }
                 validateInput()
             }

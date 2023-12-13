@@ -87,7 +87,7 @@
         android:layout_marginTop="35dp"
         android:layout_marginEnd="31dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/konf_mpin"
+        android:text="@string/mpin_konf"
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
