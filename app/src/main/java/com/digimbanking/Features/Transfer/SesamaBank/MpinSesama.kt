@@ -76,6 +76,9 @@ class MpinSesama: AppCompatActivity() {
                 }
             }
         }
+        binding.btnBackMpin.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
     @SuppressLint("ClickableViewAccessibility")
     private fun onLoading(){
