@@ -75,7 +75,7 @@ class KonfirmasiEmailSudah : AppCompatActivity() {
                     binding.etBuatakun.isErrorEnabled = false
                 } else {
                     binding.etBuatakun.isErrorEnabled = true
-                    binding.etBuatakun.error = "Email yang dimasukkan harus sesuai format"
+                    binding.etBuatakun.error = "Email harus sesuai format penulisan"
                 }
                 validateInput()
             }

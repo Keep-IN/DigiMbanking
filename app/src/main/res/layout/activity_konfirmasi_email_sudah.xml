@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Email :"
+                android:text="Email:"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/view" />
@@ -163,6 +163,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="45dp"
         android:enabled="false"
+        android:textColor="@color/white_primary"
         android:backgroundTint="@color/bg_button_selector"
         android:fontFamily="@font/poppins_semibold"
         android:text="Lanjut"

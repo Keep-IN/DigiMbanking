@@ -44,8 +44,18 @@ class KonfRekViewModelsdh @Inject constructor(
         noRekening: String
     ) = rekeningRepository.createUserCif(noRekening)
 
+    fun validatePassLength(password: String): Boolean{
+        return  password.length >=8
+    }
+
     fun validatePassword(password: String): Boolean{
         isPasswordValid = password.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
         return  isPasswordValid
     }
+
+    fun isRekeningValid(accountNumber: String): Boolean {
+        val accountNumberRegex = Regex("\\d{10,16}")
+        return accountNumberRegex.matches(accountNumber)
+    }
+
 }
