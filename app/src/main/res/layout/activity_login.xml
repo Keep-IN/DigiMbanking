@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text=" Email :"
+                android:text=" Email:"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/tvDescMasuk"
                 app:layout_constraintTop_toBottomOf="@+id/tvDescMasuk" />
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Kata Sandi :"
+                android:text="Kata Sandi:"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/tilLoginEmail"
                 app:layout_constraintTop_toBottomOf="@+id/tilLoginEmail" />

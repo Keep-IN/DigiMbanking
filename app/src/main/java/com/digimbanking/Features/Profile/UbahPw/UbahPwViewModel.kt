@@ -16,6 +16,9 @@ class UbahPwViewModel @Inject constructor(
     var isPasswordKonfValid = false
     var isPasswordBeda = false
     var isPasswordSama = false
+    var isPanjangPwLama = false
+    var isPanjangPwBaru = false
+    var isPanjangPwKonf = false
 
     fun ubahPw(
         pwLama: String,
@@ -24,16 +27,31 @@ class UbahPwViewModel @Inject constructor(
     ) = ubahPwRepository.ubahPw(pwLama, pwBaru, konfirmPw)
 
     fun validatePasswordLama(passwordLama: String): Boolean{
-        isPasswordLamaValid = passwordLama.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        isPasswordLamaValid = passwordLama.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]\$".toRegex())
         return  isPasswordLamaValid
     }
     fun validatePasswordBaru(passwordBaru: String): Boolean{
-        isPasswordBaruValid = passwordBaru.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        isPasswordBaruValid = passwordBaru.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]\$".toRegex())
         return  isPasswordBaruValid
     }
     fun validatePasswordKonfirm(passwordKonfirm: String): Boolean{
-        isPasswordKonfValid = passwordKonfirm.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}\$".toRegex())
+        isPasswordKonfValid = passwordKonfirm.contains ("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]\$".toRegex())
         return isPasswordKonfValid
+    }
+
+    fun validatePasswordLamaLength(passwordLama: String): Boolean{
+        isPanjangPwLama = passwordLama.length > 8
+        return isPanjangPwLama
+    }
+
+    fun validatePasswordBaruLength(passwordBaru: String): Boolean{
+        isPanjangPwBaru = passwordBaru.length > 8
+        return isPanjangPwBaru
+    }
+
+    fun validatePasswordKonfLength(konfirmPw: String): Boolean{
+        isPanjangPwKonf = konfirmPw.length > 8
+        return isPanjangPwKonf
     }
 
 //    fun validatePasswordLogin(password: String): LoginModel?{
